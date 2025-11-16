@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TrueForge Life — Mortgage Protection & Life Insurance</title>
+  <meta name="description" content="TrueForge Life, LLC — Mortgage protection and permanent life insurance solutions. Principal Agent Dominic Raciti. Forged in truth. Built for each other.™" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#1a73e8;--dark:#0f1724;--muted:#6b7280;--bg:#ffffff}
+    html,body{height:100%;margin:0;font-family:Roboto, Arial, Verdana, sans-serif;background:var(--bg);color:var(--dark)}
+    a{color:var(--accent)}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{height:56px;width:auto}
+    .brand h1{font-size:18px;margin:0}
+    nav{display:flex;gap:18px}
+    nav a{font-weight:500;text-decoration:none;color:var(--muted)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:18px}
+    .hero .lead{font-size:28px;line-height:1.08;font-weight:600;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .cta{display:flex;gap:12px}
+    .btn{background:var(--accent);color:#fff;padding:12px 16px;border-radius:8px;text-decoration:none;font-weight:600}
+    .btn.secondary{background:transparent;color:var(--accent);border:1px solid #e6eef9}
+
+    /* Card */
+    .card{background:#f8fafc;padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(20,20,30,0.03)}
+    .stat{display:flex;gap:10px;align-items:center}
+    .stat strong{font-size:20px}
+
+    /* Features */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:34px 0}
+    .feature{background:#fff;padding:18px;border-radius:12px;border:1px solid #f1f5f9}
+    .feature h3{margin:0 0 8px}
+    .feature p{margin:0;color:var(--muted)}
+
+    /* Testimonials */
+    .testimonials{display:flex;gap:12px;flex-wrap:wrap}
+    .test{background:#fff;padding:16px;border-radius:10px;border:1px solid #f1f5f9;flex:1 1 220px}
+
+    /* Contact */
+    .contact-row{display:flex;gap:18px;align-items:stretch}
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea,select{padding:12px;border-radius:8px;border:1px solid #e6eef9;font-size:14px}
+
+    footer{margin:36px 0 12px;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:1fr}
+      nav{display:none}
+      .brand img{height:50px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="/mnt/data/c067bde1-206c-4e23-aeb2-8472bde5ea36.png" alt="TrueForge Life banner" style="width:100%;border-radius:12px;margin-bottom:22px" />
+
+<header>
+      <div class="brand">
+        <!-- Replace the src with the public URL to your logo after deployment -->
+        <img src="/mnt/data/TrueForge Life Logo Design (1).png" alt="TrueForge Life logo" />
+        <div>
+          <h1>TrueForge Life, LLC</h1>
+          <div style="color:var(--muted);font-size:13px">Principal Agent — Dominic Raciti</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#options">Options</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="lead">Clear, affordable life insurance & mortgage protection made simple.</p>
+        <p>Permanent coverage options, policy reviews, and modern service — built around what matters most: protecting your family and your mortgage without overpaying.</p>
+
+        <div class="cta">
+          <a class="btn" href="mailto:dominic@trueforgeinsurance.com?subject=Quick%20Policy%20Review">Schedule a Call</a>
+          <a class="btn secondary" href="#options">See Options</a>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:12px">
+          <div class="card" style="min-width:190px">
+            <div class="stat"><div><strong>Save on premiums</strong><div style="color:var(--muted);font-size:13px">We often lower monthly cost vs. employer/legacy plans.</div></div></div>
+          </div>
+
+          <div class="card" style="min-width:190px">
+            <div class="stat"><div><strong>Strong carriers</strong><div style="color:var(--muted);font-size:13px">We partner with highly rated companies for permanence and stability.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h3 style="margin-top:0">Quick Compare</h3>
+        <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Example: Keep $100k coverage & lower payments, or upgrade to $150k for marginally more coverage and still save vs. some legacy policies.</p>
+        <ul style="margin:0;padding-left:18px;color:var(--muted);font-size:14px">
+          <li>Personalized illustrations</li>
+          <li>Short application paths</li>
+          <li>Friendly, jargon-free advice</li>
+        </ul>
+        <div style="margin-top:12px;text-align:center"><a class="btn" href="mailto:dominic@trueforgeinsurance.com?subject=Send%20Illustration">Request Illustration</a></div>
+      </aside>
+    </section>
+
+    <section id="about" style="margin-top:36px">
+      <h2>About TrueForge Life</h2>
+      <p style="color:var(--muted);max-width:85%">TrueForge Life LLC is a fast-growing virtual life insurance agency dedicated to helping middle-class America find the right coverage at the right price, ensuring their loved ones are protected.</p>
+      <p style="color:var(--muted);max-width:85%">We hold contracts with industry leaders such as Mutual of Omaha, Foresters Financial, American Amicable, Aetna/CVS, Corebridge Financial, Transamerica, and more — allowing us to match each client with the best option for their needs.</p>
+      <p style="color:var(--muted);max-width:85%">We specialize in Simplified Issue Life Insurance for clients who want fast protection without medical exams or long approval timelines. Most approvals happen the same day.</p>
+      <ul style="color:var(--muted);max-width:85%">
+        <li>Term Life</li>
+        <li>Indexed Universal Life (IUL)</li>
+        <li>Final Expense</li>
+        <li>Whole Life</li>
+        <li>and more — because life insurance is never one-size-fits-all.</li>
+      </ul>
+      <p style="color:var(--muted);max-width:85%">We’re also committed to developing new agents from all walks of life, empowering them to protect families from financial hardship. Training and mentorship at TrueForge Life are rooted in doing what’s best for the client, always.</p>
+      <p style="color:var(--muted);max-width:85%">At TrueForge Life, we’re built on honesty, purpose, and connection — forging stronger financial futures for our clients, their loved ones, and the families of every agent who joins our mission.</p>
+      <p style="color:var(--muted);font-weight:500;max-width:85%">“Forged in truth. Built for each other.”</p>
+    </section>
+
+    <section id="options">
+      <h2 style="margin-top:26px">Options & How We Help</h2>
+      <div class="grid">
+        <div class="feature">
+          <h3>Mortgage Protection</h3>
+          <p>Coverage designed to protect your family and mortgage balance if the unexpected happens — with options tailored to your remaining mortgage term and budget.</p>
+        </div>
+        <div class="feature">
+          <h3>Guaranteed & Simplified Issue</h3>
+          <p>We place clients into permanent solutions that require limited health underwriting when available — helpful for older applicants or those with past conditions.</p>
+        </div>
+        <div class="feature">
+          <h3>Permanent Whole Life</h3>
+          <p>Traditional whole life options with stable premiums and cash value growth — ideal for long-term planning and legacy goals.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <h2 style="margin-top:18px">What Clients Say</h2>
+      <div class="testimonials">
+        <div class="test">
+          <strong>"Saved me money and simplified everything."</strong>
+          <div style="color:var(--muted);font-size:13px;margin-top:8px">— L. M., Homeowner</div>
+        </div>
+        <div class="test">
+          <strong>"Dominic walked us through the options and made it easy."</strong>
+          <div style="color:var(--muted);font-size:13px;margin-top:8px">— R. P., Small Business Owner</div>
+        </div>
+        <div class="test">
+          <div style="font-style:italic;color:var(--muted);font-size:13px">Have a story? Send it to dominic@trueforgeinsurance.com and we'll feature it.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:28px">
+      <h2>Get in Touch</h2>
+      <div class="contact-row">
+        <div style="flex:1">
+          <p style="color:var(--muted)">Ready to review your policy or request a personalized illustration? Schedule a quick call or send a note — whichever works best for you.</p>
+
+          <p style="margin:8px 0"><strong>Phone:</strong> <a href="tel:+15742616606">(574) 261-6606</a><br>
+          <strong>Email:</strong> <a href="mailto:dominic@trueforgeinsurance.com">dominic@trueforgeinsurance.com</a></p>
+
+          <p style="color:var(--muted);font-size:13px">Office Hours: Mon–Fri 9am–5pm ET (By appointment)</p>
+        </div>
+
+        <div style="width:420px">
+          <!-- Simple contact form (mailto fallback) -->
+          <!-- For production, replace action with a form backend (Formspree, Netlify Forms, etc.) -->
+          <form method="POST" action="mailto:dominic@trueforgeinsurance.com" enctype="text/plain">
+            <input type="text" name="Name" placeholder="Your name" required />
+            <input type="email" name="Email" placeholder="Your email" required />
+            <input type="tel" name="Phone" placeholder="Phone (optional)" />
+            <select name="Service">
+              <option value="PolicyReview">Policy Review</option>
+              <option value="MortgageProtection">Mortgage Protection</option>
+              <option value="NewPolicy">Get a Quote / New Policy</option>
+              <option value="Other">Other</option>
+            </select>
+            <textarea name="Message" rows="4" placeholder="Tell me a little about what you need..." required></textarea>
+            <div style="display:flex;gap:10px">
+              <button type="submit" class="btn">Send Message</button>
+              <a class="btn secondary" href="tel:+15742616606">Call Now</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© <strong>TrueForge Life, LLC</strong> — All rights reserved.</div>
+        <div style="color:var(--muted);font-size:13px">Principal Agent: Dominic Raciti | Phone: (574) 261-6606 | Email: dominic@trueforgeinsurance.com</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Smooth scroll for anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',function(e){
+        e.preventDefault();
+        const target=document.querySelector(this.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
+  </script>
+</body>
+</html>
