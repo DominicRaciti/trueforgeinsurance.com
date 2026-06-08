@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1f44'/><text y='.9em' font-size='72' x='50%' text-anchor='middle' dominant-baseline='hanging'>🛡️</text></svg>" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Your Coverage Recommendation — TrueForge Insurance</title>
+  <meta name="description" content="Answer a few questions to get a personalized life insurance recommendation from TrueForge Insurance. Final expense, mortgage protection, and more — guided step by step." />
+  <link rel="canonical" href="https://trueforgeinsurance.com/enroll.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Get Your Coverage Recommendation — TrueForge Insurance" />
+  <meta property="og:description" content="Answer a few questions to get a personalized life insurance recommendation. No pressure, no obligation. Guided by licensed agent Dominic Raciti." />
+  <meta property="og:url" content="https://trueforgeinsurance.com/enroll.html" />
+  <meta property="og:image" content="https://trueforgeinsurance.com/images/agent-photo.jpg" />
+  <meta property="og:site_name" content="TrueForge Insurance" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Get Your Coverage Recommendation — TrueForge Insurance" />
+  <meta name="twitter:description" content="Answer a few questions to get a personalized life insurance recommendation. No pressure, no obligation." />
+  <meta name="twitter:image" content="https://trueforgeinsurance.com/images/agent-photo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ===== ENROLL PAGE — WIZARD STYLES ===== */
+
+    .enroll-page {
+      background: var(--off-white);
+      min-height: 100vh;
+      padding-bottom: 120px;
+    }
+
+    /* ── Hero strip ── */
+    .enroll-hero {
+      background: var(--navy);
+      padding: 2.5rem 0 2rem;
+      text-align: center;
+    }
+    .enroll-hero h1 {
+      color: var(--white);
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      margin-bottom: 0.5rem;
+    }
+    .enroll-hero p {
+      color: rgba(255,255,255,0.75);
+      font-size: 1rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .enroll-trust-strip {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .enroll-trust-strip span {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .enroll-trust-strip span em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+
+    /* ── Progress bar ── */
+    .progress-wrap {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-light);
+      padding: 0.9rem 0;
+      position: sticky;
+      top: 60px;
+      z-index: 90;
+    }
+    .progress-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .progress-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .progress-count {
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+    .progress-bar-track {
+      height: 6px;
+      background: var(--gray-light);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--navy), var(--gold));
+      border-radius: 99px;
+      transition: width 0.4s ease;
+    }
+
+    /* ── Wizard card ── */
+    .wizard-wrap {
+      max-width: 680px;
+      margin: 2.5rem auto 0;
+      padding: 0 1.25rem;
+    }
+    .wizard-step {
+      display: none;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow-lg);
+      animation: fadeSlide 0.35s ease;
+    }
+    .wizard-step.active { display: block; }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .step-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .step-title {
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    .step-sub {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 1.75rem;
+    }
+
+    /* ── Option cards ── */
+    .option-cards {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+    .option-cards.cols-2 { grid-template-columns: 1fr 1fr; }
+    .option-cards.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    @media (max-width: 520px) {
+      .option-cards.cols-2,
+      .option-cards.cols-3 { grid-template-columns: 1fr; }
+    }
+    .option-card {
+      border: 2px solid var(--gray-light);
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      cursor: pointer;
+      transition: all 0.18s;
+      background: var(--white);
+      text-align: left;
+      width: 100%;
+      font-family: var(--font);
+    }
+    .option-card:hover {
+      border-color: var(--navy);
+      background: #f0f4ff;
+    }
+    .option-card.selected {
+      border-color: var(--navy);
+      background: #eef2ff;
+      box-shadow: 0 0 0 3px rgba(10,31,68,0.12);
+    }
+    .option-card .card-icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+    .option-card .card-label {
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 0.95rem;
+    }
+    .option-card .card-desc {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-top: 0.25rem;
+      line-height: 1.4;
+    }
+
+    /* ── Form fields ── */
+    .field-row {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .field-row.cols-2 { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 480px) { .field-row.cols-2 { grid-template-columns: 1fr; } }
+    .field-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .field-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .field-group input,
+    .field-group select {
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--gray-light);
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.18s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .field-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+    .field-group input:focus,
+    .field-group select:focus {
+      outline: none;
+      border-color: var(--navy);
+    }
+    .field-group input.invalid,
+    .field-group select.invalid {
+      border-color: #dc2626;
+    }
+
+    /* ── Checkbox grid (health conditions) ── */
+    .check-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 480px) { .check-grid { grid-template-columns: 1fr; } }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.65rem 0.85rem;
+      border: 2px solid var(--gray-light);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+    .check-item:hover { border-color: var(--navy); background: #f0f4ff; }
+    .check-item input[type="checkbox"] { display: none; }
+    .check-box {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--gray-light);
+      border-radius: 4px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+      background: var(--white);
+    }
+    .check-item.checked .check-box {
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .check-item.checked .check-box::after {
+      content: '✓';
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .check-item.checked { border-color: var(--navy); background: #eef2ff; }
+    .check-item span { font-size: 0.85rem; color: var(--text); font-weight: 500; }
+
+    .none-check {
+      margin-top: 0.5rem;
+      padding: 0.65rem 0.85rem;
+      border: 2px solid var(--gray-light);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--gray);
+      text-align: center;
+      transition: all 0.15s;
+      font-weight: 500;
+    }
+    .none-check:hover { border-color: var(--navy); color: var(--navy); }
+    .none-check.selected { border-color: var(--navy); background: #eef2ff; color: var(--navy); }
+
+    /* ── Coverage amount slider ── */
+    .coverage-slider-wrap { margin-bottom: 1.75rem; }
+    .coverage-display {
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .coverage-display .amount {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .coverage-display .amount-label {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-top: 0.25rem;
+    }
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--gray-light);
+      border-radius: 99px;
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--navy);
+      box-shadow: 0 2px 8px rgba(10,31,68,0.25);
+      cursor: pointer;
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--navy);
+      border: none;
+      cursor: pointer;
+    }
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--gray);
+    }
+
+    /* ── Navigation buttons ── */
+    .wizard-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--gray-light);
+    }
+    .btn-back {
+      background: none;
+      border: 2px solid var(--gray-light);
+      color: var(--gray);
+      padding: 0.7rem 1.4rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: all 0.18s;
+    }
+    .btn-back:hover { border-color: var(--navy); color: var(--navy); }
+    .btn-next {
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 0.85rem 2rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: all 0.18s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-next:hover { background: var(--navy-light); transform: translateY(-1px); }
+    .btn-next:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+    /* ── Recommendation screen ── */
+    .rec-screen { display: none; }
+    .rec-screen.active { display: block; }
+
+    .rec-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 1.25rem;
+    }
+    .rec-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #dcfce7;
+      color: #15803d;
+      padding: 0.4rem 0.9rem;
+      border-radius: 99px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .rec-badge.yellow { background: #fef9c3; color: #854d0e; }
+    .rec-badge.blue { background: #dbeafe; color: #1d4ed8; }
+
+    .rec-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .rec-sub {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .rec-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    @media (max-width: 480px) { .rec-detail-grid { grid-template-columns: 1fr; } }
+    .rec-detail-box {
+      background: var(--off-white);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+    }
+    .rec-detail-box .rdb-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+    .rec-detail-box .rdb-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .rec-detail-box .rdb-note {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-top: 0.15rem;
+    }
+
+    .rec-what-to-expect h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .rec-expect-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.25rem;
+    }
+    .rec-expect-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      line-height: 1.45;
+    }
+    .rec-expect-list li::before {
+      content: '✓';
+      color: #16a34a;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .compliance-note {
+      background: #fff9f0;
+      border: 1px solid #fde68a;
+      border-radius: 10px;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.8rem;
+      color: #92400e;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+    .compliance-note strong { color: #78350f; }
+
+    /* CTA handoff */
+    .rec-cta-box {
+      background: var(--navy);
+      border-radius: 14px;
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .rec-cta-box h3 { color: var(--white); font-size: 1.2rem; margin-bottom: 0.4rem; }
+    .rec-cta-box p { color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 1.25rem; }
+    .btn-enroll {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font);
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(201,151,58,0.4);
+    }
+    .btn-enroll:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-enroll-secondary {
+      display: block;
+      margin-top: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.82rem;
+      text-decoration: none;
+    }
+    .btn-enroll-secondary:hover { color: var(--white); }
+
+    .rec-or { text-align: center; color: var(--gray); font-size: 0.82rem; margin: 0.85rem 0; }
+    .btn-call-instead {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.9rem;
+      border: 2px solid var(--navy);
+      border-radius: 10px;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.95rem;
+      background: var(--white);
+      cursor: pointer;
+      font-family: var(--font);
+      text-decoration: none;
+      transition: all 0.18s;
+    }
+    .btn-call-instead:hover { background: #eef2ff; }
+
+    /* agent review screen */
+    .agent-review-card {
+      background: #fff9f0;
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      padding: 2rem;
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+    .agent-review-card .agent-icon { font-size: 3rem; margin-bottom: 0.75rem; }
+    .agent-review-card h3 { color: var(--navy); font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .agent-review-card p { color: var(--gray); font-size: 0.88rem; line-height: 1.6; }
+
+    /* ── Step disclaimer ── */
+    .step-disclaimer {
+      font-size: 0.72rem;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--gray-light);
+    }
+
+    /* ── Summary sidebar on rec screen ── */
+    .answers-summary {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.25rem;
+    }
+    .answers-summary h5 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.85rem;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--gray-light);
+      font-size: 0.82rem;
+    }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-row .sr-key { color: var(--gray); flex-shrink: 0; }
+    .summary-row .sr-val { color: var(--navy); font-weight: 600; text-align: right; }
+
+    /* ── AI Helper widget ── */
+    .ai-helper-btn {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      z-index: 200;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: var(--font);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 20px rgba(10,31,68,0.35);
+      transition: all 0.2s;
+    }
+    .ai-helper-btn:hover { background: var(--navy-light); transform: translateY(-2px); }
+    .ai-helper-btn .ai-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #4ade80;
+      animation: aipulse 2s infinite;
+    }
+    @keyframes aipulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .ai-panel {
+      position: fixed;
+      bottom: 150px;
+      right: 20px;
+      width: min(360px, calc(100vw - 40px));
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(10,31,68,0.22);
+      z-index: 201;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--gray-light);
+      max-height: 70vh;
+    }
+    .ai-panel.open { display: flex; }
+
+    .ai-panel-header {
+      background: var(--navy);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ai-panel-header-left { display: flex; align-items: center; gap: 0.6rem; }
+    .ai-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .ai-panel-header h4 { color: var(--white); font-size: 0.9rem; margin: 0; font-weight: 700; }
+    .ai-panel-header p { color: rgba(255,255,255,0.65); font-size: 0.72rem; margin: 0; }
+    .ai-close {
+      background: none; border: none; color: rgba(255,255,255,0.6);
+      font-size: 1.2rem; cursor: pointer; padding: 0; line-height: 1;
+    }
+    .ai-close:hover { color: var(--white); }
+
+    .ai-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .ai-msg {
+      max-width: 88%;
+      padding: 0.7rem 0.9rem;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+    .ai-msg.bot {
+      background: var(--off-white);
+      border: 1px solid var(--gray-light);
+      color: var(--text);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    .ai-msg.user {
+      background: var(--navy);
+      color: var(--white);
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .ai-msg a { color: var(--gold); text-decoration: underline; }
+
+    .ai-quick-questions {
+      padding: 0 1rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .ai-quick-btn {
+      background: none;
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.78rem;
+      color: var(--navy);
+      font-family: var(--font);
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+    }
+    .ai-quick-btn:hover { background: var(--off-white); border-color: var(--navy); }
+
+    .ai-input-row {
+      display: flex;
+      padding: 0.75rem 1rem;
+      gap: 0.5rem;
+      border-top: 1px solid var(--gray-light);
+    }
+    .ai-input {
+      flex: 1;
+      padding: 0.6rem 0.85rem;
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-family: var(--font);
+      outline: none;
+    }
+    .ai-input:focus { border-color: var(--navy); }
+    .ai-send {
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .ai-send:hover { background: var(--navy-light); }
+
+    .ai-guardrail {
+      font-size: 0.7rem;
+      color: var(--gray);
+      text-align: center;
+      padding: 0.4rem 1rem 0.6rem;
+      border-top: 1px solid var(--gray-light);
+      line-height: 1.4;
+    }
+
+    /* sticky bar clearance */
+    @media (max-width: 768px) {
+      .ai-helper-btn { bottom: 110px; }
+      .ai-panel { bottom: 170px; }
+    }
+  </style>
+</head>
+<body class="enroll-page">
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo-text">True<span>Forge</span> Insurance</a>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+1-574-392-0192" class="nav-phone">📞 (574) 392-0192</a>
+      <a href="tel:+15743920192" class="btn btn-primary">📞 Free Quote Call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== ENROLL HERO ===== -->
+<div class="enroll-hero">
+  <div class="container">
+    <h1>Find Your Coverage — Guided, Step by Step</h1>
+    <p>Answer a few honest questions and we'll show you the products most likely to fit your situation — before you fill out a single carrier form.</p>
+    <div class="enroll-trust-strip">
+      <span><em>🔒</em> Secure & private</span>
+      <span><em>✓</em> No obligation</span>
+      <span><em>📞</em> Licensed agent support</span>
+      <span><em>⏱</em> Takes under 3 minutes</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PROGRESS BAR ===== -->
+<div class="progress-wrap" id="progressWrap">
+  <div class="progress-inner">
+    <div class="progress-meta">
+      <span class="progress-label" id="progressLabel">Step 1 of 6 — Coverage Goal</span>
+      <span class="progress-count" id="progressCount">17% complete</span>
+    </div>
+    <div class="progress-bar-track">
+      <div class="progress-bar-fill" id="progressFill" style="width:17%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WIZARD ===== -->
+<div class="wizard-wrap" id="wizardWrap">
+
+  <!-- ══ STEP 1: Coverage Goal ══ -->
+  <div class="wizard-step active" id="step1">
+    <div class="step-eyebrow">Step 1 of 6</div>
+    <h2 class="step-title">What are you looking to protect?</h2>
+    <p class="step-sub">Choose the option that best matches your goal. Not sure? Pick the closest one — we'll sort it out together.</p>
+
+    <div class="option-cards cols-2" id="goalCards">
+      <button class="option-card" data-value="final-expense" onclick="selectCard(this, 'goalCards')">
+        <div class="card-icon">🌹</div>
+        <div class="card-label">Final Expense</div>
+        <div class="card-desc">Cover burial, funeral costs, and any remaining bills so my family isn't left with debt.</div>
+      </button>
+      <button class="option-card" data-value="mortgage-protection" onclick="selectCard(this, 'goalCards')">
+        <div class="card-icon">🏠</div>
+        <div class="card-label">Mortgage Protection</div>
+        <div class="card-desc">Ensure my family can stay in our home if I pass away or become disabled.</div>
+      </button>
+      <button class="option-card" data-value="income-replacement" onclick="selectCard(this, 'goalCards')">
+        <div class="card-icon">👨‍👩‍👧</div>
+        <div class="card-label">Family Income Protection</div>
+        <div class="card-desc">Replace my income so my family can maintain their lifestyle if I'm gone.</div>
+      </button>
+      <button class="option-card" data-value="not-sure" onclick="selectCard(this, 'goalCards')">
+        <div class="card-icon">🤔</div>
+        <div class="card-label">Not Sure Yet</div>
+        <div class="card-desc">I want to understand my options before deciding. Help me figure it out.</div>
+      </button>
+    </div>
+
+    <div class="wizard-nav">
+      <div></div>
+      <button class="btn-next" id="next1" onclick="goToStep(2)" disabled>Continue →</button>
+    </div>
+    <p class="step-disclaimer">TrueForge Insurance is an independent agency. This tool is educational — coverage subject to carrier underwriting and approval.</p>
+  </div>
+
+  <!-- ══ STEP 2: About You ══ -->
+  <div class="wizard-step" id="step2">
+    <div class="step-eyebrow">Step 2 of 6</div>
+    <h2 class="step-title">Tell us a little about yourself</h2>
+    <p class="step-sub">Your age, state, and tobacco use are the three biggest factors in determining which products you may qualify for and at what estimated cost.</p>
+
+    <div class="field-row cols-2">
+      <div class="field-group">
+        <label for="age">Your Age</label>
+        <input type="number" id="age" placeholder="e.g. 62" min="18" max="89" />
+      </div>
+      <div class="field-group">
+        <label for="state">State of Residence</label>
+        <select id="state">
+          <option value="">Select your state…</option>
+          <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+          <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+          <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+          <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+          <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+          <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+          <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+          <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+          <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+          <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+          <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+          <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+          <option>Wisconsin</option><option>Wyoming</option>
+        </select>
+      </div>
+    </div>
+
+    <p style="font-size:0.85rem;font-weight:600;color:var(--navy);margin-bottom:0.6rem;">Tobacco Use in the Last 12 Months</p>
+    <div class="option-cards cols-3" id="tobaccoCards" style="margin-bottom:1.25rem;">
+      <button class="option-card" data-value="no" onclick="selectCard(this, 'tobaccoCards')">
+        <div class="card-label">No</div>
+        <div class="card-desc">Non-smoker rates apply</div>
+      </button>
+      <button class="option-card" data-value="yes" onclick="selectCard(this, 'tobaccoCards')">
+        <div class="card-label">Yes</div>
+        <div class="card-desc">Tobacco user rates apply</div>
+      </button>
+      <button class="option-card" data-value="quit" onclick="selectCard(this, 'tobaccoCards')">
+        <div class="card-label">Quit &lt;12 mo</div>
+        <div class="card-desc">Recent quitter — varies by carrier</div>
+      </button>
+    </div>
+
+    <div class="wizard-nav">
+      <button class="btn-back" onclick="goToStep(1)">← Back</button>
+      <button class="btn-next" id="next2" onclick="validateStep2()" disabled>Continue →</button>
+    </div>
+    <p class="step-disclaimer">We do not share your information with any third party without your consent. This form does not initiate a policy application.</p>
+  </div>
+
+  <!-- ══ STEP 3: Coverage Amount ══ -->
+  <div class="wizard-step" id="step3">
+    <div class="step-eyebrow">Step 3 of 6</div>
+    <h2 class="step-title">How much coverage are you looking for?</h2>
+    <p class="step-sub">Not sure of the exact amount? Give us your best estimate — this helps us point you toward the right products. You can always adjust.</p>
+
+    <div class="coverage-slider-wrap">
+      <div class="coverage-display">
+        <div class="amount" id="coverageDisplay">$15,000</div>
+        <div class="amount-label" id="coverageLabel">Estimated coverage amount</div>
+      </div>
+      <input type="range" id="coverageSlider" min="0" max="100" value="20"
+             oninput="updateCoverageDisplay(this.value)" />
+      <div class="slider-labels">
+        <span id="sliderMin">$5,000</span>
+        <span id="sliderMax">$500,000+</span>
+      </div>
+    </div>
+
+    <p style="font-size:0.82rem;color:var(--gray);margin-bottom:1.25rem;">
+      <strong style="color:var(--navy);">Not sure how much you need?</strong> Final expense coverage typically ranges from $5,000–$30,000. Mortgage protection is usually tied to your remaining loan balance. Family income protection is often 10–12× your annual income.
+    </p>
+
+    <div class="wizard-nav">
+      <button class="btn-back" onclick="goToStep(2)">← Back</button>
+      <button class="btn-next" onclick="goToStep(4)">Continue →</button>
+    </div>
+    <p class="step-disclaimer">Coverage amounts shown are illustrative only. Actual available coverage depends on your age, health, and the carrier's underwriting guidelines.</p>
+  </div>
+
+  <!-- ══ STEP 4: Health Snapshot ══ -->
+  <div class="wizard-step" id="step4">
+    <div class="step-eyebrow">Step 4 of 6</div>
+    <h2 class="step-title">Health snapshot</h2>
+    <p class="step-sub">Select any conditions that apply to you. This helps us estimate whether you're more likely to qualify for standard simplified issue, graded benefit, or guaranteed issue coverage.</p>
+
+    <div class="check-grid" id="healthGrid">
+      <label class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" value="diabetes" />
+        <span class="check-box"></span>
+        <span>Diabetes (Type 1 or 2)</span>
+      </label>
+      <label class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" value="heart" />
+        <span class="check-box"></span>
+        <span>Heart Attack or Stroke</span>
+      </label>
+      <label class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" value="cancer" />
+        <span class="check-box"></span>
+        <span>Cancer (past or present)</span>
+      </label>
+      <label class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" value="copd" />
+        <span class="check-box"></span>
+        <span>COPD / Emphysema</span>
+      </label>
+      <label class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" value="kidney" />
+        <span class="check-box"></span>
+        <span>Kidney Failure / Dialysis</span>
+      </label>
+      <label class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" value="oxygen" />
+        <span class="check-box"></span>
+        <span>Currently Using Oxygen</span>
+      </label>
+      <label class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" value="dementia" />
+        <span class="check-box"></span>
+        <span>Dementia / Alzheimer's</span>
+      </label>
+      <label class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" value="hiv" />
+        <span class="check-box"></span>
+        <span>HIV / AIDS</span>
+      </label>
+      <label class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" value="hospice" />
+        <span class="check-box"></span>
+        <span>Currently in Hospice / Nursing Facility</span>
+      </label>
+      <label class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" value="highbp" />
+        <span class="check-box"></span>
+        <span>High Blood Pressure (controlled)</span>
+      </label>
+      <label class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" value="cholesterol" />
+        <span class="check-box"></span>
+        <span>High Cholesterol (controlled)</span>
+      </label>
+      <label class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" value="anxiety" />
+        <span class="check-box"></span>
+        <span>Anxiety / Depression (managed)</span>
+      </label>
+    </div>
+    <div class="none-check" id="noneCheck" onclick="selectNoConditions()">✓ None of the above — I'm in generally good health</div>
+
+    <div class="wizard-nav">
+      <button class="btn-back" onclick="goToStep(3)">← Back</button>
+      <button class="btn-next" id="next4" onclick="goToStep(5)" disabled>Continue →</button>
+    </div>
+    <p class="step-disclaimer">This health information is used only to estimate product fit. It is not submitted to any insurance carrier. All answers are self-reported and do not constitute an application or underwriting decision.</p>
+  </div>
+
+  <!-- ══ STEP 5: Current Coverage & Replacement ══ -->
+  <div class="wizard-step" id="step5">
+    <div class="step-eyebrow">Step 5 of 6</div>
+    <h2 class="step-title">Current life insurance</h2>
+    <p class="step-sub">This helps us understand if you're starting fresh or looking to supplement or replace existing coverage.</p>
+
+    <p style="font-size:0.85rem;font-weight:600;color:var(--navy);margin-bottom:0.6rem;">Do you currently have life insurance?</p>
+    <div class="option-cards cols-3" id="currentCovCards" style="margin-bottom:1.5rem;">
+      <button class="option-card" data-value="none" onclick="selectCard(this, 'currentCovCards'); showReplacementQ(false)">
+        <div class="card-label">No</div>
+        <div class="card-desc">Starting fresh</div>
+      </button>
+      <button class="option-card" data-value="yes-keep" onclick="selectCard(this, 'currentCovCards'); showReplacementQ(false)">
+        <div class="card-label">Yes — Keeping It</div>
+        <div class="card-desc">Adding supplemental coverage</div>
+      </button>
+      <button class="option-card" data-value="yes-replace" onclick="selectCard(this, 'currentCovCards'); showReplacementQ(true)">
+        <div class="card-label">Yes — May Replace</div>
+        <div class="card-desc">Looking for better rates or coverage</div>
+      </button>
+    </div>
+
+    <div id="replacementWarning" style="display:none;" class="compliance-note">
+      <strong>⚠️ Important — Replacement Notice:</strong> If you are considering replacing an existing life insurance policy, federal and state regulations require that you disclose this on your application. Dominic will walk you through the comparison and help you evaluate whether replacement makes sense for your situation. <strong>Never cancel an existing policy until a new one is in force.</strong> If you have questions about replacement, <a href="tel:+15743920192" style="color:#92400e;font-weight:700;">please call Dominic directly at (574) 392-0192</a> before proceeding.
+    </div>
+
+    <p style="font-size:0.85rem;font-weight:600;color:var(--navy);margin-bottom:0.6rem;margin-top:1rem;">Who is the primary beneficiary?</p>
+    <div class="option-cards cols-2" id="benCards" style="margin-bottom:0.5rem;">
+      <button class="option-card" data-value="spouse" onclick="selectCard(this, 'benCards')">
+        <div class="card-label">Spouse / Partner</div>
+      </button>
+      <button class="option-card" data-value="child" onclick="selectCard(this, 'benCards')">
+        <div class="card-label">Child / Children</div>
+      </button>
+      <button class="option-card" data-value="parent" onclick="selectCard(this, 'benCards')">
+        <div class="card-label">Parent or Sibling</div>
+      </button>
+      <button class="option-card" data-value="other" onclick="selectCard(this, 'benCards')">
+        <div class="card-label">Other / Multiple</div>
+      </button>
+    </div>
+
+    <div class="wizard-nav">
+      <button class="btn-back" onclick="goToStep(4)">← Back</button>
+      <button class="btn-next" id="next5" onclick="goToStep(6)" disabled>Continue →</button>
+    </div>
+    <p class="step-disclaimer">This information does not initiate a replacement transaction. Replacement disclosures are completed as part of the formal carrier application process.</p>
+  </div>
+
+  <!-- ══ STEP 6: Contact ══ -->
+  <div class="wizard-step" id="step6">
+    <div class="step-eyebrow">Step 6 of 6 — Almost There</div>
+    <h2 class="step-title">Where should we send your recommendation?</h2>
+    <p class="step-sub">Enter your name and best contact number. Dominic may reach out to confirm your results and answer any questions before you start the application.</p>
+
+    <div class="field-row cols-2">
+      <div class="field-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" placeholder="Jane" />
+      </div>
+      <div class="field-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" placeholder="Smith" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label for="phone">Best Phone Number</label>
+        <input type="tel" id="phone" placeholder="(555) 555-5555" />
+      </div>
+    </div>
+
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:0.85rem 1rem;font-size:0.8rem;color:#15803d;margin-bottom:1rem;">
+      🔒 Your information is never sold or shared. By continuing, you agree to be contacted by Dominic Raciti at TrueForge Insurance regarding your coverage inquiry.
+    </div>
+
+    <div class="wizard-nav">
+      <button class="btn-back" onclick="goToStep(5)">← Back</button>
+      <button class="btn-next" id="next6" onclick="showRecommendation()" disabled>See My Recommendation →</button>
+    </div>
+    <p class="step-disclaimer">TrueForge Insurance does not share your personal information with third parties for marketing purposes. Standard phone/text rates may apply.</p>
+  </div>
+
+</div><!-- /wizard-wrap -->
+
+
+<!-- ===== RECOMMENDATION SCREEN ===== -->
+<div id="recScreen" class="rec-screen">
+  <div class="wizard-wrap" style="max-width:720px;">
+
+    <!-- summary of answers -->
+    <div class="answers-summary">
+      <h5>Your Profile Summary</h5>
+      <div id="summaryRows"><!-- populated by JS --></div>
+    </div>
+
+    <!-- main recommendation card -->
+    <div class="rec-card" id="recMainCard">
+      <!-- populated by JS -->
+    </div>
+
+    <!-- trust signals -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.75rem;margin-bottom:1.5rem;">
+      <div style="background:var(--white);border-radius:10px;padding:1rem;box-shadow:var(--shadow);text-align:center;">
+        <div style="font-size:1.5rem;margin-bottom:0.3rem;">🔒</div>
+        <div style="font-size:0.78rem;font-weight:700;color:var(--navy);">Secure Application</div>
+        <div style="font-size:0.72rem;color:var(--gray);">Carrier-grade encryption</div>
+      </div>
+      <div style="background:var(--white);border-radius:10px;padding:1rem;box-shadow:var(--shadow);text-align:center;">
+        <div style="font-size:1.5rem;margin-bottom:0.3rem;">📋</div>
+        <div style="font-size:0.78rem;font-weight:700;color:var(--navy);">Licensed Agent Support</div>
+        <div style="font-size:0.72rem;color:var(--gray);">Dominic reviews every app</div>
+      </div>
+      <div style="background:var(--white);border-radius:10px;padding:1rem;box-shadow:var(--shadow);text-align:center;">
+        <div style="font-size:1.5rem;margin-bottom:0.3rem;">🚫</div>
+        <div style="font-size:0.78rem;font-weight:700;color:var(--navy);">Zero Pressure</div>
+        <div style="font-size:0.72rem;color:var(--gray);">No obligation to purchase</div>
+      </div>
+      <div style="background:var(--white);border-radius:10px;padding:1rem;box-shadow:var(--shadow);text-align:center;">
+        <div style="font-size:1.5rem;margin-bottom:0.3rem;">📞</div>
+        <div style="font-size:0.78rem;font-weight:700;color:var(--navy);">Help by Phone</div>
+        <div style="font-size:0.72rem;color:var(--gray);">(574) 392-0192</div>
+      </div>
+    </div>
+
+    <!-- master disclaimer -->
+    <div style="background:var(--white);border:1px solid var(--gray-light);border-radius:10px;padding:1.25rem;font-size:0.75rem;color:var(--gray);line-height:1.6;margin-bottom:2rem;">
+      <strong style="color:var(--navy);">Important Disclaimer:</strong> This tool is educational and does not guarantee approval, premium, or policy issuance. All product recommendations are estimated based on self-reported information and general underwriting guidelines. Final eligibility, coverage amounts, and premiums are determined exclusively by the insurance carrier through their underwriting process. "May qualify," "estimated fit," and similar language indicates a general suitability assessment only — not a binding quote or offer of insurance. TrueForge Insurance is an independent agency licensed in 40+ states. Products and availability vary by state. Not all products are available in all states.
+    </div>
+
+    <div style="text-align:center;padding-bottom:2rem;">
+      <a href="index.html" style="font-size:0.82rem;color:var(--gray);">← Return to TrueForge Insurance Home</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== AI HELPER WIDGET ===== -->
+<button class="ai-helper-btn" id="aiBtn" onclick="toggleAI()">
+  <span class="ai-dot"></span>
+  Application Helper
+</button>
+
+<div class="ai-panel" id="aiPanel">
+  <div class="ai-panel-header">
+    <div class="ai-panel-header-left">
+      <div class="ai-avatar">🛡️</div>
+      <div>
+        <h4>TrueForge Concierge</h4>
+        <p>Here to explain — not to decide</p>
+      </div>
+    </div>
+    <button class="ai-close" onclick="toggleAI()">✕</button>
+  </div>
+
+  <div class="ai-messages" id="aiMessages">
+    <div class="ai-msg bot">
+      Hi! I'm here to help explain the questions on this form and what the answers mean for your coverage. <br><br>
+      I can't make underwriting decisions or guarantee any outcome, but I can point you in the right direction. What would you like to know?
+    </div>
+  </div>
+
+  <div class="ai-quick-questions" id="quickQs">
+    <button class="ai-quick-btn" onclick="askQuick(this)">What is simplified issue coverage?</button>
+    <button class="ai-quick-btn" onclick="askQuick(this)">What is graded benefit?</button>
+    <button class="ai-quick-btn" onclick="askQuick(this)">What does "subject to underwriting" mean?</button>
+    <button class="ai-quick-btn" onclick="askQuick(this)">Should I replace my current policy?</button>
+    <button class="ai-quick-btn" onclick="askQuick(this)">What if I have health conditions?</button>
+    <button class="ai-quick-btn" onclick="askQuick(this)">Is my information safe?</button>
+  </div>
+
+  <div class="ai-input-row">
+    <input class="ai-input" id="aiInput" type="text" placeholder="Ask a question…" onkeydown="if(event.key==='Enter')sendAI()" />
+    <button class="ai-send" onclick="sendAI()">→</button>
+  </div>
+  <div class="ai-guardrail">
+    This assistant provides general education only. For health, replacement, or complex questions — <a href="tel:+15743920192" style="color:var(--navy);font-weight:600;">call Dominic at (574) 392-0192</a>.
+  </div>
+</div>
+
+
+<!-- ===== STICKY MOBILE CALL BAR ===== -->
+<div class="sticky-call-bar">
+  <a href="tel:+15743920192">
+    📞 Tap to Call — (574) 392-0192
+    <span class="sub">Questions? Speak directly with Dominic · No pressure</span>
+  </a>
+</div>
+
+<!-- ===== TIDIO ===== -->
+<script src="//code.tidio.co/hakq0k87lfccnk5wfqyxoh49nj1stjxy.js" async></script>
+
+<!-- ===== MAIN JS ===== -->
+<script src="js/main.js"></script>
+
+<!-- ===== WIZARD JS ===== -->
+<script>
+/* ─────────────────────────────────────────────
+   STATE
+───────────────────────────────────────────── */
+const answers = {
+  goal: null,
+  age: null,
+  state: null,
+  tobacco: null,
+  coverage: 15000,
+  conditions: [],
+  noneSelected: false,
+  currentPolicy: null,
+  beneficiary: null,
+  firstName: '',
+  lastName: '',
+  phone: ''
+};
+
+let currentStep = 1;
+const TOTAL_STEPS = 6;
+
+const STEP_LABELS = [
+  'Coverage Goal',
+  'About You',
+  'Coverage Amount',
+  'Health Snapshot',
+  'Current Coverage',
+  'Your Contact Info'
+];
+
+/* ─────────────────────────────────────────────
+   NAVIGATION
+───────────────────────────────────────────── */
+function goToStep(n) {
+  document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+  const target = document.getElementById('step' + n);
+  if (target) {
+    target.classList.add('active');
+    currentStep = n;
+    updateProgress(n);
+    document.getElementById('wizardWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function updateProgress(step) {
+  const pct = Math.round((step / TOTAL_STEPS) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent =
+    'Step ' + step + ' of ' + TOTAL_STEPS + ' — ' + STEP_LABELS[step - 1];
+  document.getElementById('progressCount').textContent = pct + '% complete';
+}
+
+/* ─────────────────────────────────────────────
+   OPTION CARD SELECTION
+───────────────────────────────────────────── */
+function selectCard(btn, groupId) {
+  const group = document.getElementById(groupId);
+  group.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+  btn.classList.add('selected');
+
+  // save answer
+  if (groupId === 'goalCards')        { answers.goal = btn.dataset.value; enableNext('next1'); }
+  if (groupId === 'tobaccoCards')     { answers.tobacco = btn.dataset.value; checkStep2(); }
+  if (groupId === 'currentCovCards')  { answers.currentPolicy = btn.dataset.value; checkStep5(); }
+  if (groupId === 'benCards')         { answers.beneficiary = btn.dataset.value; checkStep5(); }
+}
+
+/* ─────────────────────────────────────────────
+   STEP 2 VALIDATION
+───────────────────────────────────────────── */
+function checkStep2() {
+  const age   = parseInt(document.getElementById('age').value);
+  const state = document.getElementById('state').value;
+  if (age >= 18 && age <= 89 && state && answers.tobacco) {
+    enableNext('next2');
+  } else {
+    disableNext('next2');
+  }
+}
+
+function validateStep2() {
+  const age   = parseInt(document.getElementById('age').value);
+  const state = document.getElementById('state').value;
+  if (!age || age < 18 || age > 89) {
+    document.getElementById('age').classList.add('invalid');
+    document.getElementById('age').focus();
+    return;
+  }
+  if (!state) {
+    document.getElementById('state').classList.add('invalid');
+    document.getElementById('state').focus();
+    return;
+  }
+  if (!answers.tobacco) return;
+  answers.age = age;
+  answers.state = state;
+  goToStep(3);
+}
+
+document.getElementById('age').addEventListener('input', function() {
+  this.classList.remove('invalid');
+  checkStep2();
+});
+document.getElementById('state').addEventListener('change', function() {
+  this.classList.remove('invalid');
+  checkStep2();
+});
+
+/* ─────────────────────────────────────────────
+   STEP 3: COVERAGE SLIDER
+───────────────────────────────────────────── */
+// Goal-adjusted slider ranges
+function getSliderConfig() {
+  if (answers.goal === 'final-expense') {
+    return { values: [5000,7500,10000,12500,15000,20000,25000,30000], unit: 'Final expense' };
+  } else if (answers.goal === 'mortgage-protection') {
+    return { values: [50000,75000,100000,125000,150000,200000,250000,300000,350000,400000,500000], unit: 'Mortgage balance' };
+  } else {
+    return { values: [25000,50000,75000,100000,150000,200000,250000,300000,400000,500000], unit: 'Coverage amount' };
+  }
+}
+
+function updateCoverageDisplay(rawVal) {
+  const cfg = getSliderConfig();
+  const idx = Math.min(Math.round((rawVal / 100) * (cfg.values.length - 1)), cfg.values.length - 1);
+  const val = cfg.values[idx];
+  answers.coverage = val;
+  document.getElementById('coverageDisplay').textContent = '$' + val.toLocaleString();
+  document.getElementById('coverageLabel').textContent = cfg.unit + ' — you can adjust this later';
+  document.getElementById('sliderMin').textContent = '$' + cfg.values[0].toLocaleString();
+  document.getElementById('sliderMax').textContent = '$' + cfg.values[cfg.values.length - 1].toLocaleString() + '+';
+}
+
+// Initialize slider on step 3 entry
+document.getElementById('step3').addEventListener('animationstart', function() {
+  updateCoverageDisplay(document.getElementById('coverageSlider').value);
+});
+
+// also update when step 3 becomes visible
+const origGoTo = goToStep;
+// patch to also refresh slider
+const _goToStep = function(n) {
+  origGoTo(n);
+  if (n === 3) updateCoverageDisplay(document.getElementById('coverageSlider').value);
+};
+
+/* ─────────────────────────────────────────────
+   STEP 4: HEALTH CONDITIONS
+───────────────────────────────────────────── */
+function toggleCheck(label) {
+  label.classList.toggle('checked');
+  // deselect "none" if a condition chosen
+  document.getElementById('noneCheck').classList.remove('selected');
+  answers.noneSelected = false;
+  // collect selected
+  answers.conditions = Array.from(
+    document.querySelectorAll('#healthGrid .check-item.checked input')
+  ).map(i => i.value);
+  enableNext('next4');
+}
+
+function selectNoConditions() {
+  // deselect all conditions
+  document.querySelectorAll('#healthGrid .check-item').forEach(i => i.classList.remove('checked'));
+  answers.conditions = [];
+  answers.noneSelected = true;
+  document.getElementById('noneCheck').classList.add('selected');
+  enableNext('next4');
+}
+
+/* ─────────────────────────────────────────────
+   STEP 5: CURRENT COVERAGE & BENEFICIARY
+───────────────────────────────────────────── */
+function showReplacementQ(show) {
+  document.getElementById('replacementWarning').style.display = show ? 'block' : 'none';
+}
+
+function checkStep5() {
+  if (answers.currentPolicy && answers.beneficiary) enableNext('next5');
+}
+
+/* ─────────────────────────────────────────────
+   STEP 6: CONTACT VALIDATION
+───────────────────────────────────────────── */
+['firstName','lastName','phone'].forEach(id => {
+  document.getElementById(id).addEventListener('input', checkStep6);
+});
+
+function checkStep6() {
+  const fn = document.getElementById('firstName').value.trim();
+  const ln = document.getElementById('lastName').value.trim();
+  const ph = document.getElementById('phone').value.replace(/\D/g,'');
+  if (fn && ln && ph.length >= 10) enableNext('next6');
+  else disableNext('next6');
+}
+
+/* ─────────────────────────────────────────────
+   HELPERS
+───────────────────────────────────────────── */
+function enableNext(id)  { document.getElementById(id).disabled = false; }
+function disableNext(id) { document.getElementById(id).disabled = true; }
+
+/* ─────────────────────────────────────────────
+   RECOMMENDATION ENGINE
+───────────────────────────────────────────── */
+function showRecommendation() {
+  // save final answers
+  answers.firstName = document.getElementById('firstName').value.trim();
+  answers.lastName  = document.getElementById('lastName').value.trim();
+  answers.phone     = document.getElementById('phone').value.trim();
+
+  // hide wizard, show rec screen
+  document.getElementById('wizardWrap').style.display = 'none';
+  document.getElementById('progressWrap').style.display = 'none';
+  document.getElementById('recScreen').classList.add('active');
+  document.getElementById('recScreen').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  buildSummary();
+  buildRecommendation();
+}
+
+function buildSummary() {
+  const goalLabels = {
+    'final-expense':       'Final Expense',
+    'mortgage-protection': 'Mortgage Protection',
+    'income-replacement':  'Family Income Protection',
+    'not-sure':            'Exploring Options'
+  };
+  const tobaccoLabels = { no: 'Non-Tobacco', yes: 'Tobacco User', quit: 'Quit < 12 months' };
+  const policyLabels  = { 'none': 'None', 'yes-keep': 'Yes — Keeping it', 'yes-replace': 'Yes — May Replace' };
+  const benLabels     = { spouse:'Spouse / Partner', child:'Child / Children', parent:'Parent or Sibling', other:'Other / Multiple' };
+
+  const conditionNames = {
+    diabetes:'Diabetes', heart:'Heart Attack / Stroke', cancer:'Cancer',
+    copd:'COPD / Emphysema', kidney:'Kidney Failure / Dialysis', oxygen:'Currently on Oxygen',
+    dementia:"Dementia / Alzheimer's", hiv:'HIV / AIDS', hospice:'Hospice / Nursing Facility',
+    highbp:'High Blood Pressure (controlled)', cholesterol:'High Cholesterol (controlled)', anxiety:'Anxiety / Depression (managed)'
+  };
+
+  const rows = [
+    ['Coverage Goal',    goalLabels[answers.goal] || answers.goal],
+    ['Age',              answers.age],
+    ['State',            answers.state],
+    ['Tobacco Use',      tobaccoLabels[answers.tobacco] || answers.tobacco],
+    ['Coverage Amount',  '$' + (answers.coverage || 0).toLocaleString()],
+    ['Health Conditions', answers.noneSelected ? 'None reported' : (answers.conditions.length ? answers.conditions.map(c => conditionNames[c] || c).join(', ') : 'None selected')],
+    ['Current Policy',   policyLabels[answers.currentPolicy] || answers.currentPolicy],
+    ['Primary Beneficiary', benLabels[answers.beneficiary] || answers.beneficiary],
+  ];
+
+  document.getElementById('summaryRows').innerHTML = rows.map(([k,v]) =>
+    `<div class="summary-row"><span class="sr-key">${k}</span><span class="sr-val">${v}</span></div>`
+  ).join('');
+}
+
+function buildRecommendation() {
+  const age = answers.age || 0;
+  const conditions = answers.conditions;
+  const noneSelected = answers.noneSelected;
+  const goal = answers.goal;
+  const tobacco = answers.tobacco;
+  const coverage = answers.coverage || 0;
+  const isReplacement = answers.currentPolicy === 'yes-replace';
+
+  // ── Determine tier ──
+  // Severe conditions: almost certainly guaranteed issue only
+  const severeConditions = ['kidney','oxygen','hospice','dementia','hiv'];
+  const moderateConditions = ['heart','cancer','copd'];
+  const mildConditions = ['diabetes','highbp','cholesterol','anxiety'];
+
+  const hasSevere   = conditions.some(c => severeConditions.includes(c));
+  const hasModerate = conditions.some(c => moderateConditions.includes(c));
+  const hasMild     = conditions.some(c => mildConditions.includes(c));
+  const hasAny      = hasSevere || hasModerate || hasMild;
+
+  let tier = 'simplified'; // default
+  if (hasSevere) tier = 'guaranteed';
+  else if (hasModerate) tier = 'graded';
+  else if (hasMild && tobacco === 'yes') tier = 'graded';
+  else if (noneSelected || !hasAny) tier = 'simplified';
+
+  // Age gates
+  if (goal === 'final-expense' && (age < 50 || age > 85)) tier = 'agent-review';
+  if (goal === 'mortgage-protection' && age > 75) tier = 'agent-review';
+  if (goal === 'mortgage-protection' && (hasSevere || hasModerate)) tier = 'agent-review';
+
+  // Replacement always gets extra flag
+  const needsReplacementNote = isReplacement;
+
+  const container = document.getElementById('recMainCard');
+
+  if (tier === 'agent-review') {
+    container.innerHTML = buildAgentReviewCard(age, goal);
+  } else if (tier === 'guaranteed') {
+    container.innerHTML = buildGuaranteedCard(age, coverage, needsReplacementNote);
+  } else if (tier === 'graded') {
+    container.innerHTML = buildGradedCard(age, coverage, conditions, needsReplacementNote);
+  } else {
+    container.innerHTML = buildSimplifiedCard(age, goal, coverage, tobacco, needsReplacementNote);
+  }
+}
+
+/* ── TIER CARDS ── */
+
+function buildSimplifiedCard(age, goal, coverage, tobacco, replacement) {
+  const goalName = goal === 'final-expense' ? 'Final Expense' :
+                   goal === 'mortgage-protection' ? 'Mortgage Protection' : 'Life Insurance';
+  return `
+    <span class="rec-badge">✓ Strong Estimated Fit</span>
+    <h2 class="rec-title">You May Qualify for Simplified Issue ${goalName}</h2>
+    <p class="rec-sub">Based on the information you provided, you appear to be a good candidate for <strong>simplified issue coverage</strong> — no physical exam, no blood draw. The carrier reviews a short health questionnaire and makes an underwriting decision, often within minutes to a few hours.</p>
+
+    <div class="rec-detail-grid">
+      <div class="rec-detail-box">
+        <div class="rdb-label">Estimated Product Direction</div>
+        <div class="rdb-value">Simplified Issue ${goalName}</div>
+        <div class="rdb-note">Subject to carrier underwriting</div>
+      </div>
+      <div class="rec-detail-box">
+        <div class="rdb-label">Medical Exam Required?</div>
+        <div class="rdb-value">No — Health Q&A only</div>
+        <div class="rdb-note">Most approvals in same day</div>
+      </div>
+      <div class="rec-detail-box">
+        <div class="rdb-label">Coverage Requested</div>
+        <div class="rdb-value">$${coverage.toLocaleString()}</div>
+        <div class="rdb-note">Adjustable on application</div>
+      </div>
+      <div class="rec-detail-box">
+        <div class="rdb-label">Tobacco Rating</div>
+        <div class="rdb-value">${tobacco === 'no' ? 'Non-Tobacco Rates' : tobacco === 'quit' ? 'Recent Quitter — Varies' : 'Tobacco Rates Apply'}</div>
+        <div class="rdb-note">Confirmed during underwriting</div>
+      </div>
+    </div>
+
+    <div class="rec-what-to-expect">
+      <h4>What to Expect in the Application</h4>
+      <ul class="rec-expect-list">
+        <li>Short health questionnaire — typically 10–20 yes/no questions</li>
+        <li>No physical exam, no blood draw, no urine test required</li>
+        <li>Carrier runs a prescription database and MIB check</li>
+        <li>Approval decision typically returned same day</li>
+        <li>Coverage begins upon policy issuance and first premium payment</li>
+        <li>Dominic reviews your application before submission to catch any issues</li>
+      </ul>
+    </div>
+
+    ${replacement ? `<div class="compliance-note"><strong>⚠️ Replacement Notice:</strong> Since you may be replacing an existing policy, a Replacement Notice will be included in your application as required by law. Please do not cancel any existing coverage until your new policy is in force. Dominic will walk you through this step by step.</div>` : ''}
+
+    <div class="compliance-note" style="background:#f0fdf4;border-color:#bbf7d0;color:#166534;">
+      <strong>Compliance Note:</strong> "Simplified issue" and "may qualify" language reflects an estimated product fit based on self-reported information. Final approval, premium, and coverage amount are determined by the insurance carrier through their formal underwriting process. This is not a quote or offer of insurance.
+    </div>
+
+    ${buildCTABox()}
+  `;
+}
+
+function buildGradedCard(age, coverage, conditions, replacement) {
+  return `
+    <span class="rec-badge yellow">⚠ Estimated Fit — Graded or Modified Benefit</span>
+    <h2 class="rec-title">You May Qualify for Graded Benefit Final Expense Coverage</h2>
+    <p class="rec-sub">Based on the health conditions you reported, you may qualify for a <strong>graded benefit</strong> or <strong>modified benefit</strong> policy. These policies provide full coverage after a 2–3 year waiting period — and a partial benefit (typically return of premiums paid plus interest) if death occurs in the first 1–2 years.</p>
+
+    <div class="rec-detail-grid">
+      <div class="rec-detail-box">
+        <div class="rdb-label">Estimated Product Direction</div>
+        <div class="rdb-value">Graded / Modified Benefit</div>
+        <div class="rdb-note">Subject to carrier underwriting</div>
+      </div>
+      <div class="rec-detail-box">
+        <div class="rdb-label">Medical Exam Required?</div>
+        <div class="rdb-value">No — Health Q&A only</div>
+        <div class="rdb-note">Carrier prescription / MIB check</div>
+      </div>
+      <div class="rec-detail-box">
+        <div class="rdb-label">Benefit Waiting Period</div>
+        <div class="rdb-value">Typically 2–3 Years</div>
+        <div class="rdb-note">Full benefit after period ends</div>
+      </div>
+      <div class="rec-detail-box">
+        <div class="rdb-label">Coverage Requested</div>
+        <div class="rdb-value">$${coverage.toLocaleString()}</div>
+        <div class="rdb-note">Final amount confirmed in underwriting</div>
+      </div>
+    </div>
+
+    <div class="rec-what-to-expect">
+      <h4>What to Expect in the Application</h4>
+      <ul class="rec-expect-list">
+        <li>Short yes/no health questionnaire — no physical exam</li>
+        <li>Carrier checks prescription database and MIB records</li>
+        <li>Graded benefit means partial payout in years 1–2; full benefit from year 3 onward</li>
+        <li>Premium is typically locked in for life at the approved rate</li>
+        <li>Dominic will compare graded and standard options across multiple carriers to find your best fit</li>
+      </ul>
+    </div>
+
+    <div class="compliance-note" style="background:#fef9c3;border-color:#fde68a;color:#854d0e;">
+      <strong>Important:</strong> Depending on how carriers evaluate your specific health history, you may qualify for a <em>better</em> rate tier than estimated here, or a guaranteed issue policy may be more appropriate. Dominic will review your full situation before recommending a specific carrier or product. This is an estimated direction only.
+    </div>
+
+    ${replacement ? `<div class="compliance-note"><strong>⚠️ Replacement Notice:</strong> A Replacement Notice is required and will be completed as part of your formal application. Do not cancel existing coverage until your new policy is issued and in force.</div>` : ''}
+
+    ${buildCTABox()}
+  `;
+}
+
+function buildGuaranteedCard(age, coverage, replacement) {
+  const ageOk = age >= 50 && age <= 85;
+  return `
+    <span class="rec-badge blue">ℹ Estimated Fit — Guaranteed Issue</span>
+    <h2 class="rec-title">${ageOk ? 'You May Qualify for Guaranteed Issue Final Expense Coverage' : 'You Likely Need a Conversation with Dominic First'}</h2>
+    <p class="rec-sub">${ageOk
+      ? 'Based on the health conditions you reported, a <strong>guaranteed issue</strong> policy may be your best path. Guaranteed issue means <em>no health questions at all</em> — approval is guaranteed for eligible ages (typically 50–85). Coverage is permanent whole life.'
+      : 'Some of the health conditions you reported are complex enough that the right product depends on specifics Dominic needs to discuss with you directly. There are options available — the goal is finding the right carrier and structure for your situation.'
+    }</p>
+
+    <div class="rec-detail-grid">
+      <div class="rec-detail-box">
+        <div class="rdb-label">Estimated Product Direction</div>
+        <div class="rdb-value">Guaranteed Issue Whole Life</div>
+        <div class="rdb-note">No health questions — anyone qualifies</div>
+      </div>
+      <div class="rec-detail-box">
+        <div class="rdb-label">Medical Exam Required?</div>
+        <div class="rdb-value">None — Guaranteed Acceptance</div>
+        <div class="rdb-note">Ages 50–85 typically eligible</div>
+      </div>
+      <div class="rec-detail-box">
+        <div class="rdb-label">Benefit Waiting Period</div>
+        <div class="rdb-value">2 Years (Standard)</div>
+        <div class="rdb-note">Return of premium + interest if earlier</div>
+      </div>
+      <div class="rec-detail-box">
+        <div class="rdb-label">Coverage Requested</div>
+        <div class="rdb-value">$${Math.min(coverage, 25000).toLocaleString()}</div>
+        <div class="rdb-note">GI max is typically $25,000</div>
+      </div>
+    </div>
+
+    <div class="rec-what-to-expect">
+      <h4>What to Expect</h4>
+      <ul class="rec-expect-list">
+        <li>No health questions on the application — approval is guaranteed for eligible ages</li>
+        <li>2-year waiting period is standard for guaranteed issue policies</li>
+        <li>If death occurs in years 1–2, beneficiary receives all premiums paid plus interest (typically 10%)</li>
+        <li>Full face amount paid from year 3 onward — for any cause of death</li>
+        <li>Premiums are fixed for life and the policy never expires</li>
+      </ul>
+    </div>
+
+    <div class="compliance-note" style="background:#dbeafe;border-color:#93c5fd;color:#1e40af;">
+      <strong>Note:</strong> Depending on your exact health profile, a graded benefit policy may offer a better premium or higher face amount than guaranteed issue. Dominic will compare options across multiple carriers before recommending a specific product. This is an estimated direction only — not a quote.
+    </div>
+
+    ${replacement ? `<div class="compliance-note"><strong>⚠️ Replacement Notice:</strong> A Replacement Notice is required and will be completed as part of your formal application. Do not cancel existing coverage until your new policy is issued and in force.</div>` : ''}
+
+    ${buildCTABox()}
+  `;
+}
+
+function buildAgentReviewCard(age, goal) {
+  let reason = '';
+  if (age < 50 && goal === 'final-expense') reason = 'Final expense products are typically designed for ages 50–85.';
+  else if (age > 85) reason = 'Coverage options above age 85 vary significantly by carrier and require a direct conversation.';
+  else if (age > 75 && goal === 'mortgage-protection') reason = 'Mortgage protection options for applicants over 75 require carrier-specific review.';
+  else reason = 'Your combination of coverage goal and health history is best evaluated in a direct conversation.';
+
+  return `
+    <div class="agent-review-card">
+      <div class="agent-icon">📋</div>
+      <h3>Let's Talk Before You Apply</h3>
+      <p>${reason} This doesn't mean you can't get covered — it means we need to make sure we're matching you to the right product from the right carrier before you spend time on an application.</p>
+      <p style="margin-top:0.75rem;">Dominic has helped clients in complex situations find coverage when they thought they had no options. A 10-minute call is all it takes to map out the right path.</p>
+    </div>
+
+    <div style="background:var(--navy);border-radius:14px;padding:2rem;text-align:center;margin-bottom:1rem;">
+      <h3 style="color:var(--white);font-size:1.2rem;margin-bottom:0.4rem;">Talk to Dominic — It's Free</h3>
+      <p style="color:rgba(255,255,255,0.7);font-size:0.85rem;margin-bottom:1.25rem;">No forms. No commitment. Just honest answers from a licensed agent who works for you — not the carrier.</p>
+      <a href="tel:+15743920192" class="btn-enroll">📞 Call (574) 392-0192 Now</a>
+      <br>
+      <a href="contact.html" class="btn-enroll-secondary">Or send a message instead →</a>
+    </div>
+
+    <div class="compliance-note">
+      <strong>Why we're suggesting a call first:</strong> Some products have age or health eligibility windows that an application can't capture. Calling first prevents a declined application from showing up on your MIB record, which could affect future applications. This is us looking out for you.
+    </div>
+  `;
+}
+
+function buildCTABox() {
+  // ── IMPORTANT: Replace YOUR_INTEGRITY_LINK_HERE with your actual Integrity enrollment URL ──
+  const INTEGRITY_LINK = 'YOUR_INTEGRITY_LINK_HERE';
+
+  return `
+    <div class="rec-cta-box">
+      <h3>Ready to Start Your Guided Application?</h3>
+      <p>The application takes about 10–15 minutes. Dominic reviews every submission personally and will contact you if anything needs clarification.</p>
+      <a href="${INTEGRITY_LINK}" target="_blank" rel="noopener" class="btn-enroll">
+        🚀 Start My Guided Application
+      </a>
+      <a href="tel:+15743920192" class="btn-enroll-secondary">Prefer to do this by phone? Call (574) 392-0192 →</a>
+    </div>
+    <div class="rec-or">— or —</div>
+    <a href="tel:+15743920192" class="btn-call-instead">📞 Call Dominic Instead — (574) 392-0192</a>
+  `;
+}
+
+
+/* ─────────────────────────────────────────────
+   AI HELPER
+───────────────────────────────────────────── */
+function toggleAI() {
+  const panel = document.getElementById('aiPanel');
+  panel.classList.toggle('open');
+}
+
+const KB = {
+  'simplified issue': `<strong>Simplified issue</strong> means you answer a short health questionnaire (usually 10–20 yes/no questions) — no physical exam, no blood draw, no urine test. The carrier uses your answers plus a prescription database check to make an approval decision, often within minutes to a few hours. It's faster and less invasive than fully underwritten coverage.`,
+
+  'graded benefit': `A <strong>graded benefit</strong> (also called modified benefit) policy provides a <em>partial</em> death benefit if you pass away in the first 1–2 years — usually a return of all premiums paid plus interest. After that waiting period, the full face amount is paid. Graded policies are designed for applicants with certain health conditions who don't qualify for immediate full benefit coverage.`,
+
+  'guaranteed issue': `<strong>Guaranteed issue</strong> means no health questions at all — if you're within the eligible age range (typically 50–85), you're approved. These policies always have a 2-year waiting period. They cost more per dollar of coverage but are available to people who can't qualify for other products. Great safety net for serious health conditions.`,
+
+  'underwriting': `<strong>Underwriting</strong> is the process the insurance carrier uses to evaluate your application. They review your health answers, check prescription history databases, and may check the MIB (Medical Information Bureau). The result determines whether you're approved, at what premium, and at what benefit level. "Subject to underwriting" means the carrier makes the final decision — not the agent or this tool.`,
+
+  'replace': `Replacing an existing life insurance policy is a significant decision that requires careful comparison. <strong>Never cancel an existing policy until a new one is fully in force.</strong> You'll need to disclose the replacement on your application — this is required by law. The new carrier will want to compare your existing policy's values against the new one. For complex replacement situations, please <a href="tel:+15743920192">call Dominic at (574) 392-0192</a> before proceeding.`,
+
+  'health': `Having health conditions doesn't mean you can't get coverage — it means we match you to the right product. Many common conditions (diabetes, high blood pressure, past cancer, COPD) are accepted by carriers in the simplified or graded benefit tier. For severe conditions, guaranteed issue may be the right path. The key is honest, accurate disclosure on the application — always answer every question truthfully. <a href="tel:+15743920192">Call Dominic</a> if you're unsure how a specific condition is typically viewed by carriers.`,
+
+  'safe': `Yes. This form is served over HTTPS (encrypted). Your answers are used only to estimate product fit and to connect you with licensed agent Dominic Raciti at TrueForge Insurance. We do not sell your information to third parties, and no data is submitted to any insurance carrier until you complete and authorize a formal application.`,
+
+  'cost': `The cost of life insurance depends on your age, health, tobacco use, coverage amount, and product type. Final expense whole life for a healthy 65-year-old might run $50–$120/month for $10,000–$20,000 in coverage. Simplified issue term for a 45-year-old could be $25–$60/month for $250,000. The only way to get your actual rate is to run a quote — which Dominic can do in minutes on a call.`,
+
+  'exam': `Simplified issue and guaranteed issue policies do <strong>not</strong> require a physical exam. You'll answer health questions on the application. The carrier cross-references your answers with a prescription database and MIB check. Fully underwritten term policies may require a paramedical exam (blood draw, vitals) but typically offer the lowest rates for healthy applicants.`,
+
+  'mib': `The <strong>MIB (Medical Information Bureau)</strong> is a shared database used by insurance carriers to cross-reference health information submitted on previous applications. When you apply for life insurance, the carrier checks MIB to verify consistency with prior applications. This is why honest and accurate disclosure is critically important — inconsistencies are flagged and can result in denial or policy rescission.`,
+
+  'beneficiary': `Your <strong>beneficiary</strong> is the person (or entity) who receives the death benefit when you pass away. You can name one or multiple beneficiaries and specify percentages. Common choices include a spouse, child, parent, or sibling. You can update your beneficiary at any time after the policy is issued — just contact the carrier or your agent.`,
+
+  'decline': `Being declined by one carrier doesn't mean you can't get coverage. Each carrier has different underwriting guidelines — a condition that disqualifies you from Carrier A may be accepted by Carrier B. Declined applications can appear on your MIB record for up to 7 years, so it's important to work with an independent agent like Dominic who can match you to the right carrier <em>before</em> applying, reducing the chance of a declined record. <a href="tel:+15743920192">Call (574) 392-0192</a>.`,
+
+  'hide': `⚠️ Important: You should <strong>never hide, omit, or misrepresent health information</strong> on a life insurance application. Doing so is considered material misrepresentation and can result in policy rescission (cancellation) and denial of the death benefit to your family — exactly the opposite of what you're trying to achieve. If you're worried a condition will disqualify you, talk to Dominic first. There may be carriers who will accept your situation honestly. <a href="tel:+15743920192">Call (574) 392-0192</a>.`,
+
+  'alter': `⚠️ You should never alter, hide, or understate health information on an insurance application. This tool is here to help you understand your options — not to coach you on answers. Misrepresentation on an application can void your policy and deny your family the benefit. Please be fully honest on your application. If you're concerned about a specific condition, <a href="tel:+15743920192">call Dominic at (574) 392-0192</a> — he can tell you which carriers are most likely to approve you truthfully.`,
+};
+
+function matchKB(input) {
+  const q = input.toLowerCase();
+  if (q.includes('hide') || q.includes('lie') || q.includes('cheat') || q.includes('alter') || q.includes('falsif')) return KB['alter'];
+  if (q.includes('simplified')) return KB['simplified issue'];
+  if (q.includes('graded') || q.includes('modified benefit') || q.includes('waiting period')) return KB['graded benefit'];
+  if (q.includes('guaranteed')) return KB['guaranteed issue'];
+  if (q.includes('underwriting') || q.includes('subject to')) return KB['underwriting'];
+  if (q.includes('replace') || q.includes('replacement') || q.includes('switch')) return KB['replace'];
+  if (q.includes('health') || q.includes('condition') || q.includes('sick') || q.includes('disease')) return KB['health'];
+  if (q.includes('safe') || q.includes('private') || q.includes('secure') || q.includes('data')) return KB['safe'];
+  if (q.includes('cost') || q.includes('price') || q.includes('premium') || q.includes('how much')) return KB['cost'];
+  if (q.includes('exam') || q.includes('blood') || q.includes('medical test')) return KB['exam'];
+  if (q.includes('mib') || q.includes('medical information bureau') || q.includes('database')) return KB['mib'];
+  if (q.includes('beneficiary') || q.includes('who gets')) return KB['beneficiary'];
+  if (q.includes('declin') || q.includes('denied') || q.includes('rejected')) return KB['decline'];
+  return null;
+}
+
+function addMsg(text, role) {
+  const box = document.getElementById('aiMessages');
+  const div = document.createElement('div');
+  div.className = 'ai-msg ' + role;
+  div.innerHTML = text;
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+function sendAI() {
+  const input = document.getElementById('aiInput');
+  const q = input.value.trim();
+  if (!q) return;
+  addMsg(q, 'user');
+  input.value = '';
+  document.getElementById('quickQs').style.display = 'none';
+
+  setTimeout(() => {
+    const answer = matchKB(q);
+    if (answer) {
+      addMsg(answer, 'bot');
+    } else {
+      addMsg(`That's a great question — and it's one that really depends on your specific situation. For anything I'm not sure about, the best move is to <a href="tel:+15743920192">call Dominic directly at (574) 392-0192</a>. He can give you a straight answer in minutes.`, 'bot');
+    }
+  }, 400);
+}
+
+function askQuick(btn) {
+  const q = btn.textContent;
+  document.getElementById('quickQs').style.display = 'none';
+  addMsg(q, 'user');
+  setTimeout(() => {
+    const answer = matchKB(q);
+    if (answer) addMsg(answer, 'bot');
+  }, 350);
+}
+</script>
+
+</body>
+</html>
