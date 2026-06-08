@@ -221,8 +221,8 @@
           <label for="message">Anything Else I Should Know? <span style="font-weight:400;color:var(--gray)">(Optional)</span></label>
           <textarea id="message" name="message" placeholder="e.g. I have a $300K mortgage and want to make sure my family keeps the house. I have mild diabetes. Budget is around $80/month..."></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:1rem;">Send My Message →</button>
-        <p style="font-size:0.78rem;color:var(--gray);text-align:center;margin-top:0.75rem;margin-bottom:0;">I typically respond within a few hours during business hours.</p>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:1rem;">📬 Request My Free Quote →</button>
+        <p style="font-size:0.78rem;color:var(--gray);text-align:center;margin-top:0.75rem;margin-bottom:0;">I typically respond within a few hours · Prefer to text? <a href="sms:+15743920192?body=Hi%20Dominic%2C%20I%27d%20like%20a%20free%20quote." style="color:var(--navy);font-weight:600;">Text (574) 392-0192</a></p>
       </form>
     </div>
 
@@ -263,6 +263,16 @@
 
 <footer class="footer">
   <div class="container">
+    <div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.2rem;">Ready to get covered?</div>
+        <div style="font-size:1.1rem;font-weight:800;color:var(--white);">Call or text — free consultation, no pressure.</div>
+      </div>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+        <a href="tel:+15743920192" style="background:var(--gold);color:var(--navy);font-weight:800;padding:0.7rem 1.25rem;border-radius:8px;font-size:0.9rem;white-space:nowrap;">📞 (574) 392-0192</a>
+        <a href="sms:+15743920192?body=Hi%20Dominic%2C%20I%27d%20like%20a%20free%20quote." style="background:rgba(255,255,255,0.1);color:var(--white);font-weight:700;padding:0.7rem 1.25rem;border-radius:8px;font-size:0.9rem;white-space:nowrap;border:1px solid rgba(255,255,255,0.2);">💬 Text Us</a>
+      </div>
+    </div>
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="nav-logo-text">True<span style="color:var(--gold)">Forge</span> Insurance</div>
@@ -295,10 +305,13 @@
 <script src="//code.tidio.co/hakq0k87lfccnk5wfqyxoh49nj1stjxy.js" async></script>
 
 <!-- STICKY MOBILE CALL BAR -->
-<div class="sticky-call-bar">
-  <a href="tel:+15743920192">
+<div class="sticky-call-bar" style="display:flex;gap:0;">
+  <a href="tel:+15743920192" style="flex:1;border-right:1px solid rgba(255,255,255,0.2);">
     📞 Tap to Call — (574) 392-0192
     <span class="sub">Free quote · No pressure · Speak directly with Dominic</span>
+  </a>
+  <a href="sms:+15743920192?body=Hi%20Dominic%2C%20I%27d%20like%20a%20free%20quote." style="flex-shrink:0;padding:0.85rem 1.1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.9);gap:0.2rem;">
+    💬<span>Text</span>
   </a>
 </div>
 
