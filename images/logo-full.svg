@@ -1,75 +1,94 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 210" fill="none">
 
-  <!-- ── Icon (scaled 0.72x, vertically centered left) ── -->
-  <g transform="translate(10, 8) scale(0.72)">
+  <!--
+    TrueForge Life — full wordmark
+    Stacked layout: icon (scaled 0.92×) centered, wordmark below.
+  -->
+
+  <!-- ── ICON (scaled 0.92×, centered) ─────────────────────────────── -->
+  <g transform="translate(13.6, 2) scale(0.92)">
+
     <!-- Flame -->
     <path d="
       M 60,90
-      C 56,88 36,80 38,62
-      C 40,51 46,48 44,39
-      C 42,30 46,20 50,24
-      C 49,30 50,39 54,42
-      C 54,34 56,23 60,8
-      C 64,23 66,34 66,42
-      C 70,39 71,30 70,24
-      C 74,20 78,30 76,39
-      C 74,48 80,51 82,62
-      C 84,80 64,88 60,90
+      C 52,89 22,80 22,66
+      C 22,53 30,48 32,42
+      C 34,36 34,26 38,30
+      C 41,33 46,42 51,47
+      C 54,50 56,36 60,7
+      C 64,36 66,50 69,47
+      C 74,42 79,33 82,30
+      C 86,26 86,36 88,42
+      C 90,48 98,53 98,66
+      C 98,80 68,89 60,90
       Z"
       fill="#D4342B"/>
+
     <!-- Heart -->
     <path d="
-      M 60,72
-      C 56,68 48,62 48,56
-      C 48,52 51,50 54.5,52
-      C 56.5,53 58.5,56 60,58
-      C 61.5,56 63.5,53 65.5,52
-      C 69,50 72,52 72,56
-      C 72,62 64,68 60,72
+      M 60,60
+      C 56,56 47,50 47,44
+      C 47,39 51,37 55,39.5
+      C 57,41 58.5,43.5 60,45.5
+      C 61.5,43.5 63,41 65,39.5
+      C 69,37 73,39 73,44
+      C 73,50 64,56 60,60
       Z"
       fill="white"/>
+
     <!-- Anvil -->
     <path d="
-      M 8,96
-      L 24,84
-      L 96,84
-      L 96,120
-      L 74,120
-      L 74,108
-      L 46,108
-      L 46,120
-      L 24,120
-      L 24,96
+      M 4,100
+      L 14,90
+      L 106,90
+      L 106,124
+      L 76,124
+      L 76,104
+      L 44,104
+      L 44,124
+      L 14,124
+      L 14,100
       Z"
       fill="#265C5C"/>
+
   </g>
 
-  <!-- ── Wordmark (right of icon) ── -->
-  <!-- "TRUEFORGE" in dark navy, Georgia bold -->
+  <!-- ── WORDMARK ────────────────────────────────────────────────────── -->
+
+  <!-- "TRUEFORGE" — navy, Georgia bold -->
   <text
-    x="108" y="72"
+    x="80"
+    y="148"
     font-family="Georgia, 'Times New Roman', serif"
-    font-size="30"
+    font-size="24"
     font-weight="700"
     fill="#0a1f44"
+    text-anchor="middle"
     letter-spacing="3">TRUEFORGE</text>
 
-  <!-- "LIFE" in gold -->
+  <!-- "LIFE" — gold -->
   <text
-    x="108" y="104"
+    x="80"
+    y="173"
     font-family="Georgia, 'Times New Roman', serif"
-    font-size="30"
+    font-size="24"
     font-weight="700"
     fill="#c9973a"
+    text-anchor="middle"
     letter-spacing="8">LIFE</text>
+
+  <!-- Divider rule -->
+  <line x1="20" y1="181" x2="140" y2="181" stroke="#e0e0e0" stroke-width="0.75"/>
 
   <!-- Tagline -->
   <text
-    x="108" y="126"
+    x="80"
+    y="195"
     font-family="Georgia, 'Times New Roman', serif"
-    font-size="10"
-    fill="#555"
+    font-size="8.5"
+    fill="#666"
+    text-anchor="middle"
     font-style="italic"
-    letter-spacing="0.4">Forged in truth. Built for each other.&#x2122;</text>
+    letter-spacing="0.3">Forged in truth. Built for each other.&#x2122;</text>
 
 </svg>
