@@ -1110,3 +1110,33 @@ section {
 .sticky-call-bar {
   animation: pulse-gold 2.5s ease-in-out infinite;
 }
+
+/* ===== TRUST CENTER ===== */
+#trust-center {
+  padding: 5rem 0;
+}
+
+/* Responsive: 2-col grids collapse on tablet */
+@media (max-width: 860px) {
+  #trust-center .tc-row-2col {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Responsive: 4-col badges → 2-col on tablet, 1-col on mobile */
+@media (max-width: 860px) {
+  #trust-center .tc-badges {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media (max-width: 480px) {
+  #trust-center .tc-badges {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Trust Center agent photo object-fit */
+#trust-center img[style*="border-radius:50%"] {
+  object-fit: cover;
+  object-position: center top;
+}
