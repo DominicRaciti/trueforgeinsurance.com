@@ -170,104 +170,159 @@
   .as-results { display: none; animation: asIn .3s ease; }
   .as-results.show { display: block; }
 
-  /* Score hero */
-  .as-score-hero {
-    background: linear-gradient(135deg, #060f2e 0%, #0a1f44 100%);
-    border-radius: 22px; padding: 2.25rem 2rem; margin-bottom: 1.25rem;
-    text-align: center; position: relative; overflow: hidden;
+  /* ════ TrueForge Protection Score™ ════ */
+  .tf-score-card {
+    background: linear-gradient(160deg, #04091a 0%, #0a1f44 60%, #0c1e42 100%);
+    border-radius: 22px; padding: 2rem; margin-bottom: 1.25rem;
+    position: relative; overflow: hidden; border: 1px solid rgba(201,151,58,.18);
   }
-  .as-score-hero::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 130%, rgba(201,151,58,.15) 0%, transparent 65%);
+  .tf-score-card::after {
+    content: ''; position: absolute; bottom: -60px; right: -40px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(rgba(201,151,58,.08), transparent 70%);
     pointer-events: none;
   }
-  .as-score-label { font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--gold); margin-bottom: 1rem; }
-
-  .as-ring-svg { width: 180px; height: 180px; margin: 0 auto .75rem; display: block; }
-  .as-ring-bg   { fill: none; stroke: rgba(255,255,255,.1); stroke-width: 13; }
-  .as-ring-fill { fill: none; stroke-width: 13; stroke-linecap: round; transform: rotate(-90deg); transform-origin: center; transition: stroke-dasharray 1.4s cubic-bezier(.4,0,.2,1), stroke .5s; }
-
-  .as-grade-badge { display: inline-block; padding: .4rem 1.3rem; border-radius: 99px; font-size: .88rem; font-weight: 800; margin-bottom: .6rem; }
-  .as-score-narrative { color: rgba(255,255,255,.72); font-size: .85rem; max-width: 420px; margin: 0 auto; line-height: 1.65; }
-
-  /* Priority gaps */
-  .as-section-title { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: .85rem; }
-
-  .as-gaps { display: flex; flex-direction: column; gap: .7rem; margin-bottom: 1.25rem; }
-  .as-gap {
-    background: #fff; border-radius: 13px; padding: 1rem 1.15rem;
-    display: flex; align-items: flex-start; gap: .8rem;
-    box-shadow: 0 2px 12px rgba(10,31,68,.07);
-    border-left: 4px solid transparent;
+  .tf-score-wordmark {
+    font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .18em;
+    color: var(--gold); margin-bottom: 1.25rem; display: flex; align-items: center; gap: .5rem;
   }
-  .as-gap.critical { border-color: #dc2626; }
-  .as-gap.warning  { border-color: #d97706; }
-  .as-gap.good     { border-color: #16a34a; }
-  .as-gap-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: .05rem; }
-  .as-gap-body h4 { font-size: .88rem; font-weight: 800; color: var(--navy); margin-bottom: .2rem; }
-  .as-gap-body p  { font-size: .76rem; color: var(--gray); line-height: 1.5; margin: 0; }
-  .as-gap-priority { font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; padding: .2rem .55rem; border-radius: 99px; margin-bottom: .25rem; display: inline-block; }
-  .critical .as-gap-priority { background: #fef2f2; color: #991b1b; }
-  .warning  .as-gap-priority { background: #fffbeb; color: #92400e; }
-  .good     .as-gap-priority { background: #f0fdf4; color: #166534; }
+  .tf-score-wordmark::before { content: ''; display: block; width: 18px; height: 2px; background: var(--gold); }
+  .tf-score-wordmark::after  { content: ''; display: block; width: 18px; height: 2px; background: var(--gold); }
 
-  /* Carrier match */
-  .as-carrier-box {
-    background: #fff; border-radius: 13px; padding: 1.15rem 1.3rem;
-    box-shadow: 0 2px 12px rgba(10,31,68,.07); margin-bottom: 1.25rem;
-    border: 1px solid var(--gray-light);
-  }
-  .as-carrier-header { display: flex; align-items: center; gap: .6rem; margin-bottom: .7rem; }
-  .as-carrier-icon { width: 34px; height: 34px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-  .as-carrier-title { font-size: .9rem; font-weight: 800; color: var(--navy); }
-  .as-carrier-sub   { font-size: .72rem; color: var(--gray); }
-  .as-carrier-tiers { display: flex; flex-direction: column; gap: .45rem; }
-  .as-carrier-tier  { display: flex; justify-content: space-between; align-items: center; padding: .6rem .8rem; background: #f8f9fc; border-radius: 9px; font-size: .78rem; }
-  .as-carrier-tier-name { font-weight: 700; color: var(--navy); }
-  .as-carrier-tier-note { color: var(--gray); font-size: .72rem; }
-  .as-carrier-tier-badge { font-size: .65rem; font-weight: 800; padding: .2rem .6rem; border-radius: 99px; }
-  .badge-best   { background: #dcfce7; color: #166534; }
-  .badge-good   { background: #fef9c3; color: #92400e; }
-  .badge-option { background: #f0f4ff; color: var(--navy); }
+  .tf-score-main { display: flex; align-items: center; gap: 1.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .as-ring-svg { width: 160px; height: 160px; flex-shrink: 0; }
+  .as-ring-bg   { fill: none; stroke: rgba(255,255,255,.08); stroke-width: 12; }
+  .as-ring-fill { fill: none; stroke-width: 12; stroke-linecap: round; transform: rotate(-90deg); transform-origin: center; transition: stroke-dasharray 1.4s cubic-bezier(.4,0,.2,1), stroke .5s; }
+  .tf-score-right { flex: 1; min-width: 160px; }
+  .as-grade-badge { display: inline-block; padding: .35rem 1rem; border-radius: 99px; font-size: .8rem; font-weight: 800; margin-bottom: .5rem; }
+  .tf-score-title { font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: .3rem; }
+  .tf-score-title span { font-size: 2.5rem; }
+  .as-score-narrative { color: rgba(255,255,255,.65); font-size: .8rem; max-width: 340px; line-height: 1.6; }
 
-  /* Family Impact teaser */
-  .as-impact-teaser {
-    background: linear-gradient(135deg, #1a0a00 0%, #3d1a00 100%);
-    border-radius: 16px; padding: 1.5rem 1.5rem; margin-bottom: 1.25rem; position: relative; overflow: hidden;
+  /* Sub-scores */
+  .tf-subscores { display: grid; grid-template-columns: repeat(3,1fr); gap: .65rem; }
+  @media(max-width:520px) { .tf-subscores { grid-template-columns: 1fr; } }
+  .tf-subscore {
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px; padding: .85rem .9rem;
   }
-  .as-impact-teaser::before {
-    content: ''; position: absolute; right: -20px; top: -20px;
-    width: 140px; height: 140px; border-radius: 50%;
-    background: rgba(220,38,38,.12); pointer-events: none;
-  }
-  .as-impact-eyebrow { font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: rgba(220,150,50,.8); margin-bottom: .4rem; }
-  .as-impact-title   { font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: .6rem; line-height: 1.3; }
-  .as-impact-timeline { display: flex; gap: 0; margin-bottom: 1rem; }
-  .as-impact-step {
-    flex: 1; text-align: center; position: relative;
-    padding: .6rem .3rem;
-  }
-  .as-impact-step::after {
-    content: '→'; position: absolute; right: -6px; top: 50%; transform: translateY(-50%);
-    color: rgba(255,255,255,.3); font-size: .7rem;
-  }
-  .as-impact-step:last-child::after { display: none; }
-  .as-impact-step .month { font-size: .6rem; font-weight: 700; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .2rem; }
-  .as-impact-step .event { font-size: .65rem; font-weight: 700; line-height: 1.3; }
-  .as-impact-step.t1 .event { color: #fca5a5; }
-  .as-impact-step.t2 .event { color: #f97316; }
-  .as-impact-step.t3 .event { color: #dc2626; }
-  .as-impact-step.t4 .event { color: #991b1b; }
-  .as-impact-step.t5 .event { color: #7f1d1d; }
-  .as-impact-link {
-    display: inline-flex; align-items: center; gap: .4rem;
-    color: #fca5a5; font-size: .78rem; font-weight: 700; text-decoration: none;
-    border: 1px solid rgba(252,165,165,.3); padding: .45rem .9rem; border-radius: 8px;
-    transition: all .15s;
-  }
-  .as-impact-link:hover { background: rgba(252,165,165,.1); }
+  .tf-ss-label { font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.4); margin-bottom: .3rem; }
+  .tf-ss-val   { font-size: 1.4rem; font-weight: 800; line-height: 1; margin-bottom: .2rem; }
+  .tf-ss-desc  { font-size: .65rem; color: rgba(255,255,255,.45); line-height: 1.4; }
+  .tf-ss-bar   { height: 3px; border-radius: 99px; margin-top: .5rem; background: rgba(255,255,255,.08); }
+  .tf-ss-bar-fill { height: 100%; border-radius: 99px; transition: width 1.2s ease; }
 
-  /* CTAs */
+  /* ════ TrueForge Family Exposure Report™ ════ */
+  .tf-exposure-card {
+    background: #fff; border-radius: 22px; padding: 1.75rem 1.85rem; margin-bottom: 1.25rem;
+    box-shadow: 0 8px 40px rgba(10,31,68,.1);
+  }
+  .tf-report-wordmark {
+    font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .15em;
+    color: var(--navy); margin-bottom: .3rem; opacity: .5;
+  }
+  .tf-report-title { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: .3rem; }
+  .tf-report-date  { font-size: .68rem; color: var(--gray); margin-bottom: 1.25rem; }
+
+  .tf-exposure-total {
+    background: linear-gradient(135deg, #fef2f2, #fff5f5);
+    border: 1.5px solid #fca5a5; border-radius: 14px; padding: 1.1rem 1.25rem;
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; gap: 1rem; flex-wrap: wrap;
+  }
+  .tf-exp-total-label { font-size: .72rem; font-weight: 700; color: #991b1b; }
+  .tf-exp-total-val   { font-size: 2rem; font-weight: 800; color: #dc2626; line-height: 1; }
+  .tf-exp-total-sub   { font-size: .65rem; color: #b91c1c; margin-top: .15rem; }
+
+  .tf-exp-lines { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.25rem; }
+  .tf-exp-line {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: .65rem .85rem; border-radius: 10px; background: #f8f9fc; gap: .75rem;
+  }
+  .tf-exp-line-left { display: flex; align-items: center; gap: .6rem; }
+  .tf-exp-line-icon { font-size: 1.1rem; }
+  .tf-exp-line-name { font-size: .8rem; font-weight: 700; color: var(--navy); }
+  .tf-exp-line-desc { font-size: .68rem; color: var(--gray); }
+  .tf-exp-line-val  { font-size: .9rem; font-weight: 800; white-space: nowrap; }
+  .tf-exp-line-val.exposed  { color: #dc2626; }
+  .tf-exp-line-val.partial  { color: #d97706; }
+  .tf-exp-line-val.covered  { color: #16a34a; }
+
+  .tf-protection-bar-wrap { margin-bottom: .5rem; }
+  .tf-protection-bar-label { display: flex; justify-content: space-between; font-size: .7rem; font-weight: 700; color: var(--gray); margin-bottom: .4rem; }
+  .tf-protection-bar-track { height: 10px; background: #fee2e2; border-radius: 99px; overflow: hidden; }
+  .tf-protection-bar-fill  { height: 100%; background: linear-gradient(90deg, #16a34a, #4ade80); border-radius: 99px; transition: width 1.2s ease; }
+  .tf-protection-note { font-size: .68rem; color: var(--gray); margin-top: .35rem; font-style: italic; }
+
+  /* ════ Coverage Confidence Meter™ ════ */
+  .tf-confidence-card {
+    background: linear-gradient(135deg, #0a1f44 0%, #0d2550 100%);
+    border-radius: 22px; padding: 1.75rem 1.85rem; margin-bottom: 1.25rem;
+    border: 1px solid rgba(201,151,58,.15);
+  }
+  .tf-conf-wordmark { font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; color: rgba(255,255,255,.35); margin-bottom: .25rem; }
+  .tf-conf-title    { font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: .25rem; }
+  .tf-conf-subtitle { font-size: .75rem; color: rgba(255,255,255,.5); margin-bottom: 1.35rem; }
+
+  .tf-conf-meter-wrap { margin-bottom: 1.25rem; }
+  .tf-conf-meter-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .4rem; }
+  .tf-conf-pct-label { font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1; }
+  .tf-conf-pct-sub   { font-size: .72rem; color: rgba(255,255,255,.5); }
+  .tf-conf-track     { height: 12px; background: rgba(255,255,255,.08); border-radius: 99px; overflow: hidden; margin-bottom: .5rem; }
+  .tf-conf-fill      { height: 100%; border-radius: 99px; transition: width 1.4s cubic-bezier(.4,0,.2,1); }
+  .tf-conf-segments  { display: flex; gap: .35rem; margin-bottom: .35rem; }
+  .tf-conf-seg       { flex: 1; height: 4px; border-radius: 99px; background: rgba(255,255,255,.08); }
+  .tf-conf-seg.lit   { background: rgba(255,255,255,.3); }
+
+  .tf-conf-factors { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: 1.25rem; }
+  @media(max-width:480px) { .tf-conf-factors { grid-template-columns: 1fr; } }
+  .tf-conf-factor {
+    background: rgba(255,255,255,.05); border-radius: 10px; padding: .7rem .85rem;
+    display: flex; align-items: flex-start; gap: .55rem;
+  }
+  .tf-conf-factor-icon { font-size: .9rem; flex-shrink: 0; margin-top: .05rem; }
+  .tf-conf-factor-text { font-size: .72rem; color: rgba(255,255,255,.65); line-height: 1.4; }
+  .tf-conf-factor-text strong { color: rgba(255,255,255,.9); display: block; margin-bottom: .1rem; }
+
+  .tf-conf-rec {
+    background: rgba(201,151,58,.12); border: 1px solid rgba(201,151,58,.3);
+    border-radius: 12px; padding: 1rem 1.15rem;
+  }
+  .tf-conf-rec-label { font-size: .62rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--gold); margin-bottom: .3rem; }
+  .tf-conf-rec-text  { font-size: .82rem; color: rgba(255,255,255,.85); line-height: 1.55; font-weight: 600; }
+
+  /* ════ Advisor Guidance ════ */
+  .tf-advisor-card {
+    background: #fff; border-radius: 22px; padding: 1.75rem 1.85rem; margin-bottom: 1.25rem;
+    box-shadow: 0 8px 40px rgba(10,31,68,.1);
+  }
+  .tf-advisor-header { display: flex; align-items: center; gap: .85rem; margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--gray-light); }
+  .tf-advisor-avatar { width: 46px; height: 46px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+  .tf-advisor-name   { font-size: .95rem; font-weight: 800; color: var(--navy); }
+  .tf-advisor-role   { font-size: .72rem; color: var(--gray); }
+  .tf-advisor-note   { background: #f8f9fc; border-radius: 9px; padding: .35rem .75rem; font-size: .65rem; color: var(--gray); margin-top: .25rem; display: inline-block; }
+
+  .tf-advisor-message { font-size: .88rem; color: var(--text); line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
+  .tf-advisor-message strong { font-style: normal; color: var(--navy); }
+
+  .tf-next-steps { display: flex; flex-direction: column; gap: .65rem; margin-bottom: 1.25rem; }
+  .tf-step {
+    display: flex; align-items: flex-start; gap: .85rem;
+    padding: 1rem 1.1rem; border-radius: 13px; border: 1.5px solid var(--gray-light);
+    background: #fafbff;
+  }
+  .tf-step-num {
+    width: 28px; height: 28px; background: var(--navy); color: #fff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-top: .05rem;
+  }
+  .tf-step-body h4 { font-size: .88rem; font-weight: 800; color: var(--navy); margin-bottom: .2rem; }
+  .tf-step-body p  { font-size: .75rem; color: var(--gray); line-height: 1.5; margin: 0; }
+  .tf-step-urgency { font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; padding: .18rem .5rem; border-radius: 99px; margin-bottom: .2rem; display: inline-block; }
+  .tf-step-urgency.high { background: #fef2f2; color: #991b1b; }
+  .tf-step-urgency.med  { background: #fffbeb; color: #92400e; }
+  .tf-step-urgency.low  { background: #f0fdf4; color: #166534; }
+
+  /* CTA block */
   .as-ctas { display: flex; flex-direction: column; gap: .65rem; margin-bottom: 1.25rem; }
   .as-cta-primary {
     display: flex; align-items: center; justify-content: center; gap: .5rem;
@@ -765,98 +820,249 @@ function showResults() {
 
   const p = calcProfile();
   const grade = gradeFor(p.score);
-
   const INTEGRITY = 'https://myintegrity.com/?purl=Dominic-Raciti';
+  const circ = 2 * Math.PI * 70; // r=70
 
-  // Build results HTML
+  // ── Sub-scores ──
+  const fvi  = Math.round(100 - Math.min(100, (p.covGap / Math.max(p.idealCov, 1)) * 100)); // Financial Vulnerability (higher=better)
+  const cas  = Math.round(p.scores.coverage / 35 * 100);  // Coverage Adequacy
+  const frr  = Math.round((p.scores.family + p.scores.timing) / 35 * 100); // Family Resilience
+
+  // ── Exposure numbers ──
+  const incomeExp  = Math.max(0, p.idealCov - p.cov);
+  const mortExp    = p.hasMort ? Math.max(0, p.mortBal - p.cov * 0.5) : 0;
+  const debtExp    = p.debtLoad * 1000; // rough estimate
+  const finalExp   = 15000;
+  const totalExp   = incomeExp + mortExp + debtExp + finalExp;
+  const coveredPct = Math.round(Math.min(100, (p.cov / Math.max(totalExp + p.cov, 1)) * 100));
+
+  // ── Confidence score ──
+  let conf = 60;
+  if (p.healthTier === 'preferred') conf += 15;
+  else if (p.healthTier === 'standard') conf += 10;
+  else if (p.healthTier === 'simplified') conf += 5;
+  if (p.age < 50) conf += 8;
+  if (p.hasMort && p.primaryProduct === 'mortgage-protection') conf += 7;
+  if (p.cov > 0) conf += 5;
+  if (p.score > 50) conf += 5;
+  conf = Math.min(97, conf);
+
+  // ── Advisor message ──
+  const prodNames = { 'final-expense': 'Final Expense', 'mortgage-protection': 'Mortgage Protection', 'term-life': 'Term Life', 'iul': 'Indexed Universal Life' };
+  const recProduct = prodNames[p.primaryProduct] || 'Life Coverage';
+
+  const advisorMsg = buildAdvisorMessage(p, recProduct, conf);
+  const ctaLabel   = primaryCTA(p);
+  const gaps       = buildGaps(p);
+  const carriers   = carrierMatch(p);
+
   let html = '';
 
-  /* ── Score Ring ── */
-  const circ = 2 * Math.PI * 77; // r=77 → ≈484
+  /* ════════════════════════════════════════
+     1. TrueForge Protection Score™
+  ════════════════════════════════════════ */
   html += `
-  <div class="as-score-hero">
-    <div class="as-score-label">Your Family Protection Profile</div>
-    <svg class="as-ring-svg" viewBox="0 0 180 180">
-      <circle class="as-ring-bg" cx="90" cy="90" r="77"/>
-      <circle class="as-ring-fill" id="ringFill" cx="90" cy="90" r="77"
-        stroke="${grade.ring}" stroke-dasharray="0 ${circ}"/>
-      <text x="90" y="82" text-anchor="middle" font-family="Inter,sans-serif"
-        font-size="42" font-weight="800" fill="white" id="scoreNum">0</text>
-      <text x="90" y="102" text-anchor="middle" font-family="Inter,sans-serif"
-        font-size="11.5" font-weight="700" fill="rgba(255,255,255,0.5)">out of 100</text>
-    </svg>
-    <div class="as-grade-badge" style="background:${grade.badgeBg};color:${grade.badgeColor};">${grade.label}</div>
-    <p class="as-score-narrative">${grade.narrative(p)}</p>
-  </div>`;
-
-  /* ── Priority Gaps ── */
-  const gaps = buildGaps(p);
-  html += `<div class="as-card" style="margin-bottom:1.25rem;">
-    <div class="as-section-title">Your Top Protection Gaps</div>
-    <div class="as-gaps">${gaps.map(g => `
-      <div class="as-gap ${g.type}">
-        <span class="as-gap-icon">${g.icon}</span>
-        <div class="as-gap-body">
-          <span class="as-gap-priority">${g.type === 'critical' ? '🔴 Critical' : g.type === 'warning' ? '⚠️ Review Needed' : '✅ Strength'}</span>
-          <h4>${g.title}</h4>
-          <p>${g.body}</p>
-        </div>
-      </div>`).join('')}
-    </div>
-  </div>`;
-
-  /* ── Carrier Match ── */
-  const carriers = carrierMatch(p);
-  html += `<div class="as-carrier-box">
-    <div class="as-carrier-header">
-      <div class="as-carrier-icon">🏦</div>
-      <div>
-        <div class="as-carrier-title">Your Carrier Match Preview</div>
-        <div class="as-carrier-sub">Based on age, health tier, and coverage type — subject to underwriting</div>
+  <div class="tf-score-card">
+    <div class="tf-score-wordmark">TrueForge Protection Score™</div>
+    <div class="tf-score-main">
+      <svg class="as-ring-svg" viewBox="0 0 160 160">
+        <circle class="as-ring-bg" cx="80" cy="80" r="70"/>
+        <circle class="as-ring-fill" id="ringFill" cx="80" cy="80" r="70"
+          stroke="${grade.ring}" stroke-dasharray="0 ${circ}"/>
+        <text x="80" y="74" text-anchor="middle" font-family="Inter,sans-serif"
+          font-size="38" font-weight="800" fill="white" id="scoreNum">0</text>
+        <text x="80" y="94" text-anchor="middle" font-family="Inter,sans-serif"
+          font-size="10" font-weight="700" fill="rgba(255,255,255,0.45)">out of 100</text>
+      </svg>
+      <div class="tf-score-right">
+        <div class="as-grade-badge" style="background:${grade.badgeBg};color:${grade.badgeColor};">${grade.label}</div>
+        <div class="tf-score-title"><span id="scoreBig">0</span> / 100</div>
+        <p class="as-score-narrative">${grade.narrative(p)}</p>
       </div>
     </div>
-    <div class="as-carrier-tiers">${carriers.map(c => `
-      <div class="as-carrier-tier">
-        <div>
-          <div class="as-carrier-tier-name">${c.name}</div>
-          <div class="as-carrier-tier-note">${c.note}</div>
+    <div class="tf-subscores">
+      <div class="tf-subscore">
+        <div class="tf-ss-label">Financial Vulnerability</div>
+        <div class="tf-ss-val" style="color:${fvi<40?'#f87171':fvi<65?'#fde047':'#4ade80'}">${fvi}</div>
+        <div class="tf-ss-desc">${fvi < 40 ? 'High exposure to income loss' : fvi < 65 ? 'Moderate gap in coverage' : 'Low vulnerability'}</div>
+        <div class="tf-ss-bar"><div class="tf-ss-bar-fill" id="ssFvi" style="width:0%;background:${fvi<40?'#f87171':fvi<65?'#fde047':'#4ade80'}"></div></div>
+      </div>
+      <div class="tf-subscore">
+        <div class="tf-ss-label">Coverage Adequacy</div>
+        <div class="tf-ss-val" style="color:${cas<40?'#f87171':cas<65?'#fde047':'#4ade80'}">${cas}</div>
+        <div class="tf-ss-desc">${cas < 40 ? 'Significant coverage gap' : cas < 65 ? 'Partial coverage in place' : 'Coverage well-sized'}</div>
+        <div class="tf-ss-bar"><div class="tf-ss-bar-fill" id="ssCas" style="width:0%;background:${cas<40?'#f87171':cas<65?'#fde047':'#4ade80'}"></div></div>
+      </div>
+      <div class="tf-subscore">
+        <div class="tf-ss-label">Family Resilience</div>
+        <div class="tf-ss-val" style="color:${frr<40?'#f87171':frr<65?'#fde047':'#4ade80'}">${frr}</div>
+        <div class="tf-ss-desc">${frr < 40 ? 'Family highly exposed' : frr < 65 ? 'Partial resilience' : 'Strong resilience'}</div>
+        <div class="tf-ss-bar"><div class="tf-ss-bar-fill" id="ssFrr" style="width:0%;background:${frr<40?'#f87171':frr<65?'#fde047':'#4ade80'}"></div></div>
+      </div>
+    </div>
+  </div>`;
+
+  /* ════════════════════════════════════════
+     2. TrueForge Family Exposure Report™
+  ════════════════════════════════════════ */
+  const today = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  const incomeStr   = `$${Math.round(incomeExp/1000)*1000 > 0 ? (Math.round(incomeExp/1000)*1000).toLocaleString() : '0'}`;
+  const mortStr     = mortExp > 0 ? `$${Math.round(mortExp/1000)*1000 .toLocaleString()}` : null;
+  const debtStr     = debtExp > 0 ? `$${debtExp.toLocaleString()}` : null;
+  const totalStr    = `$${Math.round(totalExp/1000)*1000 .toLocaleString()}`;
+
+  html += `
+  <div class="tf-exposure-card">
+    <div class="tf-report-wordmark">TrueForge Family Exposure Report™</div>
+    <div class="tf-report-title">Your Family's Financial Exposure Analysis</div>
+    <div class="tf-report-date">Prepared ${today} · Based on your assessment responses</div>
+
+    <div class="tf-exposure-total">
+      <div>
+        <div class="tf-exp-total-label">⚠ Total Estimated Family Exposure</div>
+        <div class="tf-exp-total-sub">Without adequate coverage in place</div>
+      </div>
+      <div>
+        <div class="tf-exp-total-val">${totalStr}</div>
+        <div class="tf-exp-total-sub" style="text-align:right;">at risk</div>
+      </div>
+    </div>
+
+    <div class="tf-exp-lines">
+      <div class="tf-exp-line">
+        <div class="tf-exp-line-left">
+          <span class="tf-exp-line-icon">💼</span>
+          <div>
+            <div class="tf-exp-line-name">Income Replacement Gap</div>
+            <div class="tf-exp-line-desc">10× income standard minus existing coverage</div>
+          </div>
         </div>
-        <span class="as-carrier-tier-badge badge-${c.badge}">${c.badgeLabel}</span>
-      </div>`).join('')}
+        <div class="tf-exp-line-val ${incomeExp > 100000 ? 'exposed' : incomeExp > 0 ? 'partial' : 'covered'}">${incomeStr}</div>
+      </div>
+      ${mortStr ? `<div class="tf-exp-line">
+        <div class="tf-exp-line-left">
+          <span class="tf-exp-line-icon">🏠</span>
+          <div>
+            <div class="tf-exp-line-name">Mortgage Exposure</div>
+            <div class="tf-exp-line-desc">Outstanding balance your family would inherit</div>
+          </div>
+        </div>
+        <div class="tf-exp-line-val exposed">${mortStr}</div>
+      </div>` : ''}
+      ${debtStr ? `<div class="tf-exp-line">
+        <div class="tf-exp-line-left">
+          <span class="tf-exp-line-icon">📊</span>
+          <div>
+            <div class="tf-exp-line-name">Additional Debt Exposure</div>
+            <div class="tf-exp-line-desc">Other obligations that would survive you</div>
+          </div>
+        </div>
+        <div class="tf-exp-line-val partial">${debtStr}</div>
+      </div>` : ''}
+      <div class="tf-exp-line">
+        <div class="tf-exp-line-left">
+          <span class="tf-exp-line-icon">🌹</span>
+          <div>
+            <div class="tf-exp-line-name">Final Expense Estimate</div>
+            <div class="tf-exp-line-desc">Funeral, burial, and immediate costs (standard est.)</div>
+          </div>
+        </div>
+        <div class="tf-exp-line-val exposed">$15,000</div>
+      </div>
+    </div>
+
+    <div class="tf-protection-bar-wrap">
+      <div class="tf-protection-bar-label">
+        <span>Coverage Gap</span>
+        <span>${coveredPct}% Currently Covered</span>
+      </div>
+      <div class="tf-protection-bar-track">
+        <div class="tf-protection-bar-fill" id="covBar" style="width:0%"></div>
+      </div>
+      <div class="tf-protection-note">* Estimated based on your stated coverage and standard actuarial guidelines. Actual exposure depends on carrier underwriting and final policy terms.</div>
     </div>
   </div>`;
 
-  /* ── Family Impact Teaser ── */
-  const impactSteps = buildImpactSteps(p);
-  html += `<div class="as-impact-teaser">
-    <div class="as-impact-eyebrow">⚠️ Without Coverage — Your Family's Timeline</div>
-    <div class="as-impact-title">Here's what the next 5 years could look like without protection in place.</div>
-    <div class="as-impact-timeline">
-      ${impactSteps.map((s, i) => `<div class="as-impact-step t${i+1}">
-        <div class="month">${s.month}</div>
-        <div class="event">${s.event}</div>
+  /* ════════════════════════════════════════
+     3. Coverage Confidence Meter™
+  ════════════════════════════════════════ */
+  const segs = Math.round(conf / 10);
+  const confColor = conf >= 80 ? '#4ade80' : conf >= 60 ? '#fde047' : '#f87171';
+  const confFactors = buildConfFactors(p, conf);
+
+  html += `
+  <div class="tf-confidence-card">
+    <div class="tf-conf-wordmark">Coverage Confidence Meter™</div>
+    <div class="tf-conf-title">How confident are we in your recommended solution?</div>
+    <div class="tf-conf-subtitle">Based on your health profile, age, obligations, and coverage goals</div>
+
+    <div class="tf-conf-meter-wrap">
+      <div class="tf-conf-meter-top">
+        <div class="tf-conf-pct-label"><span id="confNum">0</span>%</div>
+        <div class="tf-conf-pct-sub">Recommendation confidence</div>
+      </div>
+      <div class="tf-conf-track">
+        <div class="tf-conf-fill" id="confFill" style="width:0%;background:linear-gradient(90deg,${confColor},${confColor}cc)"></div>
+      </div>
+      <div class="tf-conf-segments">
+        ${Array.from({length:10},(_,i)=>`<div class="tf-conf-seg${i < segs ? ' lit' : ''}"></div>`).join('')}
+      </div>
+    </div>
+
+    <div class="tf-conf-factors">
+      ${confFactors.map(f => `
+      <div class="tf-conf-factor">
+        <span class="tf-conf-factor-icon">${f.icon}</span>
+        <div class="tf-conf-factor-text"><strong>${f.label}</strong>${f.detail}</div>
       </div>`).join('')}
     </div>
-    <a href="mortgage-calculator.html" class="as-impact-link">See the full interactive timeline →</a>
+
+    <div class="tf-conf-rec">
+      <div class="tf-conf-rec-label">Our Recommendation</div>
+      <div class="tf-conf-rec-text">We're <strong>${conf}% confident</strong> that <strong>${recProduct}</strong> is the right starting point for your situation — based on your health profile, obligations, and family structure. ${conf < 70 ? 'A brief conversation will sharpen this further.' : 'You can start your application with confidence.'}</div>
+    </div>
   </div>`;
 
-  /* ── Recommended Action ── */
-  const ctaLabel = primaryCTA(p);
-  html += `<div class="as-card">
-    <div style="text-align:center;margin-bottom:1.25rem;">
-      <div style="font-size:1.05rem;font-weight:800;color:var(--navy);margin-bottom:.4rem;">Your Recommended Next Step</div>
-      <div style="font-size:.82rem;color:var(--gray);max-width:400px;margin:0 auto;line-height:1.55;">${ctaLabel.context}</div>
+  /* ════════════════════════════════════════
+     4. Advisor Guidance + Next Steps
+  ════════════════════════════════════════ */
+  const nextSteps = buildNextSteps(p, recProduct, conf);
+
+  html += `
+  <div class="tf-advisor-card">
+    <div class="tf-advisor-header">
+      <div class="tf-advisor-avatar">🔥</div>
+      <div>
+        <div class="tf-advisor-name">Dominic Raciti</div>
+        <div class="tf-advisor-role">Independent Life Insurance Advisor · TrueForge Life</div>
+        <div class="tf-advisor-note">📋 This is your personalized guidance — not a generic quote</div>
+      </div>
     </div>
-    <div class="as-ctas">
+    <div class="tf-advisor-message">${advisorMsg}</div>
+
+    <div style="font-size:.82rem;font-weight:800;color:var(--navy);margin-bottom:.75rem;">Your 3 Prioritized Next Steps</div>
+    <div class="tf-next-steps">
+      ${nextSteps.map((s,i) => `
+      <div class="tf-step">
+        <div class="tf-step-num">${i+1}</div>
+        <div class="tf-step-body">
+          <span class="tf-step-urgency ${s.urgency}">${s.urgencyLabel}</span>
+          <h4>${s.title}</h4>
+          <p>${s.body}</p>
+        </div>
+      </div>`).join('')}
+    </div>
+
+    <div class="as-ctas" style="margin-top:1.25rem;">
       <a href="${INTEGRITY}" target="_blank" rel="noopener" class="as-cta-primary">🚀 ${ctaLabel.primary}</a>
-      <a href="tel:+15743920192" class="as-cta-secondary">📞 Talk to Dominic First — (574) 392-0192</a>
-      <a href="pathfinder.html" class="as-cta-tertiary">🧭 Refine with the Coverage PathFinder</a>
+      <a href="tel:+15743920192" class="as-cta-secondary">📞 Talk to Dominic — (574) 392-0192</a>
+      <a href="family-impact.html" class="as-cta-tertiary">📅 See My Family's Impact Timeline →</a>
     </div>
     <div style="text-align:center;margin-top:.75rem;">
       <button class="as-retake" onclick="resetAssessment()">↩ Retake the assessment</button>
     </div>
     <div class="as-disc">
-      This assessment is for educational purposes only. Results are estimates based on general actuarial principles and do not constitute a quote, offer, or guarantee of coverage. Eligibility and premiums are determined by carrier underwriting based on your complete application and health history. TrueForge Life, LLC is a licensed independent insurance agency.
+      This assessment is for educational purposes only. Results are estimates based on general actuarial principles and do not constitute a quote, offer, or guarantee of coverage. Eligibility and premiums are subject to carrier underwriting based on your complete application and health history. TrueForge Life, LLC is a licensed independent insurance agency.
     </div>
   </div>`;
 
@@ -865,22 +1071,165 @@ function showResults() {
   sec.classList.add('show');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Animate ring
+  // Animate all meters
   setTimeout(() => {
+    // Score ring
     const fill = document.getElementById('ringFill');
-    if (fill) {
-      const fillLen = (p.score / 100) * circ;
-      fill.style.strokeDasharray = `${fillLen} ${circ}`;
-    }
-    // Count up
+    if (fill) fill.style.strokeDasharray = `${(p.score/100)*circ} ${circ}`;
+
+    // Score count-up (ring + big number)
     let n = 0;
-    const el = document.getElementById('scoreNum');
-    const t = setInterval(() => {
+    const elS = document.getElementById('scoreNum');
+    const elB = document.getElementById('scoreBig');
+    const tS = setInterval(() => {
       n = Math.min(n + 2, p.score);
-      if (el) el.textContent = n;
-      if (n >= p.score) clearInterval(t);
+      if (elS) elS.textContent = n;
+      if (elB) elB.textContent = n;
+      if (n >= p.score) clearInterval(tS);
     }, 16);
-  }, 120);
+
+    // Sub-score bars
+    setTimeout(() => {
+      const b = document.getElementById('ssFvi'); if(b) b.style.width = fvi + '%';
+      const c = document.getElementById('ssCas'); if(c) c.style.width = cas + '%';
+      const d = document.getElementById('ssFrr'); if(d) d.style.width = frr + '%';
+    }, 200);
+
+    // Coverage bar
+    const cb = document.getElementById('covBar');
+    if (cb) setTimeout(() => { cb.style.width = coveredPct + '%'; }, 400);
+
+    // Confidence meter count-up
+    const cf = document.getElementById('confFill');
+    const cn = document.getElementById('confNum');
+    if (cf) setTimeout(() => { cf.style.width = conf + '%'; }, 600);
+    if (cn) {
+      let nc = 0;
+      const tC = setInterval(() => {
+        nc = Math.min(nc + 2, conf);
+        cn.textContent = nc;
+        if (nc >= conf) clearInterval(tC);
+      }, 20);
+    }
+  }, 150);
+}
+
+/* ── Advisor message ── */
+function buildAdvisorMessage(p, recProduct, conf) {
+  const hasDeps = p.hasDeps;
+  const hasMort = p.hasMort;
+  const isYoung = p.age < 40;
+  const isUnderinsured = p.covPct < 60;
+
+  let msg = `"After reviewing your answers, here's what I see: `;
+
+  if (p.cov === 0) {
+    msg += `you currently have <strong>no life insurance in place</strong>, which means your family has zero financial backstop right now. `;
+  } else if (isUnderinsured) {
+    msg += `you have some coverage, but you're carrying a <strong>significant protection gap</strong> — your family's income exposure exceeds what's in place. `;
+  } else {
+    msg += `you have a <strong>reasonable foundation</strong> of coverage, but there are gaps worth addressing. `;
+  }
+
+  if (hasMort && hasDeps) {
+    msg += `With a mortgage and children depending on you, the stakes are high — but so is the opportunity. `;
+  } else if (hasMort) {
+    msg += `Your mortgage is the most immediate risk — that balance doesn't disappear, and your family would need to address it. `;
+  } else if (hasDeps) {
+    msg += `Your dependents are counting on your income, and replacing that income is the core of what protection is about. `;
+  }
+
+  if (isYoung) {
+    msg += `The good news: your age gives you access to the <strong>lowest premiums available</strong>. Acting now locks in rates that will look very attractive 10 years from now. `;
+  }
+
+  msg += `Based on your full profile, I'm recommending <strong>${recProduct}</strong> — and I'm ${conf}% confident it's the right fit. My suggested next steps are below."`;
+  return msg;
+}
+
+/* ── Confidence factors ── */
+function buildConfFactors(p, conf) {
+  const factors = [];
+
+  factors.push({
+    icon: p.healthTier === 'preferred' ? '💚' : p.healthTier === 'standard' ? '💛' : '🔶',
+    label: 'Health Profile',
+    detail: p.healthTier === 'preferred' ? 'Excellent health — widest carrier access'
+          : p.healthTier === 'standard'  ? 'Standard health — most carriers available'
+          : p.healthTier === 'simplified' ? 'Some conditions — simplified issue path'
+          : 'Complex history — guaranteed issue path'
+  });
+
+  factors.push({
+    icon: p.age < 40 ? '🌱' : p.age < 55 ? '📋' : '⏰',
+    label: 'Age & Timing',
+    detail: p.age < 40 ? 'Ideal age window — best rate tiers available'
+          : p.age < 55 ? 'Good timing — most products accessible'
+          : 'Time-sensitive — options narrow with age'
+  });
+
+  factors.push({
+    icon: p.hasMort ? '🏠' : '✅',
+    label: 'Obligation Clarity',
+    detail: p.hasMort ? 'Mortgage obligation identified — targeted product fit'
+          : 'No mortgage — income replacement focus is clear'
+  });
+
+  factors.push({
+    icon: p.cov > 0 ? '📦' : '⚠️',
+    label: 'Existing Coverage',
+    detail: p.cov > 0 ? 'Existing policy in place — gap-fill strategy clear'
+          : 'No current coverage — fresh start, clear path'
+  });
+
+  return factors;
+}
+
+/* ── Next steps ── */
+function buildNextSteps(p, recProduct, conf) {
+  const steps = [];
+
+  // Step 1: always the primary product
+  steps.push({
+    urgency: p.score < 40 ? 'high' : p.score < 65 ? 'med' : 'low',
+    urgencyLabel: p.score < 40 ? '🔴 Act Now' : p.score < 65 ? '⚠️ This Month' : '📋 When Ready',
+    title: `Apply for ${recProduct}`,
+    body: `This is your highest-leverage move. A ${recProduct.toLowerCase()} policy directly addresses the gaps identified in your exposure report. The application takes 10–15 minutes online — your rate is locked the day you apply.`
+  });
+
+  // Step 2: mortgage or income secondary
+  if (p.hasMort && p.primaryProduct !== 'mortgage-protection') {
+    steps.push({
+      urgency: 'med',
+      urgencyLabel: '⚠️ This Quarter',
+      title: 'Add Dedicated Mortgage Protection',
+      body: `Your income replacement policy and a separate mortgage protection policy work together — one covers your lifestyle, the other guarantees your family keeps the home regardless of how benefits are used.`
+    });
+  } else if (p.cov > 0 && p.covPct < 80) {
+    steps.push({
+      urgency: 'med',
+      urgencyLabel: '⚠️ This Quarter',
+      title: 'Close Your Coverage Gap',
+      body: `You're approximately $${Math.round((p.idealCov - p.cov)/1000)*1000 .toLocaleString()} underinsured against the 10× income standard. A supplemental term policy is a cost-effective way to close this gap without replacing existing coverage.`
+    });
+  } else {
+    steps.push({
+      urgency: 'low',
+      urgencyLabel: '📋 Ongoing',
+      title: 'Review Coverage Annually',
+      body: `Your coverage picture looks reasonably solid. Set a calendar reminder to review after any major life event — new child, job change, refinance, or salary increase. Coverage needs evolve.`
+    });
+  }
+
+  // Step 3: always talk to Dominic
+  steps.push({
+    urgency: 'low',
+    urgencyLabel: '📞 Optional',
+    title: 'Schedule a 15-Minute Advisor Call',
+    body: `If you'd prefer a real conversation before applying, call Dominic directly. He'll review your assessment results, answer questions about carriers or pricing, and help you feel confident before a single form is submitted. No pressure, no sales pitch — just guidance.`
+  });
+
+  return steps;
 }
 
 /* ── Grade definitions ── */

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Impact Timeline — See What Happens Without Protection | TrueForge Life</title>
+  <meta name="description" content="See exactly what your family's financial future looks like with and without life insurance coverage. An interactive, personalized timeline based on your real numbers." />
+  <meta name="robots" content="index, follow" />
+  <meta name="geo.region" content="US-IN" />
+  <meta name="geo.placename" content="Indiana" />
+  <meta name="ICBM" content="41.6764, -86.2520" />
+  <link rel="canonical" href="https://trueforgeinsurance.com/family-impact.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Family Impact Timeline — TrueForge Life" />
+  <meta property="og:description" content="Toggle between two futures: with protection and without it. See the difference in real dollars and real time." />
+  <meta property="og:url" content="https://trueforgeinsurance.com/family-impact.html" />
+  <meta property="og:image" content="https://trueforgeinsurance.com/images/agent-photo.jpg" />
+  <meta property="og:site_name" content="TrueForge Life" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Family Impact Timeline — TrueForge Life" />
+  <meta name="twitter:description" content="Two futures. One toggle. See what happens to your family with and without coverage." />
+  <meta name="twitter:image" content="https://trueforgeinsurance.com/images/agent-photo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Family Impact Timeline — TrueForge Life",
+    "description": "Interactive timeline showing the financial impact on a family with and without life insurance coverage, personalized by income, mortgage, and savings.",
+    "url": "https://trueforgeinsurance.com/family-impact.html",
+    "isPartOf": {
+      "@type": "InsuranceAgency",
+      "name": "TrueForge Life",
+      "url": "https://trueforgeinsurance.com",
+      "address": { "@type": "PostalAddress", "addressRegion": "IN", "addressCountry": "US" }
+    }
+  }
+  </script>
+  <style>
+  body { background: #08122a; }
+
+  /* ── HERO ── */
+  .fi-hero {
+    background: linear-gradient(160deg, #04091a 0%, #0a1f44 60%, #0d2550 100%);
+    padding: 3rem 0 0; text-align: center; position: relative; overflow: hidden;
+  }
+  .fi-hero::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 60px; background: #08122a; clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .fi-eyebrow {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: rgba(220,38,38,.18); border: 1px solid rgba(220,38,38,.35);
+    color: #fca5a5; font-size: .7rem; font-weight: 800;
+    letter-spacing: .12em; text-transform: uppercase;
+    padding: .38rem 1rem; border-radius: 99px; margin-bottom: .9rem;
+  }
+  .fi-hero h1 { color: #fff; font-size: clamp(1.5rem,3.5vw,2.3rem); margin-bottom: .6rem; max-width: 620px; margin-inline: auto; line-height: 1.2; }
+  .fi-hero h1 em { font-style: normal; color: #fca5a5; }
+  .fi-hero p  { color: rgba(255,255,255,.6); font-size: .93rem; max-width: 500px; margin: 0 auto 2rem; line-height: 1.65; }
+
+  /* ── TOGGLE ── */
+  .fi-toggle-wrap { display: flex; justify-content: center; margin-bottom: 2.5rem; padding: 0 1rem; }
+  .fi-toggle {
+    display: flex; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+    border-radius: 50px; padding: .25rem; gap: 0;
+  }
+  .fi-toggle-btn {
+    padding: .7rem 1.6rem; border-radius: 99px; font-size: .85rem; font-weight: 800;
+    font-family: var(--font); cursor: pointer; border: none; transition: all .25s;
+    white-space: nowrap;
+  }
+  .fi-toggle-btn.without { background: transparent; color: rgba(255,255,255,.55); }
+  .fi-toggle-btn.without.active { background: #dc2626; color: #fff; box-shadow: 0 4px 16px rgba(220,38,38,.4); }
+  .fi-toggle-btn.with { background: transparent; color: rgba(255,255,255,.55); }
+  .fi-toggle-btn.with.active { background: #16a34a; color: #fff; box-shadow: 0 4px 16px rgba(22,163,74,.4); }
+
+  /* ── INPUTS PANEL ── */
+  .fi-wrap { max-width: 960px; margin: 0 auto; padding: 0 1.25rem 5rem; }
+
+  .fi-inputs-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem;
+  }
+  .fi-input-group {}
+  .fi-input-label { font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.4); margin-bottom: .4rem; display: block; }
+  .fi-input-val   { font-size: 1.2rem; font-weight: 800; color: var(--gold-light); margin-bottom: .4rem; }
+  .fi-input-row   input[type="range"] { width: 100%; }
+
+  /* ── TIMELINE ── */
+  .fi-timeline { display: flex; flex-direction: column; gap: .85rem; }
+
+  .fi-checkpoint {
+    display: grid; grid-template-columns: 90px 1fr;
+    gap: 0; align-items: stretch;
+    animation: fiIn .3s ease both;
+  }
+  @keyframes fiIn { from{opacity:0;transform:translateX(-12px)} to{opacity:1;transform:none} }
+
+  .fi-time-col {
+    display: flex; flex-direction: column; align-items: center; padding-right: 1rem;
+  }
+  .fi-time-dot {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .95rem; flex-shrink: 0; z-index: 1;
+  }
+  .fi-time-line { flex: 1; width: 2px; margin: 4px 0; }
+  .fi-time-label { font-size: .62rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; margin-top: .3rem; text-align: center; }
+
+  .fi-event-card {
+    border-radius: 14px; padding: 1.1rem 1.25rem; margin-bottom: .85rem;
+    position: relative;
+  }
+  .fi-event-card h3 { font-size: .9rem; font-weight: 800; margin-bottom: .3rem; line-height: 1.25; }
+  .fi-event-card p  { font-size: .78rem; line-height: 1.55; margin: 0; }
+  .fi-event-stat {
+    display: inline-flex; align-items: center; gap: .35rem;
+    font-size: .7rem; font-weight: 800; padding: .25rem .65rem;
+    border-radius: 99px; margin-top: .5rem;
+  }
+
+  /* Without states */
+  .without .fi-time-dot.s1 { background: #7f1d1d; }
+  .without .fi-time-dot.s2 { background: #991b1b; }
+  .without .fi-time-dot.s3 { background: #b91c1c; }
+  .without .fi-time-dot.s4 { background: #dc2626; }
+  .without .fi-time-dot.s5 { background: #ef4444; }
+  .without .fi-time-dot.s6 { background: #f87171; }
+  .without .fi-time-line   { background: linear-gradient(#991b1b, #dc2626); }
+  .without .fi-time-label  { color: #f87171; }
+  .without .fi-event-card.s1 { background: rgba(127,29,29,.3); border: 1px solid rgba(185,28,28,.3); }
+  .without .fi-event-card.s2 { background: rgba(153,27,27,.35); border: 1px solid rgba(185,28,28,.4); }
+  .without .fi-event-card.s3 { background: rgba(185,28,28,.4); border: 1px solid rgba(220,38,38,.45); }
+  .without .fi-event-card.s4 { background: rgba(220,38,38,.45); border: 1px solid rgba(220,38,38,.6); }
+  .without .fi-event-card.s5 { background: rgba(239,68,68,.35); border: 1px solid rgba(239,68,68,.5); }
+  .without .fi-event-card.s6 { background: rgba(248,113,113,.25); border: 1px solid rgba(248,113,113,.4); }
+  .without .fi-event-card h3 { color: #fca5a5; }
+  .without .fi-event-card p  { color: rgba(255,255,255,.65); }
+  .without .fi-event-stat    { background: rgba(220,38,38,.25); color: #fca5a5; }
+
+  /* With states */
+  .with .fi-time-dot.s1 { background: #14532d; }
+  .with .fi-time-dot.s2 { background: #15803d; }
+  .with .fi-time-dot.s3 { background: #16a34a; }
+  .with .fi-time-dot.s4 { background: #22c55e; }
+  .with .fi-time-dot.s5 { background: #4ade80; }
+  .with .fi-time-dot.s6 { background: #86efac; }
+  .with .fi-time-line   { background: linear-gradient(#15803d, #22c55e); }
+  .with .fi-time-label  { color: #4ade80; }
+  .with .fi-event-card.s1 { background: rgba(20,83,45,.4); border: 1px solid rgba(21,128,61,.4); }
+  .with .fi-event-card.s2 { background: rgba(21,128,61,.35); border: 1px solid rgba(22,163,74,.4); }
+  .with .fi-event-card.s3 { background: rgba(22,163,74,.35); border: 1px solid rgba(34,197,94,.4); }
+  .with .fi-event-card.s4 { background: rgba(34,197,94,.3); border: 1px solid rgba(74,222,128,.35); }
+  .with .fi-event-card.s5 { background: rgba(74,222,128,.25); border: 1px solid rgba(134,239,172,.35); }
+  .with .fi-event-card.s6 { background: rgba(134,239,172,.2); border: 1px solid rgba(134,239,172,.3); }
+  .with .fi-event-card h3 { color: #4ade80; }
+  .with .fi-event-card p  { color: rgba(255,255,255,.7); }
+  .with .fi-event-stat    { background: rgba(22,163,74,.25); color: #4ade80; }
+
+  /* ── COMPARISON BAR ── */
+  .fi-compare {
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem;
+  }
+  .fi-compare-title { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.4); margin-bottom: 1rem; }
+  .fi-compare-row   { display: flex; justify-content: space-between; align-items: center; margin-bottom: .65rem; }
+  .fi-compare-label { font-size: .78rem; color: rgba(255,255,255,.55); flex: 1; }
+  .fi-compare-bars  { display: flex; align-items: center; gap: .65rem; flex: 2; }
+  .fi-bar-track     { flex: 1; height: 8px; background: rgba(255,255,255,.08); border-radius: 99px; overflow: hidden; }
+  .fi-bar-fill      { height: 100%; border-radius: 99px; transition: width .8s ease; }
+  .fi-compare-val   { font-size: .8rem; font-weight: 800; min-width: 80px; text-align: right; }
+  @media (max-width: 600px) { .fi-compare-bars { flex-direction: column; gap: .3rem; } }
+
+  /* ── CTA BLOCK ── */
+  .fi-cta-block {
+    background: linear-gradient(135deg, #0a1f44, #0d2550);
+    border-radius: 18px; padding: 2rem; text-align: center;
+    border: 1px solid rgba(201,151,58,.2);
+  }
+  .fi-cta-block h2 { color: #fff; font-size: 1.3rem; margin-bottom: .5rem; }
+  .fi-cta-block p  { color: rgba(255,255,255,.6); font-size: .85rem; margin-bottom: 1.5rem; line-height: 1.6; }
+  .fi-cta-row { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+  .fi-cta-a {
+    background: var(--gold); color: var(--navy); font-weight: 800; font-size: .9rem;
+    padding: .85rem 1.5rem; border-radius: 10px; text-decoration: none; transition: all .18s;
+  }
+  .fi-cta-a:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .fi-cta-b {
+    background: rgba(255,255,255,.08); color: #fff; font-weight: 700; font-size: .88rem;
+    padding: .85rem 1.5rem; border-radius: 10px; text-decoration: none;
+    border: 1px solid rgba(255,255,255,.15); transition: all .18s;
+  }
+  .fi-cta-b:hover { background: rgba(255,255,255,.14); }
+
+  /* NAV override for dark bg */
+  .nav { background: rgba(4,9,26,.95); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo-text" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;">
+      <img src="images/logo-icon.svg" alt="TrueForge Life logo" height="38" width="36" style="display:block;flex-shrink:0;" />
+      <span style="display:flex;flex-direction:column;line-height:1.1;">
+        <span style="font-family:Georgia,serif;font-weight:700;font-size:1rem;letter-spacing:0.08em;color:#fff;">TRUEFORGE <span style="color:var(--gold)">LIFE</span></span>
+        <span style="font-size:0.58rem;font-style:italic;color:rgba(255,255,255,.4);letter-spacing:0.02em;">Forged in truth. Built for each other.&#8482;</span>
+      </span>
+    </a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="index.html" style="color:rgba(255,255,255,.7);">Home</a></li>
+      <li><a href="about.html" style="color:rgba(255,255,255,.7);">About</a></li>
+      <li><a href="products.html" style="color:rgba(255,255,255,.7);">Products</a></li>
+      <li><a href="how-it-works.html" style="color:rgba(255,255,255,.7);">How It Works</a></li>
+      <li><a href="faq.html" style="color:rgba(255,255,255,.7);">FAQ</a></li>
+      <li><a href="contact.html" style="color:rgba(255,255,255,.7);">Contact</a></li>
+      <li><a href="enroll.html" style="color:var(--gold);font-weight:700;">✦ Coverage Assistant</a></li>
+      <li><a href="assess.html" style="color:var(--gold);font-weight:700;">🎯 Assess My Risk</a></li>
+      <li><a href="pathfinder.html" style="color:var(--gold);font-weight:700;">✦ PathFinder</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+1-574-392-0192" class="nav-phone" style="color:rgba(255,255,255,.7);">📞 (574) 392-0192</a>
+      <a href="assess.html" class="btn btn-primary">🎯 Start Assessment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="fi-hero">
+  <div class="container">
+    <div class="fi-eyebrow">⚠️ Family Impact Timeline</div>
+    <h1>Two futures.<br><em>One decision.</em> See both.</h1>
+    <p>Toggle between what happens to your family without protection and what becomes possible with it. Your numbers. Real timelines. No sugarcoating.</p>
+  </div>
+</div>
+
+<!-- TOGGLE -->
+<div class="fi-toggle-wrap" style="padding-top:1.5rem;">
+  <div class="fi-toggle">
+    <button class="fi-toggle-btn without active" id="btnWithout" onclick="setMode('without')">
+      ❌ Without Coverage
+    </button>
+    <button class="fi-toggle-btn with" id="btnWith" onclick="setMode('with')">
+      ✅ With Coverage
+    </button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="fi-wrap">
+
+  <!-- INPUTS -->
+  <div class="fi-inputs-row">
+    <div class="fi-input-group">
+      <span class="fi-input-label">Annual Income</span>
+      <div class="fi-input-val" id="incLabel">$75,000</div>
+      <input type="range" id="incSlider" min="0" max="100" value="38" oninput="recalc()" />
+      <div style="display:flex;justify-content:space-between;font-size:.62rem;color:rgba(255,255,255,.3);margin-top:.2rem;"><span>$30K</span><span>$250K+</span></div>
+    </div>
+    <div class="fi-input-group">
+      <span class="fi-input-label">Mortgage Balance</span>
+      <div class="fi-input-val" id="mortLabel">$250,000</div>
+      <input type="range" id="mortSlider" min="0" max="100" value="42" oninput="recalc()" />
+      <div style="display:flex;justify-content:space-between;font-size:.62rem;color:rgba(255,255,255,.3);margin-top:.2rem;"><span>$0</span><span>$600K+</span></div>
+    </div>
+    <div class="fi-input-group">
+      <span class="fi-input-label">Emergency Savings</span>
+      <div class="fi-input-val" id="savLabel">$12,000</div>
+      <input type="range" id="savSlider" min="0" max="100" value="20" oninput="recalc()" />
+      <div style="display:flex;justify-content:space-between;font-size:.62rem;color:rgba(255,255,255,.3);margin-top:.2rem;"><span>$0</span><span>$100K+</span></div>
+    </div>
+    <div class="fi-input-group">
+      <span class="fi-input-label">Monthly Expenses</span>
+      <div class="fi-input-val" id="expLabel">$4,200/mo</div>
+      <input type="range" id="expSlider" min="0" max="100" value="35" oninput="recalc()" />
+      <div style="display:flex;justify-content:space-between;font-size:.62rem;color:rgba(255,255,255,.3);margin-top:.2rem;"><span>$1,500</span><span>$12K+</span></div>
+    </div>
+  </div>
+
+  <!-- COMPARISON SUMMARY -->
+  <div class="fi-compare">
+    <div class="fi-compare-title">Financial Comparison at 1 Year</div>
+    <div class="fi-compare-row">
+      <span class="fi-compare-label">Family financial stability</span>
+      <div class="fi-compare-bars">
+        <div class="fi-bar-track"><div class="fi-bar-fill" id="barStabWithout" style="width:15%;background:#dc2626;"></div></div>
+        <div class="fi-bar-track"><div class="fi-bar-fill" id="barStabWith" style="width:88%;background:#16a34a;"></div></div>
+      </div>
+      <div class="fi-compare-val" style="color:#6b7280;font-size:.7rem;">Poor vs Strong</div>
+    </div>
+    <div class="fi-compare-row">
+      <span class="fi-compare-label">Home security</span>
+      <div class="fi-compare-bars">
+        <div class="fi-bar-track"><div class="fi-bar-fill" id="barHomeWithout" style="width:20%;background:#dc2626;"></div></div>
+        <div class="fi-bar-track"><div class="fi-bar-fill" id="barHomeWith" style="width:100%;background:#16a34a;"></div></div>
+      </div>
+      <div class="fi-compare-val" style="color:#6b7280;font-size:.7rem;">At risk vs Secured</div>
+    </div>
+    <div class="fi-compare-row">
+      <span class="fi-compare-label">Remaining savings</span>
+      <div class="fi-compare-bars">
+        <div class="fi-bar-track"><div class="fi-bar-fill" id="barSavWithout" style="width:5%;background:#dc2626;"></div></div>
+        <div class="fi-bar-track"><div class="fi-bar-fill" id="barSavWith" style="width:75%;background:#16a34a;"></div></div>
+      </div>
+      <div class="fi-compare-val">
+        <span id="compSavWithout" style="color:#f87171;">$0</span>
+        <span style="color:rgba(255,255,255,.2);"> vs </span>
+        <span id="compSavWith" style="color:#4ade80;">$0</span>
+      </div>
+    </div>
+    <div class="fi-compare-row" style="margin-bottom:0;">
+      <span class="fi-compare-label">Months until financial crisis</span>
+      <div class="fi-compare-bars">
+        <div class="fi-bar-track"><div class="fi-bar-fill" id="barMoWithout" style="width:20%;background:#dc2626;"></div></div>
+        <div class="fi-bar-track"><div class="fi-bar-fill" id="barMoWith" style="width:100%;background:#16a34a;"></div></div>
+      </div>
+      <div class="fi-compare-val">
+        <span id="compMoWithout" style="color:#f87171;">0</span>
+        <span style="color:rgba(255,255,255,.2);"> vs </span>
+        <span id="compMoWith" style="color:#4ade80;">∞</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="fi-timeline without" id="timeline"><!-- injected --></div>
+
+  <!-- CTA -->
+  <div class="fi-cta-block" style="margin-top:2.5rem;">
+    <h2>Ready to write the second story?</h2>
+    <p>The "With Coverage" timeline is achievable. It starts with understanding exactly what protection costs for your specific situation — usually far less than families expect.</p>
+    <div class="fi-cta-row">
+      <a href="assess.html" class="fi-cta-a">🎯 Start My Protection Assessment →</a>
+      <a href="mortgage-calculator.html" class="fi-cta-b">🏠 Mortgage Risk Calculator</a>
+      <a href="tel:+15743920192" class="fi-cta-b">📞 Talk to Dominic</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="sticky-call-bar" style="display:flex;gap:0;">
+  <a href="tel:+15743920192" style="flex:1;border-right:1px solid rgba(255,255,255,.2);">
+    📞 Tap to Call — (574) 392-0192
+    <span class="sub">Free consultation · No pressure · Speak with Dominic directly</span>
+  </a>
+  <a href="sms:+15743920192?body=Hi%20Dominic%2C%20I%20just%20saw%20the%20Family%20Impact%20Timeline%20and%20have%20questions." style="flex-shrink:0;padding:.85rem 1.1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:rgba(255,255,255,.9);gap:.2rem;">
+    💬<span>Text</span>
+  </a>
+</div>
+
+<script src="//code.tidio.co/hakq0k87lfccnk5wfqyxoh49nj1stjxy.js" async></script>
+<script src="js/main.js"></script>
+<script>
+/* ── SLIDER DATA ── */
+const INC_STOPS = [30000,35000,40000,45000,50000,55000,60000,65000,70000,75000,80000,90000,100000,110000,125000,150000,175000,200000,250000];
+const MRT_STOPS = [0,50000,75000,100000,125000,150000,175000,200000,225000,250000,275000,300000,325000,350000,400000,450000,500000,600000];
+const SAV_STOPS = [0,2000,5000,8000,10000,12000,15000,20000,25000,30000,40000,50000,75000,100000];
+const EXP_STOPS = [1500,2000,2500,3000,3500,4000,4200,4500,5000,5500,6000,7000,8000,10000,12000];
+
+let mode = 'without';
+let income = 75000, mortgage = 250000, savings = 12000, expenses = 4200;
+
+function slIdx(raw, arr) { return Math.min(Math.round((raw/100)*(arr.length-1)), arr.length-1); }
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+function recalc() {
+  income   = INC_STOPS[slIdx(document.getElementById('incSlider').value, INC_STOPS)];
+  mortgage = MRT_STOPS[slIdx(document.getElementById('mortSlider').value, MRT_STOPS)];
+  savings  = SAV_STOPS[slIdx(document.getElementById('savSlider').value, SAV_STOPS)];
+  expenses = EXP_STOPS[slIdx(document.getElementById('expSlider').value, EXP_STOPS)];
+
+  document.getElementById('incLabel').textContent  = fmt(income);
+  document.getElementById('mortLabel').textContent = fmt(mortgage);
+  document.getElementById('savLabel').textContent  = fmt(savings);
+  document.getElementById('expLabel').textContent  = fmt(expenses) + '/mo';
+
+  const monthsOfSavings = savings > 0 ? Math.floor(savings / expenses) : 0;
+  const monthsOfSavingsDisplay = monthsOfSavings;
+
+  // Comparison bars
+  document.getElementById('compSavWithout').textContent = monthsOfSavings <= 0 ? '$0' : fmt(Math.max(0, savings - expenses * 12));
+  document.getElementById('compMoWithout').textContent  = monthsOfSavings + ' mo';
+  document.getElementById('compSavWith').textContent    = fmt(savings * 0.85); // preserved
+  document.getElementById('barMoWithout').style.width   = Math.min(100, (monthsOfSavings / 24) * 100) + '%';
+
+  renderTimeline();
+}
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('btnWithout').classList.toggle('active', m === 'without');
+  document.getElementById('btnWith').classList.toggle('active', m === 'with');
+  renderTimeline();
+}
+
+function renderTimeline() {
+  const tl = document.getElementById('timeline');
+  tl.className = 'fi-timeline ' + mode;
+
+  const monthsOfSavings = savings > 0 ? Math.floor(savings / expenses) : 0;
+  const mo3 = fmt(Math.max(0, savings - expenses * 3));
+  const mo6 = fmt(Math.max(0, savings - expenses * 6));
+
+  let events;
+
+  if (mode === 'without') {
+    events = [
+      {
+        step: 's1', dot: '💀', label: 'Day 1',
+        title: 'Income stops. The bills don\'t.',
+        body: `Your monthly expenses of ${fmt(expenses)} continue immediately. Emergency savings of ${fmt(savings)} are your family's only buffer. ${monthsOfSavings <= 1 ? 'At current expenses, that covers less than a month.' : `That covers roughly ${monthsOfSavings} months — but it disappears faster than you think.`}`,
+        stat: `${fmt(savings)} standing between your family and financial freefall`
+      },
+      {
+        step: 's2', dot: '📉', label: 'Month 1–3',
+        title: 'Savings begin draining fast.',
+        body: `After three months, savings are down to ${mo3}. Mortgage, utilities, groceries, car payments — every bill pulls from the same shrinking pool. Your family is making impossible choices.`,
+        stat: `${fmt(expenses * 3)} in fixed expenses due — no income to cover it`
+      },
+      {
+        step: 's3', dot: '⚠️', label: 'Month 3–6',
+        title: `${mortgage > 0 ? 'Mortgage payments start being missed.' : 'Bills go unpaid. Credit suffers.'}`,
+        body: mortgage > 0
+          ? `The mortgage on your ${fmt(mortgage)} balance demands payment every month. With savings at ${mo6}, your family faces the first missed payment — and with it, credit score damage, late fees, and the beginning of a foreclosure clock.`
+          : `With savings exhausted or severely depleted, regular bills go unpaid. Credit cards get maxed. Credit score damage begins. Financial recovery from this point takes years.`,
+        stat: mortgage > 0 ? `${fmt(mortgage)} mortgage in jeopardy` : 'Credit destruction begins'
+      },
+      {
+        step: 's4', dot: '🏠', label: 'Month 6–12',
+        title: mortgage > 0 ? 'Foreclosure proceedings begin.' : 'Financial crisis is fully set in.',
+        body: mortgage > 0
+          ? `After multiple missed payments, the lender initiates foreclosure. Your family must either sell under pressure — often below market value — or find income that isn't there. The home you built together may be lost.`
+          : `All financial reserves are gone. Your family is borrowing to pay basic bills. The stability you spent years building is unraveling. Recovery from this depth takes 5–10 years.`,
+        stat: mortgage > 0 ? 'Home loss risk is real — not hypothetical' : 'Recovery measured in years, not months'
+      },
+      {
+        step: 's5', dot: '📚', label: 'Year 1–3',
+        title: 'College funds and retirement savings are raided.',
+        body: `With no other options, your family depletes 401(k) accounts (with penalties), cashes out any remaining savings, and borrows from family. Children's education plans — ${fmt(income * 0.15)} or more of future security — are gone.`,
+        stat: `${fmt(income * 0.15)} in education savings lost`
+      },
+      {
+        step: 's6', dot: '🔴', label: 'Year 3–5',
+        title: 'Long-term financial hardship is the outcome.',
+        body: `What should have been a family's peak earning and saving years become a decade of financial recovery. Your spouse re-enters the workforce under stress, not by choice. The difference between this scenario and the other is the cost of a monthly premium — often less than a gym membership.`,
+        stat: `${fmt(income * 5)} in lost financial opportunity`
+      },
+    ];
+  } else {
+    events = [
+      {
+        step: 's1', dot: '✅', label: 'Day 30',
+        title: 'Death benefit received. Family is protected.',
+        body: `Within 30 days of claim filing, your beneficiary receives the death benefit — typically ${fmt(income * 10)} or the coverage amount you selected. This single payment changes everything that follows. The financial crisis that would have unfolded simply… doesn't.`,
+        stat: `${fmt(income * 10)} received — family financially secure`
+      },
+      {
+        step: 's2', dot: '🏠', label: 'Month 1–2',
+        title: mortgage > 0 ? 'Mortgage paid in full.' : 'All debts cleared.',
+        body: mortgage > 0
+          ? `Your family chooses to pay off the ${fmt(mortgage)} mortgage outright — eliminating the largest monthly obligation and securing the home permanently. Or they keep making payments and invest the difference. Either way, they're in control.`
+          : `Outstanding debts are cleared from the death benefit. Your family enters this chapter debt-free — a foundation that most grieving families never get.`,
+        stat: mortgage > 0 ? `${fmt(mortgage)} mortgage — eliminated` : 'Family enters this chapter debt-free'
+      },
+      {
+        step: 's3', dot: '💰', label: 'Month 2–6',
+        title: 'Surviving spouse has time and options.',
+        body: `With the mortgage paid and monthly expenses covered, your spouse doesn't have to make desperate decisions. They can take 3–6 months to grieve, evaluate options, and re-enter the workforce on their timeline — not under financial duress.`,
+        stat: `${fmt(savings + income * 0.5)} in family reserves — breathing room secured`
+      },
+      {
+        step: 's4', dot: '🎓', label: 'Year 1',
+        title: 'Children\'s future protected and on track.',
+        body: `Education savings remain intact. College plans continue as designed. Children aren't pulled from activities or schools due to financial stress. The trajectory you set for them holds — because you planned ahead.`,
+        stat: 'Education fund: 100% preserved'
+      },
+      {
+        step: 's5', dot: '📈', label: 'Year 1–3',
+        title: 'Financial recovery is full and ahead of schedule.',
+        body: `Rather than spending years recovering, your family spends these years rebuilding — investing remaining benefit, rebuilding retirement accounts, and returning to a stable financial trajectory. The difference from the alternative is measured in decades of wellbeing.`,
+        stat: `${fmt(income * 3)} in recoverable financial position`
+      },
+      {
+        step: 's6', dot: '🌱', label: 'Year 3–5',
+        title: 'Your legacy outlasts you.',
+        body: `Your family isn't just surviving — they're thriving. The values you built, the home you created, the opportunities you wanted for your children: all of it continues. That's what protection actually buys. Not just money — continuity.`,
+        stat: 'This is what planning for them looks like'
+      },
+    ];
+  }
+
+  let html = '';
+  events.forEach((e, i) => {
+    const delay = i * 60;
+    html += `
+    <div class="fi-checkpoint" style="animation-delay:${delay}ms">
+      <div class="fi-time-col">
+        <div class="fi-time-dot ${e.step}">${e.dot}</div>
+        ${i < events.length - 1 ? `<div class="fi-time-line"></div>` : ''}
+        <div class="fi-time-label">${e.label}</div>
+      </div>
+      <div class="fi-event-card ${e.step}">
+        <h3>${e.title}</h3>
+        <p>${e.body}</p>
+        <div class="fi-event-stat">📊 ${e.stat}</div>
+      </div>
+    </div>`;
+  });
+
+  tl.innerHTML = html;
+}
+
+// Init
+recalc();
+</script>
+</body>
+</html>
