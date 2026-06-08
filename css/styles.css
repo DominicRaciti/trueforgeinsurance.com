@@ -1024,3 +1024,80 @@ section {
   .testimonials-grid { grid-template-columns: 1fr; }
   .cta-band-actions { flex-direction: column; align-items: center; }
 }
+
+/* ===== STICKY MOBILE CALL BAR ===== */
+.sticky-call-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: var(--gold);
+  padding: 0.85rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+}
+
+.sticky-call-bar a {
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.sticky-call-bar .sub {
+  font-size: 0.72rem;
+  font-weight: 500;
+  display: block;
+  margin-top: 0.1rem;
+  color: rgba(10,31,68,0.65);
+}
+
+@media (max-width: 768px) {
+  .sticky-call-bar { display: block; }
+  body { padding-bottom: 72px; }
+}
+
+/* ===== SENIOR CALLOUT BAND ===== */
+.senior-band {
+  background: #f0f7ff;
+  border-top: 3px solid var(--navy);
+  border-bottom: 3px solid var(--navy);
+  padding: 2.5rem 0;
+}
+
+.senior-band-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+}
+
+.senior-band h3 {
+  color: var(--navy);
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.senior-band p {
+  color: var(--gray);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.senior-band-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+  .senior-band-inner { grid-template-columns: 1fr; }
+  .senior-band-ctas { align-items: stretch; }
+}
