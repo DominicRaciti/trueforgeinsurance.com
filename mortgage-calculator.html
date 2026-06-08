@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mortgage Protection Calculator — TrueForge Life</title>
+  <meta name="description" content="See exactly what your family would face financially if something happened to you. Calculate your mortgage risk and explore what protection may cost." />
+  <meta name="robots" content="index, follow" />
+  <meta name="geo.region" content="US-IN" />
+  <meta name="geo.placename" content="Indiana" />
+  <meta name="ICBM" content="41.6764, -86.2520" />
+  <link rel="canonical" href="https://trueforgeinsurance.com/mortgage-calculator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mortgage Protection Risk Calculator — TrueForge Life" />
+  <meta property="og:description" content="What would your family face if something happened tomorrow? Calculate your mortgage risk and see what protection may cost." />
+  <meta property="og:url" content="https://trueforgeinsurance.com/mortgage-calculator.html" />
+  <meta property="og:image" content="https://trueforgeinsurance.com/images/agent-photo.jpg" />
+  <meta property="og:site_name" content="TrueForge Life" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mortgage Protection Risk Calculator — TrueForge Life" />
+  <meta name="twitter:description" content="See exactly what your family would face. Calculate your mortgage risk in 60 seconds." />
+  <meta name="twitter:image" content="https://trueforgeinsurance.com/images/agent-photo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Mortgage Protection Risk Calculator — TrueForge Life",
+    "description": "Calculate your family's financial exposure if you passed away tomorrow, and explore what mortgage protection coverage may cost.",
+    "url": "https://trueforgeinsurance.com/mortgage-calculator.html",
+    "isPartOf": {
+      "@type": "InsuranceAgency",
+      "name": "TrueForge Life",
+      "url": "https://trueforgeinsurance.com",
+      "address": { "@type": "PostalAddress", "addressRegion": "IN", "addressCountry": "US" }
+    }
+  }
+  </script>
+  <style>
+  /* ═══ PAGE SHELL ═══ */
+  body { background: #f0f4ff; }
+
+  .mc-hero {
+    background: linear-gradient(135deg, #0a1f44 0%, #0d2a5e 100%);
+    padding: 3rem 0 2.5rem;
+    text-align: center;
+  }
+  .mc-hero-eyebrow {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: rgba(201,151,58,.18); border: 1px solid rgba(201,151,58,.4);
+    color: var(--gold-light); font-size: .72rem; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    padding: .4rem 1rem; border-radius: 99px; margin-bottom: 1rem;
+  }
+  .mc-hero h1 { color: #fff; font-size: clamp(1.5rem,3.5vw,2.2rem); margin-bottom: .6rem; max-width: 600px; margin-inline: auto; }
+  .mc-hero p  { color: rgba(255,255,255,.72); font-size: .98rem; max-width: 520px; margin: 0 auto 1.5rem; line-height: 1.65; }
+  .mc-trust-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,.1); }
+  .mc-trust-row span { color: rgba(255,255,255,.65); font-size: .78rem; display: flex; align-items: center; gap: .3rem; }
+
+  /* ═══ MAIN LAYOUT ═══ */
+  .mc-wrap { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+  .mc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+  @media (max-width: 740px) { .mc-grid { grid-template-columns: 1fr; } }
+
+  /* ═══ INPUT CARD ═══ */
+  .mc-inputs {
+    background: #fff; border-radius: 18px; padding: 2rem;
+    box-shadow: 0 8px 40px rgba(10,31,68,.12);
+  }
+  .mc-inputs h2 { font-size: 1.1rem; color: var(--navy); margin-bottom: 1.5rem; }
+  .mc-slider-group { margin-bottom: 1.75rem; }
+  .mc-slider-label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .82rem; font-weight: 700; color: var(--navy); margin-bottom: .5rem;
+  }
+  .mc-slider-val {
+    font-size: 1.15rem; font-weight: 800; color: var(--gold);
+  }
+  input[type="range"] {
+    width: 100%; height: 6px; -webkit-appearance: none; appearance: none;
+    background: var(--gray-light); border-radius: 99px; outline: none; cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 22px; height: 22px;
+    border-radius: 50%; background: var(--navy);
+    box-shadow: 0 2px 8px rgba(10,31,68,.3); cursor: pointer;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--navy); border: none; cursor: pointer;
+  }
+  .mc-slider-ends { display: flex; justify-content: space-between; font-size: .7rem; color: var(--gray); margin-top: .25rem; }
+
+  .mc-age-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin-top: .75rem; }
+  .mc-age-btn {
+    border: 2px solid var(--gray-light); border-radius: 9px; padding: .6rem .4rem;
+    font-size: .78rem; font-weight: 600; color: var(--navy); cursor: pointer;
+    background: #fff; font-family: var(--font); transition: all .15s; text-align: center;
+  }
+  .mc-age-btn:hover { border-color: var(--navy); background: #f0f4ff; }
+  .mc-age-btn.sel   { border-color: var(--navy); background: #eef2ff; }
+
+  /* ═══ OUTPUT CARD ═══ */
+  .mc-output {
+    background: #fff; border-radius: 18px; padding: 2rem;
+    box-shadow: 0 8px 40px rgba(10,31,68,.12); position: sticky; top: 90px;
+  }
+  .mc-output-eyebrow { font-size: .68rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; }
+
+  /* Danger meter */
+  .mc-danger-title { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 1.25rem; }
+  .mc-big-num { font-size: 3rem; font-weight: 800; color: #dc2626; line-height: 1; margin-bottom: .25rem; }
+  .mc-big-label { font-size: .75rem; font-weight: 600; color: var(--gray); margin-bottom: 1.5rem; }
+
+  .mc-stats { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.5rem; }
+  .mc-stat {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: .65rem .85rem; background: #f8f9fc; border-radius: 9px;
+    font-size: .84rem;
+  }
+  .mc-stat-label { color: var(--gray); font-weight: 500; }
+  .mc-stat-val   { font-weight: 800; color: var(--navy); }
+
+  /* Risk bar */
+  .mc-risk-wrap { margin-bottom: 1.5rem; }
+  .mc-risk-label-row { display: flex; justify-content: space-between; font-size: .72rem; color: var(--gray); margin-bottom: .4rem; }
+  .mc-risk-track { height: 10px; background: #e5e7eb; border-radius: 99px; overflow: hidden; }
+  .mc-risk-fill  { height: 100%; border-radius: 99px; transition: width .6s ease, background .6s; }
+
+  /* Narrative */
+  .mc-narrative {
+    background: linear-gradient(135deg, #fff3cd, #fef9e7);
+    border: 1px solid #fde68a; border-radius: 12px; padding: 1rem 1.1rem;
+    font-size: .83rem; line-height: 1.6; color: #78350f; margin-bottom: 1.5rem;
+  }
+  .mc-narrative strong { color: #92400e; }
+
+  /* Coverage estimate */
+  .mc-coverage-box {
+    background: linear-gradient(135deg, var(--navy) 0%, #0d2a5e 100%);
+    border-radius: 12px; padding: 1.25rem 1.4rem; margin-bottom: 1.25rem;
+  }
+  .mc-coverage-box .label { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.55); margin-bottom: .3rem; }
+  .mc-coverage-box .range { font-size: 1.6rem; font-weight: 800; color: var(--gold-light); line-height: 1; }
+  .mc-coverage-box .note  { font-size: .7rem; color: rgba(255,255,255,.45); margin-top: .3rem; }
+
+  /* CTAs */
+  .mc-cta-primary {
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+    background: var(--gold); color: var(--navy); font-weight: 800; font-size: 1rem;
+    padding: 1rem 1.5rem; border-radius: 10px; text-decoration: none;
+    box-shadow: 0 4px 16px rgba(201,151,58,.4); transition: all .2s;
+    width: 100%; margin-bottom: .65rem; text-align: center;
+  }
+  .mc-cta-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .mc-cta-secondary {
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+    background: #fff; color: var(--navy); font-weight: 700; font-size: .88rem;
+    padding: .8rem 1.25rem; border-radius: 10px; text-decoration: none;
+    border: 2px solid var(--gray-light); transition: all .18s; width: 100%; text-align: center;
+  }
+  .mc-cta-secondary:hover { border-color: var(--navy); background: #f0f4ff; }
+
+  .mc-disc { font-size: .67rem; color: var(--gray); line-height: 1.5; margin-top: 1rem; padding-top: .75rem; border-top: 1px solid var(--gray-light); }
+
+  /* ═══ BELOW-FOLD SECTION ═══ */
+  .mc-why { background: #fff; border-radius: 18px; padding: 2rem; box-shadow: 0 4px 20px rgba(10,31,68,.08); margin-top: 1.5rem; }
+  .mc-why h2 { font-size: 1.2rem; color: var(--navy); margin-bottom: 1rem; }
+  .mc-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 500px) { .mc-why-grid { grid-template-columns: 1fr; } }
+  .mc-why-card { background: #f8f9fc; border-radius: 10px; padding: 1rem 1.1rem; }
+  .mc-why-card .icon { font-size: 1.4rem; margin-bottom: .4rem; }
+  .mc-why-card h3 { font-size: .88rem; color: var(--navy); margin-bottom: .3rem; }
+  .mc-why-card p  { font-size: .78rem; color: var(--gray); line-height: 1.5; }
+
+  /* ═══ AI WIDGET ═══ */
+  .mc-ai-btn {
+    position: fixed; bottom: 90px; right: 18px; z-index: 300;
+    background: var(--navy); color: #fff; border: none; border-radius: 50px;
+    padding: .7rem 1.1rem; font-size: .8rem; font-weight: 700; font-family: var(--font);
+    cursor: pointer; display: flex; align-items: center; gap: .45rem;
+    box-shadow: 0 4px 20px rgba(10,31,68,.35); transition: all .2s;
+  }
+  .mc-ai-btn:hover { transform: translateY(-2px); }
+  .mc-ai-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; animation: aip 2s infinite; }
+  @keyframes aip { 0%,100%{opacity:1}50%{opacity:.3} }
+  .mc-ai-panel {
+    position: fixed; bottom: 148px; right: 18px;
+    width: min(340px,calc(100vw - 36px));
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(10,31,68,.2);
+    z-index: 301; display: none; flex-direction: column; overflow: hidden;
+    border: 1px solid var(--gray-light); max-height: 65vh;
+  }
+  .mc-ai-panel.open { display: flex; }
+  .mc-ai-hd { background: var(--navy); padding: .9rem 1.1rem; display: flex; align-items: center; justify-content: space-between; }
+  .mc-ai-hd-left { display: flex; align-items: center; gap: .55rem; }
+  .mc-ai-av { width: 30px; height: 30px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: .9rem; }
+  .mc-ai-title { color: #fff; font-size: .85rem; font-weight: 700; }
+  .mc-ai-sub   { color: rgba(255,255,255,.55); font-size: .68rem; }
+  .mc-ai-close { background: none; border: none; color: rgba(255,255,255,.55); font-size: 1.1rem; cursor: pointer; }
+  .mc-ai-msgs  { flex: 1; overflow-y: auto; padding: .85rem; display: flex; flex-direction: column; gap: .75rem; }
+  .mc-ai-msg   { max-width: 90%; padding: .65rem .85rem; border-radius: 11px; font-size: .81rem; line-height: 1.5; }
+  .mc-ai-msg.bot  { background: #f8f9fc; border: 1px solid var(--gray-light); align-self: flex-start; color: var(--text); }
+  .mc-ai-msg.user { background: var(--navy); color: #fff; align-self: flex-end; }
+  .mc-ai-qs    { padding: 0 .85rem .6rem; display: flex; flex-direction: column; gap: .35rem; }
+  .mc-ai-qbtn  { background: none; border: 1px solid var(--gray-light); border-radius: 7px; padding: .45rem .7rem; font-size: .75rem; color: var(--navy); font-family: var(--font); cursor: pointer; text-align: left; transition: all .14s; }
+  .mc-ai-qbtn:hover { background: #f0f4ff; border-color: var(--navy); }
+  .mc-ai-inp-row { display: flex; padding: .6rem .85rem; gap: .4rem; border-top: 1px solid var(--gray-light); }
+  .mc-ai-inp   { flex: 1; padding: .55rem .8rem; border: 1px solid var(--gray-light); border-radius: 7px; font-size: .8rem; font-family: var(--font); outline: none; }
+  .mc-ai-inp:focus { border-color: var(--navy); }
+  .mc-ai-send  { background: var(--navy); color: #fff; border: none; border-radius: 7px; padding: .55rem .8rem; cursor: pointer; }
+  .mc-ai-guard { font-size: .67rem; color: var(--gray); text-align: center; padding: .35rem .85rem .55rem; border-top: 1px solid var(--gray-light); line-height: 1.4; }
+  @media (max-width: 768px) { .mc-ai-btn { bottom: 115px; } .mc-ai-panel { bottom: 173px; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo-text" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;">
+      <img src="images/logo-icon.svg" alt="TrueForge Life logo" height="38" width="36" style="display:block;flex-shrink:0;" />
+      <span style="display:flex;flex-direction:column;line-height:1.1;">
+        <span style="font-family:Georgia,serif;font-weight:700;font-size:1rem;letter-spacing:0.08em;color:var(--navy);">TRUEFORGE <span style="color:var(--gold)">LIFE</span></span>
+        <span style="font-size:0.58rem;font-style:italic;color:var(--gray);letter-spacing:0.02em;">Forged in truth. Built for each other.&#8482;</span>
+      </span>
+    </a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="enroll.html" style="color:var(--gold);font-weight:700;">✦ Coverage Assistant</a></li>
+      <li><a href="pathfinder.html" style="color:var(--gold);font-weight:700;">✦ PathFinder</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+1-574-392-0192" class="nav-phone">📞 (574) 392-0192</a>
+      <a href="tel:+15743920192" class="btn btn-primary">📞 Free Quote Call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="mc-hero">
+  <div class="container">
+    <div class="mc-hero-eyebrow">🏠 Mortgage Protection Risk Calculator</div>
+    <h1>What Would Your Family Face If Something Happened Tomorrow?</h1>
+    <p>Most people insure their home against fire — but not against the one risk that's far more likely: the loss of the income that pays for it. See your real numbers in 60 seconds.</p>
+    <div class="mc-trust-row">
+      <span>🔒 Private — nothing is saved or shared</span>
+      <span>⚡ Results update in real time</span>
+      <span>📞 Free consultation available</span>
+    </div>
+  </div>
+</div>
+
+<!-- CALCULATOR -->
+<div class="mc-wrap">
+  <div class="mc-grid">
+
+    <!-- INPUTS -->
+    <div class="mc-inputs">
+      <h2>Your Mortgage Details</h2>
+
+      <div class="mc-slider-group">
+        <div class="mc-slider-label">
+          <span>Remaining Mortgage Balance</span>
+          <span class="mc-slider-val" id="balLabel">$250,000</span>
+        </div>
+        <input type="range" id="balSlider" min="0" max="100" value="33" oninput="recalc()" />
+        <div class="mc-slider-ends"><span>$50,000</span><span>$750,000+</span></div>
+      </div>
+
+      <div class="mc-slider-group">
+        <div class="mc-slider-label">
+          <span>Monthly Payment</span>
+          <span class="mc-slider-val" id="payLabel">$1,400/mo</span>
+        </div>
+        <input type="range" id="paySlider" min="0" max="100" value="36" oninput="recalc()" />
+        <div class="mc-slider-ends"><span>$400/mo</span><span>$4,000+/mo</span></div>
+      </div>
+
+      <div class="mc-slider-group">
+        <div class="mc-slider-label">
+          <span>Years Remaining</span>
+          <span class="mc-slider-val" id="yrLabel">18 years</span>
+        </div>
+        <input type="range" id="yrSlider" min="1" max="30" value="18" oninput="recalc()" />
+        <div class="mc-slider-ends"><span>1 year</span><span>30 years</span></div>
+      </div>
+
+      <div class="mc-slider-group">
+        <div class="mc-slider-label" style="margin-bottom:.65rem;">Your Age Range</div>
+        <div class="mc-age-grid" id="ageGrid">
+          <button class="mc-age-btn" data-age="28" onclick="setAge(this)">Under 35</button>
+          <button class="mc-age-btn sel" data-age="42" onclick="setAge(this)">35 – 44</button>
+          <button class="mc-age-btn" data-age="52" onclick="setAge(this)">45 – 54</button>
+          <button class="mc-age-btn" data-age="62" onclick="setAge(this)">55 – 64</button>
+          <button class="mc-age-btn" data-age="70" onclick="setAge(this)">65 – 74</button>
+          <button class="mc-age-btn" data-age="79" onclick="setAge(this)">75+</button>
+        </div>
+      </div>
+
+      <div class="mc-slider-group" style="margin-bottom:0;">
+        <div class="mc-slider-label" style="margin-bottom:.65rem;">Tobacco Use (last 12 months)</div>
+        <div style="display:flex;gap:.65rem;">
+          <button class="mc-age-btn sel" style="flex:1;" data-tob="0" onclick="setTob(this)">Non-Tobacco</button>
+          <button class="mc-age-btn" style="flex:1;" data-tob="1" onclick="setTob(this)">Tobacco User</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTPUT -->
+    <div class="mc-output">
+      <div class="mc-output-eyebrow">📊 Your Risk Snapshot</div>
+      <div class="mc-danger-title">If something happened tomorrow, your family could face:</div>
+
+      <div class="mc-big-num" id="outBal">$250,000</div>
+      <div class="mc-big-label">remaining on your mortgage</div>
+
+      <div class="mc-stats">
+        <div class="mc-stat">
+          <span class="mc-stat-label">Monthly payment burden</span>
+          <span class="mc-stat-val" id="outPay">$1,400/mo</span>
+        </div>
+        <div class="mc-stat">
+          <span class="mc-stat-label">Years of payments left</span>
+          <span class="mc-stat-val" id="outYrs">18 years</span>
+        </div>
+        <div class="mc-stat">
+          <span class="mc-stat-label">Total remaining payments</span>
+          <span class="mc-stat-val" id="outTotal">$302,400</span>
+        </div>
+      </div>
+
+      <div class="mc-risk-wrap">
+        <div class="mc-risk-label-row"><span>Loan paid off</span><span>Loan balance remaining</span></div>
+        <div class="mc-risk-track"><div class="mc-risk-fill" id="riskFill" style="width:60%;background:#dc2626;"></div></div>
+      </div>
+
+      <div class="mc-narrative" id="outNarrative">
+        Without protection, your family would need to continue making <strong>$1,400 every month</strong> for <strong>18 more years</strong> — or find a buyer for the home in a difficult moment. The average family has less than 3 months of savings to absorb an income loss.
+      </div>
+
+      <div class="mc-coverage-box">
+        <div class="label">Estimated Coverage May Cost</div>
+        <div class="range" id="outCoverage">$28 – $62 / month</div>
+        <div class="note">Subject to carrier underwriting · Not a guaranteed quote</div>
+      </div>
+
+      <a href="pathfinder.html" class="mc-cta-primary">🚀 See My Coverage Options →</a>
+      <a href="tel:+15743920192" class="mc-cta-secondary">📞 Talk to Dominic — (574) 392-0192</a>
+
+      <div class="mc-disc">
+        All figures are estimates for illustrative purposes only. Coverage costs shown are general premium ranges based on typical carrier rates and are not a quote or offer of insurance. Actual premiums and eligibility are determined by carrier underwriting. TrueForge Life, LLC is an independent insurance agency.
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY IT MATTERS -->
+  <div class="mc-why">
+    <h2>Why Most Families Underestimate This Risk</h2>
+    <div class="mc-why-grid">
+      <div class="mc-why-card">
+        <div class="icon">📊</div>
+        <h3>The average U.S. mortgage balance is $244,000</h3>
+        <p>That's what a family inherits if the primary earner passes — and most have no plan for it.</p>
+      </div>
+      <div class="mc-why-card">
+        <div class="icon">⏱️</div>
+        <h3>Savings last an average of 87 days</h3>
+        <p>Most families have less than 3 months of emergency savings. A mortgage lasts decades.</p>
+      </div>
+      <div class="mc-why-card">
+        <div class="icon">🏦</div>
+        <h3>Lenders don't forgive — they foreclose</h3>
+        <p>When income stops, the bank doesn't pause the payment. Mortgage protection ensures it's covered.</p>
+      </div>
+      <div class="mc-why-card">
+        <div class="icon">💰</div>
+        <h3>Coverage costs less than most expect</h3>
+        <p>A $300,000 mortgage protection policy can often be obtained for the price of a streaming subscription — for some applicants.</p>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--gray-light);text-align:center;">
+      <p style="font-size:.85rem;color:var(--gray);margin-bottom:1rem;">Want to understand your full coverage picture beyond just the mortgage?</p>
+      <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;">
+        <a href="protection-score.html" style="background:var(--navy);color:#fff;font-weight:700;padding:.75rem 1.25rem;border-radius:9px;text-decoration:none;font-size:.88rem;">📊 Get Your Protection Score</a>
+        <a href="pathfinder.html" style="background:var(--off-white);color:var(--navy);font-weight:700;padding:.75rem 1.25rem;border-radius:9px;text-decoration:none;font-size:.88rem;border:2px solid var(--gray-light);">🧭 Try the PathFinder</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY BAR -->
+<div class="sticky-call-bar" style="display:flex;gap:0;">
+  <a href="tel:+15743920192" style="flex:1;border-right:1px solid rgba(255,255,255,0.2);">
+    📞 Tap to Call — (574) 392-0192
+    <span class="sub">Free consultation · No pressure · Speak with Dominic directly</span>
+  </a>
+  <a href="sms:+15743920192?body=Hi%20Dominic%2C%20I%27d%20like%20to%20discuss%20mortgage%20protection." style="flex-shrink:0;padding:0.85rem 1.1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.9);gap:0.2rem;">
+    💬<span>Text</span>
+  </a>
+</div>
+
+<!-- AI HELPER -->
+<button class="mc-ai-btn" onclick="toggleAI()">
+  <span class="mc-ai-dot"></span>Ask a Question
+</button>
+<div class="mc-ai-panel" id="aiPanel">
+  <div class="mc-ai-hd">
+    <div class="mc-ai-hd-left">
+      <div class="mc-ai-av">🏠</div>
+      <div><div class="mc-ai-title">Mortgage Protection Guide</div><div class="mc-ai-sub">Explains — never advises</div></div>
+    </div>
+    <button class="mc-ai-close" onclick="toggleAI()">✕</button>
+  </div>
+  <div class="mc-ai-msgs" id="aiMsgs">
+    <div class="mc-ai-msg bot">Hi! I can explain anything about mortgage protection, how these estimates work, or what happens during the application. What would you like to know?</div>
+  </div>
+  <div class="mc-ai-qs" id="aiQs">
+    <button class="mc-ai-qbtn" onclick="askQ(this)">What is mortgage protection insurance?</button>
+    <button class="mc-ai-qbtn" onclick="askQ(this)">How accurate are these estimates?</button>
+    <button class="mc-ai-qbtn" onclick="askQ(this)">Does the benefit go to the bank or my family?</button>
+    <button class="mc-ai-qbtn" onclick="askQ(this)">What if I have health conditions?</button>
+    <button class="mc-ai-qbtn" onclick="askQ(this)">How is this different from PMI?</button>
+  </div>
+  <div class="mc-ai-inp-row">
+    <input class="mc-ai-inp" id="aiInp" placeholder="Ask a question…" onkeydown="if(event.key==='Enter')sendAI()" />
+    <button class="mc-ai-send" onclick="sendAI()">→</button>
+  </div>
+  <div class="mc-ai-guard">Education only. For your specific situation — <a href="tel:+15743920192" style="color:var(--navy);font-weight:600;">call Dominic at (574) 392-0192</a>.</div>
+</div>
+
+<script src="//code.tidio.co/hakq0k87lfccnk5wfqyxoh49nj1stjxy.js" async></script>
+<script src="js/main.js"></script>
+<script>
+/* ─── SLIDER DATA ─────────────────────────────────────────────────────────── */
+const BAL_VALS = [50000,75000,100000,125000,150000,175000,200000,225000,250000,275000,300000,325000,350000,400000,450000,500000,550000,600000,650000,700000,750000];
+const PAY_VALS = [400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1800,2000,2200,2400,2600,2800,3000,3500,4000];
+
+let selAge = 42, selTob = 0;
+
+function sliderIdx(raw, arr) { return Math.min(Math.round((raw/100)*(arr.length-1)), arr.length-1); }
+
+function setAge(btn) {
+  document.querySelectorAll('.mc-age-btn[data-age]').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+  selAge = parseInt(btn.dataset.age);
+  recalc();
+}
+function setTob(btn) {
+  document.querySelectorAll('.mc-age-btn[data-tob]').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+  selTob = parseInt(btn.dataset.tob);
+  recalc();
+}
+
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+function recalc() {
+  const bal = BAL_VALS[sliderIdx(document.getElementById('balSlider').value, BAL_VALS)];
+  const pay = PAY_VALS[sliderIdx(document.getElementById('paySlider').value, PAY_VALS)];
+  const yrs = parseInt(document.getElementById('yrSlider').value);
+
+  document.getElementById('balLabel').textContent = fmt(bal);
+  document.getElementById('payLabel').textContent = fmt(pay) + '/mo';
+  document.getElementById('yrLabel').textContent  = yrs + ' year' + (yrs===1?'':'s');
+
+  const total = pay * 12 * yrs;
+  const pctRemain = Math.min(100, Math.round((bal / 400000) * 100));
+
+  document.getElementById('outBal').textContent   = fmt(bal);
+  document.getElementById('outPay').textContent   = fmt(pay) + '/mo';
+  document.getElementById('outYrs').textContent   = yrs + ' year' + (yrs===1?'':'s');
+  document.getElementById('outTotal').textContent = fmt(total) + ' total';
+
+  // Risk bar — shows how much of a "standard" loan is exposed
+  const riskPct = Math.min(95, Math.max(10, Math.round((bal / 750000) * 100)));
+  const fill = document.getElementById('riskFill');
+  fill.style.width = riskPct + '%';
+  fill.style.background = riskPct > 60 ? '#dc2626' : riskPct > 35 ? '#d97706' : '#16a34a';
+
+  // Narrative
+  const payFmt = fmt(pay);
+  document.getElementById('outNarrative').innerHTML =
+    `Without protection, your family would need to continue making <strong>${payFmt} every month</strong> for <strong>${yrs} more year${yrs===1?'':'s'}</strong> — or face selling the home under pressure. The average family has less than 90 days of savings to absorb a sudden income loss.`;
+
+  // Premium estimate
+  const [lo, hi] = estimatePremium(bal, selAge, selTob);
+  document.getElementById('outCoverage').textContent = fmt(lo) + ' – ' + fmt(hi) + ' / month';
+}
+
+function estimatePremium(coverage, age, tobacco) {
+  // Base rate per $1,000 of coverage per year (term life, simplified issue)
+  let base;
+  if      (age < 35) base = 0.55;
+  else if (age < 45) base = 0.95;
+  else if (age < 55) base = 1.60;
+  else if (age < 65) base = 2.80;
+  else if (age < 75) base = 5.00;
+  else               base = 8.50;
+
+  const tobAdj = tobacco ? 2.1 : 1.0;
+  const annual = base * (coverage / 1000) * tobAdj;
+  const monthly = annual / 12;
+  const lo = Math.max(14, Math.round(monthly * 0.82));
+  const hi = Math.round(monthly * 1.28);
+  return [lo, hi];
+}
+
+recalc();
+
+/* ─── AI WIDGET ──────────────────────────────────────────────────────────── */
+function toggleAI() { document.getElementById('aiPanel').classList.toggle('open'); }
+
+const KB = {
+  'mortgage protection': 'Mortgage protection is a life insurance policy that covers your outstanding loan balance if you pass away. The death benefit goes to your named beneficiary — not the bank — so your family decides whether to pay off the mortgage, keep making payments, or sell the home. They\'re in control, not the lender.',
+  'accurate': 'These estimates use general actuarial rate bands based on age, tobacco status, and coverage amount. They\'re directionally accurate but are NOT quotes. Actual rates depend on your specific health history, which carrier you qualify for, and the term length. Dominic can give you real numbers in a 10-minute call.',
+  'bank': 'Unlike lender-placed insurance (which benefits the bank), a mortgage protection policy pays the death benefit to YOUR named beneficiary — your spouse, children, or estate. They decide what to do with the money. That\'s a critical difference most people don\'t know about.',
+  'health': 'Health conditions don\'t automatically disqualify you. Many common conditions (diabetes, high blood pressure, past surgeries) are accepted. For mortgage protection specifically, simplified issue policies are available with just a health questionnaire — no blood draw or physical exam. Serious conditions may require a graded benefit or guaranteed issue policy. Call Dominic to discuss your specific situation.',
+  'pmi': 'PMI (Private Mortgage Insurance) protects the LENDER if you default on the loan. Mortgage protection insurance protects YOUR FAMILY if you die. They serve completely different purposes. PMI goes away once you reach 20% equity. Mortgage protection is something you choose to keep your family safe — completely separate.',
+  'replacement': '⚠️ If you\'re considering replacing an existing policy, never cancel it until a new one is in force. Dominic can walk you through a proper comparison.',
+  'hide': '⚠️ Always disclose all health information honestly on any insurance application. Misrepresentation can void a policy and deny your family the death benefit.',
+};
+
+function matchKB(q) {
+  const lq = q.toLowerCase();
+  if (lq.includes('hide') || lq.includes('lie')) return KB['hide'];
+  if (lq.includes('replac'))   return KB['replacement'];
+  if (lq.includes('pmi') || lq.includes('private mortgage')) return KB['pmi'];
+  if (lq.includes('bank') || lq.includes('lender') || lq.includes('who get')) return KB['bank'];
+  if (lq.includes('health') || lq.includes('condition') || lq.includes('sick')) return KB['health'];
+  if (lq.includes('accur') || lq.includes('estim') || lq.includes('how close') || lq.includes('right')) return KB['accurate'];
+  if (lq.includes('mortgage protection') || lq.includes('what is') || lq.includes('how does')) return KB['mortgage protection'];
+  return null;
+}
+
+function addMsg(txt, role) {
+  const box = document.getElementById('aiMsgs');
+  const d = document.createElement('div');
+  d.className = 'mc-ai-msg ' + role; d.innerHTML = txt;
+  box.appendChild(d); box.scrollTop = box.scrollHeight;
+}
+
+function sendAI() {
+  const inp = document.getElementById('aiInp');
+  const q = inp.value.trim(); if (!q) return;
+  addMsg(q, 'user'); inp.value = '';
+  document.getElementById('aiQs').style.display = 'none';
+  setTimeout(() => {
+    const a = matchKB(q);
+    addMsg(a || 'Great question — the answer depends on your specific situation. The fastest way to get a real answer is to <a href="tel:+15743920192">call Dominic at (574) 392-0192</a>. It\'s free and takes about 10 minutes.', 'bot');
+  }, 350);
+}
+
+function askQ(btn) {
+  document.getElementById('aiQs').style.display = 'none';
+  addMsg(btn.textContent, 'user');
+  setTimeout(() => { const a = matchKB(btn.textContent); if(a) addMsg(a, 'bot'); }, 320);
+}
+</script>
+</body>
+</html>

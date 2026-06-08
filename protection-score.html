@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Protection Score — See Your Coverage Grade | TrueForge Life</title>
+  <meta name="description" content="Get your free Family Protection Score (1–100). Answer 5 questions to see your coverage grade, identify gaps, and get a personalized action plan." />
+  <meta name="robots" content="index, follow" />
+  <meta name="geo.region" content="US-IN" />
+  <meta name="geo.placename" content="Indiana" />
+  <meta name="ICBM" content="41.6764, -86.2520" />
+  <link rel="canonical" href="https://trueforgeinsurance.com/protection-score.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Family Protection Score — TrueForge Life" />
+  <meta property="og:description" content="Find out how protected your family really is. 5 questions. Instant score. Free action plan." />
+  <meta property="og:url" content="https://trueforgeinsurance.com/protection-score.html" />
+  <meta property="og:image" content="https://trueforgeinsurance.com/images/agent-photo.jpg" />
+  <meta property="og:site_name" content="TrueForge Life" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Family Protection Score — TrueForge Life" />
+  <meta name="twitter:description" content="5 questions. Instant score 1–100. See exactly where your family's coverage gaps are." />
+  <meta name="twitter:image" content="https://trueforgeinsurance.com/images/agent-photo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Family Protection Score — TrueForge Life",
+    "description": "Take a 5-question quiz to discover your Family Protection Score (1–100) and get a personalized gap analysis and coverage recommendations.",
+    "url": "https://trueforgeinsurance.com/protection-score.html",
+    "isPartOf": {
+      "@type": "InsuranceAgency",
+      "name": "TrueForge Life",
+      "url": "https://trueforgeinsurance.com",
+      "address": { "@type": "PostalAddress", "addressRegion": "IN", "addressCountry": "US" }
+    }
+  }
+  </script>
+  <style>
+  body { background: #f0f4ff; }
+
+  /* ─── HERO ─── */
+  .ps-hero {
+    background: linear-gradient(135deg, #0a1f44 0%, #0d2a5e 60%, #142d6e 100%);
+    padding: 3rem 0 2.5rem; text-align: center;
+  }
+  .ps-eyebrow {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: rgba(201,151,58,.18); border: 1px solid rgba(201,151,58,.4);
+    color: var(--gold-light); font-size: .72rem; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    padding: .4rem 1rem; border-radius: 99px; margin-bottom: 1rem;
+  }
+  .ps-hero h1 { color: #fff; font-size: clamp(1.5rem,3.5vw,2.2rem); margin-bottom: .6rem; max-width: 560px; margin-inline: auto; }
+  .ps-hero p  { color: rgba(255,255,255,.72); font-size: .98rem; max-width: 500px; margin: 0 auto 1.5rem; line-height: 1.65; }
+  .ps-trust-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,.1); }
+  .ps-trust-row span { color: rgba(255,255,255,.65); font-size: .78rem; display: flex; align-items: center; gap: .3rem; }
+
+  /* ─── QUIZ SHELL ─── */
+  .ps-wrap { max-width: 680px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+
+  /* Progress bar */
+  .ps-progress { margin-bottom: 1.75rem; }
+  .ps-prog-row { display: flex; justify-content: space-between; font-size: .72rem; font-weight: 600; color: var(--gray); margin-bottom: .5rem; }
+  .ps-prog-track { height: 8px; background: var(--gray-light); border-radius: 99px; overflow: hidden; }
+  .ps-prog-fill  { height: 100%; background: linear-gradient(90deg, var(--navy), var(--gold)); border-radius: 99px; transition: width .4s ease; }
+
+  /* Question card */
+  .ps-card {
+    background: #fff; border-radius: 20px; padding: 2.25rem 2rem;
+    box-shadow: 0 10px 50px rgba(10,31,68,.12);
+    animation: fadeIn .25s ease;
+  }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+  .ps-q-num { font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--gold); margin-bottom: .5rem; }
+  .ps-q-text { font-size: 1.25rem; font-weight: 800; color: var(--navy); margin-bottom: 1.5rem; line-height: 1.35; }
+  .ps-q-sub  { font-size: .82rem; color: var(--gray); margin-top: -.9rem; margin-bottom: 1.4rem; }
+
+  .ps-opts { display: flex; flex-direction: column; gap: .65rem; }
+  .ps-opt {
+    display: flex; align-items: flex-start; gap: .85rem;
+    padding: 1rem 1.15rem; border: 2px solid var(--gray-light);
+    border-radius: 12px; cursor: pointer; font-family: var(--font);
+    background: #fff; text-align: left; transition: all .15s; width: 100%;
+  }
+  .ps-opt:hover { border-color: var(--navy); background: #f0f4ff; }
+  .ps-opt.sel   { border-color: var(--navy); background: #eef2ff; }
+  .ps-opt-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: .05rem; }
+  .ps-opt-text { flex: 1; }
+  .ps-opt-label { font-size: .92rem; font-weight: 700; color: var(--navy); display: block; }
+  .ps-opt-desc  { font-size: .75rem; color: var(--gray); margin-top: .15rem; display: block; }
+
+  .ps-next {
+    margin-top: 1.5rem; width: 100%;
+    background: var(--navy); color: #fff;
+    border: none; border-radius: 11px; padding: 1rem 1.5rem;
+    font-size: 1rem; font-weight: 800; font-family: var(--font);
+    cursor: pointer; transition: all .18s; display: none;
+    justify-content: center; align-items: center; gap: .4rem;
+  }
+  .ps-next.visible { display: flex; }
+  .ps-next:hover { background: #0d2a5e; transform: translateY(-2px); }
+
+  /* ─── RESULTS ─── */
+  .ps-results { display: none; }
+  .ps-results.show { display: block; animation: fadeIn .4s ease; }
+
+  /* Score ring */
+  .ps-score-ring-wrap { text-align: center; margin-bottom: 2rem; }
+  .ps-ring-svg { width: 200px; height: 200px; margin: 0 auto 1rem; display: block; }
+  .ps-ring-bg   { fill: none; stroke: #e5e7eb; stroke-width: 14; }
+  .ps-ring-fill { fill: none; stroke-width: 14; stroke-linecap: round;
+    transform: rotate(-90deg); transform-origin: center;
+    transition: stroke-dasharray 1.2s ease, stroke .4s; }
+  .ps-score-num { font-size: 2.5rem; font-weight: 800; }
+  .ps-score-label { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .ps-grade-badge {
+    display: inline-block; padding: .4rem 1.2rem; border-radius: 99px;
+    font-size: .95rem; font-weight: 800; margin-top: .5rem;
+  }
+
+  /* Category breakdown */
+  .ps-cats { display: flex; flex-direction: column; gap: .8rem; margin-bottom: 1.75rem; }
+  .ps-cat-row { }
+  .ps-cat-top { display: flex; justify-content: space-between; font-size: .8rem; font-weight: 600; color: var(--navy); margin-bottom: .35rem; }
+  .ps-cat-track { height: 8px; background: var(--gray-light); border-radius: 99px; overflow: hidden; }
+  .ps-cat-fill  { height: 100%; border-radius: 99px; transition: width 1s ease; }
+
+  /* Gap cards */
+  .ps-gaps-title { font-size: 1.1rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem; }
+  .ps-gaps { display: flex; flex-direction: column; gap: .75rem; margin-bottom: 1.75rem; }
+  .ps-gap-card {
+    border-radius: 12px; padding: 1rem 1.15rem;
+    display: flex; align-items: flex-start; gap: .8rem;
+  }
+  .ps-gap-card.critical { background: #fef2f2; border: 1px solid #fca5a5; }
+  .ps-gap-card.warning  { background: #fffbeb; border: 1px solid #fde68a; }
+  .ps-gap-card.good     { background: #f0fdf4; border: 1px solid #86efac; }
+  .ps-gap-icon { font-size: 1.25rem; flex-shrink: 0; }
+  .ps-gap-body h4 { font-size: .88rem; font-weight: 800; margin-bottom: .25rem; }
+  .ps-gap-card.critical h4 { color: #991b1b; }
+  .ps-gap-card.warning  h4 { color: #92400e; }
+  .ps-gap-card.good     h4 { color: #166534; }
+  .ps-gap-body p { font-size: .78rem; line-height: 1.5; color: var(--gray); margin: 0; }
+
+  /* Result CTAs */
+  .ps-res-ctas { display: flex; flex-direction: column; gap: .65rem; margin-bottom: 1.75rem; }
+  .ps-res-cta-primary {
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+    background: var(--gold); color: var(--navy); font-weight: 800; font-size: 1rem;
+    padding: 1rem 1.5rem; border-radius: 10px; text-decoration: none;
+    box-shadow: 0 4px 16px rgba(201,151,58,.4); transition: all .2s; text-align: center;
+  }
+  .ps-res-cta-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .ps-res-cta-secondary {
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+    background: var(--navy); color: #fff; font-weight: 700; font-size: .9rem;
+    padding: .85rem 1.25rem; border-radius: 10px; text-decoration: none; text-align: center; transition: all .18s;
+  }
+  .ps-res-cta-secondary:hover { background: #0d2a5e; }
+  .ps-retake { background: none; border: none; color: var(--gray); font-size: .78rem; font-family: var(--font); cursor: pointer; text-decoration: underline; text-align: center; width: 100%; margin-top: .5rem; }
+
+  .ps-disc { font-size: .67rem; color: var(--gray); line-height: 1.5; padding: 1rem; border: 1px solid var(--gray-light); border-radius: 10px; margin-top: 1.25rem; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo-text" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;">
+      <img src="images/logo-icon.svg" alt="TrueForge Life logo" height="38" width="36" style="display:block;flex-shrink:0;" />
+      <span style="display:flex;flex-direction:column;line-height:1.1;">
+        <span style="font-family:Georgia,serif;font-weight:700;font-size:1rem;letter-spacing:0.08em;color:var(--navy);">TRUEFORGE <span style="color:var(--gold)">LIFE</span></span>
+        <span style="font-size:0.58rem;font-style:italic;color:var(--gray);letter-spacing:0.02em;">Forged in truth. Built for each other.&#8482;</span>
+      </span>
+    </a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="enroll.html" style="color:var(--gold);font-weight:700;">✦ Coverage Assistant</a></li>
+      <li><a href="pathfinder.html" style="color:var(--gold);font-weight:700;">✦ PathFinder</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+1-574-392-0192" class="nav-phone">📞 (574) 392-0192</a>
+      <a href="tel:+15743920192" class="btn btn-primary">📞 Free Quote Call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="ps-hero">
+  <div class="container">
+    <div class="ps-eyebrow">📊 Family Protection Score</div>
+    <h1>Find Out How Protected Your Family Really Is</h1>
+    <p>5 questions. 60 seconds. Get your score from 1–100, see exactly where your gaps are, and get a personalized action plan — completely free.</p>
+    <div class="ps-trust-row">
+      <span>🔒 No account needed — 100% private</span>
+      <span>⚡ Instant score &amp; analysis</span>
+      <span>✅ Based on real coverage principles</span>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="ps-wrap">
+
+  <!-- QUIZ SECTION -->
+  <div id="quizSection">
+    <div class="ps-progress">
+      <div class="ps-prog-row">
+        <span id="progLabel">Question 1 of 5</span>
+        <span id="progPct">0% complete</span>
+      </div>
+      <div class="ps-prog-track"><div class="ps-prog-fill" id="progFill" style="width:0%"></div></div>
+    </div>
+
+    <div class="ps-card" id="questionCard">
+      <!-- Q content injected by JS -->
+    </div>
+  </div>
+
+  <!-- RESULTS SECTION -->
+  <div id="resultsSection" class="ps-results">
+    <!-- Score ring -->
+    <div class="ps-card" style="margin-bottom:1.25rem;">
+      <div class="ps-score-ring-wrap">
+        <svg class="ps-ring-svg" viewBox="0 0 200 200">
+          <circle class="ps-ring-bg" cx="100" cy="100" r="82"/>
+          <circle class="ps-ring-fill" id="ringFill" cx="100" cy="100" r="82" stroke="#16a34a" stroke-dasharray="0 515"/>
+          <text x="100" y="92" text-anchor="middle" font-family="Inter,sans-serif" font-size="46" font-weight="800" id="scoreNum" fill="#0a1f44">0</text>
+          <text x="100" y="116" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#6b7280">out of 100</text>
+        </svg>
+        <div id="gradeBadge" class="ps-grade-badge"></div>
+      </div>
+
+      <div style="font-size:.82rem;color:var(--gray);text-align:center;margin-bottom:1.5rem;line-height:1.6;" id="scoreNarrative"></div>
+
+      <!-- Category bars -->
+      <div style="font-size:.9rem;font-weight:800;color:var(--navy);margin-bottom:.9rem;">Score Breakdown by Category</div>
+      <div class="ps-cats" id="catBars"></div>
+    </div>
+
+    <!-- Gap analysis -->
+    <div class="ps-card" style="margin-bottom:1.25rem;">
+      <div class="ps-gaps-title">Your Protection Gap Analysis</div>
+      <div class="ps-gaps" id="gapCards"></div>
+    </div>
+
+    <!-- CTAs -->
+    <div class="ps-card">
+      <div style="text-align:center;margin-bottom:1.25rem;">
+        <div style="font-size:1.1rem;font-weight:800;color:var(--navy);margin-bottom:.4rem;">Your Personalized Next Step</div>
+        <div style="font-size:.82rem;color:var(--gray);" id="ctaContext"></div>
+      </div>
+      <div class="ps-res-ctas">
+        <a href="pathfinder.html" class="ps-res-cta-primary">🧭 Get My Coverage Recommendations →</a>
+        <a href="tel:+15743920192" class="ps-res-cta-secondary">📞 Talk to Dominic — (574) 392-0192</a>
+      </div>
+      <div style="text-align:center;">
+        <button class="ps-retake" onclick="resetQuiz()">↩ Retake the quiz</button>
+      </div>
+      <div class="ps-disc">
+        This score is for educational purposes only and is not an assessment of your eligibility for any insurance product. Coverage recommendations are general in nature. Speak with a licensed agent like Dominic Raciti to understand your specific options. TrueForge Life, LLC — licensed independent insurance agency.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="sticky-call-bar" style="display:flex;gap:0;">
+  <a href="tel:+15743920192" style="flex:1;border-right:1px solid rgba(255,255,255,0.2);">
+    📞 Tap to Call — (574) 392-0192
+    <span class="sub">Free consultation · No pressure · Speak with Dominic directly</span>
+  </a>
+  <a href="sms:+15743920192?body=Hi%20Dominic%2C%20I%27d%20like%20to%20discuss%20my%20coverage%20options." style="flex-shrink:0;padding:0.85rem 1.1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.9);gap:0.2rem;">
+    💬<span>Text</span>
+  </a>
+</div>
+
+<script src="//code.tidio.co/hakq0k87lfccnk5wfqyxoh49nj1stjxy.js" async></script>
+<script src="js/main.js"></script>
+<script>
+/* ════════════════════════════════════════════════════════════
+   QUIZ DATA
+════════════════════════════════════════════════════════════ */
+const QUESTIONS = [
+  {
+    num: 1,
+    text: "How many people financially depend on your income?",
+    sub: "Include a spouse or partner who would need time to rebuild income if you were gone.",
+    category: "Dependent Coverage",
+    opts: [
+      { icon: "🧑", label: "Just me",            desc: "No dependents — covering only yourself",     pts: 10, val: "none" },
+      { icon: "👫", label: "1 person",            desc: "A spouse, partner, or one child",             pts: 7,  val: "one" },
+      { icon: "👨‍👩‍👧", label: "2–3 people",          desc: "A family with young children",              pts: 4,  val: "few" },
+      { icon: "👨‍👩‍👧‍👦", label: "4 or more people",    desc: "A large family or extended dependents",     pts: 2,  val: "many" },
+    ]
+  },
+  {
+    num: 2,
+    text: "Do you have a mortgage or major debt your family couldn't handle alone?",
+    sub: "Think: what obligations would your family be left with if your income stopped.",
+    category: "Mortgage Protection",
+    opts: [
+      { icon: "🏠", label: "Yes — mortgage + other debts",  desc: "Significant financial obligations",              pts: 2,  val: "high" },
+      { icon: "🏡", label: "Yes — mortgage only",           desc: "Home loan is the primary obligation",            pts: 5,  val: "mort" },
+      { icon: "💳", label: "Some debt, no mortgage",        desc: "Car payments, student loans, etc.",              pts: 7,  val: "debt" },
+      { icon: "✅", label: "No significant debt",           desc: "Home paid off or no major obligations",          pts: 10, val: "none" },
+    ]
+  },
+  {
+    num: 3,
+    text: "What is your household's approximate annual income?",
+    sub: "Used to estimate how much coverage your family would need to replace your income.",
+    category: "Income Replacement",
+    opts: [
+      { icon: "💵", label: "Under $50,000",           desc: "Essential coverage is still critical",          pts: 6,  val: "low",  inc: 35000 },
+      { icon: "💵", label: "$50,000 – $100,000",      desc: "Standard middle-income range",                  pts: 7,  val: "mid",  inc: 75000 },
+      { icon: "💵", label: "$100,000 – $200,000",     desc: "Higher income = larger gap without coverage",   pts: 8,  val: "hi",   inc: 150000 },
+      { icon: "💵", label: "$200,000+",               desc: "Significant replacement coverage needed",       pts: 9,  val: "vhi",  inc: 250000 },
+    ]
+  },
+  {
+    num: 4,
+    text: "How much life insurance do you currently have in place?",
+    sub: "Include all policies — employer-provided group life, personal policies, etc.",
+    category: "Coverage Amount",
+    opts: [
+      { icon: "❌", label: "None",                      desc: "No life insurance at all",                     pts: 0,  val: "none", cov: 0 },
+      { icon: "⚡", label: "Under $50,000",              desc: "Small policy or minimal group life",            pts: 3,  val: "low",  cov: 25000 },
+      { icon: "📋", label: "$50,000 – $250,000",        desc: "Moderate coverage",                             pts: 7,  val: "mid",  cov: 150000 },
+      { icon: "🛡️", label: "Over $250,000",              desc: "Substantial coverage in place",                 pts: 14, val: "hi",   cov: 350000 },
+    ]
+  },
+  {
+    num: 5,
+    text: "How old are you?",
+    sub: "Age affects both the cost of coverage and how long your family may depend on your income.",
+    category: "Age & Timing",
+    opts: [
+      { icon: "🌱", label: "Under 35",          desc: "Best rates — now is the ideal time to lock in",        pts: 10, val: "young", age: 28 },
+      { icon: "📈", label: "35 – 49",           desc: "Good rates available — act before health changes",      pts: 8,  val: "mid",   age: 42 },
+      { icon: "⏰", label: "50 – 64",           desc: "Coverage still available, rates higher with delay",     pts: 5,  val: "older", age: 57 },
+      { icon: "🔴", label: "65 or older",        desc: "Final expense / guaranteed issue options available",   pts: 2,  val: "snr",  age: 70 },
+    ]
+  }
+];
+
+/* ════════════════════════════════════════════════════════════
+   STATE
+════════════════════════════════════════════════════════════ */
+let cur = 0;
+let answers = [];
+
+/* ════════════════════════════════════════════════════════════
+   RENDER QUESTION
+════════════════════════════════════════════════════════════ */
+function renderQ() {
+  const q = QUESTIONS[cur];
+  const pct = Math.round((cur / QUESTIONS.length) * 100);
+  document.getElementById('progLabel').textContent = `Question ${cur + 1} of ${QUESTIONS.length}`;
+  document.getElementById('progPct').textContent   = pct + '% complete';
+  document.getElementById('progFill').style.width  = pct + '%';
+
+  let html = `<div class="ps-q-num">Question ${q.num} of ${QUESTIONS.length} · ${q.category}</div>`;
+  html += `<div class="ps-q-text">${q.text}</div>`;
+  if (q.sub) html += `<div class="ps-q-sub">${q.sub}</div>`;
+  html += `<div class="ps-opts">`;
+  q.opts.forEach((o, i) => {
+    const sel = answers[cur] === i ? ' sel' : '';
+    html += `<button class="ps-opt${sel}" onclick="pick(${i})">
+      <span class="ps-opt-icon">${o.icon}</span>
+      <span class="ps-opt-text">
+        <span class="ps-opt-label">${o.label}</span>
+        <span class="ps-opt-desc">${o.desc}</span>
+      </span>
+    </button>`;
+  });
+  html += `</div>`;
+  html += `<button class="ps-next${answers[cur] !== undefined ? ' visible' : ''}" id="nextBtn" onclick="next()">
+    ${cur < QUESTIONS.length - 1 ? 'Next Question →' : '📊 Get My Protection Score →'}
+  </button>`;
+  document.getElementById('questionCard').innerHTML = html;
+}
+
+function pick(idx) {
+  answers[cur] = idx;
+  renderQ();
+}
+
+function next() {
+  if (answers[cur] === undefined) return;
+  if (cur < QUESTIONS.length - 1) {
+    cur++;
+    renderQ();
+  } else {
+    showResults();
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   SCORE ENGINE
+════════════════════════════════════════════════════════════ */
+
+// Max pts per question: Q1=10, Q2=10, Q3=9, Q4=14, Q5=10 → raw max=53
+// Category weights: Coverage Amount (0-30), Mortgage (0-20), Dependents (0-20), Income (0-20), Age (0-10)
+// Scale raw score to 0-100
+
+const CAT_MAX = { "Coverage Amount": 14, "Mortgage Protection": 10, "Dependent Coverage": 10, "Income Replacement": 9, "Age & Timing": 10 };
+const CAT_SCALE = { "Coverage Amount": 30, "Mortgage Protection": 20, "Dependent Coverage": 20, "Income Replacement": 20, "Age & Timing": 10 };
+
+function calcScore() {
+  let catPts = {};
+  QUESTIONS.forEach((q, i) => {
+    const pts = q.opts[answers[i]].pts;
+    catPts[q.category] = (catPts[q.category] || 0) + pts;
+  });
+
+  let total = 0;
+  let catScores = {};
+  Object.keys(CAT_MAX).forEach(cat => {
+    const raw = catPts[cat] || 0;
+    const scaled = Math.round((raw / CAT_MAX[cat]) * CAT_SCALE[cat]);
+    catScores[cat] = { raw, scaled, max: CAT_SCALE[cat] };
+    total += scaled;
+  });
+
+  return { total, catScores };
+}
+
+function gradeFor(score) {
+  if (score >= 80) return { label: 'Well Protected', color: '#16a34a', bg: '#dcfce7', ring: '#16a34a' };
+  if (score >= 60) return { label: 'Partially Protected', color: '#d97706', bg: '#fef9c3', ring: '#eab308' };
+  if (score >= 40) return { label: 'At Risk', color: '#ea580c', bg: '#ffedd5', ring: '#f97316' };
+  return { label: 'Critically Unprotected', color: '#dc2626', bg: '#fee2e2', ring: '#dc2626' };
+}
+
+/* ════════════════════════════════════════════════════════════
+   GAP ANALYSIS
+════════════════════════════════════════════════════════════ */
+function buildGaps(catScores) {
+  const ans = answers;
+  const gaps = [];
+  const depVal  = QUESTIONS[0].opts[ans[0]].val;
+  const mortVal = QUESTIONS[1].opts[ans[1]].val;
+  const incVal  = QUESTIONS[2].opts[ans[2]].inc;
+  const covVal  = QUESTIONS[3].opts[ans[3]].cov;
+  const ageVal  = QUESTIONS[4].opts[ans[4]].age;
+
+  // Coverage adequacy
+  const idealCov = incVal * 10;
+  const covPct   = catScores['Coverage Amount'].scaled;
+  if (covVal === 0) {
+    gaps.push({ type: 'critical', icon: '❌', title: 'No Life Insurance — Highest Priority', body: `You have zero life insurance coverage. Your family would face all debts, expenses, and income replacement needs with no financial safety net. This is the single most important gap to address.` });
+  } else if (covVal < idealCov * 0.4) {
+    gaps.push({ type: 'critical', icon: '⚠️', title: 'Severely Under-Insured', body: `Your current coverage of ~$${covVal.toLocaleString()} covers only a fraction of your recommended amount (~$${idealCov.toLocaleString()}). A loss would leave your family in a very difficult position.` });
+  } else if (covVal < idealCov * 0.75) {
+    gaps.push({ type: 'warning', icon: '⚡', title: 'Coverage Gap — Partial Protection', body: `Your current coverage is a good start but may fall short. Aim for 10× your annual income (~$${idealCov.toLocaleString()}) to fully replace earnings for your family.` });
+  } else {
+    gaps.push({ type: 'good', icon: '✅', title: 'Coverage Amount — Strong', body: `Your current coverage aligns well with income-replacement guidelines. Keep policies current and review after major life events.` });
+  }
+
+  // Mortgage
+  if (mortVal === 'high') {
+    gaps.push({ type: 'critical', icon: '🏠', title: 'Mortgage + Debt — Significant Exposure', body: `Your family carries both a mortgage and additional debt. Without a dedicated mortgage protection policy, these obligations continue regardless of income. This double exposure is one of the most common causes of financial hardship after a loss.` });
+  } else if (mortVal === 'mort') {
+    gaps.push({ type: 'warning', icon: '🏡', title: 'Mortgage Protection — Review Needed', body: `A dedicated mortgage protection policy ensures your home is secure no matter what. Even if you have general life insurance, a separate policy earmarked for the mortgage gives your family certainty.` });
+  } else if (mortVal !== 'none') {
+    gaps.push({ type: 'warning', icon: '💳', title: 'Outstanding Debt — Consider Coverage', body: `Your debts could become a burden for surviving family members. Coverage that specifically addresses these obligations may be worth exploring.` });
+  } else {
+    gaps.push({ type: 'good', icon: '✅', title: 'Mortgage / Debt — Low Exposure', body: `With no major mortgage or debt obligations, your family's financial risk is lower. Focus on income replacement and any remaining gaps.` });
+  }
+
+  // Dependents
+  if (depVal === 'many') {
+    gaps.push({ type: 'critical', icon: '👨‍👩‍👧‍👦', title: 'Large Family — Maximum Protection Needed', body: `With 4+ dependents, your coverage needs are above average. Each person relying on your income represents a significant financial obligation. Review your total coverage to ensure all needs are met.` });
+  } else if (depVal === 'few') {
+    gaps.push({ type: 'warning', icon: '👨‍👩‍👧', title: 'Family Coverage — Prioritize Children', body: `With young children depending on your income, protection is essential. Consider both income replacement and a term policy that covers your children through college age.` });
+  } else if (depVal === 'one') {
+    gaps.push({ type: 'warning', icon: '👫', title: 'Spousal / Partner Protection', body: `Your spouse or partner would need time to rebuild income and stability. Coverage that replaces 2–3 years of income gives them financial breathing room.` });
+  } else {
+    gaps.push({ type: 'good', icon: '✅', title: 'Dependents — Lower Risk Profile', body: `With no dependents, your primary concern is final expenses and any debts you'd leave behind. A modest final expense policy may be all you need.` });
+  }
+
+  // Age / timing
+  if (ageVal < 35) {
+    gaps.push({ type: 'good', icon: '🌱', title: 'Ideal Age to Lock In Rates', body: `You are in the best window for affordable life insurance. Rates increase with age and health changes — locking in coverage now protects your insurability and your wallet for decades.` });
+  } else if (ageVal < 50) {
+    gaps.push({ type: 'warning', icon: '⏰', title: 'Act Before Rates Increase Further', body: `Rates are still favorable, but each year of delay increases premiums. A health event could affect insurability. Now is the time to secure coverage.` });
+  } else if (ageVal < 65) {
+    gaps.push({ type: 'warning', icon: '⚡', title: 'Coverage Window is Narrowing', body: `Options still exist, but fewer carriers and higher rates apply. Final expense and simplified-issue products are a practical path if health is a concern.` });
+  } else {
+    gaps.push({ type: 'critical', icon: '🔴', title: 'Guaranteed Options — Act Now', body: `At this stage, guaranteed issue or graded benefit final expense policies are the primary path. These have no health questions and ensure your family avoids funeral and final expense burdens.` });
+  }
+
+  return gaps;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SHOW RESULTS
+════════════════════════════════════════════════════════════ */
+function showResults() {
+  document.getElementById('quizSection').style.display = 'none';
+  document.getElementById('progFill').style.width = '100%';
+
+  const { total, catScores } = calcScore();
+  const grade = gradeFor(total);
+
+  // Animate ring
+  const circ = 2 * Math.PI * 82; // ≈515
+  const fill  = (total / 100) * circ;
+
+  document.getElementById('resultsSection').classList.add('show');
+
+  setTimeout(() => {
+    document.getElementById('ringFill').style.stroke = grade.ring;
+    document.getElementById('ringFill').style.strokeDasharray = `${fill} ${circ}`;
+
+    // Count up score
+    let n = 0;
+    const el = document.getElementById('scoreNum');
+    const t = setInterval(() => {
+      n = Math.min(n + 2, total);
+      el.textContent = n;
+      if (n >= total) clearInterval(t);
+    }, 18);
+  }, 100);
+
+  document.getElementById('gradeBadge').textContent = grade.label;
+  document.getElementById('gradeBadge').style.background = grade.bg;
+  document.getElementById('gradeBadge').style.color = grade.color;
+
+  // Narrative
+  const narratives = {
+    crit: `Your score reveals significant gaps in your family's protection. The good news: coverage is available and many gaps can be addressed quickly and affordably. The most important step is to start now.`,
+    risk: `You have some protection in place, but key gaps remain that could leave your family vulnerable. Targeted improvements can move your score meaningfully in a short time.`,
+    part: `You're better protected than most, but there are still meaningful gaps. A focused review of the flagged areas can bring you to a fully protected status.`,
+    well: `Your family has solid protection. Continue reviewing your coverage after major life events (new home, new child, job change) to stay ahead of evolving needs.`
+  };
+  const narr = total < 40 ? narratives.crit : total < 60 ? narratives.risk : total < 80 ? narratives.part : narratives.well;
+  document.getElementById('scoreNarrative').textContent = narr;
+
+  // Category bars
+  const catOrder = ["Coverage Amount", "Mortgage Protection", "Dependent Coverage", "Income Replacement", "Age & Timing"];
+  let catHtml = '';
+  catOrder.forEach(cat => {
+    const { scaled, max } = catScores[cat];
+    const pct = Math.round((scaled / max) * 100);
+    const color = pct >= 75 ? '#16a34a' : pct >= 50 ? '#eab308' : pct >= 25 ? '#f97316' : '#dc2626';
+    catHtml += `<div class="ps-cat-row">
+      <div class="ps-cat-top"><span>${cat}</span><span>${scaled}/${max}</span></div>
+      <div class="ps-cat-track"><div class="ps-cat-fill" style="width:0%;background:${color};" data-pct="${pct}"></div></div>
+    </div>`;
+  });
+  document.getElementById('catBars').innerHTML = catHtml;
+  setTimeout(() => {
+    document.querySelectorAll('.ps-cat-fill').forEach(el => {
+      el.style.width = el.dataset.pct + '%';
+    });
+  }, 300);
+
+  // Gaps
+  const gaps = buildGaps(catScores);
+  const gapHtml = gaps.map(g => `<div class="ps-gap-card ${g.type}">
+    <span class="ps-gap-icon">${g.icon}</span>
+    <div class="ps-gap-body"><h4>${g.title}</h4><p>${g.body}</p></div>
+  </div>`).join('');
+  document.getElementById('gapCards').innerHTML = gapHtml;
+
+  // CTA context
+  const ctxMap = {
+    crit: "Based on your score, we recommend starting with the PathFinder to identify the best type of coverage for your situation, then speaking with Dominic to get real numbers quickly.",
+    risk: "Your gaps are addressable. The PathFinder will route you to the right product type, and Dominic can put a real quote in front of you in under 10 minutes.",
+    part: "You're close to full protection. The PathFinder can help fill the specific gaps identified above.",
+    well: "Your coverage looks solid. A quick review with Dominic can confirm you're optimized and identify any policy overlaps or savings."
+  };
+  document.getElementById('ctaContext').textContent = total < 40 ? ctxMap.crit : total < 60 ? ctxMap.risk : total < 80 ? ctxMap.part : ctxMap.well;
+}
+
+function resetQuiz() {
+  cur = 0; answers = [];
+  document.getElementById('quizSection').style.display = 'block';
+  document.getElementById('resultsSection').classList.remove('show');
+  document.getElementById('progFill').style.width = '0%';
+  renderQ();
+}
+
+// Init
+renderQ();
+</script>
+</body>
+</html>
