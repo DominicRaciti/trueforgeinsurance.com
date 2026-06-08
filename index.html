@@ -13,6 +13,9 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
   <link rel="stylesheet" href="css/styles.css" />
   <!-- SEO: Canonical -->
+    <meta name="geo.region" content="US-IN" />
+  <meta name="geo.placename" content="Indiana" />
+  <meta name="ICBM" content="41.6764, -86.2520" />
   <link rel="canonical" href="https://trueforgeinsurance.com/" />
   <!-- SEO: Open Graph -->
   <meta property="og:type" content="website" />
@@ -31,6 +34,11 @@
     "telephone": "+15743920192",
     "email": "info@trueforgeinsurance.com",
     "description": "Independent life insurance agency specializing in term life, mortgage protection, IUL, and final expense coverage for families across 40+ states.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "IN",
+      "addressCountry": "US"
+    },
     "areaServed": "US",
     "priceRange": "Free Consultation",
     "openingHours": ["Mo-Fr 09:00-20:00", "Sa 09:00-17:00"],
@@ -319,7 +327,7 @@
       <!-- Licensed Agent Profile -->
       <div style="background:var(--white);border-radius:14px;padding:2rem;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:1rem;">
         <div style="display:flex;align-items:center;gap:1rem;">
-          <img src="images/agent-photo.jpg" alt="Dominic Raciti, Licensed Insurance Agent" width="64" height="64" style="width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--gold);flex-shrink:0;" />
+          <img loading="lazy" src="images/agent-photo.jpg" alt="Dominic Raciti, Licensed Insurance Agent" width="64" height="64" style="width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--gold);flex-shrink:0;" />
           <div>
             <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.15rem;">Your Licensed Agent</div>
             <div style="font-size:1.15rem;font-weight:800;color:var(--navy);">Dominic Raciti</div>
@@ -461,7 +469,7 @@
         <!-- Big CTA card -->
         <div style="background:var(--navy);border-radius:14px;padding:2rem;flex:1;display:flex;flex-direction:column;justify-content:center;">
           <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;">
-            <img src="images/agent-photo.jpg" alt="Dominic Raciti" width="56" height="56" style="width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--gold);flex-shrink:0;" />
+            <img loading="lazy" src="images/agent-photo.jpg" alt="Dominic Raciti" width="56" height="56" style="width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--gold);flex-shrink:0;" />
             <div>
               <div style="color:var(--gold);font-weight:800;font-size:1rem;">Talk to Dominic</div>
               <div style="color:rgba(255,255,255,0.65);font-size:0.8rem;">Licensed Agent · Independent · No Pressure</div>
