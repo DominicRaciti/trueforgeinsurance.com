@@ -1101,3 +1101,12 @@ section {
   .senior-band-inner { grid-template-columns: 1fr; }
   .senior-band-ctas { align-items: stretch; }
 }
+
+/* Pulse animation for sticky call bar */
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 -4px 20px rgba(0,0,0,0.2); }
+  50% { box-shadow: 0 -4px 30px rgba(201,151,58,0.6), 0 0 0 4px rgba(201,151,58,0.2); }
+}
+.sticky-call-bar {
+  animation: pulse-gold 2.5s ease-in-out infinite;
+}
