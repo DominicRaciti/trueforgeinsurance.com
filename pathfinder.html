@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coverage PathFinder — TrueForge Life | Find Your Best Fit</title>
+  <meta name="description" content="Answer 7 questions and get an estimated premium range, eligibility category, and your best next step — final expense, mortgage protection, or a call with Dominic." />
+  <link rel="canonical" href="https://trueforgeinsurance.com/pathfinder.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Coverage PathFinder — TrueForge Life" />
+  <meta property="og:description" content="7 questions. Estimated premiums. Your best path to coverage — final expense, mortgage protection, or term life." />
+  <meta property="og:url" content="https://trueforgeinsurance.com/pathfinder.html" />
+  <meta property="og:image" content="https://trueforgeinsurance.com/images/agent-photo.jpg" />
+  <meta property="og:site_name" content="TrueForge Life" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Coverage PathFinder — TrueForge Life" />
+  <meta name="twitter:description" content="7 questions. Estimated premiums. Your best path to coverage." />
+  <meta name="twitter:image" content="https://trueforgeinsurance.com/images/agent-photo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "TrueForge Life Coverage PathFinder",
+    "description": "A guided life insurance tool that estimates premium ranges and routes prospects to the right Integrity enrollment path.",
+    "url": "https://trueforgeinsurance.com/pathfinder.html",
+    "isPartOf": { "@type": "InsuranceAgency", "name": "TrueForge Life", "url": "https://trueforgeinsurance.com" }
+  }
+  </script>
+  <style>
+  /* ═══════════════════════════════════════════
+     PATHFINDER — PAGE SHELL
+  ═══════════════════════════════════════════ */
+  body { background: #f0f4ff; }
+
+  .pf-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #0d2a5e 100%);
+    padding: 2.75rem 0 2.25rem;
+    text-align: center;
+  }
+  .pf-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(201,151,58,0.18);
+    border: 1px solid rgba(201,151,58,0.4);
+    color: var(--gold-light);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 99px;
+    margin-bottom: 1rem;
+  }
+  .pf-hero h1 {
+    color: var(--white);
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    margin-bottom: 0.5rem;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .pf-hero p {
+    color: rgba(255,255,255,0.72);
+    font-size: 0.95rem;
+    max-width: 520px;
+    margin: 0 auto 1.25rem;
+    line-height: 1.6;
+  }
+  .pf-trust-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 0.5rem;
+  }
+  .pf-trust-row span {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.78rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .pf-trust-row em { font-style: normal; color: var(--gold-light); }
+
+  /* ═══════════════════════════════════════════
+     PROGRESS
+  ═══════════════════════════════════════════ */
+  .pf-progress {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-light);
+    padding: 0.85rem 0;
+    position: sticky;
+    top: 68px;
+    z-index: 80;
+  }
+  .pf-progress-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .pf-progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.45rem;
+    font-size: 0.78rem;
+  }
+  .pf-progress-label { font-weight: 700; color: var(--navy); }
+  .pf-progress-pct   { color: var(--gray); }
+  .pf-bar-track { height: 5px; background: var(--gray-light); border-radius: 99px; overflow: hidden; }
+  .pf-bar-fill  { height: 100%; background: linear-gradient(90deg, var(--navy), var(--gold)); border-radius: 99px; transition: width 0.4s ease; }
+
+  /* ═══════════════════════════════════════════
+     STEP CARD
+  ═══════════════════════════════════════════ */
+  .pf-wrap {
+    max-width: 700px;
+    margin: 2.5rem auto 0;
+    padding: 0 1.25rem 6rem;
+  }
+  .pf-step {
+    display: none;
+    background: var(--white);
+    border-radius: 18px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 8px 40px rgba(10,31,68,0.13);
+    animation: pfSlide 0.32s ease;
+  }
+  .pf-step.active { display: block; }
+  @keyframes pfSlide {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .pf-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.35rem;
+  }
+  .pf-q {
+    font-size: clamp(1.3rem, 3vw, 1.65rem);
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+  }
+  .pf-hint {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-bottom: 1.75rem;
+    line-height: 1.5;
+  }
+
+  /* ═══════════════════════════════════════════
+     CHOICE CARDS
+  ═══════════════════════════════════════════ */
+  .pf-choices {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+  .pf-choices.cols-2 { grid-template-columns: 1fr 1fr; }
+  .pf-choices.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  @media (max-width: 500px) {
+    .pf-choices.cols-2,
+    .pf-choices.cols-3 { grid-template-columns: 1fr; }
+  }
+  .pf-choice {
+    border: 2.5px solid var(--gray-light);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem;
+    cursor: pointer;
+    background: var(--white);
+    text-align: left;
+    font-family: var(--font);
+    transition: all 0.17s;
+    width: 100%;
+  }
+  .pf-choice:hover { border-color: var(--navy); background: #f0f4ff; }
+  .pf-choice.sel   { border-color: var(--navy); background: #eef2ff; box-shadow: 0 0 0 3px rgba(10,31,68,0.1); }
+  .pf-choice .ci   { font-size: 1.5rem; margin-bottom: 0.35rem; display: block; }
+  .pf-choice .cl   { font-weight: 700; color: var(--navy); font-size: 0.92rem; display: block; }
+  .pf-choice .cd   { font-size: 0.76rem; color: var(--gray); margin-top: 0.2rem; line-height: 1.4; display: block; }
+
+  /* ═══════════════════════════════════════════
+     INPUTS & RANGE
+  ═══════════════════════════════════════════ */
+  .pf-field { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1.25rem; }
+  .pf-field label { font-size: 0.82rem; font-weight: 700; color: var(--navy); }
+  .pf-field input,
+  .pf-field select {
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--gray-light);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: var(--font);
+    color: var(--text);
+    transition: border-color 0.18s;
+    background: var(--white);
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .pf-field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+  .pf-field input:focus,
+  .pf-field select:focus { outline: none; border-color: var(--navy); }
+  .pf-field input.err,
+  .pf-field select.err { border-color: #dc2626; }
+  .pf-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 460px) { .pf-row-2 { grid-template-columns: 1fr; } }
+
+  /* Coverage slider */
+  .pf-slider-display {
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+  .pf-slider-display .pf-amt {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .pf-slider-display .pf-amt-note {
+    font-size: 0.78rem;
+    color: var(--gray);
+    margin-top: 0.2rem;
+  }
+  input[type="range"] {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--gray-light);
+    border-radius: 99px;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 0.4rem;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--navy);
+    box-shadow: 0 2px 8px rgba(10,31,68,0.3);
+    cursor: pointer;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--navy);
+    border: none;
+    cursor: pointer;
+  }
+  .pf-slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.73rem;
+    color: var(--gray);
+  }
+
+  /* Health conditions */
+  .pf-checks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 480px) { .pf-checks { grid-template-columns: 1fr; } }
+  .pf-chk {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid var(--gray-light);
+    border-radius: 9px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.14s;
+    font-size: 0.82rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .pf-chk:hover { border-color: var(--navy); background: #f0f4ff; }
+  .pf-chk input[type="checkbox"] { display: none; }
+  .pf-chk-box {
+    width: 18px; height: 18px;
+    border: 2px solid var(--gray-light);
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.14s;
+  }
+  .pf-chk.chked .pf-chk-box {
+    background: var(--navy);
+    border-color: var(--navy);
+  }
+  .pf-chk.chked .pf-chk-box::after {
+    content: '✓';
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+  }
+  .pf-chk.chked { border-color: var(--navy); background: #eef2ff; }
+  .pf-none-btn {
+    width: 100%;
+    padding: 0.65rem;
+    border: 2px solid var(--gray-light);
+    border-radius: 9px;
+    font-size: 0.82rem;
+    color: var(--gray);
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font);
+    background: var(--white);
+    text-align: center;
+    transition: all 0.14s;
+    margin-bottom: 1.5rem;
+  }
+  .pf-none-btn:hover,
+  .pf-none-btn.sel { border-color: var(--navy); color: var(--navy); background: #eef2ff; }
+
+  /* ═══════════════════════════════════════════
+     NAV BUTTONS
+  ═══════════════════════════════════════════ */
+  .pf-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gray-light);
+    margin-top: 1.25rem;
+    gap: 1rem;
+  }
+  .pf-back {
+    background: none;
+    border: 2px solid var(--gray-light);
+    color: var(--gray);
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font);
+    transition: all 0.17s;
+    flex-shrink: 0;
+  }
+  .pf-back:hover { border-color: var(--navy); color: var(--navy); }
+  .pf-next {
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: var(--font);
+    transition: all 0.17s;
+    flex: 1;
+    max-width: 280px;
+    margin-left: auto;
+  }
+  .pf-next:hover { background: var(--navy-light); transform: translateY(-1px); }
+  .pf-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  .pf-disc {
+    font-size: 0.68rem;
+    color: var(--gray);
+    line-height: 1.5;
+    margin-top: 1rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--gray-light);
+  }
+
+  /* ═══════════════════════════════════════════
+     RESULTS SCREEN
+  ═══════════════════════════════════════════ */
+  #pfResults { display: none; }
+  #pfResults.active { display: block; }
+
+  .pf-results-wrap {
+    max-width: 700px;
+    margin: 2.5rem auto 0;
+    padding: 0 1.25rem 6rem;
+  }
+
+  /* Summary pill row */
+  .pf-summary-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .pf-pill {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: 99px;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  /* Eligibility card */
+  .pf-elig-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 40px rgba(10,31,68,0.12);
+    margin-bottom: 1.25rem;
+  }
+  .pf-elig-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  .pf-elig-badge.green  { background: #dcfce7; color: #15803d; }
+  .pf-elig-badge.yellow { background: #fef9c3; color: #854d0e; }
+  .pf-elig-badge.blue   { background: #dbeafe; color: #1d4ed8; }
+  .pf-elig-badge.orange { background: #ffedd5; color: #9a3412; }
+
+  .pf-elig-title { font-size: 1.5rem; font-weight: 800; color: var(--navy); margin-bottom: 0.4rem; }
+  .pf-elig-sub   { color: var(--gray); font-size: 0.88rem; margin-bottom: 1.5rem; line-height: 1.6; }
+
+  /* Premium estimate box */
+  .pf-premium-box {
+    background: linear-gradient(135deg, var(--navy) 0%, #0d2a5e 100%);
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .pf-premium-box .pf-pr-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 0.3rem;
+  }
+  .pf-premium-box .pf-pr-range {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .pf-premium-box .pf-pr-note {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: 0.3rem;
+  }
+  .pf-premium-box .pf-pr-coverage {
+    text-align: right;
+  }
+  .pf-premium-box .pf-pr-cov-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.2rem;
+  }
+  .pf-premium-box .pf-pr-cov-amt {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  /* What to expect list */
+  .pf-expect-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.25rem;
+  }
+  .pf-expect-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-bottom: 0.55rem;
+    line-height: 1.45;
+  }
+  .pf-expect-list li::before {
+    content: '✓';
+    color: #16a34a;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Compliance callout */
+  .pf-compliance {
+    background: #fff9f0;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    font-size: 0.76rem;
+    color: #92400e;
+    line-height: 1.55;
+  }
+  .pf-compliance strong { color: #78350f; }
+
+  /* Route CTA cards */
+  .pf-routes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+  .pf-route-primary {
+    background: var(--navy);
+    border-radius: 14px;
+    padding: 1.75rem;
+    text-align: center;
+  }
+  .pf-route-primary h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 0.35rem; }
+  .pf-route-primary p  { color: rgba(255,255,255,0.68); font-size: 0.82rem; margin-bottom: 1.25rem; line-height: 1.5; }
+  .pf-route-secondary {
+    background: var(--white);
+    border: 2px solid var(--gray-light);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    text-decoration: none;
+    transition: all 0.18s;
+  }
+  .pf-route-secondary:hover { border-color: var(--navy); background: #f0f4ff; }
+  .pf-route-secondary .pf-rs-label { font-weight: 700; color: var(--navy); font-size: 0.9rem; }
+  .pf-route-secondary .pf-rs-sub   { font-size: 0.75rem; color: var(--gray); margin-top: 0.15rem; }
+  .pf-route-secondary .pf-rs-arr   { color: var(--gold); font-weight: 800; font-size: 1.1rem; flex-shrink: 0; }
+
+  .btn-enroll-pf {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 1rem 1.75rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(201,151,58,0.4);
+    width: 100%;
+    margin-bottom: 0.65rem;
+  }
+  .btn-enroll-pf:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-call-pf {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.08);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 0.8rem;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.18s;
+    width: 100%;
+  }
+  .btn-call-pf:hover { background: rgba(255,255,255,0.15); }
+
+  /* Trust row on results */
+  .pf-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  @media (max-width: 480px) { .pf-trust-grid { grid-template-columns: 1fr; } }
+  .pf-trust-tile {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(10,31,68,0.07);
+  }
+  .pf-trust-tile .pf-tt-icon { font-size: 1.35rem; margin-bottom: 0.3rem; }
+  .pf-trust-tile .pf-tt-label { font-size: 0.75rem; font-weight: 700; color: var(--navy); }
+  .pf-trust-tile .pf-tt-sub   { font-size: 0.68rem; color: var(--gray); margin-top: 0.15rem; }
+
+  /* ═══════════════════════════════════════════
+     AI CONCIERGE WIDGET
+  ═══════════════════════════════════════════ */
+  .pf-ai-btn {
+    position: fixed;
+    bottom: 90px;
+    right: 18px;
+    z-index: 300;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    padding: 0.7rem 1.1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: var(--font);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    box-shadow: 0 4px 20px rgba(10,31,68,0.35);
+    transition: all 0.2s;
+  }
+  .pf-ai-btn:hover { transform: translateY(-2px); background: var(--navy-light); }
+  .pf-ai-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; animation: aip 2s infinite; }
+  @keyframes aip { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+  .pf-ai-panel {
+    position: fixed;
+    bottom: 148px;
+    right: 18px;
+    width: min(360px, calc(100vw - 36px));
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(10,31,68,0.2);
+    z-index: 301;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--gray-light);
+    max-height: 68vh;
+  }
+  .pf-ai-panel.open { display: flex; }
+  .pf-ai-hd {
+    background: var(--navy);
+    padding: 0.9rem 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .pf-ai-hd-left { display: flex; align-items: center; gap: 0.55rem; }
+  .pf-ai-av { width: 30px; height: 30px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+  .pf-ai-hd-title { color: var(--white); font-size: 0.85rem; font-weight: 700; margin: 0; line-height: 1.2; }
+  .pf-ai-hd-sub   { color: rgba(255,255,255,0.55); font-size: 0.68rem; }
+  .pf-ai-close { background: none; border: none; color: rgba(255,255,255,0.55); font-size: 1.15rem; cursor: pointer; padding: 0; }
+  .pf-ai-close:hover { color: var(--white); }
+
+  .pf-ai-msgs {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .pf-ai-msg {
+    max-width: 90%;
+    padding: 0.65rem 0.85rem;
+    border-radius: 11px;
+    font-size: 0.81rem;
+    line-height: 1.5;
+  }
+  .pf-ai-msg.bot  { background: var(--off-white); border: 1px solid var(--gray-light); align-self: flex-start; color: var(--text); border-bottom-left-radius: 3px; }
+  .pf-ai-msg.user { background: var(--navy); color: var(--white); align-self: flex-end; border-bottom-right-radius: 3px; }
+  .pf-ai-msg a { color: var(--gold); text-decoration: underline; }
+
+  .pf-ai-qs { padding: 0 0.85rem 0.6rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .pf-ai-qbtn {
+    background: none;
+    border: 1px solid var(--gray-light);
+    border-radius: 7px;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.75rem;
+    color: var(--navy);
+    font-family: var(--font);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.14s;
+  }
+  .pf-ai-qbtn:hover { background: var(--off-white); border-color: var(--navy); }
+
+  .pf-ai-input-row { display: flex; padding: 0.6rem 0.85rem; gap: 0.4rem; border-top: 1px solid var(--gray-light); }
+  .pf-ai-inp {
+    flex: 1;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid var(--gray-light);
+    border-radius: 7px;
+    font-size: 0.8rem;
+    font-family: var(--font);
+    outline: none;
+  }
+  .pf-ai-inp:focus { border-color: var(--navy); }
+  .pf-ai-send { background: var(--navy); color: var(--white); border: none; border-radius: 7px; padding: 0.55rem 0.8rem; cursor: pointer; font-size: 0.85rem; }
+  .pf-ai-send:hover { background: var(--navy-light); }
+  .pf-ai-guard { font-size: 0.67rem; color: var(--gray); text-align: center; padding: 0.35rem 0.85rem 0.55rem; border-top: 1px solid var(--gray-light); line-height: 1.4; }
+
+  @media (max-width: 768px) {
+    .pf-ai-btn   { bottom: 115px; }
+    .pf-ai-panel { bottom: 173px; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo-text" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;">
+      <img src="images/logo-icon.svg" alt="TrueForge Life logo" height="38" width="36" style="display:block;flex-shrink:0;" />
+      <span style="display:flex;flex-direction:column;line-height:1.1;">
+        <span style="font-family:Georgia,serif;font-weight:700;font-size:1rem;letter-spacing:0.08em;color:var(--navy);">TRUEFORGE <span style="color:var(--gold)">LIFE</span></span>
+        <span style="font-size:0.58rem;font-style:italic;color:var(--gray);letter-spacing:0.02em;">Forged in truth. Built for each other.&#8482;</span>
+      </span>
+    </a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pathfinder.html" style="color:var(--gold);font-weight:700;">✦ PathFinder</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+1-574-392-0192" class="nav-phone">📞 (574) 392-0192</a>
+      <a href="tel:+15743920192" class="btn btn-primary">📞 Free Quote Call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="pf-hero">
+  <div class="container">
+    <div class="pf-hero-badge">🧭 TrueForge Life Coverage PathFinder</div>
+    <h1>Find Your Best Coverage Path — In Under 3 Minutes</h1>
+    <p>Answer 7 honest questions. Get an estimated premium range, your eligibility category, and a clear next step — before you fill out a single carrier form.</p>
+    <div class="pf-trust-row">
+      <span><em>🔒</em> Secure & private</span>
+      <span><em>✓</em> No obligation</span>
+      <span><em>📞</em> Agent support available</span>
+      <span><em>⏱</em> Under 3 minutes</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="pf-progress" id="pfProgress">
+  <div class="pf-progress-inner">
+    <div class="pf-progress-meta">
+      <span class="pf-progress-label" id="pfLabel">Step 1 of 7 — Coverage Type</span>
+      <span class="pf-progress-pct" id="pfPct">14%</span>
+    </div>
+    <div class="pf-bar-track"><div class="pf-bar-fill" id="pfBar" style="width:14%"></div></div>
+  </div>
+</div>
+
+<!-- WIZARD -->
+<div class="pf-wrap" id="pfWrap">
+
+  <!-- ═══ STEP 1: Coverage Type ═══ -->
+  <div class="pf-step active" id="pf1">
+    <div class="pf-eyebrow">Step 1 of 7</div>
+    <h2 class="pf-q">What type of coverage are you looking for?</h2>
+    <p class="pf-hint">Choose the option that best matches your goal. Your answer shapes the products and premium estimates we show you.</p>
+    <div class="pf-choices cols-2" id="cov-type">
+      <button class="pf-choice" data-val="final-expense" onclick="pick(this,'cov-type','type')">
+        <span class="ci">🌹</span>
+        <span class="cl">Final Expense</span>
+        <span class="cd">Cover burial, funeral costs, and final bills so my family isn't left with debt. Ages 50–85.</span>
+      </button>
+      <button class="pf-choice" data-val="mortgage-protection" onclick="pick(this,'cov-type','type')">
+        <span class="ci">🏠</span>
+        <span class="cl">Mortgage Protection</span>
+        <span class="cd">Ensure my family can stay in our home if I pass away or become disabled.</span>
+      </button>
+      <button class="pf-choice" data-val="term-life" onclick="pick(this,'cov-type','type')">
+        <span class="ci">👨‍👩‍👧</span>
+        <span class="cl">Term Life / Income Protection</span>
+        <span class="cd">Replace my income and protect my family's financial future for 10–30 years.</span>
+      </button>
+      <button class="pf-choice" data-val="not-sure" onclick="pick(this,'cov-type','type')">
+        <span class="ci">🤔</span>
+        <span class="cl">Not Sure Yet</span>
+        <span class="cd">Help me understand my options and figure out the right path.</span>
+      </button>
+    </div>
+    <div class="pf-nav">
+      <div></div>
+      <button class="pf-next" id="n1" onclick="go(2)" disabled>Continue →</button>
+    </div>
+    <p class="pf-disc">This tool provides general education only. All results are estimates based on self-reported information and are subject to carrier underwriting and approval.</p>
+  </div>
+
+  <!-- ═══ STEP 2: About You ═══ -->
+  <div class="pf-step" id="pf2">
+    <div class="pf-eyebrow">Step 2 of 7</div>
+    <h2 class="pf-q">Tell us about yourself</h2>
+    <p class="pf-hint">Age, state, and gender are the three biggest factors in determining your estimated premium range and product eligibility.</p>
+    <div class="pf-row-2">
+      <div class="pf-field">
+        <label for="pfAge">Your Age</label>
+        <input type="number" id="pfAge" min="18" max="89" placeholder="e.g. 64" oninput="chkStep2()" />
+      </div>
+      <div class="pf-field">
+        <label for="pfState">State of Residence</label>
+        <select id="pfState" onchange="chkStep2()">
+          <option value="">Select state…</option>
+          <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+          <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+          <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+          <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+          <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+          <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+          <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+          <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+          <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+          <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+          <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+          <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+          <option>Wisconsin</option><option>Wyoming</option>
+        </select>
+      </div>
+    </div>
+    <p style="font-size:0.82rem;font-weight:700;color:var(--navy);margin-bottom:0.6rem;">Gender</p>
+    <div class="pf-choices cols-2" id="gender-cards" style="margin-bottom:1.25rem;">
+      <button class="pf-choice" data-val="male" onclick="pick(this,'gender-cards','gender');chkStep2()">
+        <span class="cl">Male</span>
+      </button>
+      <button class="pf-choice" data-val="female" onclick="pick(this,'gender-cards','gender');chkStep2()">
+        <span class="cl">Female</span>
+      </button>
+    </div>
+    <div class="pf-nav">
+      <button class="pf-back" onclick="go(1)">← Back</button>
+      <button class="pf-next" id="n2" onclick="goValid2()" disabled>Continue →</button>
+    </div>
+    <p class="pf-disc">We collect gender because it materially affects life insurance premium calculations. This information is used only for estimation purposes within this tool.</p>
+  </div>
+
+  <!-- ═══ STEP 3: Tobacco ═══ -->
+  <div class="pf-step" id="pf3">
+    <div class="pf-eyebrow">Step 3 of 7</div>
+    <h2 class="pf-q">Have you used tobacco in the last 12 months?</h2>
+    <p class="pf-hint">This includes cigarettes, cigars, chewing tobacco, vaping, or nicotine patches. Tobacco use significantly affects your premium — honesty here matters for accurate estimates.</p>
+    <div class="pf-choices cols-3" id="tobacco-cards">
+      <button class="pf-choice" data-val="no" onclick="pick(this,'tobacco-cards','tobacco');go(4)">
+        <span class="cl">No</span>
+        <span class="cd">Non-tobacco rates apply</span>
+      </button>
+      <button class="pf-choice" data-val="yes" onclick="pick(this,'tobacco-cards','tobacco');go(4)">
+        <span class="cl">Yes</span>
+        <span class="cd">Tobacco user rates apply</span>
+      </button>
+      <button class="pf-choice" data-val="quit" onclick="pick(this,'tobacco-cards','tobacco');go(4)">
+        <span class="cl">Quit &lt;12 mo</span>
+        <span class="cd">Recent quitter — varies by carrier</span>
+      </button>
+    </div>
+    <div class="pf-nav">
+      <button class="pf-back" onclick="go(2)">← Back</button>
+      <button class="pf-next" id="n3" onclick="go(4)" disabled>Continue →</button>
+    </div>
+    <p class="pf-disc">Tobacco status is verified during the carrier underwriting process. Estimated premiums shown assume the status you select here.</p>
+  </div>
+
+  <!-- ═══ STEP 4: Coverage Amount ═══ -->
+  <div class="pf-step" id="pf4">
+    <div class="pf-eyebrow">Step 4 of 7</div>
+    <h2 class="pf-q">How much coverage are you looking for?</h2>
+    <p class="pf-hint">Slide to your target amount. Final expense typically ranges $5K–$30K. Mortgage protection mirrors your loan balance. Term life is often 10–12× your income.</p>
+    <div class="pf-slider-display">
+      <div class="pf-amt" id="sliderAmt">$15,000</div>
+      <div class="pf-amt-note" id="sliderNote">Adjustable during the application process</div>
+    </div>
+    <input type="range" id="coverageRange" min="0" max="100" value="18" oninput="updateSlider(this.value)" />
+    <div class="pf-slider-labels"><span id="sMin">$5,000</span><span id="sMax">$500,000+</span></div>
+    <div class="pf-nav" style="margin-top:2rem;">
+      <button class="pf-back" onclick="go(3)">← Back</button>
+      <button class="pf-next" onclick="go(5)">Continue →</button>
+    </div>
+    <p class="pf-disc">Coverage amounts shown are illustrative. Actual available amounts depend on your age, health, and the carrier's underwriting guidelines.</p>
+  </div>
+
+  <!-- ═══ STEP 5: Health ═══ -->
+  <div class="pf-step" id="pf5">
+    <div class="pf-eyebrow">Step 5 of 7</div>
+    <h2 class="pf-q">Health snapshot</h2>
+    <p class="pf-hint">Select any conditions that apply. This helps estimate your most likely eligibility tier — simplified issue, graded benefit, or guaranteed issue. Select all that apply.</p>
+    <div class="pf-checks" id="health-checks">
+      <label class="pf-chk" onclick="toggleChk(this)"><input type="checkbox" value="diabetes"/><span class="pf-chk-box"></span>Diabetes (Type 1 or 2)</label>
+      <label class="pf-chk" onclick="toggleChk(this)"><input type="checkbox" value="heart"/><span class="pf-chk-box"></span>Heart Attack or Stroke</label>
+      <label class="pf-chk" onclick="toggleChk(this)"><input type="checkbox" value="cancer"/><span class="pf-chk-box"></span>Cancer (past or present)</label>
+      <label class="pf-chk" onclick="toggleChk(this)"><input type="checkbox" value="copd"/><span class="pf-chk-box"></span>COPD / Emphysema</label>
+      <label class="pf-chk" onclick="toggleChk(this)"><input type="checkbox" value="kidney"/><span class="pf-chk-box"></span>Kidney Failure / Dialysis</label>
+      <label class="pf-chk" onclick="toggleChk(this)"><input type="checkbox" value="oxygen"/><span class="pf-chk-box"></span>Currently Using Oxygen</label>
+      <label class="pf-chk" onclick="toggleChk(this)"><input type="checkbox" value="dementia"/><span class="pf-chk-box"></span>Dementia / Alzheimer's</label>
+      <label class="pf-chk" onclick="toggleChk(this)"><input type="checkbox" value="hiv"/><span class="pf-chk-box"></span>HIV / AIDS</label>
+      <label class="pf-chk" onclick="toggleChk(this)"><input type="checkbox" value="hospice"/><span class="pf-chk-box"></span>Currently in Hospice / Nursing Home</label>
+      <label class="pf-chk" onclick="toggleChk(this)"><input type="checkbox" value="highbp"/><span class="pf-chk-box"></span>High Blood Pressure (controlled)</label>
+      <label class="pf-chk" onclick="toggleChk(this)"><input type="checkbox" value="cholesterol"/><span class="pf-chk-box"></span>High Cholesterol (controlled)</label>
+      <label class="pf-chk" onclick="toggleChk(this)"><input type="checkbox" value="anxiety"/><span class="pf-chk-box"></span>Anxiety / Depression (managed)</label>
+    </div>
+    <button class="pf-none-btn" id="noneBtn" onclick="selectNone()">✓ None of the above — I'm in generally good health</button>
+    <div class="pf-nav">
+      <button class="pf-back" onclick="go(4)">← Back</button>
+      <button class="pf-next" id="n5" onclick="go(6)" disabled>Continue →</button>
+    </div>
+    <p class="pf-disc">Health information is used only for estimation within this tool. It is not transmitted to any carrier and does not initiate an application or underwriting review.</p>
+  </div>
+
+  <!-- ═══ STEP 6: Beneficiary ═══ -->
+  <div class="pf-step" id="pf6">
+    <div class="pf-eyebrow">Step 6 of 7</div>
+    <h2 class="pf-q">Who will receive the benefit?</h2>
+    <p class="pf-hint">This helps us tailor the language in your recommendation. You can name any person or multiple people — and update beneficiaries at any time after the policy is issued.</p>
+    <div class="pf-choices cols-2" id="ben-cards">
+      <button class="pf-choice" data-val="spouse" onclick="pick(this,'ben-cards','ben')"><span class="cl">Spouse / Partner</span></button>
+      <button class="pf-choice" data-val="child" onclick="pick(this,'ben-cards','ben')"><span class="cl">Child / Children</span></button>
+      <button class="pf-choice" data-val="sibling" onclick="pick(this,'ben-cards','ben')"><span class="cl">Parent or Sibling</span></button>
+      <button class="pf-choice" data-val="other" onclick="pick(this,'ben-cards','ben')"><span class="cl">Other / Multiple</span></button>
+    </div>
+    <div class="pf-nav">
+      <button class="pf-back" onclick="go(5)">← Back</button>
+      <button class="pf-next" id="n6" onclick="go(7)" disabled>Continue →</button>
+    </div>
+    <p class="pf-disc">You can name any beneficiary on a life insurance policy. Beneficiary designations can be changed at any time by contacting the carrier.</p>
+  </div>
+
+  <!-- ═══ STEP 7: Contact ═══ -->
+  <div class="pf-step" id="pf7">
+    <div class="pf-eyebrow">Step 7 of 7 — Almost Done</div>
+    <h2 class="pf-q">Where should we send your results?</h2>
+    <p class="pf-hint">Enter your name and best phone number. Dominic may reach out to confirm your estimate and answer questions before you start your application.</p>
+    <div class="pf-row-2">
+      <div class="pf-field">
+        <label for="pfFirst">First Name</label>
+        <input type="text" id="pfFirst" placeholder="Jane" oninput="chkStep7()" />
+      </div>
+      <div class="pf-field">
+        <label for="pfLast">Last Name</label>
+        <input type="text" id="pfLast" placeholder="Smith" oninput="chkStep7()" />
+      </div>
+    </div>
+    <div class="pf-field">
+      <label for="pfPhone">Best Phone Number</label>
+      <input type="tel" id="pfPhone" placeholder="(555) 555-5555" oninput="chkStep7()" />
+    </div>
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:9px;padding:0.8rem 1rem;font-size:0.78rem;color:#15803d;margin-bottom:1rem;line-height:1.5;">
+      🔒 Your information is never sold or shared. By continuing you agree to be contacted by Dominic Raciti at TrueForge Life regarding your coverage inquiry.
+    </div>
+    <div class="pf-nav">
+      <button class="pf-back" onclick="go(6)">← Back</button>
+      <button class="pf-next" id="n7" onclick="showResults()" disabled>See My Results →</button>
+    </div>
+    <p class="pf-disc">TrueForge Life does not share your personal information with third parties for marketing purposes. Standard rates may apply for phone/text contact.</p>
+  </div>
+</div><!-- /pf-wrap -->
+
+
+<!-- ═══════════════════════════════════════════
+     RESULTS SCREEN
+═══════════════════════════════════════════ -->
+<div id="pfResults">
+  <div class="pf-results-wrap">
+
+    <!-- Profile pills -->
+    <div class="pf-summary-pills" id="pfPills"></div>
+
+    <!-- Eligibility + premium card -->
+    <div class="pf-elig-card" id="pfEligCard"></div>
+
+    <!-- Trust tiles -->
+    <div class="pf-trust-grid">
+      <div class="pf-trust-tile">
+        <div class="pf-tt-icon">🔒</div>
+        <div class="pf-tt-label">Secure Application</div>
+        <div class="pf-tt-sub">Carrier-grade encryption</div>
+      </div>
+      <div class="pf-trust-tile">
+        <div class="pf-tt-icon">📋</div>
+        <div class="pf-tt-label">Licensed Agent Review</div>
+        <div class="pf-tt-sub">Dominic reviews every app</div>
+      </div>
+      <div class="pf-trust-tile">
+        <div class="pf-tt-icon">🚫</div>
+        <div class="pf-tt-label">Zero Pressure</div>
+        <div class="pf-tt-sub">No obligation to purchase</div>
+      </div>
+    </div>
+
+    <!-- Routing CTAs -->
+    <div class="pf-routes" id="pfRoutes"></div>
+
+    <!-- Master disclaimer -->
+    <div style="background:var(--white);border:1px solid var(--gray-light);border-radius:10px;padding:1.1rem 1.25rem;font-size:0.72rem;color:var(--gray);line-height:1.65;margin-bottom:2rem;">
+      <strong style="color:var(--navy);">Important Disclaimer:</strong> This Coverage PathFinder is an educational tool and does not guarantee approval, any specific premium, or policy issuance. All premium ranges shown are estimates based on general underwriting guidelines and self-reported information. Actual rates and eligibility are determined exclusively by the insurance carrier through their formal underwriting process. "Estimated fit," "may qualify," and similar language indicates general suitability only — not a binding quote or offer of insurance. TrueForge Life, LLC is an independent insurance agency licensed in 40+ states. Products and availability vary by state. Not all products available in all states. Coverage subject to carrier underwriting and approval.
+    </div>
+
+    <div style="text-align:center;padding-bottom:2rem;">
+      <button onclick="resetPathfinder()" style="background:none;border:none;font-size:0.82rem;color:var(--gray);cursor:pointer;text-decoration:underline;">← Start over with different answers</button>
+    </div>
+  </div>
+</div><!-- /pfResults -->
+
+
+<!-- STICKY CALL BAR -->
+<div class="sticky-call-bar" style="display:flex;gap:0;">
+  <a href="tel:+15743920192" style="flex:1;border-right:1px solid rgba(255,255,255,0.2);">
+    📞 Tap to Call — (574) 392-0192
+    <span class="sub">Free quote · No pressure · Speak directly with Dominic</span>
+  </a>
+  <a href="sms:+15743920192?body=Hi%20Dominic%2C%20I%27d%20like%20a%20free%20quote." style="flex-shrink:0;padding:0.85rem 1.1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.9);gap:0.2rem;">
+    💬<span>Text</span>
+  </a>
+</div>
+
+<!-- AI CONCIERGE -->
+<button class="pf-ai-btn" onclick="toggleAI()">
+  <span class="pf-ai-dot"></span>Ask the PathFinder AI
+</button>
+<div class="pf-ai-panel" id="aiPanel">
+  <div class="pf-ai-hd">
+    <div class="pf-ai-hd-left">
+      <div class="pf-ai-av">🧭</div>
+      <div><div class="pf-ai-hd-title">PathFinder AI</div><div class="pf-ai-hd-sub">Explains — never decides</div></div>
+    </div>
+    <button class="pf-ai-close" onclick="toggleAI()">✕</button>
+  </div>
+  <div class="pf-ai-msgs" id="aiMsgs">
+    <div class="pf-ai-msg bot">Hi! I can explain any question in this tool — what simplified issue means, how premiums are estimated, what graded benefit is, and more.<br><br>What would you like to know?</div>
+  </div>
+  <div class="pf-ai-qs" id="aiQs">
+    <button class="pf-ai-qbtn" onclick="askQ(this)">What is simplified issue coverage?</button>
+    <button class="pf-ai-qbtn" onclick="askQ(this)">How are these premium estimates calculated?</button>
+    <button class="pf-ai-qbtn" onclick="askQ(this)">What does graded benefit mean?</button>
+    <button class="pf-ai-qbtn" onclick="askQ(this)">What if I have health conditions?</button>
+    <button class="pf-ai-qbtn" onclick="askQ(this)">Can I change my answers later?</button>
+    <button class="pf-ai-qbtn" onclick="askQ(this)">Is my information safe?</button>
+  </div>
+  <div class="pf-ai-input-row">
+    <input class="pf-ai-inp" id="aiInp" placeholder="Ask a question…" onkeydown="if(event.key==='Enter')sendAI()" />
+    <button class="pf-ai-send" onclick="sendAI()">→</button>
+  </div>
+  <div class="pf-ai-guard">General education only. For complex health or replacement questions — <a href="tel:+15743920192" style="color:var(--navy);font-weight:600;">call Dominic at (574) 392-0192</a>.</div>
+</div>
+
+<script src="//code.tidio.co/hakq0k87lfccnk5wfqyxoh49nj1stjxy.js" async></script>
+<script src="js/main.js"></script>
+
+<script>
+/* ═══════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════ */
+const A = {
+  type:'', age:null, state:'', gender:'', tobacco:'',
+  coverage:15000, conditions:[], noneHealth:false, ben:'',
+  first:'', last:'', phone:''
+};
+
+const STEP_LABELS = ['Coverage Type','About You','Tobacco','Coverage Amount','Health','Beneficiary','Your Info'];
+const TOTAL = 7;
+let curStep = 1;
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+function go(n) {
+  document.querySelectorAll('.pf-step').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById('pf' + n);
+  if (el) {
+    el.classList.add('active');
+    curStep = n;
+    const pct = Math.round((n / TOTAL) * 100);
+    document.getElementById('pfBar').style.width = pct + '%';
+    document.getElementById('pfLabel').textContent = 'Step ' + n + ' of ' + TOTAL + ' — ' + STEP_LABELS[n-1];
+    document.getElementById('pfPct').textContent = pct + '%';
+    document.getElementById('pfWrap').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+
+function enbl(id) { document.getElementById(id).disabled = false; }
+function disbl(id) { document.getElementById(id).disabled = true; }
+
+/* ═══════════════════════════════════════════
+   PICK (choice cards)
+═══════════════════════════════════════════ */
+function pick(btn, groupId, key) {
+  document.getElementById(groupId).querySelectorAll('.pf-choice').forEach(c => c.classList.remove('sel'));
+  btn.classList.add('sel');
+  A[key] = btn.dataset.val;
+  // Enable next for this step
+  const map = { type:'n1', gender:'n2', tobacco:'n3', ben:'n6' };
+  if (map[key]) enbl(map[key]);
+  // For step 6 (ben), check both current policy (none needed) just enable
+}
+
+/* ═══════════════════════════════════════════
+   STEP 2 VALIDATION
+═══════════════════════════════════════════ */
+function chkStep2() {
+  const age = parseInt(document.getElementById('pfAge').value);
+  const state = document.getElementById('pfState').value;
+  if (age >= 18 && age <= 89 && state && A.gender) enbl('n2'); else disbl('n2');
+}
+function goValid2() {
+  const age = parseInt(document.getElementById('pfAge').value);
+  const state = document.getElementById('pfState').value;
+  if (!age || age < 18 || age > 89) { document.getElementById('pfAge').classList.add('err'); return; }
+  if (!state) { document.getElementById('pfState').classList.add('err'); return; }
+  A.age = age; A.state = state;
+  go(3);
+}
+document.getElementById('pfAge').addEventListener('input', function(){ this.classList.remove('err'); chkStep2(); });
+document.getElementById('pfState').addEventListener('change', function(){ this.classList.remove('err'); chkStep2(); });
+
+/* ═══════════════════════════════════════════
+   SLIDER
+═══════════════════════════════════════════ */
+function getSliderConfig() {
+  if (A.type === 'final-expense')
+    return { vals:[5000,7500,10000,12500,15000,20000,25000,30000], note:'Final expense coverage amount' };
+  if (A.type === 'mortgage-protection')
+    return { vals:[50000,75000,100000,125000,150000,175000,200000,250000,300000,350000,400000,500000], note:'Estimated mortgage balance' };
+  return { vals:[25000,50000,75000,100000,150000,200000,250000,300000,400000,500000,750000,1000000], note:'Estimated coverage amount needed' };
+}
+function updateSlider(raw) {
+  const cfg = getSliderConfig();
+  const idx = Math.min(Math.round((raw / 100) * (cfg.vals.length - 1)), cfg.vals.length - 1);
+  A.coverage = cfg.vals[idx];
+  document.getElementById('sliderAmt').textContent = '$' + A.coverage.toLocaleString();
+  document.getElementById('sliderNote').textContent = cfg.note;
+  document.getElementById('sMin').textContent = '$' + cfg.vals[0].toLocaleString();
+  document.getElementById('sMax').textContent = '$' + cfg.vals[cfg.vals.length - 1].toLocaleString() + (A.type !== 'final-expense' ? '+' : '');
+}
+// Refresh slider when step 4 loads
+const _origGo = go;
+
+/* ═══════════════════════════════════════════
+   HEALTH CONDITIONS
+═══════════════════════════════════════════ */
+function toggleChk(label) {
+  label.classList.toggle('chked');
+  document.getElementById('noneBtn').classList.remove('sel');
+  A.noneHealth = false;
+  A.conditions = Array.from(document.querySelectorAll('#health-checks .pf-chk.chked input')).map(i => i.value);
+  enbl('n5');
+}
+function selectNone() {
+  document.querySelectorAll('#health-checks .pf-chk').forEach(c => c.classList.remove('chked'));
+  A.conditions = [];
+  A.noneHealth = true;
+  document.getElementById('noneBtn').classList.add('sel');
+  enbl('n5');
+}
+
+/* ═══════════════════════════════════════════
+   STEP 7 CONTACT VALIDATION
+═══════════════════════════════════════════ */
+function chkStep7() {
+  const fn = document.getElementById('pfFirst').value.trim();
+  const ln = document.getElementById('pfLast').value.trim();
+  const ph = document.getElementById('pfPhone').value.replace(/\D/g,'');
+  if (fn && ln && ph.length >= 10) enbl('n7'); else disbl('n7');
+}
+
+/* ═══════════════════════════════════════════
+   PREMIUM ENGINE
+═══════════════════════════════════════════ */
+function estimatePremium() {
+  const age = A.age || 60;
+  const isFemale = A.gender === 'female';
+  const tobacco  = A.tobacco === 'yes' || A.tobacco === 'quit';
+  const cov      = A.coverage || 15000;
+  const type     = A.type;
+  const conds    = A.conditions;
+
+  // Tier determination
+  const severe   = ['kidney','oxygen','hospice','dementia','hiv'];
+  const moderate = ['heart','cancer','copd'];
+  const mild     = ['diabetes','highbp','cholesterol','anxiety'];
+  const hasSevere   = conds.some(c => severe.includes(c));
+  const hasModerate = conds.some(c => moderate.includes(c));
+  const hasMild     = conds.some(c => mild.includes(c));
+
+  let tier = 'simplified';
+  if (hasSevere)                         tier = 'guaranteed';
+  else if (hasModerate)                  tier = 'graded';
+  else if (hasMild && tobacco)           tier = 'graded';
+  else if (A.noneHealth || !conds.length) tier = 'simplified';
+
+  // Age/gender gates
+  let path = type;
+  if (type === 'final-expense' && (age < 50 || age > 85)) tier = 'agent-review';
+  if (type === 'mortgage-protection' && (hasSevere || hasModerate || age > 75)) tier = 'agent-review';
+  if (type === 'not-sure') path = age >= 50 ? 'final-expense' : 'mortgage-protection';
+
+  // ── Final Expense rates (per $1K of face amount per month) ──
+  // Base: non-tobacco female. Tobacco +35%. Male +10–15%.
+  function feRate(age) {
+    if (age <= 55) return 2.0;
+    if (age <= 60) return 2.7;
+    if (age <= 65) return 3.6;
+    if (age <= 70) return 4.8;
+    if (age <= 75) return 6.5;
+    if (age <= 80) return 9.0;
+    return 12.5;
+  }
+
+  // ── Term/Mortgage Protection rates (per $100K, per month) ──
+  function termRate(age) {
+    if (age <= 35) return 12;
+    if (age <= 40) return 16;
+    if (age <= 45) return 22;
+    if (age <= 50) return 34;
+    if (age <= 55) return 55;
+    if (age <= 60) return 90;
+    if (age <= 65) return 145;
+    return 220;
+  }
+
+  let lo = 0, hi = 0, perUnit = 0;
+
+  if (tier === 'agent-review') {
+    return { tier, lo: 0, hi: 0, elig: 'agent-review', path };
+  }
+
+  if (type === 'final-expense' || (type === 'not-sure' && age >= 50)) {
+    const base = feRate(age);
+    const maleAdj = isFemale ? 1 : 1.13;
+    const tobAdj  = tobacco ? 1.38 : 1;
+    const tierAdj = tier === 'guaranteed' ? 1.55 : tier === 'graded' ? 1.25 : 1;
+    const perK = base * maleAdj * tobAdj * tierAdj;
+    lo = Math.round((perK * (cov / 1000)) * 0.88);
+    hi = Math.round((perK * (cov / 1000)) * 1.18);
+  } else {
+    // Term/mortgage protection
+    const base = termRate(age);
+    const maleAdj = isFemale ? 0.85 : 1;
+    const tobAdj  = tobacco ? 2.1 : 1;
+    const tierAdj = tier === 'graded' ? 1.35 : 1;
+    const per100k = base * maleAdj * tobAdj * tierAdj;
+    lo = Math.round((per100k * (cov / 100000)) * 0.85);
+    hi = Math.round((per100k * (cov / 100000)) * 1.2);
+  }
+
+  lo = Math.max(lo, 18);
+  hi = Math.max(hi, lo + 12);
+
+  return { tier, lo, hi, path };
+}
+
+/* ═══════════════════════════════════════════
+   RESULTS BUILDER
+═══════════════════════════════════════════ */
+function showResults() {
+  A.first = document.getElementById('pfFirst').value.trim();
+  A.last  = document.getElementById('pfLast').value.trim();
+  A.phone = document.getElementById('pfPhone').value.trim();
+
+  document.getElementById('pfWrap').style.display = 'none';
+  document.getElementById('pfProgress').style.display = 'none';
+  document.getElementById('pfResults').classList.add('active');
+  document.getElementById('pfResults').scrollIntoView({behavior:'smooth', block:'start'});
+
+  buildPills();
+  const est = estimatePremium();
+  buildEligCard(est);
+  buildRoutes(est);
+}
+
+function buildPills() {
+  const typeMap  = {'final-expense':'Final Expense','mortgage-protection':'Mortgage Protection','term-life':'Term Life','not-sure':'Exploring Options'};
+  const tobMap   = {no:'Non-Tobacco',yes:'Tobacco User',quit:'Quit <12mo'};
+  const pills = [
+    typeMap[A.type] || A.type,
+    'Age ' + A.age,
+    A.state,
+    A.gender === 'male' ? 'Male' : 'Female',
+    tobMap[A.tobacco] || A.tobacco,
+    '$' + A.coverage.toLocaleString(),
+  ];
+  document.getElementById('pfPills').innerHTML = pills.map(p =>
+    `<span class="pf-pill">${p}</span>`
+  ).join('');
+}
+
+function buildEligCard(est) {
+  const { tier, lo, hi } = est;
+  const configs = {
+    simplified: {
+      badge: '<span class="pf-elig-badge green">✓ Strong Estimated Fit</span>',
+      title: 'You May Qualify for Simplified Issue Coverage',
+      sub:   'Based on what you've told us, you appear to be a good candidate for <strong>simplified issue</strong> coverage — no physical exam, no blood draw. The carrier reviews a short health questionnaire and makes a decision, often within hours.',
+      expect: [
+        '10–20 yes/no health questions over the phone with Dominic',
+        'No physical exam, no blood draw, no urine test required',
+        'Carrier runs a prescription database and MIB check automatically',
+        'Approval decision typically returned same day or next business day',
+        'Premium locked in at approval — never increases for life of policy'
+      ]
+    },
+    graded: {
+      badge: '<span class="pf-elig-badge yellow">⚠ Estimated Fit — Graded Benefit</span>',
+      title: 'You May Qualify for Graded Benefit Coverage',
+      sub:   'Based on the health conditions you reported, a <strong>graded benefit</strong> policy may be your most accessible path. These policies provide a partial benefit in years 1–2, then full coverage from year 3 forward.',
+      expect: [
+        'Short yes/no health questionnaire — no physical exam',
+        'Carrier checks prescription database and MIB records',
+        'Years 1–2: beneficiary typically receives premiums paid + 10% interest',
+        'Year 3+: full face amount paid for any cause of death',
+        'Premiums fixed for life — coverage never expires'
+      ]
+    },
+    guaranteed: {
+      badge: '<span class="pf-elig-badge blue">ℹ Estimated Fit — Guaranteed Issue</span>',
+      title: 'You May Qualify for Guaranteed Issue Coverage',
+      sub:   'Based on the conditions you reported, a <strong>guaranteed issue</strong> policy may be the right fit. Guaranteed issue means <em>no health questions at all</em> — approval is automatic for eligible ages (typically 50–85).',
+      expect: [
+        'No health questions on the application — guaranteed acceptance',
+        '2-year waiting period is standard for guaranteed issue policies',
+        'If death occurs in years 1–2: premiums paid + interest returned to beneficiary',
+        'Full face amount paid from year 3 onward — for any cause of death',
+        'Permanent whole life — premiums fixed, coverage never lapses'
+      ]
+    },
+    'agent-review': {
+      badge: '<span class="pf-elig-badge orange">📋 Recommended: Speak with Dominic First</span>',
+      title: 'Your Situation Calls for a Conversation First',
+      sub:   'Your combination of coverage goal, age, or health history is complex enough that the right product depends on specifics that go beyond what this tool can estimate. This doesn\'t mean no coverage — it means we find the right fit before you spend time on a form.',
+      expect: [
+        'Calling first prevents an unnecessary application that might affect your MIB record',
+        'Dominic knows which carriers accept complex health profiles',
+        'A 10-minute call can map out your best path and likely rate range',
+        'No obligation — just honest answers about what\'s available to you'
+      ]
+    }
+  };
+
+  const cfg = configs[tier] || configs.simplified;
+  const premiumBlock = (tier !== 'agent-review') ? `
+    <div class="pf-premium-box">
+      <div>
+        <div class="pf-pr-label">Estimated Monthly Premium</div>
+        <div class="pf-pr-range">$${lo}–$${hi}<span style="font-size:1rem;font-weight:600;">/mo</span></div>
+        <div class="pf-pr-note">Subject to carrier underwriting · Not a quote</div>
+      </div>
+      <div class="pf-pr-coverage">
+        <div class="pf-pr-cov-label">Coverage Requested</div>
+        <div class="pf-pr-cov-amt">$${A.coverage.toLocaleString()}</div>
+      </div>
+    </div>` : '';
+
+  document.getElementById('pfEligCard').innerHTML = `
+    ${cfg.badge}
+    <h2 class="pf-elig-title">${cfg.title}</h2>
+    <p class="pf-elig-sub">${cfg.sub}</p>
+    ${premiumBlock}
+    <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--navy);margin-bottom:0.6rem;">What to Expect Next</div>
+    <ul class="pf-expect-list">${cfg.expect.map(e => `<li>${e}</li>`).join('')}</ul>
+    <div class="pf-compliance">
+      <strong>Compliance Notice:</strong> "May qualify," "estimated fit," and all premium ranges shown are general estimates based on self-reported information and typical underwriting guidelines — not a quote or offer of insurance. Final eligibility, premiums, and coverage amounts are determined by the insurance carrier through their formal underwriting process. Subject to carrier guidelines and state availability.
+    </div>
+  `;
+}
+
+function buildRoutes(est) {
+  const INTEGRITY = 'https://myintegrity.com/?purl=Dominic-Raciti';
+  const { tier, path } = est;
+
+  let primary = '', secondary1 = '', secondary2 = '';
+
+  if (tier === 'agent-review') {
+    primary = `
+      <div class="pf-route-primary">
+        <h3>Talk to Dominic First — It's Free</h3>
+        <p>A 10-minute call will tell you more than this tool can. No obligation — just honest answers about what you actually qualify for.</p>
+        <a href="tel:+15743920192" class="btn-enroll-pf">📞 Call (574) 392-0192 Now</a>
+        <a href="sms:+15743920192?body=Hi%20Dominic%2C%20I%27d%20like%20to%20discuss%20my%20coverage%20options." class="btn-call-pf">💬 Text Instead →</a>
+      </div>`;
+  } else if (path === 'final-expense' || A.type === 'final-expense' || A.type === 'not-sure') {
+    primary = `
+      <div class="pf-route-primary">
+        <h3>Start Your Final Expense Application</h3>
+        <p>You'll be guided through the application step by step. Dominic reviews every submission and will contact you if anything needs clarification.</p>
+        <a href="${INTEGRITY}" target="_blank" rel="noopener" class="btn-enroll-pf">🚀 Start My Final Expense Application</a>
+        <a href="tel:+15743920192" class="btn-call-pf">📞 Prefer to apply by phone? Call (574) 392-0192</a>
+      </div>`;
+  } else if (path === 'mortgage-protection' || A.type === 'mortgage-protection') {
+    primary = `
+      <div class="pf-route-primary">
+        <h3>Start Your Mortgage Protection Application</h3>
+        <p>You'll be guided through the application step by step. Dominic reviews every submission and will contact you if anything needs clarification.</p>
+        <a href="${INTEGRITY}" target="_blank" rel="noopener" class="btn-enroll-pf">🚀 Start My Mortgage Protection Application</a>
+        <a href="tel:+15743920192" class="btn-call-pf">📞 Prefer to apply by phone? Call (574) 392-0192</a>
+      </div>`;
+  } else {
+    primary = `
+      <div class="pf-route-primary">
+        <h3>Start Your Application</h3>
+        <p>You'll be guided through the application step by step. Dominic reviews every submission and contacts you if anything needs clarification.</p>
+        <a href="${INTEGRITY}" target="_blank" rel="noopener" class="btn-enroll-pf">🚀 Start My Application</a>
+        <a href="tel:+15743920192" class="btn-call-pf">📞 Prefer to apply by phone? Call (574) 392-0192</a>
+      </div>`;
+  }
+
+  secondary1 = `
+    <a href="tel:+15743920192" class="pf-route-secondary">
+      <div>
+        <div class="pf-rs-label">📞 Schedule a Call with Dominic</div>
+        <div class="pf-rs-sub">Talk through your options before starting any application</div>
+      </div>
+      <span class="pf-rs-arr">→</span>
+    </a>`;
+
+  secondary2 = `
+    <a href="contact.html" class="pf-route-secondary">
+      <div>
+        <div class="pf-rs-label">✉️ Send a Message Instead</div>
+        <div class="pf-rs-sub">Dominic responds within a few hours during business hours</div>
+      </div>
+      <span class="pf-rs-arr">→</span>
+    </a>`;
+
+  document.getElementById('pfRoutes').innerHTML = primary + secondary1 + secondary2;
+}
+
+function resetPathfinder() {
+  Object.assign(A, { type:'',age:null,state:'',gender:'',tobacco:'',coverage:15000,conditions:[],noneHealth:false,ben:'',first:'',last:'',phone:'' });
+  document.querySelectorAll('.pf-choice').forEach(c => c.classList.remove('sel'));
+  document.querySelectorAll('.pf-chk').forEach(c => c.classList.remove('chked'));
+  document.getElementById('noneBtn').classList.remove('sel');
+  ['n1','n2','n3','n5','n6','n7'].forEach(id => disbl(id));
+  document.getElementById('pfResults').classList.remove('active');
+  document.getElementById('pfWrap').style.display = '';
+  document.getElementById('pfProgress').style.display = '';
+  go(1);
+}
+
+/* ═══════════════════════════════════════════
+   AI CONCIERGE
+═══════════════════════════════════════════ */
+function toggleAI() { document.getElementById('aiPanel').classList.toggle('open'); }
+
+const KB = {
+  'simplified issue': 'Simplified issue means you answer a short health questionnaire (10–20 yes/no questions) — no physical exam, no blood draw. The carrier cross-references your answers with a prescription database. Decisions come back in hours, often the same day.',
+  'graded benefit':   'A graded benefit policy has a 2-year waiting period. If you pass away in years 1–2, your beneficiary receives all premiums paid plus interest (typically 10%). From year 3 forward, the full face amount is paid. It\'s designed for people with certain health conditions who don\'t qualify for immediate full-benefit coverage.',
+  'guaranteed issue': 'Guaranteed issue means no health questions at all — approval is automatic for eligible ages (usually 50–85). These policies have a 2-year waiting period and cost more per dollar of coverage. They\'re the right fit when health conditions rule out other options.',
+  'estimate':         'Premium estimates in this tool are calculated using general actuarial rate bands based on age, gender, tobacco status, coverage amount, and estimated health tier. They are not quotes — actual rates are determined by the carrier\'s formal underwriting and can be higher or lower.',
+  'health condition': 'Having health conditions doesn\'t mean you can\'t get covered. Many common conditions (diabetes, high blood pressure, past cancer, COPD) are accepted in simplified or graded tiers. Guaranteed issue accepts anyone in the eligible age range. The key is honest disclosure on every question — Dominic will match you to the right carrier.',
+  'change answer':    'Yes — you can use the "Start over" button at the bottom of your results to run the PathFinder again with different answers. Your previous answers are not saved.',
+  'information safe': 'Yes. This form is served over HTTPS. Your name and phone are used only to connect you with Dominic at TrueForge Life. Nothing is submitted to a carrier until you authorize a formal application. We never sell your information.',
+  'replacement':      '⚠️ Replacing an existing life insurance policy is a significant decision requiring a Replacement Notice on your application — required by law in most states. Never cancel an existing policy until your new one is in force. If you\'re considering replacement, <a href="tel:+15743920192">call Dominic at (574) 392-0192</a> before proceeding.',
+  'hide':             '⚠️ Never hide or misrepresent health information on an insurance application. Doing so is material misrepresentation — it can void your policy and deny your family the death benefit. If you\'re worried a condition will disqualify you, talk to Dominic first. He knows which carriers accept your profile honestly.',
+  'mib':              'The MIB (Medical Information Bureau) is a shared database that insurance carriers use to cross-reference health information from prior applications. When you apply, the carrier checks MIB to verify consistency. Honest, accurate disclosure on every application is critically important.',
+  'mortgage':         'Mortgage protection is a term life policy structured to cover your outstanding loan balance if you pass away. The benefit goes to your named beneficiary — not the lender — so your family decides how to use it. Some policies include riders for disability or critical illness.',
+  'final expense':    'Final expense insurance is permanent whole life coverage designed for seniors ages 50–85. It covers burial costs, medical bills, and other end-of-life expenses. The average funeral in the U.S. costs $9,000–$12,000. Final expense policies never expire and build modest cash value over time.',
+};
+
+function matchKB(q) {
+  const lq = q.toLowerCase();
+  if (lq.includes('hide') || lq.includes('lie') || lq.includes('falsif') || lq.includes('alter')) return KB['hide'];
+  if (lq.includes('simplified')) return KB['simplified issue'];
+  if (lq.includes('graded') || lq.includes('waiting period') || lq.includes('modified')) return KB['graded benefit'];
+  if (lq.includes('guaranteed')) return KB['guaranteed issue'];
+  if (lq.includes('estimate') || lq.includes('calculat') || lq.includes('premium')) return KB['estimate'];
+  if (lq.includes('health') || lq.includes('condition') || lq.includes('sick')) return KB['health condition'];
+  if (lq.includes('change') || lq.includes('start over') || lq.includes('redo')) return KB['change answer'];
+  if (lq.includes('safe') || lq.includes('private') || lq.includes('secure') || lq.includes('information')) return KB['information safe'];
+  if (lq.includes('replace') || lq.includes('switch') || lq.includes('existing policy')) return KB['replacement'];
+  if (lq.includes('mib') || lq.includes('bureau') || lq.includes('database')) return KB['mib'];
+  if (lq.includes('mortgage')) return KB['mortgage'];
+  if (lq.includes('final expense') || lq.includes('burial') || lq.includes('funeral')) return KB['final expense'];
+  return null;
+}
+
+function addMsg(txt, role) {
+  const box = document.getElementById('aiMsgs');
+  const d = document.createElement('div');
+  d.className = 'pf-ai-msg ' + role;
+  d.innerHTML = txt;
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+}
+
+function sendAI() {
+  const inp = document.getElementById('aiInp');
+  const q = inp.value.trim();
+  if (!q) return;
+  addMsg(q, 'user');
+  inp.value = '';
+  document.getElementById('aiQs').style.display = 'none';
+  setTimeout(() => {
+    const a = matchKB(q);
+    addMsg(a || 'Great question — that one really depends on your specific situation. The best next step is to <a href="tel:+15743920192">call Dominic at (574) 392-0192</a> for a direct answer. It\'s free and takes about 10 minutes.', 'bot');
+  }, 380);
+}
+
+function askQ(btn) {
+  document.getElementById('aiQs').style.display = 'none';
+  addMsg(btn.textContent, 'user');
+  setTimeout(() => {
+    const a = matchKB(btn.textContent);
+    if (a) addMsg(a, 'bot');
+  }, 350);
+}
+</script>
+</body>
+</html>
