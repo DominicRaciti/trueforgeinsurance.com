@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 180" fill="none">
+  <!-- ── Icon centered above text ── -->
+  <!-- Anvil body (trapezoid) -->
+  <path d="M72 104 L84 90 L144 90 L156 104 Z" fill="#3d7070"/>
+  <!-- Anvil top surface -->
+  <rect x="84" y="86" width="60" height="6" rx="1.5" fill="#4a8080"/>
+  <!-- Anvil base block -->
+  <rect x="86" y="104" width="56" height="12" rx="2" fill="#2d5f5f"/>
+  <!-- Anvil feet -->
+  <rect x="86" y="113" width="16" height="7" rx="2" fill="#2d5f5f"/>
+  <rect x="126" y="113" width="16" height="7" rx="2" fill="#2d5f5f"/>
+  <!-- Anvil horn (left pointy end) -->
+  <path d="M72 104 L84 90 L84 104 Z" fill="#2d5f5f"/>
+  <!-- Flame outer -->
+  <path d="M114 30 C112 36 104 42 106 54 C106 60 110 62 112 58 C110 64 110 72 116 78 C114 70 118 64 120 60 C120 66 118 74 122 78 C122 72 120 64 124 60 C126 66 128 72 130 78 C132 72 132 64 134 60 C136 64 138 60 138 54 C140 42 128 30 114 30Z" fill="#d63b2f"/>
+  <!-- Flame inner highlight -->
+  <path d="M114 40 C112 46 108 50 110 58 C110 61 112 62 113 60 C112 64 113 70 116 74 C115 68 118 63 119 60 C119 64 118 70 121 74 C121 68 120 63 123 59 C124 63 125 68 127 73 C128 67 128 62 130 58 C132 62 133 58 133 54 C133 46 122 38 114 40Z" fill="#e8522a"/>
+  <!-- Heart in flame (white) -->
+  <path d="M114 68 C114 68 107 61 107 56 C107 53 109.5 51 112 53 C113 54 113.5 55 114 56 C114.5 55 115 54 116 53 C118.5 51 121 53 121 56 C121 61 114 68 114 68Z" fill="white"/>
+
+  <!-- ── Wordmark ── -->
+  <!-- TRUEFORGE in dark serif-weight bold -->
+  <text x="140" y="108" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="700" fill="#3b2214" text-anchor="middle" letter-spacing="3">TRUEFORGE</text>
+  <!-- LIFE -->
+  <text x="140" y="128" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="700" fill="#3b2214" text-anchor="middle" letter-spacing="3">LIFE</text>
+  <!-- Tagline -->
+  <text x="140" y="148" font-family="Georgia, 'Times New Roman', serif" font-size="9" fill="#3b2214" text-anchor="middle" font-style="italic" letter-spacing="0.5">Forged in truth. Built for each other.&#x2122;</text>
+</svg>
