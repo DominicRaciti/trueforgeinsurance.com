@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Protection Assessment — Know Your Real Risk | TrueForge Life</title>
+  <meta name="description" content="Take 3 minutes to see exactly what's at risk for your family. Get a personalized Protection Score, gap analysis, and coverage recommendations — free, no pressure." />
+  <meta name="robots" content="index, follow" />
+  <meta name="geo.region" content="US-IN" />
+  <meta name="geo.placename" content="Indiana" />
+  <meta name="ICBM" content="41.6764, -86.2520" />
+  <link rel="canonical" href="https://trueforgeinsurance.com/assess.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Protection Assessment — Know Your Real Risk | TrueForge Life" />
+  <meta property="og:description" content="3 minutes. 9 questions. See exactly what your family is exposed to — and what it costs to change it." />
+  <meta property="og:url" content="https://trueforgeinsurance.com/assess.html" />
+  <meta property="og:image" content="https://trueforgeinsurance.com/images/agent-photo.jpg" />
+  <meta property="og:site_name" content="TrueForge Life" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Protection Assessment — TrueForge Life" />
+  <meta name="twitter:description" content="3 minutes. See exactly what your family is exposed to — and what it costs to change it." />
+  <meta name="twitter:image" content="https://trueforgeinsurance.com/images/agent-photo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Protection Assessment Engine — TrueForge Life",
+    "description": "A 9-question adaptive assessment that surfaces your family's real financial risk, identifies coverage gaps, and delivers personalized protection recommendations.",
+    "url": "https://trueforgeinsurance.com/assess.html",
+    "isPartOf": {
+      "@type": "InsuranceAgency",
+      "name": "TrueForge Life",
+      "url": "https://trueforgeinsurance.com",
+      "address": { "@type": "PostalAddress", "addressRegion": "IN", "addressCountry": "US" }
+    }
+  }
+  </script>
+  <style>
+  /* ══════════════════════════════════════════════
+     ASSESS — PROTECTION ASSESSMENT ENGINE
+  ══════════════════════════════════════════════ */
+  body { background: #f0f4ff; }
+
+  /* ── HERO ── */
+  .as-hero {
+    background: linear-gradient(135deg, #060f2e 0%, #0a1f44 55%, #0d2550 100%);
+    padding: 2.75rem 0 2.25rem; text-align: center; position: relative; overflow: hidden;
+  }
+  .as-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(201,151,58,.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .as-eyebrow {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: rgba(201,151,58,.18); border: 1px solid rgba(201,151,58,.4);
+    color: var(--gold-light); font-size: .7rem; font-weight: 800;
+    letter-spacing: .12em; text-transform: uppercase;
+    padding: .38rem 1rem; border-radius: 99px; margin-bottom: .9rem;
+  }
+  .as-hero h1 {
+    color: #fff; font-size: clamp(1.45rem,3.2vw,2.1rem);
+    margin-bottom: .55rem; max-width: 580px; margin-inline: auto; line-height: 1.25;
+  }
+  .as-hero h1 span { color: var(--gold-light); }
+  .as-hero p { color: rgba(255,255,255,.68); font-size: .93rem; max-width: 480px; margin: 0 auto 1.4rem; line-height: 1.65; }
+  .as-meta-row { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .as-meta-row span { color: rgba(255,255,255,.55); font-size: .75rem; display: flex; align-items: center; gap: .3rem; }
+
+  /* ── PROGRESS STRIP ── */
+  .as-prog-strip {
+    background: #fff; border-bottom: 1px solid var(--gray-light);
+    padding: .85rem 0; position: sticky; top: 62px; z-index: 100;
+    box-shadow: 0 2px 12px rgba(10,31,68,.07);
+  }
+  .as-prog-inner { max-width: 720px; margin: 0 auto; padding: 0 1.25rem; }
+  .as-prog-labels { display: flex; justify-content: space-between; font-size: .65rem; font-weight: 700; color: var(--gray); margin-bottom: .45rem; text-transform: uppercase; letter-spacing: .06em; }
+  .as-prog-labels .active { color: var(--navy); }
+  .as-prog-track { height: 5px; background: #e5e7eb; border-radius: 99px; overflow: hidden; }
+  .as-prog-fill  { height: 100%; background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 100%); border-radius: 99px; transition: width .4s ease; }
+  .as-prog-pct   { font-size: .68rem; font-weight: 700; color: var(--gold); text-align: right; margin-top: .3rem; }
+
+  /* ── MAIN WRAP ── */
+  .as-wrap { max-width: 680px; margin: 0 auto; padding: 2.25rem 1.25rem 5rem; }
+
+  /* ── QUESTION CARD ── */
+  .as-card {
+    background: #fff; border-radius: 22px; padding: 2.25rem 2rem;
+    box-shadow: 0 8px 48px rgba(10,31,68,.1);
+    animation: asIn .22s ease both;
+  }
+  @keyframes asIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
+  .as-card.out { animation: asOut .18s ease both; }
+  @keyframes asOut { to{opacity:0;transform:translateY(-10px)} }
+
+  .as-q-eyebrow { font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--gold); margin-bottom: .45rem; }
+  .as-q-text { font-size: 1.2rem; font-weight: 800; color: var(--navy); line-height: 1.3; margin-bottom: .4rem; }
+  .as-q-sub  { font-size: .8rem; color: var(--gray); line-height: 1.55; margin-bottom: 1.3rem; }
+
+  /* ── OPTION STYLES ── */
+  .as-opts { display: flex; flex-direction: column; gap: .55rem; }
+  .as-opt {
+    display: flex; align-items: center; gap: .9rem;
+    padding: .95rem 1.1rem; border: 2px solid #e8eaf0;
+    border-radius: 13px; cursor: pointer; font-family: var(--font);
+    background: #fff; text-align: left; transition: all .14s; width: 100%;
+    position: relative;
+  }
+  .as-opt:hover { border-color: #a8b4d8; background: #f6f8ff; }
+  .as-opt.sel   { border-color: var(--navy); background: #eef1fc; }
+  .as-opt.sel::after {
+    content: '✓'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+    color: var(--navy); font-weight: 800; font-size: .9rem;
+  }
+  .as-opt-icon  { font-size: 1.5rem; flex-shrink: 0; }
+  .as-opt-body  { flex: 1; }
+  .as-opt-label { font-size: .92rem; font-weight: 700; color: var(--navy); display: block; line-height: 1.2; }
+  .as-opt-desc  { font-size: .74rem; color: var(--gray); margin-top: .15rem; display: block; line-height: 1.4; }
+
+  /* Grid variant for 2-col options */
+  .as-opts.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
+  @media (max-width: 480px) { .as-opts.grid2 { grid-template-columns: 1fr; } }
+
+  /* ── MORTGAGE SUB-PANEL ── */
+  .as-mort-expand {
+    margin-top: .85rem; padding: 1.25rem; background: #f6f8ff;
+    border-radius: 13px; border: 1.5px solid #c8d0e8; display: none;
+    animation: asIn .2s ease;
+  }
+  .as-mort-expand.show { display: block; }
+  .as-mort-expand .label { font-size: .72rem; font-weight: 700; color: var(--navy); margin-bottom: .35rem; display: block; }
+  .as-sl-row { display: flex; justify-content: space-between; font-size: .75rem; color: var(--gray); margin-top: .25rem; }
+  .as-mort-val { font-size: 1.1rem; font-weight: 800; color: var(--gold); }
+
+  /* ── MULTI-SELECT CHIPS ── */
+  .as-chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .as-chip {
+    padding: .55rem 1rem; border: 2px solid #e8eaf0; border-radius: 99px;
+    font-size: .8rem; font-weight: 700; color: var(--navy); cursor: pointer;
+    font-family: var(--font); background: #fff; transition: all .13s;
+  }
+  .as-chip:hover { border-color: var(--navy); background: #f0f4ff; }
+  .as-chip.sel   { border-color: var(--navy); background: var(--navy); color: #fff; }
+
+  /* ── NAV BUTTONS ── */
+  .as-nav { display: flex; gap: .65rem; margin-top: 1.5rem; align-items: center; }
+  .as-btn-next {
+    flex: 1; background: var(--navy); color: #fff; border: none; border-radius: 11px;
+    padding: .95rem 1.5rem; font-size: .95rem; font-weight: 800; font-family: var(--font);
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: .4rem;
+    transition: all .18s; opacity: .4; pointer-events: none;
+  }
+  .as-btn-next.ready { opacity: 1; pointer-events: auto; }
+  .as-btn-next.ready:hover { background: #0d2a5e; transform: translateY(-2px); }
+  .as-btn-back {
+    background: none; border: 2px solid #e8eaf0; border-radius: 11px;
+    padding: .95rem 1rem; font-size: .85rem; font-weight: 700; font-family: var(--font);
+    color: var(--gray); cursor: pointer; transition: all .14s; white-space: nowrap;
+  }
+  .as-btn-back:hover { border-color: var(--navy); color: var(--navy); }
+
+  /* ── RESULTS ── */
+  .as-results { display: none; animation: asIn .3s ease; }
+  .as-results.show { display: block; }
+
+  /* Score hero */
+  .as-score-hero {
+    background: linear-gradient(135deg, #060f2e 0%, #0a1f44 100%);
+    border-radius: 22px; padding: 2.25rem 2rem; margin-bottom: 1.25rem;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .as-score-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 130%, rgba(201,151,58,.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .as-score-label { font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--gold); margin-bottom: 1rem; }
+
+  .as-ring-svg { width: 180px; height: 180px; margin: 0 auto .75rem; display: block; }
+  .as-ring-bg   { fill: none; stroke: rgba(255,255,255,.1); stroke-width: 13; }
+  .as-ring-fill { fill: none; stroke-width: 13; stroke-linecap: round; transform: rotate(-90deg); transform-origin: center; transition: stroke-dasharray 1.4s cubic-bezier(.4,0,.2,1), stroke .5s; }
+
+  .as-grade-badge { display: inline-block; padding: .4rem 1.3rem; border-radius: 99px; font-size: .88rem; font-weight: 800; margin-bottom: .6rem; }
+  .as-score-narrative { color: rgba(255,255,255,.72); font-size: .85rem; max-width: 420px; margin: 0 auto; line-height: 1.65; }
+
+  /* Priority gaps */
+  .as-section-title { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: .85rem; }
+
+  .as-gaps { display: flex; flex-direction: column; gap: .7rem; margin-bottom: 1.25rem; }
+  .as-gap {
+    background: #fff; border-radius: 13px; padding: 1rem 1.15rem;
+    display: flex; align-items: flex-start; gap: .8rem;
+    box-shadow: 0 2px 12px rgba(10,31,68,.07);
+    border-left: 4px solid transparent;
+  }
+  .as-gap.critical { border-color: #dc2626; }
+  .as-gap.warning  { border-color: #d97706; }
+  .as-gap.good     { border-color: #16a34a; }
+  .as-gap-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: .05rem; }
+  .as-gap-body h4 { font-size: .88rem; font-weight: 800; color: var(--navy); margin-bottom: .2rem; }
+  .as-gap-body p  { font-size: .76rem; color: var(--gray); line-height: 1.5; margin: 0; }
+  .as-gap-priority { font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; padding: .2rem .55rem; border-radius: 99px; margin-bottom: .25rem; display: inline-block; }
+  .critical .as-gap-priority { background: #fef2f2; color: #991b1b; }
+  .warning  .as-gap-priority { background: #fffbeb; color: #92400e; }
+  .good     .as-gap-priority { background: #f0fdf4; color: #166534; }
+
+  /* Carrier match */
+  .as-carrier-box {
+    background: #fff; border-radius: 13px; padding: 1.15rem 1.3rem;
+    box-shadow: 0 2px 12px rgba(10,31,68,.07); margin-bottom: 1.25rem;
+    border: 1px solid var(--gray-light);
+  }
+  .as-carrier-header { display: flex; align-items: center; gap: .6rem; margin-bottom: .7rem; }
+  .as-carrier-icon { width: 34px; height: 34px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .as-carrier-title { font-size: .9rem; font-weight: 800; color: var(--navy); }
+  .as-carrier-sub   { font-size: .72rem; color: var(--gray); }
+  .as-carrier-tiers { display: flex; flex-direction: column; gap: .45rem; }
+  .as-carrier-tier  { display: flex; justify-content: space-between; align-items: center; padding: .6rem .8rem; background: #f8f9fc; border-radius: 9px; font-size: .78rem; }
+  .as-carrier-tier-name { font-weight: 700; color: var(--navy); }
+  .as-carrier-tier-note { color: var(--gray); font-size: .72rem; }
+  .as-carrier-tier-badge { font-size: .65rem; font-weight: 800; padding: .2rem .6rem; border-radius: 99px; }
+  .badge-best   { background: #dcfce7; color: #166534; }
+  .badge-good   { background: #fef9c3; color: #92400e; }
+  .badge-option { background: #f0f4ff; color: var(--navy); }
+
+  /* Family Impact teaser */
+  .as-impact-teaser {
+    background: linear-gradient(135deg, #1a0a00 0%, #3d1a00 100%);
+    border-radius: 16px; padding: 1.5rem 1.5rem; margin-bottom: 1.25rem; position: relative; overflow: hidden;
+  }
+  .as-impact-teaser::before {
+    content: ''; position: absolute; right: -20px; top: -20px;
+    width: 140px; height: 140px; border-radius: 50%;
+    background: rgba(220,38,38,.12); pointer-events: none;
+  }
+  .as-impact-eyebrow { font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: rgba(220,150,50,.8); margin-bottom: .4rem; }
+  .as-impact-title   { font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: .6rem; line-height: 1.3; }
+  .as-impact-timeline { display: flex; gap: 0; margin-bottom: 1rem; }
+  .as-impact-step {
+    flex: 1; text-align: center; position: relative;
+    padding: .6rem .3rem;
+  }
+  .as-impact-step::after {
+    content: '→'; position: absolute; right: -6px; top: 50%; transform: translateY(-50%);
+    color: rgba(255,255,255,.3); font-size: .7rem;
+  }
+  .as-impact-step:last-child::after { display: none; }
+  .as-impact-step .month { font-size: .6rem; font-weight: 700; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .2rem; }
+  .as-impact-step .event { font-size: .65rem; font-weight: 700; line-height: 1.3; }
+  .as-impact-step.t1 .event { color: #fca5a5; }
+  .as-impact-step.t2 .event { color: #f97316; }
+  .as-impact-step.t3 .event { color: #dc2626; }
+  .as-impact-step.t4 .event { color: #991b1b; }
+  .as-impact-step.t5 .event { color: #7f1d1d; }
+  .as-impact-link {
+    display: inline-flex; align-items: center; gap: .4rem;
+    color: #fca5a5; font-size: .78rem; font-weight: 700; text-decoration: none;
+    border: 1px solid rgba(252,165,165,.3); padding: .45rem .9rem; border-radius: 8px;
+    transition: all .15s;
+  }
+  .as-impact-link:hover { background: rgba(252,165,165,.1); }
+
+  /* CTAs */
+  .as-ctas { display: flex; flex-direction: column; gap: .65rem; margin-bottom: 1.25rem; }
+  .as-cta-primary {
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+    background: var(--gold); color: var(--navy); font-weight: 800; font-size: 1rem;
+    padding: 1.05rem 1.5rem; border-radius: 12px; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(201,151,58,.4); transition: all .2s; text-align: center;
+  }
+  .as-cta-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .as-cta-secondary {
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+    background: var(--navy); color: #fff; font-weight: 700; font-size: .9rem;
+    padding: .9rem 1.25rem; border-radius: 12px; text-decoration: none; text-align: center; transition: all .18s;
+  }
+  .as-cta-secondary:hover { background: #0d2a5e; }
+  .as-cta-tertiary {
+    display: flex; align-items: center; justify-content: center; gap: .4rem;
+    background: #fff; color: var(--navy); font-weight: 700; font-size: .85rem;
+    padding: .8rem 1.25rem; border-radius: 12px; text-decoration: none; text-align: center;
+    border: 2px solid var(--gray-light); transition: all .16s;
+  }
+  .as-cta-tertiary:hover { border-color: var(--navy); background: #f0f4ff; }
+
+  .as-retake { background: none; border: none; color: var(--gray); font-size: .75rem; font-family: var(--font); cursor: pointer; text-decoration: underline; text-align: center; width: 100%; padding: .5rem; }
+  .as-disc { font-size: .65rem; color: var(--gray); line-height: 1.55; padding: 1rem 1.1rem; border: 1px solid var(--gray-light); border-radius: 10px; margin-top: .75rem; background: #fafbff; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo-text" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;">
+      <img src="images/logo-icon.svg" alt="TrueForge Life logo" height="38" width="36" style="display:block;flex-shrink:0;" />
+      <span style="display:flex;flex-direction:column;line-height:1.1;">
+        <span style="font-family:Georgia,serif;font-weight:700;font-size:1rem;letter-spacing:0.08em;color:var(--navy);">TRUEFORGE <span style="color:var(--gold)">LIFE</span></span>
+        <span style="font-size:0.58rem;font-style:italic;color:var(--gray);letter-spacing:0.02em;">Forged in truth. Built for each other.&#8482;</span>
+      </span>
+    </a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="enroll.html" style="color:var(--gold);font-weight:700;">✦ Coverage Assistant</a></li>
+      <li><a href="pathfinder.html" style="color:var(--gold);font-weight:700;">✦ PathFinder</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+1-574-392-0192" class="nav-phone">📞 (574) 392-0192</a>
+      <a href="tel:+15743920192" class="btn btn-primary">📞 Free Quote Call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="as-hero">
+  <div class="container">
+    <div class="as-eyebrow">🎯 Protection Assessment Engine</div>
+    <h1>Before You Buy Insurance,<br><span>Understand What's Actually at Risk.</span></h1>
+    <p>9 questions. 3 minutes. See your family's real financial exposure, identify coverage gaps, and get a personalized action plan — completely free.</p>
+    <div class="as-meta-row">
+      <span>🔒 Private — nothing saved or shared</span>
+      <span>⏱️ About 3 minutes</span>
+      <span>✅ No email required</span>
+      <span>📞 Expert available if you want to talk</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS STRIP -->
+<div class="as-prog-strip" id="progStrip">
+  <div class="as-prog-inner">
+    <div class="as-prog-labels" id="progLabels">
+      <span class="active" id="pl0">Your Situation</span>
+      <span id="pl1">Income &amp; Debt</span>
+      <span id="pl2">Coverage</span>
+      <span id="pl3">Health</span>
+      <span id="pl4">Goals</span>
+    </div>
+    <div class="as-prog-track"><div class="as-prog-fill" id="progFill" style="width:0%"></div></div>
+    <div class="as-prog-pct" id="progPct">Question 1 of 9</div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="as-wrap">
+  <div id="quizSection">
+    <div class="as-card" id="qCard"><!-- injected --></div>
+  </div>
+  <div class="as-results" id="resultsSection"><!-- injected --></div>
+</div>
+
+<!-- STICKY CALL BAR -->
+<div class="sticky-call-bar" style="display:flex;gap:0;">
+  <a href="tel:+15743920192" style="flex:1;border-right:1px solid rgba(255,255,255,.2);">
+    📞 Tap to Call — (574) 392-0192
+    <span class="sub">Free consultation · No pressure · Speak with Dominic directly</span>
+  </a>
+  <a href="sms:+15743920192?body=Hi%20Dominic%2C%20I%20just%20completed%20the%20Protection%20Assessment%20and%20have%20questions." style="flex-shrink:0;padding:.85rem 1.1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:rgba(255,255,255,.9);gap:.2rem;">
+    💬<span>Text</span>
+  </a>
+</div>
+
+<script src="//code.tidio.co/hakq0k87lfccnk5wfqyxoh49nj1stjxy.js" async></script>
+<script src="js/main.js"></script>
+<script>
+/* ══════════════════════════════════════════════════════════════
+   ASSESSMENT ENGINE — STATE
+══════════════════════════════════════════════════════════════ */
+let step = 0;
+let answers = {};   // { q0: value, q1: value, … }
+let mortgageBalance = 250000;
+
+const TOTAL_STEPS = 9;
+
+/* Progress section labels by step ranges */
+const SECTION_MAP = [
+  [0,1],   // Your Situation
+  [2,3],   // Income & Debt
+  [4,5],   // Coverage
+  [6,6],   // Health
+  [7,8],   // Goals
+];
+
+/* ══════════════════════════════════════════════════════════════
+   QUESTION DEFINITIONS
+══════════════════════════════════════════════════════════════ */
+const QUESTIONS = [
+
+  /* Q0 — Role */
+  {
+    id: 'role',
+    eyebrow: 'Question 1 of 9 · Your Situation',
+    text: 'Which best describes your household role?',
+    sub: 'This helps us understand how many people depend on your income and earning capacity.',
+    type: 'single',
+    opts: [
+      { icon: '💼', label: 'Primary earner',      desc: 'Your income is the main financial support for your household', val: 'primary' },
+      { icon: '👫', label: 'Co-earner',            desc: 'You and a partner both contribute significant income',          val: 'co' },
+      { icon: '🧑', label: 'Single, no dependents', desc: 'Your income supports only yourself',                          val: 'single' },
+      { icon: '🏠', label: 'Self-employed',        desc: 'Business owner, freelancer, or independent contractor',         val: 'selfemployed' },
+    ]
+  },
+
+  /* Q1 — Dependents */
+  {
+    id: 'dependents',
+    eyebrow: 'Question 2 of 9 · Your Situation',
+    text: 'Who depends on your income?',
+    sub: 'Select all that apply. This shapes how much coverage your family actually needs.',
+    type: 'multi',
+    opts: [
+      { icon: '👩‍❤️‍👨', label: 'Spouse / partner',     val: 'spouse' },
+      { icon: '👶', label: 'Children under 18',         val: 'children' },
+      { icon: '🎓', label: 'College-age children',       val: 'college' },
+      { icon: '👴', label: 'Aging parents',              val: 'parents' },
+      { icon: '🙋', label: 'Just me — no dependents',    val: 'none', exclusive: true },
+    ]
+  },
+
+  /* Q2 — Income */
+  {
+    id: 'income',
+    eyebrow: 'Question 3 of 9 · Income & Debt',
+    text: 'What is your approximate annual household income?',
+    sub: "Used to calculate how much coverage would replace your income. The standard guideline is 10–12× your annual earnings.",
+    type: 'single',
+    opts: [
+      { icon: '💵', label: 'Under $40,000',          desc: 'Approximately $40K or less',                    val: 'low',  inc: 35000 },
+      { icon: '💵', label: '$40,000 – $75,000',       desc: 'Working and middle-income range',               val: 'mid',  inc: 57500 },
+      { icon: '💵', label: '$75,000 – $150,000',      desc: 'Upper-middle income range',                     val: 'hi',   inc: 112500 },
+      { icon: '💵', label: '$150,000+',               desc: 'Higher income — larger replacement need',        val: 'vhi',  inc: 200000 },
+    ]
+  },
+
+  /* Q3 — Mortgage */
+  {
+    id: 'mortgage',
+    eyebrow: 'Question 4 of 9 · Income & Debt',
+    text: 'What is your current mortgage situation?',
+    sub: 'Your home loan is typically your family\'s largest financial obligation — and the one most at risk.',
+    type: 'single',
+    hasMortgageExpand: true,
+    opts: [
+      { icon: '🏠', label: 'Yes — I have a mortgage',                    desc: 'Outstanding balance on my primary home',                val: 'yes' },
+      { icon: '✅', label: 'Yes — but nearly paid off (under $50K)',      desc: 'Minimal remaining balance',                             val: 'low' },
+      { icon: '🔑', label: 'I rent',                                     desc: 'No mortgage — renting my home',                         val: 'rent' },
+      { icon: '💯', label: 'Own my home outright',                       desc: 'Fully paid off — no mortgage',                          val: 'owned' },
+    ]
+  },
+
+  /* Q4 — Other Debt */
+  {
+    id: 'debt',
+    eyebrow: 'Question 5 of 9 · Income & Debt',
+    text: 'Do you have significant debt beyond your mortgage?',
+    sub: 'These obligations don\'t disappear if you do. Outstanding debts can become a burden for surviving family members.',
+    type: 'multi',
+    opts: [
+      { icon: '🚗', label: 'Auto loan(s)',             val: 'auto' },
+      { icon: '🎓', label: 'Student loans',            val: 'student' },
+      { icon: '💳', label: 'Credit card debt ($10K+)', val: 'credit' },
+      { icon: '💼', label: 'Business debt',            val: 'business' },
+      { icon: '❌', label: 'No significant other debt', val: 'none', exclusive: true },
+    ]
+  },
+
+  /* Q5 — Existing Coverage */
+  {
+    id: 'existing',
+    eyebrow: 'Question 6 of 9 · Coverage',
+    text: 'How much life insurance do you currently have in place?',
+    sub: 'Include all policies: employer group life, personal policies, any mortgage protection. Estimate is fine.',
+    type: 'single',
+    opts: [
+      { icon: '❌', label: 'None',                      desc: 'No life insurance at all',                       val: 'none', cov: 0 },
+      { icon: '⚡', label: 'Under $50,000',              desc: 'Basic group life or small personal policy',       val: 'low',  cov: 25000 },
+      { icon: '📋', label: '$50,000 – $250,000',        desc: 'Moderate coverage in place',                      val: 'mid',  cov: 150000 },
+      { icon: '🛡️', label: '$250,000 – $500,000',       desc: 'Substantial coverage',                            val: 'hi',   cov: 375000 },
+      { icon: '💎', label: 'Over $500,000',              desc: 'High coverage — may be fully protected',           val: 'vhi',  cov: 600000 },
+    ]
+  },
+
+  /* Q6 — Age */
+  {
+    id: 'age',
+    eyebrow: 'Question 7 of 9 · Coverage',
+    text: 'What is your age range?',
+    sub: 'Age is the single biggest factor in what coverage costs. The sooner you lock in, the lower the rate — permanently.',
+    type: 'single',
+    layout: 'grid2',
+    opts: [
+      { icon: '🌱', label: 'Under 35',   desc: 'Best rates available — lock in now',          val: 'u35', age: 30 },
+      { icon: '📈', label: '35 – 44',   desc: 'Still excellent rates — act before 45',        val: '35',  age: 40 },
+      { icon: '⏰', label: '45 – 54',   desc: 'Rates rising — coverage still very accessible', val: '45',  age: 50 },
+      { icon: '⚡', label: '55 – 64',   desc: 'Simplified issue options available',            val: '55',  age: 60 },
+      { icon: '🔴', label: '65 – 74',   desc: 'Final expense and GI options available',        val: '65',  age: 70 },
+      { icon: '🔴', label: '75+',       desc: 'Guaranteed issue — no health questions',        val: '75',  age: 79 },
+    ]
+  },
+
+  /* Q7 — Health */
+  {
+    id: 'health',
+    eyebrow: 'Question 8 of 9 · Health',
+    text: 'How would you describe your overall health?',
+    sub: 'Be honest — this determines which products you\'d qualify for. Conditions don\'t automatically disqualify you.',
+    type: 'single',
+    opts: [
+      { icon: '💪', label: 'Excellent',              desc: 'No significant conditions, non-tobacco, healthy weight', val: 'excellent' },
+      { icon: '👍', label: 'Good',                   desc: 'Minor or well-managed conditions (BP, cholesterol)',     val: 'good' },
+      { icon: '⚡', label: 'Some managed conditions', desc: 'Diabetes, past surgeries, weight concerns, tobacco',    val: 'moderate' },
+      { icon: '🏥', label: 'Serious health history',  desc: 'Cancer, heart disease, kidney issues, COPD, or similar', val: 'serious' },
+    ]
+  },
+
+  /* Q8 — Primary Goal */
+  {
+    id: 'goal',
+    eyebrow: 'Question 9 of 9 · Your Goals',
+    text: 'What is your primary protection goal?',
+    sub: 'This points us to the right product type. You can have multiple goals — pick your most urgent.',
+    type: 'single',
+    opts: [
+      { icon: '💰', label: 'Replace my income for my family',            desc: 'Ensure my spouse/children are financially stable',    val: 'income' },
+      { icon: '🏠', label: 'Pay off my mortgage',                       desc: 'Make sure my family keeps the home',                  val: 'mortgage' },
+      { icon: '⚰️', label: 'Cover final expenses',                      desc: 'Burial, medical bills, small debts — not a burden',   val: 'final' },
+      { icon: '📈', label: 'Build cash value + protection',             desc: 'Permanent coverage that also grows over time (IUL)',   val: 'iul' },
+      { icon: '🛡️', label: 'Full family protection — all of the above', desc: 'Comprehensive coverage across all risk categories',   val: 'all' },
+    ]
+  },
+
+];
+
+/* ══════════════════════════════════════════════════════════════
+   RENDER ENGINE
+══════════════════════════════════════════════════════════════ */
+function renderStep() {
+  const q = QUESTIONS[step];
+  const pct = Math.round((step / TOTAL_STEPS) * 100);
+
+  // Progress
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progPct').textContent = `Question ${step + 1} of ${TOTAL_STEPS}`;
+
+  // Section labels
+  SECTION_MAP.forEach(([lo, hi], i) => {
+    const el = document.getElementById('pl' + i);
+    el.className = (step >= lo && step <= hi) ? 'active' : '';
+  });
+
+  // Card HTML
+  let html = `<div class="as-q-eyebrow">${q.eyebrow}</div>`;
+  html += `<div class="as-q-text">${q.text}</div>`;
+  if (q.sub) html += `<div class="as-q-sub">${q.sub}</div>`;
+
+  const layout = q.layout === 'grid2' ? 'as-opts grid2' : 'as-opts';
+
+  if (q.type === 'single') {
+    html += `<div class="${layout}">`;
+    q.opts.forEach(o => {
+      const sel = answers[q.id] === o.val ? ' sel' : '';
+      html += `<button class="as-opt${sel}" onclick="pick('${q.id}','${o.val}',this)">
+        <span class="as-opt-icon">${o.icon}</span>
+        <span class="as-opt-body">
+          <span class="as-opt-label">${o.label}</span>
+          ${o.desc ? `<span class="as-opt-desc">${o.desc}</span>` : ''}
+        </span>
+      </button>`;
+    });
+    html += `</div>`;
+
+    // Mortgage balance expander
+    if (q.hasMortgageExpand) {
+      const showExpand = answers[q.id] === 'yes';
+      html += `<div class="as-mort-expand${showExpand ? ' show' : ''}" id="mortExpand">
+        <span class="label">Drag to set your remaining mortgage balance</span>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.4rem;">
+          <span style="font-size:.72rem;font-weight:700;color:var(--navy);">Remaining Balance</span>
+          <span class="as-mort-val" id="mortValDisplay">$${mortgageBalance.toLocaleString()}</span>
+        </div>
+        <input type="range" id="mortSlider" min="0" max="100" value="${mortSliderPosFromBal(mortgageBalance)}"
+          oninput="updateMortSlider(this.value)" style="width:100%;margin-bottom:.2rem;" />
+        <div class="as-sl-row"><span>$50,000</span><span>$750,000+</span></div>
+      </div>`;
+    }
+
+  } else {
+    // Multi-select chips
+    const cur = answers[q.id] || [];
+    html += `<div class="as-chips">`;
+    q.opts.forEach(o => {
+      const sel = cur.includes(o.val) ? ' sel' : '';
+      html += `<button class="as-chip${sel}" onclick="toggleChip('${q.id}','${o.val}',${o.exclusive||false},this)">${o.icon} ${o.label}</button>`;
+    });
+    html += `</div>`;
+  }
+
+  const hasAnswer = q.type === 'single' ? !!answers[q.id] : (answers[q.id] || []).length > 0;
+  const nextLabel = step < TOTAL_STEPS - 1 ? 'Continue →' : '📊 Get My Protection Profile →';
+  html += `<div class="as-nav">
+    ${step > 0 ? `<button class="as-btn-back" onclick="goBack()">← Back</button>` : ''}
+    <button class="as-btn-next${hasAnswer ? ' ready' : ''}" id="nextBtn" onclick="goNext()">
+      ${nextLabel}
+    </button>
+  </div>`;
+
+  const card = document.getElementById('qCard');
+  card.innerHTML = html;
+  card.style.animation = 'none';
+  void card.offsetWidth; // reflow
+  card.style.animation = '';
+}
+
+/* ── Mortgage slider helpers ── */
+const BAL_STOPS = [50000,75000,100000,125000,150000,175000,200000,225000,250000,275000,300000,325000,350000,400000,450000,500000,600000,700000,750000];
+function mortSliderPosFromBal(bal) {
+  const idx = BAL_STOPS.findIndex(v => v >= bal);
+  return Math.round(((idx < 0 ? BAL_STOPS.length-1 : idx) / (BAL_STOPS.length-1)) * 100);
+}
+function updateMortSlider(pos) {
+  const idx = Math.round((pos/100)*(BAL_STOPS.length-1));
+  mortgageBalance = BAL_STOPS[idx];
+  const el = document.getElementById('mortValDisplay');
+  if (el) el.textContent = '$' + mortgageBalance.toLocaleString();
+}
+
+/* ── Single pick ── */
+function pick(qid, val, btn) {
+  answers[qid] = val;
+  document.querySelectorAll('.as-opt').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+  const nb = document.getElementById('nextBtn');
+  if (nb) nb.classList.add('ready');
+
+  // Show mortgage expand
+  if (qid === 'mortgage') {
+    const ex = document.getElementById('mortExpand');
+    if (ex) ex.classList.toggle('show', val === 'yes');
+  }
+}
+
+/* ── Multi-select chips ── */
+function toggleChip(qid, val, exclusive, btn) {
+  let cur = answers[qid] || [];
+  if (exclusive) {
+    cur = cur.includes(val) ? [] : [val];
+    document.querySelectorAll('.as-chip').forEach(c => c.classList.remove('sel'));
+  } else {
+    // Remove exclusive if selecting non-exclusive
+    cur = cur.filter(v => {
+      const o = QUESTIONS[step].opts.find(o => o.val === v);
+      return !o?.exclusive;
+    });
+    document.querySelectorAll('.as-chip').forEach(c => {
+      const o = QUESTIONS[step].opts.find(o => o.label === c.textContent.trim().replace(/^.{2}/,'').trim());
+      // remove exclusive chips visually
+    });
+    const exOpts = QUESTIONS[step].opts.filter(o=>o.exclusive).map(o=>o.val);
+    cur = cur.filter(v => !exOpts.includes(v));
+    document.querySelectorAll('.as-chip').forEach(c => {
+      const o = QUESTIONS[step].opts.find(o => c.textContent.includes(o.label));
+      if (o?.exclusive) c.classList.remove('sel');
+    });
+
+    if (cur.includes(val)) { cur = cur.filter(v => v !== val); btn.classList.remove('sel'); }
+    else { cur.push(val); btn.classList.add('sel'); }
+  }
+  if (exclusive) btn.classList.toggle('sel', cur.includes(val));
+  answers[qid] = cur;
+  const nb = document.getElementById('nextBtn');
+  if (nb) nb.classList.toggle('ready', cur.length > 0);
+}
+
+function goNext() {
+  const q = QUESTIONS[step];
+  const hasAnswer = q.type === 'single' ? !!answers[q.id] : (answers[q.id] || []).length > 0;
+  if (!hasAnswer) return;
+  if (step < TOTAL_STEPS - 1) { step++; renderStep(); window.scrollTo({top:0,behavior:'smooth'}); }
+  else showResults();
+}
+function goBack() {
+  if (step > 0) { step--; renderStep(); window.scrollTo({top:0,behavior:'smooth'}); }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SCORING ENGINE
+══════════════════════════════════════════════════════════════ */
+function calcProfile() {
+  const a = answers;
+  const inc = QUESTIONS[2].opts.find(o => o.val === a.income)?.inc || 75000;
+  const cov = QUESTIONS[5].opts.find(o => o.val === a.existing)?.cov || 0;
+  const age = QUESTIONS[6].opts.find(o => o.val === a.age)?.age || 45;
+  const health = a.health || 'good';
+  const hasMort = a.mortgage === 'yes';
+  const mortBal = hasMort ? mortgageBalance : (a.mortgage === 'low' ? 25000 : 0);
+  const deps = a.dependents || [];
+  const hasDeps = !deps.includes('none') && deps.length > 0;
+
+  // Coverage gap
+  const idealCov = inc * 10;
+  const covGap = Math.max(0, idealCov - cov);
+  const covPct = Math.min(100, Math.round((cov / idealCov) * 100));
+
+  // Score components (0–100)
+  let score = 0;
+  // Coverage amount (0–35)
+  score += Math.min(35, Math.round((cov / idealCov) * 35));
+  // Mortgage protection (0–20)
+  if (!hasMort || cov >= mortBal) score += 20;
+  else score += Math.round(Math.max(0, 1 - (mortBal / Math.max(cov,1))) * 20);
+  // Dependent coverage (0–20)
+  if (!hasDeps) score += 20;
+  else if (cov >= idealCov * 0.5) score += 12;
+  else if (cov > 0) score += 5;
+  // Age/timing (0–15)
+  if (age < 35) score += 15;
+  else if (age < 45) score += 12;
+  else if (age < 55) score += 8;
+  else if (age < 65) score += 4;
+  else score += 1;
+  // Health tier (0–10)
+  score += { excellent: 10, good: 8, moderate: 5, serious: 2 }[health] || 5;
+
+  score = Math.min(100, Math.max(0, score));
+
+  // Carrier tier
+  let carrierTier;
+  if (health === 'excellent' && age < 55) carrierTier = 'preferred';
+  else if (health === 'good' || (health === 'excellent' && age < 65)) carrierTier = 'standard';
+  else if (health === 'moderate') carrierTier = 'simplified';
+  else carrierTier = 'guaranteed';
+
+  // Product recommendation
+  let primaryProduct;
+  const goal = a.goal || 'all';
+  if (goal === 'final' || age >= 65) primaryProduct = 'final-expense';
+  else if (goal === 'mortgage' || (hasMort && covGap > 100000)) primaryProduct = 'mortgage-protection';
+  else if (goal === 'iul') primaryProduct = 'iul';
+  else if (goal === 'income' || goal === 'all') primaryProduct = age < 50 ? 'term-life' : 'final-expense';
+  else primaryProduct = 'term-life';
+
+  return { score, covGap, covPct, idealCov, cov, inc, age, health, hasMort, mortBal, hasDeps, deps, carrierTier, primaryProduct, goal };
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESULTS RENDERER
+══════════════════════════════════════════════════════════════ */
+function showResults() {
+  document.getElementById('quizSection').style.display = 'none';
+  document.getElementById('progFill').style.width = '100%';
+  document.getElementById('progPct').textContent = 'Assessment Complete';
+
+  const p = calcProfile();
+  const grade = gradeFor(p.score);
+
+  const INTEGRITY = 'https://myintegrity.com/?purl=Dominic-Raciti';
+
+  // Build results HTML
+  let html = '';
+
+  /* ── Score Ring ── */
+  const circ = 2 * Math.PI * 77; // r=77 → ≈484
+  html += `
+  <div class="as-score-hero">
+    <div class="as-score-label">Your Family Protection Profile</div>
+    <svg class="as-ring-svg" viewBox="0 0 180 180">
+      <circle class="as-ring-bg" cx="90" cy="90" r="77"/>
+      <circle class="as-ring-fill" id="ringFill" cx="90" cy="90" r="77"
+        stroke="${grade.ring}" stroke-dasharray="0 ${circ}"/>
+      <text x="90" y="82" text-anchor="middle" font-family="Inter,sans-serif"
+        font-size="42" font-weight="800" fill="white" id="scoreNum">0</text>
+      <text x="90" y="102" text-anchor="middle" font-family="Inter,sans-serif"
+        font-size="11.5" font-weight="700" fill="rgba(255,255,255,0.5)">out of 100</text>
+    </svg>
+    <div class="as-grade-badge" style="background:${grade.badgeBg};color:${grade.badgeColor};">${grade.label}</div>
+    <p class="as-score-narrative">${grade.narrative(p)}</p>
+  </div>`;
+
+  /* ── Priority Gaps ── */
+  const gaps = buildGaps(p);
+  html += `<div class="as-card" style="margin-bottom:1.25rem;">
+    <div class="as-section-title">Your Top Protection Gaps</div>
+    <div class="as-gaps">${gaps.map(g => `
+      <div class="as-gap ${g.type}">
+        <span class="as-gap-icon">${g.icon}</span>
+        <div class="as-gap-body">
+          <span class="as-gap-priority">${g.type === 'critical' ? '🔴 Critical' : g.type === 'warning' ? '⚠️ Review Needed' : '✅ Strength'}</span>
+          <h4>${g.title}</h4>
+          <p>${g.body}</p>
+        </div>
+      </div>`).join('')}
+    </div>
+  </div>`;
+
+  /* ── Carrier Match ── */
+  const carriers = carrierMatch(p);
+  html += `<div class="as-carrier-box">
+    <div class="as-carrier-header">
+      <div class="as-carrier-icon">🏦</div>
+      <div>
+        <div class="as-carrier-title">Your Carrier Match Preview</div>
+        <div class="as-carrier-sub">Based on age, health tier, and coverage type — subject to underwriting</div>
+      </div>
+    </div>
+    <div class="as-carrier-tiers">${carriers.map(c => `
+      <div class="as-carrier-tier">
+        <div>
+          <div class="as-carrier-tier-name">${c.name}</div>
+          <div class="as-carrier-tier-note">${c.note}</div>
+        </div>
+        <span class="as-carrier-tier-badge badge-${c.badge}">${c.badgeLabel}</span>
+      </div>`).join('')}
+    </div>
+  </div>`;
+
+  /* ── Family Impact Teaser ── */
+  const impactSteps = buildImpactSteps(p);
+  html += `<div class="as-impact-teaser">
+    <div class="as-impact-eyebrow">⚠️ Without Coverage — Your Family's Timeline</div>
+    <div class="as-impact-title">Here's what the next 5 years could look like without protection in place.</div>
+    <div class="as-impact-timeline">
+      ${impactSteps.map((s, i) => `<div class="as-impact-step t${i+1}">
+        <div class="month">${s.month}</div>
+        <div class="event">${s.event}</div>
+      </div>`).join('')}
+    </div>
+    <a href="mortgage-calculator.html" class="as-impact-link">See the full interactive timeline →</a>
+  </div>`;
+
+  /* ── Recommended Action ── */
+  const ctaLabel = primaryCTA(p);
+  html += `<div class="as-card">
+    <div style="text-align:center;margin-bottom:1.25rem;">
+      <div style="font-size:1.05rem;font-weight:800;color:var(--navy);margin-bottom:.4rem;">Your Recommended Next Step</div>
+      <div style="font-size:.82rem;color:var(--gray);max-width:400px;margin:0 auto;line-height:1.55;">${ctaLabel.context}</div>
+    </div>
+    <div class="as-ctas">
+      <a href="${INTEGRITY}" target="_blank" rel="noopener" class="as-cta-primary">🚀 ${ctaLabel.primary}</a>
+      <a href="tel:+15743920192" class="as-cta-secondary">📞 Talk to Dominic First — (574) 392-0192</a>
+      <a href="pathfinder.html" class="as-cta-tertiary">🧭 Refine with the Coverage PathFinder</a>
+    </div>
+    <div style="text-align:center;margin-top:.75rem;">
+      <button class="as-retake" onclick="resetAssessment()">↩ Retake the assessment</button>
+    </div>
+    <div class="as-disc">
+      This assessment is for educational purposes only. Results are estimates based on general actuarial principles and do not constitute a quote, offer, or guarantee of coverage. Eligibility and premiums are determined by carrier underwriting based on your complete application and health history. TrueForge Life, LLC is a licensed independent insurance agency.
+    </div>
+  </div>`;
+
+  const sec = document.getElementById('resultsSection');
+  sec.innerHTML = html;
+  sec.classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Animate ring
+  setTimeout(() => {
+    const fill = document.getElementById('ringFill');
+    if (fill) {
+      const fillLen = (p.score / 100) * circ;
+      fill.style.strokeDasharray = `${fillLen} ${circ}`;
+    }
+    // Count up
+    let n = 0;
+    const el = document.getElementById('scoreNum');
+    const t = setInterval(() => {
+      n = Math.min(n + 2, p.score);
+      if (el) el.textContent = n;
+      if (n >= p.score) clearInterval(t);
+    }, 16);
+  }, 120);
+}
+
+/* ── Grade definitions ── */
+function gradeFor(score) {
+  if (score >= 80) return {
+    label: 'Well Protected', ring: '#16a34a', badgeBg: 'rgba(22,163,74,.2)', badgeColor: '#4ade80',
+    narrative: p => `Your coverage picture is solid. A few targeted improvements could bring you to full protection — especially around ${p.hasMort && p.cov < p.mortBal ? 'mortgage coverage' : 'income replacement'}.`
+  };
+  if (score >= 60) return {
+    label: 'Partially Protected', ring: '#eab308', badgeBg: 'rgba(234,179,8,.2)', badgeColor: '#fde047',
+    narrative: p => `You have some protection in place, but meaningful gaps remain. Your family would face real financial pressure without coverage improvements. The good news: this is fixable quickly.`
+  };
+  if (score >= 35) return {
+    label: 'At Risk', ring: '#f97316', badgeBg: 'rgba(249,115,22,.2)', badgeColor: '#fb923c',
+    narrative: p => `Your family has limited protection against a loss of income. Several gaps are significant enough that a coverage event would create serious financial hardship. Action now is the most important move you can make.`
+  };
+  return {
+    label: 'Critically Unprotected', ring: '#dc2626', badgeBg: 'rgba(220,38,38,.2)', badgeColor: '#f87171',
+    narrative: p => `Your family currently has little to no financial protection. This is the highest-priority situation we see — and it's one that's completely preventable. Coverage is available and often more affordable than people expect.`
+  };
+}
+
+/* ── Gap analysis ── */
+function buildGaps(p) {
+  const gaps = [];
+
+  // 1. Coverage amount
+  if (p.cov === 0) {
+    gaps.push({ type: 'critical', icon: '❌', title: 'No Life Insurance in Place',
+      body: `Your family has zero financial protection right now. If something happened tomorrow, there is no safety net — no income replacement, no mortgage payoff, no buffer. This is the most urgent gap to address.` });
+  } else if (p.covPct < 40) {
+    gaps.push({ type: 'critical', icon: '⚠️', title: `Coverage Gap: ~$${Math.round(p.covGap/1000)*1000 .toLocaleString()} Underinsured`,
+      body: `Your current coverage ($${p.cov.toLocaleString()}) covers only ${p.covPct}% of the recommended amount ($${Math.round(p.idealCov/1000)*1000 .toLocaleString()}). Your family would face a significant income gap.` });
+  } else if (p.covPct < 75) {
+    gaps.push({ type: 'warning', icon: '📋', title: `Coverage Partially Adequate`,
+      body: `You have a foundation in place, but a gap of approximately $${Math.round(p.covGap/1000)*1000 .toLocaleString()} remains against the 10× income guideline. Topping up coverage is straightforward.` });
+  } else {
+    gaps.push({ type: 'good', icon: '✅', title: 'Coverage Amount — On Track',
+      body: `Your current coverage aligns well with income-replacement guidelines. Continue reviewing after major life events.` });
+  }
+
+  // 2. Mortgage
+  if (p.hasMort && p.mortBal > 50000) {
+    if (p.cov < p.mortBal * 0.5) {
+      gaps.push({ type: 'critical', icon: '🏠', title: `Mortgage Exposure: $${p.mortBal.toLocaleString()} at Risk`,
+        body: `Your family would inherit the full mortgage balance with insufficient coverage to address it. Without a dedicated mortgage protection policy, foreclosure risk is real within months of an income loss.` });
+    } else {
+      gaps.push({ type: 'warning', icon: '🏡', title: 'Mortgage — Partial Coverage',
+        body: `Your coverage may cover the mortgage, but a dedicated mortgage protection policy ensures the home is secured regardless of how your beneficiary uses the general death benefit.` });
+    }
+  } else if (!p.hasMort) {
+    gaps.push({ type: 'good', icon: '✅', title: 'Mortgage Exposure — Low',
+      body: `No significant mortgage obligation. Your family's housing risk is lower than average. Focus energy on income replacement and any remaining debt.` });
+  }
+
+  // 3. Dependents
+  if (p.hasDeps && p.deps.includes('children')) {
+    if (p.cov < p.idealCov * 0.5) {
+      gaps.push({ type: 'critical', icon: '👶', title: 'Children Are Underprotected',
+        body: `With children depending on your income, even partial coverage leaves significant risk. Consider a term policy sized to cover expenses through their college years at minimum.` });
+    } else {
+      gaps.push({ type: 'warning', icon: '👨‍👩‍👧', title: 'Review Coverage for Children',
+        body: `Children's financial needs evolve. Ensure your coverage extends through their education and early independence. Riders for child protection are also worth exploring.` });
+    }
+  }
+
+  // 4. Age/timing
+  if (p.age < 40) {
+    gaps.push({ type: 'good', icon: '🌱', title: 'Ideal Timing to Lock In Low Rates',
+      body: `At your age, you're in the best window for the lowest premiums available. Every year of delay increases cost. Locking in now protects your insurability for decades.` });
+  } else if (p.age >= 65) {
+    gaps.push({ type: 'warning', icon: '⏰', title: 'Coverage Window — Act Now',
+      body: `At this stage, guaranteed issue and final expense products are the most accessible path. They have no health questions and ensure your family avoids final expense burdens. Don't delay further.` });
+  }
+
+  return gaps.slice(0, 4);
+}
+
+/* ── Carrier matching ── */
+function carrierMatch(p) {
+  const tier = p.carrierTier;
+  const prod = p.primaryProduct;
+
+  const maps = {
+    preferred: [
+      { name: 'Mutual of Omaha', note: 'Top-rated for ' + prodName(prod) + ' — preferred health', badge: 'best', badgeLabel: 'Best Match' },
+      { name: 'Transamerica',    note: 'Strong rates, fast approval for preferred applicants',          badge: 'good', badgeLabel: 'Strong Fit' },
+      { name: 'North American',  note: 'Competitive term rates, excellent financial strength',          badge: 'option', badgeLabel: 'Option' },
+    ],
+    standard: [
+      { name: 'Mutual of Omaha', note: 'Flexible underwriting, accepts most common conditions',        badge: 'best', badgeLabel: 'Best Match' },
+      { name: 'Foresters',       note: 'Community-based carrier, good for standard health ratings',    badge: 'good', badgeLabel: 'Strong Fit' },
+      { name: 'Americo',         note: 'Accessible rates for standard applicants',                     badge: 'option', badgeLabel: 'Option' },
+    ],
+    simplified: [
+      { name: 'Mutual of Omaha', note: 'Simplified issue — no exam, 20-question health screen',       badge: 'best', badgeLabel: 'Best Match' },
+      { name: 'Foresters',       note: 'Flexible simplified issue, accepts many conditions',           badge: 'good', badgeLabel: 'Strong Fit' },
+      { name: 'Liberty Bankers', note: 'Simplified issue for moderate health histories',               badge: 'option', badgeLabel: 'Option' },
+    ],
+    guaranteed: [
+      { name: 'Mutual of Omaha', note: 'Guaranteed issue final expense — no health questions',         badge: 'best', badgeLabel: 'Best Match' },
+      { name: 'Gerber Life',     note: 'Guaranteed acceptance, strong brand recognition',              badge: 'good', badgeLabel: 'Strong Fit' },
+      { name: 'AIG / Corebridge', note: 'GI option with strong financial backing',                    badge: 'option', badgeLabel: 'Option' },
+    ],
+  };
+
+  return maps[tier] || maps.standard;
+}
+
+function prodName(p) {
+  return { 'final-expense': 'final expense', 'mortgage-protection': 'mortgage protection', 'term-life': 'term life', 'iul': 'IUL' }[p] || 'coverage';
+}
+
+/* ── Family impact steps ── */
+function buildImpactSteps(p) {
+  const hasMort = p.hasMort;
+  const hasDeps = p.hasDeps;
+
+  if (hasMort && hasDeps) return [
+    { month: 'Month 1', event: 'Savings start depleting' },
+    { month: 'Month 3', event: 'First payment missed' },
+    { month: 'Month 6', event: 'Credit declining' },
+    { month: 'Year 1',  event: 'Foreclosure begins' },
+    { month: 'Year 3',  event: 'College fund gone' },
+  ];
+  if (hasMort) return [
+    { month: 'Month 1', event: 'Savings used for bills' },
+    { month: 'Month 3', event: 'Mortgage at risk' },
+    { month: 'Month 6', event: 'Missed payments' },
+    { month: 'Year 1',  event: 'Foreclosure risk' },
+    { month: 'Year 2',  event: 'Forced to sell' },
+  ];
+  return [
+    { month: 'Month 1', event: 'Income stops immediately' },
+    { month: 'Month 3', event: 'Savings exhausted' },
+    { month: 'Month 6', event: 'Bills go unpaid' },
+    { month: 'Year 1',  event: 'Financial instability' },
+    { month: 'Year 3',  event: 'Long-term hardship' },
+  ];
+}
+
+/* ── CTA copy ── */
+function primaryCTA(p) {
+  const prod = p.primaryProduct;
+  const names = { 'final-expense': 'Final Expense', 'mortgage-protection': 'Mortgage Protection', 'term-life': 'Term Life', 'iul': 'IUL' };
+  const name = names[prod] || 'Coverage';
+
+  if (p.score < 35) return {
+    primary: `Start My ${name} Application →`,
+    context: `Based on your profile, ${name.toLowerCase()} is your highest-priority coverage type. The application takes 10–15 minutes through our secure enrollment partner.`
+  };
+  if (p.score < 60) return {
+    primary: `See My ${name} Options →`,
+    context: `You have gaps that are straightforward to address. Starting your application now locks in your current rate — premiums only go up with age.`
+  };
+  return {
+    primary: `Review & Optimize My Coverage →`,
+    context: `Your coverage is in decent shape. A quick application review can confirm you're optimized — and may identify savings or coverage improvements.`
+  };
+}
+
+function resetAssessment() {
+  step = 0; answers = {}; mortgageBalance = 250000;
+  document.getElementById('quizSection').style.display = 'block';
+  document.getElementById('resultsSection').classList.remove('show');
+  document.getElementById('resultsSection').innerHTML = '';
+  renderStep();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Init
+renderStep();
+</script>
+</body>
+</html>
