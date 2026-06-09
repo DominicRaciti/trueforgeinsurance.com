@@ -826,13 +826,60 @@
       <li><a href="how-it-works.html">How It Works</a></li>
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="assess.html" style="color:var(--gold);font-weight:700;">🎯 Assess My Risk</a></li>
-      <li><a href="family-impact.html">📅 Impact Timeline</a></li>
-      <li><a href="pathfinder.html" style="color:var(--gold);font-weight:700;">✦ PathFinder</a></li>
+      <li>
+        <a href="assess.html" class="nav-dropdown-toggle" style="color:var(--gold);font-weight:700;">
+          Tools <span class="caret">▼</span>
+        </a>
+        <div class="nav-dropdown">
+          <a href="assess.html">
+            <span class="dd-icon" style="background:#fff8ee;">🎯</span>
+            <span class="dd-text">
+              <span class="dd-title">Assess My Risk</span>
+              <span class="dd-sub">Get your Protection Score™</span>
+            </span>
+          </a>
+          <a href="enroll.html">
+            <span class="dd-icon" style="background:#f0f4ff;">✦</span>
+            <span class="dd-text">
+              <span class="dd-title">Coverage Assistant</span>
+              <span class="dd-sub">Find the right product</span>
+            </span>
+          </a>
+          <a href="family-impact.html">
+            <span class="dd-icon" style="background:#f0fff4;">📅</span>
+            <span class="dd-text">
+              <span class="dd-title">Family Impact Timeline</span>
+              <span class="dd-sub">See what's at stake</span>
+            </span>
+          </a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="pathfinder.html">
+            <span class="dd-icon" style="background:#fff8ee;">✦</span>
+            <span class="dd-text">
+              <span class="dd-title">PathFinder</span>
+              <span class="dd-sub">Coverage quiz & guidance</span>
+            </span>
+          </a>
+          <a href="mortgage-calculator.html">
+            <span class="dd-icon" style="background:#f5f0ff;">🏠</span>
+            <span class="dd-text">
+              <span class="dd-title">Mortgage Calculator</span>
+              <span class="dd-sub">Estimate your coverage need</span>
+            </span>
+          </a>
+          <a href="protection-score.html">
+            <span class="dd-icon" style="background:#fff0f0;">🏆</span>
+            <span class="dd-text">
+              <span class="dd-title">Protection Score</span>
+              <span class="dd-sub">Learn about your score</span>
+            </span>
+          </a>
+        </div>
+      </li>
     </ul>
     <div class="nav-cta">
-      <a href="tel:+1-574-392-0192" class="nav-phone">📞 (574) 392-0192</a>
-      <a href="tel:+15743920192" class="btn btn-primary">📞 Free Quote Call</a>
+      <a href="tel:+15743920192" class="nav-phone" style="font-size:0.8rem;">(574) 392-0192</a>
+      <a href="https://calendly.com/dominic-trueforgeinsurance/30min" class="btn btn-primary" target="_blank" rel="noopener" style="font-size:0.82rem;padding:0.55rem 1.1rem;white-space:nowrap;">📅 Book a Free Call</a>
     </div>
   </div>
 </nav>
@@ -1866,5 +1913,22 @@ function askQuick(btn) {
 }
 </script>
 
+
+<script>
+// Mobile: tap "Tools" to toggle dropdown
+(function(){
+  var toggle = document.querySelector('.nav-dropdown-toggle');
+  var dropdown = toggle && toggle.parentElement.querySelector('.nav-dropdown');
+  if(!toggle || !dropdown) return;
+  toggle.addEventListener('click', function(e){
+    if(window.innerWidth <= 900){
+      e.preventDefault();
+      dropdown.classList.toggle('open');
+      var caret = toggle.querySelector('.caret');
+      if(caret) caret.style.transform = dropdown.classList.contains('open') ? 'rotate(180deg)' : '';
+    }
+  });
+})();
+</script>
 </body>
 </html>
