@@ -929,6 +929,13 @@ function showResults() {
   const ctaLabel   = primaryCTA(p);
   const gaps       = buildGaps(p);
   const carriers   = carrierMatch(p);
+  const story      = buildStory(p);
+  const storyHtml  = `<div class="tf-story-card">
+    <div class="tf-story-eyebrow">A Story Worth Reading Before You Decide</div>
+    <div class="tf-story-headline">${story.headline}</div>
+    <div class="tf-story-body">${story.body}</div>
+    <div class="tf-story-footer">Names changed. Stories are real. Shared with permission.</div>
+  </div>`;
 
   let html = '';
 
@@ -1127,13 +1134,7 @@ function showResults() {
       </div>`).join('')}
     </div>
 
-    ${(() => { const s = buildStory(p); return `
-    <div class="tf-story-card">
-      <div class="tf-story-eyebrow">A Story Worth Reading Before You Decide</div>
-      <div class="tf-story-headline">${s.headline}</div>
-      <div class="tf-story-body">${s.body}</div>
-      <div class="tf-story-footer">Names changed. Stories are real. Shared with permission.</div>
-    </div>`; })()}
+    ${storyHtml}
 
     <div class="as-ctas" style="margin-top:1.25rem;">
       <a href="${INTEGRITY}" target="_blank" rel="noopener" class="as-cta-primary">🚀 ${ctaLabel.primary}</a>
