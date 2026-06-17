@@ -110,7 +110,8 @@
 
   .as-q-eyebrow { font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--gold); margin-bottom: .45rem; }
   .as-q-text { font-size: 1.2rem; font-weight: 800; color: var(--navy); line-height: 1.3; margin-bottom: .4rem; }
-  .as-q-sub  { font-size: .8rem; color: var(--gray); line-height: 1.55; margin-bottom: 1.3rem; }
+  .as-q-sub  { font-size: .8rem; color: var(--gray); line-height: 1.55; margin-bottom: .75rem; }
+  .as-q-emotion { font-size: .8rem; color: var(--navy); line-height: 1.6; margin-bottom: 1.1rem; padding: .65rem .9rem; background: rgba(201,151,58,.08); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; font-style: italic; }
 
   /* ── OPTION STYLES ── */
   .as-opts { display: flex; flex-direction: column; gap: .55rem; }
@@ -522,148 +523,220 @@ const SECTION_MAP = [
 /* ══════════════════════════════════════════════════════════════
    QUESTION DEFINITIONS
 ══════════════════════════════════════════════════════════════ */
+/* ── Emotional context per step, keyed by goal ── */
+function emotionalContext(stepId, goal) {
+  const ctx = {
+    role: {
+      final:    '🕯️ Most people who come to us for final expense coverage are the ones their family leans on — the person everyone calls first. Let\'s make sure your absence doesn\'t become their burden.',
+      mortgage: '🏠 Whether you\'re the breadwinner, co-earner, or self-employed — if your name is on that mortgage, your family\'s home is tied to your income.',
+      income:   '💼 The people who depend on your paycheck don\'t stop needing it when you\'re gone. This question helps us understand exactly how many people we\'re protecting.',
+      iul:      '📈 Building real wealth starts with knowing your financial role in the household. Let\'s get that clear first.',
+      all:      '💼 The people who depend on your paycheck don\'t stop needing it when you\'re gone. This question helps us understand exactly how many people we\'re protecting.',
+      default:  '💼 This helps us understand the full scope of who\'s counting on you.',
+    },
+    dependents: {
+      final:    '🌹 Even if it\'s just a spouse or an aging parent — the person left to handle everything shouldn\'t also be left to handle the bills.',
+      mortgage: '🏠 If your family stays in your home after you\'re gone, it\'s because someone kept making that payment. Let\'s see who needs protecting.',
+      income:   '👨‍👩‍👧 Every name on this list is a reason not to wait. Your children won\'t remember the premium you paid. They\'ll remember whether the lights stayed on.',
+      iul:      '👨‍👩‍👧 Knowing who depends on you shapes how we structure a policy that protects and builds at the same time.',
+      all:      '👨‍👩‍👧 Every name on this list is a reason not to wait. Your children won\'t remember the premium you paid. They\'ll remember whether the lights stayed on.',
+      default:  '👨‍👩‍👧 Every person who depends on your income is a reason this conversation matters.',
+    },
+    income: {
+      final:    '💵 Final expense coverage is typically $10,000–$25,000. But your income helps us make sure we\'re not leaving a bigger gap elsewhere.',
+      mortgage: '🏠 Your income is what keeps the mortgage current. If it stopped, how long before your family\'s options ran out?',
+      income:   '💵 The standard guideline is 10–12× your income. That\'s not a sales number — it\'s what it actually takes to replace a working lifetime of earnings.',
+      iul:      '📈 Your income determines both what you can build — and what needs protecting while you build it.',
+      all:      '💵 Your income is the foundation everything else rests on. Let\'s make sure it\'s the one thing that never disappears on your family.',
+      default:  '💵 This is the number your family would need to replace if you were gone tomorrow.',
+    },
+    mortgage: {
+      final:    '🏠 Even if the mortgage isn\'t your primary concern, an outstanding balance becomes someone else\'s problem the day you\'re gone.',
+      mortgage: '🏠 This is exactly why you\'re here. If you pass away with a mortgage balance and no coverage, your family has 30–60 days before the first missed payment.',
+      income:   '🏠 The mortgage is usually the first thing to go when income disappears. It\'s also the one that takes the family\'s stability with it.',
+      iul:      '🏠 Your home is your biggest asset. It should also be the most protected one.',
+      all:      '🏠 The mortgage is usually the first thing to go when income disappears. It\'s also the one that takes the family\'s stability with it.',
+      default:  '🏠 Your home is likely your family\'s largest financial obligation — and the most vulnerable one.',
+    },
+    debt: {
+      final:    '💳 Debt doesn\'t die with you. Legally, some of it passes to your estate — meaning your family deals with collectors while they\'re still grieving.',
+      mortgage: '💳 Outside debt adds to the pressure. Every dollar owed is a dollar your coverage needs to account for.',
+      income:   '💳 Most families don\'t think about this until it\'s too late. Outstanding debt reduces the net value of any payout — we need to factor it in.',
+      iul:      '💳 Debt is the enemy of wealth-building. Your policy needs to clear the path, not just cover the basics.',
+      all:      '💳 Most families don\'t think about this until it\'s too late. Outstanding debt reduces the net value of any payout — we need to factor it in.',
+      default:  '💳 These obligations don\'t disappear when you do — they become your family\'s problem.',
+    },
+    existing: {
+      final:    '📋 Some people already have a small policy from work. Most final expense plans are designed to supplement, not replace. Let\'s see where you stand.',
+      mortgage: '🛡️ Group life through an employer is typically 1–2× salary — and it disappears the day you leave that job. That\'s not mortgage protection.',
+      income:   '🛡️ Most people with "some coverage" have a work policy they\'d lose if they changed jobs. That\'s not a plan — that\'s a gap waiting to happen.',
+      iul:      '📋 Knowing what\'s already in place tells us how much more we need to build toward real financial security.',
+      all:      '🛡️ Most people with "some coverage" have a work policy they\'d lose if they changed jobs. That\'s not a plan — that\'s a gap waiting to happen.',
+      default:  '🛡️ This tells us whether we\'re starting from zero or filling a gap.',
+    },
+    age: {
+      final:    '🕐 Age matters more in final expense than almost any other product. The window to lock in a good rate narrows every year. Where you are right now matters.',
+      mortgage: '⏰ The younger you lock in mortgage protection, the lower the premium for the entire term of your loan. Every year you wait costs more.',
+      income:   '⏰ The single biggest mistake people make is waiting. A 38-year-old locks in rates a 48-year-old will never see again. This question is really about urgency.',
+      iul:      '📈 Time in market matters for IUL. The earlier you start, the more cash value accumulates. Age isn\'t just a rate factor — it\'s a growth factor.',
+      all:      '⏰ The single biggest mistake people make is waiting. A 38-year-old locks in rates a 48-year-old will never see again. This question is really about urgency.',
+      default:  '⏰ Age is the single biggest factor in what coverage costs — and you can\'t get younger.',
+    },
+    health: {
+      final:    '💙 Many final expense policies are guaranteed issue — meaning no medical questions. Your health history is less of a barrier than you might think.',
+      mortgage: '💙 Some health conditions qualify for simplified issue. Others don\'t — but there\'s almost always an option. Be honest so we can find the right path.',
+      income:   '💙 Be completely honest here. Conditions don\'t automatically disqualify you — but the right answer connects you to the right carrier. The wrong answer voids the policy.',
+      iul:      '💙 IUL carriers have specific health thresholds. Knowing this now saves time and ensures you\'re matched to a policy you\'ll actually qualify for.',
+      all:      '💙 Be completely honest here. There is almost always a product available regardless of your health — but we need the truth to find it.',
+      default:  '💙 Be honest. There\'s almost always an option — but only if we know the real picture.',
+    },
+  };
+  const map = ctx[stepId];
+  if (!map) return null;
+  return map[goal] || map.default || null;
+}
+
 const QUESTIONS = [
 
-  /* Q0 — Role */
+  /* Q0 — Primary Goal (moved first so all subsequent questions tailor to it) */
+  {
+    id: 'goal',
+    eyebrow: 'Let\'s start here',
+    text: 'What type of coverage are you looking for?',
+    sub: 'Pick the one that matters most right now. This shapes everything we show you.',
+    type: 'single',
+    opts: [
+      { icon: '🌹', label: 'Final Expense',              desc: 'Cover burial, funeral costs, and final bills so my family isn\'t left with debt. Ages 50–85.', val: 'final' },
+      { icon: '🏠', label: 'Mortgage Protection',        desc: 'Ensure my family can stay in our home if I pass away or become disabled.',                    val: 'mortgage' },
+      { icon: '👨‍👩‍👧', label: 'Term Life / Income Protection', desc: 'Replace my income and protect my family\'s financial future for 10–30 years.',        val: 'income' },
+      { icon: '🤔', label: 'Not Sure Yet',               desc: 'Help me understand my options and figure out the right path.',                                val: 'all' },
+    ]
+  },
+
+  /* Q1 — Role */
   {
     id: 'role',
-    eyebrow: 'Question 1 of 9 · Your Situation',
+    eyebrow: 'Question 2 of 9 · Your Situation',
     text: 'Which best describes your household role?',
     sub: 'This helps us understand how many people depend on your income and earning capacity.',
     type: 'single',
     opts: [
-      { icon: '💼', label: 'Primary earner',      desc: 'Your income is the main financial support for your household', val: 'primary' },
-      { icon: '👫', label: 'Co-earner',            desc: 'You and a partner both contribute significant income',          val: 'co' },
-      { icon: '🧑', label: 'Single, no dependents', desc: 'Your income supports only yourself',                          val: 'single' },
-      { icon: '🏠', label: 'Self-employed',        desc: 'Business owner, freelancer, or independent contractor',         val: 'selfemployed' },
+      { icon: '💼', label: 'Primary earner',        desc: 'Your income is the main financial support for your household', val: 'primary' },
+      { icon: '👫', label: 'Co-earner',              desc: 'You and a partner both contribute significant income',          val: 'co' },
+      { icon: '🧑', label: 'Single, no dependents', desc: 'Your income supports only yourself',                           val: 'single' },
+      { icon: '🏠', label: 'Self-employed',          desc: 'Business owner, freelancer, or independent contractor',        val: 'selfemployed' },
     ]
   },
 
-  /* Q1 — Dependents */
+  /* Q2 — Dependents */
   {
     id: 'dependents',
-    eyebrow: 'Question 2 of 9 · Your Situation',
+    eyebrow: 'Question 3 of 9 · Your Situation',
     text: 'Who depends on your income?',
     sub: 'Select all that apply. This shapes how much coverage your family actually needs.',
     type: 'multi',
     opts: [
-      { icon: '👩‍❤️‍👨', label: 'Spouse / partner',     val: 'spouse' },
-      { icon: '👶', label: 'Children under 18',         val: 'children' },
-      { icon: '🎓', label: 'College-age children',       val: 'college' },
-      { icon: '👴', label: 'Aging parents',              val: 'parents' },
-      { icon: '🙋', label: 'Just me — no dependents',    val: 'none', exclusive: true },
+      { icon: '👩‍❤️‍👨', label: 'Spouse / partner',      val: 'spouse' },
+      { icon: '👶', label: 'Children under 18',          val: 'children' },
+      { icon: '🎓', label: 'College-age children',        val: 'college' },
+      { icon: '👴', label: 'Aging parents',               val: 'parents' },
+      { icon: '🙋', label: 'Just me — no dependents',     val: 'none', exclusive: true },
     ]
   },
 
-  /* Q2 — Income */
+  /* Q3 — Income */
   {
     id: 'income',
-    eyebrow: 'Question 3 of 9 · Income & Debt',
+    eyebrow: 'Question 4 of 9 · Income & Debt',
     text: 'What is your approximate annual household income?',
-    sub: "Used to calculate how much coverage would replace your income. The standard guideline is 10–12× your annual earnings.",
+    sub: 'Used to calculate how much coverage would replace your income. The standard guideline is 10–12× your annual earnings.',
     type: 'single',
     opts: [
-      { icon: '💵', label: 'Under $40,000',          desc: 'Approximately $40K or less',                    val: 'low',  inc: 35000 },
-      { icon: '💵', label: '$40,000 – $75,000',       desc: 'Working and middle-income range',               val: 'mid',  inc: 57500 },
-      { icon: '💵', label: '$75,000 – $150,000',      desc: 'Upper-middle income range',                     val: 'hi',   inc: 112500 },
-      { icon: '💵', label: '$150,000+',               desc: 'Higher income — larger replacement need',        val: 'vhi',  inc: 200000 },
+      { icon: '💵', label: 'Under $40,000',     desc: 'Approximately $40K or less',             val: 'low', inc: 35000 },
+      { icon: '💵', label: '$40,000 – $75,000', desc: 'Working and middle-income range',         val: 'mid', inc: 57500 },
+      { icon: '💵', label: '$75,000 – $150,000',desc: 'Upper-middle income range',               val: 'hi',  inc: 112500 },
+      { icon: '💵', label: '$150,000+',          desc: 'Higher income — larger replacement need', val: 'vhi', inc: 200000 },
     ]
   },
 
-  /* Q3 — Mortgage */
+  /* Q4 — Mortgage */
   {
     id: 'mortgage',
-    eyebrow: 'Question 4 of 9 · Income & Debt',
+    eyebrow: 'Question 5 of 9 · Income & Debt',
     text: 'What is your current mortgage situation?',
     sub: 'Your home loan is typically your family\'s largest financial obligation — and the one most at risk.',
     type: 'single',
     hasMortgageExpand: true,
     opts: [
-      { icon: '🏠', label: 'Yes — I have a mortgage',                    desc: 'Outstanding balance on my primary home',                val: 'yes' },
-      { icon: '✅', label: 'Yes — but nearly paid off (under $50K)',      desc: 'Minimal remaining balance',                             val: 'low' },
-      { icon: '🔑', label: 'I rent',                                     desc: 'No mortgage — renting my home',                         val: 'rent' },
-      { icon: '💯', label: 'Own my home outright',                       desc: 'Fully paid off — no mortgage',                          val: 'owned' },
+      { icon: '🏠', label: 'Yes — I have a mortgage',               desc: 'Outstanding balance on my primary home', val: 'yes' },
+      { icon: '✅', label: 'Yes — nearly paid off (under $50K)',    desc: 'Minimal remaining balance',              val: 'low' },
+      { icon: '🔑', label: 'I rent',                                desc: 'No mortgage — renting my home',          val: 'rent' },
+      { icon: '💯', label: 'Own my home outright',                  desc: 'Fully paid off — no mortgage',           val: 'owned' },
     ]
   },
 
-  /* Q4 — Other Debt */
+  /* Q5 — Other Debt */
   {
     id: 'debt',
-    eyebrow: 'Question 5 of 9 · Income & Debt',
+    eyebrow: 'Question 6 of 9 · Income & Debt',
     text: 'Do you have significant debt beyond your mortgage?',
     sub: 'These obligations don\'t disappear if you do. Outstanding debts can become a burden for surviving family members.',
     type: 'multi',
     opts: [
-      { icon: '🚗', label: 'Auto loan(s)',             val: 'auto' },
-      { icon: '🎓', label: 'Student loans',            val: 'student' },
-      { icon: '💳', label: 'Credit card debt ($10K+)', val: 'credit' },
-      { icon: '💼', label: 'Business debt',            val: 'business' },
+      { icon: '🚗', label: 'Auto loan(s)',              val: 'auto' },
+      { icon: '🎓', label: 'Student loans',             val: 'student' },
+      { icon: '💳', label: 'Credit card debt ($10K+)',  val: 'credit' },
+      { icon: '💼', label: 'Business debt',             val: 'business' },
       { icon: '❌', label: 'No significant other debt', val: 'none', exclusive: true },
     ]
   },
 
-  /* Q5 — Existing Coverage */
+  /* Q6 — Existing Coverage */
   {
     id: 'existing',
-    eyebrow: 'Question 6 of 9 · Coverage',
+    eyebrow: 'Question 7 of 9 · Coverage',
     text: 'How much life insurance do you currently have in place?',
     sub: 'Include all policies: employer group life, personal policies, any mortgage protection. Estimate is fine.',
     type: 'single',
     opts: [
-      { icon: '❌', label: 'None',                      desc: 'No life insurance at all',                       val: 'none', cov: 0 },
-      { icon: '⚡', label: 'Under $50,000',              desc: 'Basic group life or small personal policy',       val: 'low',  cov: 25000 },
-      { icon: '📋', label: '$50,000 – $250,000',        desc: 'Moderate coverage in place',                      val: 'mid',  cov: 150000 },
-      { icon: '🛡️', label: '$250,000 – $500,000',       desc: 'Substantial coverage',                            val: 'hi',   cov: 375000 },
-      { icon: '💎', label: 'Over $500,000',              desc: 'High coverage — may be fully protected',           val: 'vhi',  cov: 600000 },
+      { icon: '❌', label: 'None',                  desc: 'No life insurance at all',                     val: 'none', cov: 0 },
+      { icon: '⚡', label: 'Under $50,000',          desc: 'Basic group life or small personal policy',     val: 'low',  cov: 25000 },
+      { icon: '📋', label: '$50,000 – $250,000',    desc: 'Moderate coverage in place',                    val: 'mid',  cov: 150000 },
+      { icon: '🛡️', label: '$250,000 – $500,000',   desc: 'Substantial coverage',                          val: 'hi',   cov: 375000 },
+      { icon: '💎', label: 'Over $500,000',          desc: 'High coverage — may be fully protected',        val: 'vhi',  cov: 600000 },
     ]
   },
 
-  /* Q6 — Age */
+  /* Q7 — Age */
   {
     id: 'age',
-    eyebrow: 'Question 7 of 9 · Coverage',
+    eyebrow: 'Question 8 of 9 · Coverage',
     text: 'What is your age range?',
     sub: 'Age is the single biggest factor in what coverage costs. The sooner you lock in, the lower the rate — permanently.',
     type: 'single',
     layout: 'grid2',
     opts: [
-      { icon: '🌱', label: 'Under 35',   desc: 'Best rates available — lock in now',          val: 'u35', age: 30 },
-      { icon: '📈', label: '35 – 44',   desc: 'Still excellent rates — act before 45',        val: '35',  age: 40 },
-      { icon: '⏰', label: '45 – 54',   desc: 'Rates rising — coverage still very accessible', val: '45',  age: 50 },
-      { icon: '⚡', label: '55 – 64',   desc: 'Simplified issue options available',            val: '55',  age: 60 },
-      { icon: '🔴', label: '65 – 74',   desc: 'Final expense and GI options available',        val: '65',  age: 70 },
-      { icon: '🔴', label: '75+',       desc: 'Guaranteed issue — no health questions',        val: '75',  age: 79 },
+      { icon: '🌱', label: 'Under 35', desc: 'Best rates available — lock in now',           val: 'u35', age: 30 },
+      { icon: '📈', label: '35 – 44',  desc: 'Still excellent rates — act before 45',        val: '35',  age: 40 },
+      { icon: '⏰', label: '45 – 54',  desc: 'Rates rising — coverage still very accessible', val: '45',  age: 50 },
+      { icon: '⚡', label: '55 – 64',  desc: 'Simplified issue options available',            val: '55',  age: 60 },
+      { icon: '🔴', label: '65 – 74',  desc: 'Final expense and GI options available',        val: '65',  age: 70 },
+      { icon: '🔴', label: '75+',      desc: 'Guaranteed issue — no health questions',        val: '75',  age: 79 },
     ]
   },
 
-  /* Q7 — Health */
+  /* Q8 — Health */
   {
     id: 'health',
-    eyebrow: 'Question 8 of 9 · Health',
+    eyebrow: 'Question 9 of 9 · Health',
     text: 'How would you describe your overall health?',
     sub: 'Be honest — this determines which products you\'d qualify for. Conditions don\'t automatically disqualify you.',
     type: 'single',
     opts: [
-      { icon: '💪', label: 'Excellent',              desc: 'No significant conditions, non-tobacco, healthy weight', val: 'excellent' },
-      { icon: '👍', label: 'Good',                   desc: 'Minor or well-managed conditions (BP, cholesterol)',     val: 'good' },
-      { icon: '⚡', label: 'Some managed conditions', desc: 'Diabetes, past surgeries, weight concerns, tobacco',    val: 'moderate' },
-      { icon: '🏥', label: 'Serious health history',  desc: 'Cancer, heart disease, kidney issues, COPD, or similar', val: 'serious' },
-    ]
-  },
-
-  /* Q8 — Primary Goal */
-  {
-    id: 'goal',
-    eyebrow: 'Question 9 of 9 · Your Goals',
-    text: 'What is your primary protection goal?',
-    sub: 'This points us to the right product type. You can have multiple goals — pick your most urgent.',
-    type: 'single',
-    opts: [
-      { icon: '💰', label: 'Replace my income for my family',            desc: 'Ensure my spouse/children are financially stable',    val: 'income' },
-      { icon: '🏠', label: 'Pay off my mortgage',                       desc: 'Make sure my family keeps the home',                  val: 'mortgage' },
-      { icon: '⚰️', label: 'Cover final expenses',                      desc: 'Burial, medical bills, small debts — not a burden',   val: 'final' },
-      { icon: '📈', label: 'Build cash value + protection',             desc: 'Permanent coverage that also grows over time (IUL)',   val: 'iul' },
-      { icon: '🛡️', label: 'Full family protection — all of the above', desc: 'Comprehensive coverage across all risk categories',   val: 'all' },
+      { icon: '💪', label: 'Excellent',               desc: 'No significant conditions, non-tobacco, healthy weight',   val: 'excellent' },
+      { icon: '👍', label: 'Good',                    desc: 'Minor or well-managed conditions (BP, cholesterol)',        val: 'good' },
+      { icon: '⚡', label: 'Some managed conditions', desc: 'Diabetes, past surgeries, weight concerns, tobacco',       val: 'moderate' },
+      { icon: '🏥', label: 'Serious health history',  desc: 'Cancer, heart disease, kidney issues, COPD, or similar',   val: 'serious' },
     ]
   },
 
@@ -687,9 +760,13 @@ function renderStep() {
   });
 
   // Card HTML
+  const currentGoal = answers.goal || 'default';
+  const emo = step > 0 ? emotionalContext(q.id, currentGoal) : null;
+
   let html = `<div class="as-q-eyebrow">${q.eyebrow}</div>`;
   html += `<div class="as-q-text">${q.text}</div>`;
   if (q.sub) html += `<div class="as-q-sub">${q.sub}</div>`;
+  if (emo) html += `<div class="as-q-emotion">${emo}</div>`;
 
   const layout = q.layout === 'grid2' ? 'as-opts grid2' : 'as-opts';
 
@@ -770,11 +847,15 @@ function pick(qid, val, btn) {
   const nb = document.getElementById('nextBtn');
   if (nb) nb.classList.add('ready');
 
-  // Show mortgage expand
+  // Show mortgage expand — don't auto-advance so user can set slider
   if (qid === 'mortgage') {
     const ex = document.getElementById('mortExpand');
     if (ex) ex.classList.toggle('show', val === 'yes');
+    return;
   }
+
+  // Auto-advance after brief visual confirmation
+  setTimeout(goNext, 420);
 }
 
 /* ── Multi-select chips ── */
