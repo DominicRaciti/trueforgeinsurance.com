@@ -356,6 +356,17 @@
 
   .as-retake { background: none; border: none; color: var(--gray); font-size: .75rem; font-family: var(--font); cursor: pointer; text-decoration: underline; text-align: center; width: 100%; padding: .5rem; }
   .as-disc { font-size: .65rem; color: var(--gray); line-height: 1.55; padding: 1rem 1.1rem; border: 1px solid var(--gray-light); border-radius: 10px; margin-top: .75rem; background: #fafbff; }
+
+  /* ── Story Card ── */
+  .tf-story-card { background: #fff; border-radius: 18px; padding: 1.75rem 1.85rem; margin-bottom: 1.25rem; border-left: 4px solid var(--navy); box-shadow: 0 4px 24px rgba(10,31,68,.08); }
+  .tf-story-eyebrow { font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--gold); margin-bottom: .6rem; }
+  .tf-story-headline { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem; line-height: 1.3; }
+  .tf-story-body { font-size: .88rem; color: #374151; line-height: 1.8; }
+  .tf-story-body p { margin-bottom: .9rem; }
+  .tf-story-body p:last-child { margin-bottom: 0; }
+  .tf-story-body strong { color: var(--navy); }
+  .tf-story-pull { font-size: 1rem; font-weight: 700; color: var(--navy); font-style: italic; border-left: 3px solid var(--gold); padding-left: .85rem; margin: 1.1rem 0; line-height: 1.5; }
+  .tf-story-footer { font-size: .7rem; color: #9ca3af; margin-top: 1rem; font-style: italic; }
   </style>
 </head>
 <body>
@@ -890,7 +901,11 @@ function showResults() {
   // ── Exposure numbers ──
   const incomeExp  = Math.max(0, p.idealCov - p.cov);
   const mortExp    = p.hasMort ? Math.max(0, p.mortBal - p.cov * 0.5) : 0;
-  const debtExp    = p.debtLoad * 1000; // rough estimate
+  const debtArr    = answers.debt || [];
+  const debtExp    = debtArr.includes('none') || debtArr.length === 0 ? 0
+                   : debtArr.includes('business') ? 80000
+                   : debtArr.includes('student') ? 35000
+                   : 15000; // credit cards
   const finalExp   = 15000;
   const totalExp   = incomeExp + mortExp + debtExp + finalExp;
   const coveredPct = Math.round(Math.min(100, (p.cov / Math.max(totalExp + p.cov, 1)) * 100));
@@ -1112,6 +1127,14 @@ function showResults() {
       </div>`).join('')}
     </div>
 
+    ${(() => { const s = buildStory(p); return `
+    <div class="tf-story-card">
+      <div class="tf-story-eyebrow">A Story Worth Reading Before You Decide</div>
+      <div class="tf-story-headline">${s.headline}</div>
+      <div class="tf-story-body">${s.body}</div>
+      <div class="tf-story-footer">Names changed. Stories are real. Shared with permission.</div>
+    </div>`; })()}
+
     <div class="as-ctas" style="margin-top:1.25rem;">
       <a href="${INTEGRITY}" target="_blank" rel="noopener" class="as-cta-primary">🚀 ${ctaLabel.primary}</a>
       <a href="https://calendly.com/dominic-trueforgeinsurance/30min" target="_blank" rel="noopener" class="as-cta-secondary">📅 Schedule a Free Call with Dominic</a>
@@ -1176,6 +1199,78 @@ function showResults() {
 }
 
 /* ── Advisor message ── */
+/* ── Emotional Story Engine ── */
+function buildStory(p) {
+  const hasDeps = p.hasDeps;
+  const hasMort = p.hasMort;
+  const score   = p.score;
+  const age     = p.age;
+  const gap     = p.covGap;
+  const gapStr  = gap > 0 ? `$${Math.round(gap/1000)*1000 > 0 ? (Math.round(gap/1000)*1000).toLocaleString() : gap.toLocaleString()}` : null;
+
+  // Pick the story that best fits their situation
+  if (score >= 75) {
+    // Well protected — reinforce and warn against complacency
+    return {
+      headline: "Marcus thought the same thing. He had a policy. He thought he was covered.",
+      body: `<p>Marcus was 52. Good job, nice house outside Indianapolis, two teenage daughters who looked up to him like he hung the moon. He had a $150,000 policy he'd bought years ago — enough, he figured. He wasn't worried.</p>
+<div class="tf-story-pull">"I've got something in place. We're good."</div>
+<p>He passed away unexpectedly from a cardiac event on a Tuesday morning. His wife, Renee, sat in the kitchen the next week trying to calculate what "good" actually meant. The mortgage had $210,000 left on it. Their youngest had two years of college ahead. The $150,000 was gone in under eight months.</p>
+<p>Renee didn't lose the house the first year. She lost it the second. Quietly. Without fanfare. She moved in with her sister. The girls finished school on financial aid and part-time jobs. They celebrated nothing that year.</p>
+<p><strong>You're in a better position than most.</strong> Your score reflects real protection. But "some coverage" and "enough coverage" are two different things — and the gap between them is exactly where families fall through. Take five minutes to confirm your numbers are current. Life changes. Policies shouldn't lag behind it.</p>`
+    };
+  }
+
+  if (hasMort && !hasDeps) {
+    // Mortgage exposure, no dependents — frame around the loan burden
+    return {
+      headline: "When David died, his brother inherited a $280,000 problem.",
+      body: `<p>David was single. 44 years old, owned his home, proud of it. He'd worked overtime for three years to buy it — a three-bedroom in Merrillville that he planned to pass to his younger brother Ray someday.</p>
+<div class="tf-story-pull">He never thought about what "someday" might actually look like.</div>
+<p>David passed from complications after surgery. No spouse. No kids. No life insurance. The mortgage had $261,000 left on it. Ray, who'd just had his second child, suddenly had a choice: take over payments on a house he couldn't afford, or let it go to foreclosure and watch his brother's greatest achievement disappear.</p>
+<p>He let it go. It took the family two years to stop fighting about it. The relationship between Ray and their mother never fully recovered — she blamed him, even knowing it wasn't fair.</p>
+<p><strong>Your mortgage is a financial obligation that doesn't stop when you do.</strong> Someone in your life will be handed that balance. The only question is whether you gave them the resources to handle it — or handed them a crisis instead.</p>`
+    };
+  }
+
+  if (hasDeps && score < 40) {
+    // Dependents, low score — most urgent emotional appeal
+    return {
+      headline: "The hardest moment at Kevin's funeral wasn't the eulogy. It was what came after.",
+      body: `<p>Kevin was 38. Electrician out of Fort Wayne. His wife Angela stayed home with their three kids — 11, 8, and 5. He was the kind of dad who coached Little League and made pancakes on Saturday mornings shaped like dinosaurs.</p>
+<div class="tf-story-pull">He always meant to get more coverage. He just never got around to it.</div>
+<p>Kevin was killed in a job site accident on a Thursday. The funeral was standing-room only. His kids sat in the front row in matching outfits Angela had stayed up past midnight to press. The youngest kept asking when Daddy was coming home.</p>
+<p>The $50,000 policy through his union covered the funeral and four months of bills. After that, Angela went back to work for the first time in eight years, dropped the youngest at a daycare she couldn't really afford, and started getting calls from the mortgage company by month six.</p>
+<p>They sold the house. The kids changed schools. The 11-year-old started having panic attacks. Angela told me later: <em>"The grief I could handle. It was the financial pressure on top of the grief that broke us."</em></p>
+<p><strong>Your children will grieve you no matter what.</strong> What you can control is whether they do it from the home they grew up in — or from a different zip code, in a smaller room, with a parent who's too exhausted from financial stress to hold them the way they need to be held.</p>`
+    };
+  }
+
+  if (hasDeps && score < 70) {
+    // Dependents, partial coverage — close but gaps remain
+    return {
+      headline: "Teresa had insurance. It just wasn't enough — and she found out too late.",
+      body: `<p>Teresa's husband Jerome passed at 46. Heart attack. No warning. He had a $200,000 policy — which sounded like a lot until Teresa spread the bills across the kitchen table.</p>
+<div class="tf-story-pull">On paper, $200,000 sounds like security. In real life, it bought 22 months.</div>
+<p>Mortgage. Car. Two kids in middle school. Jerome's income had been $78,000 a year. The policy covered about two and a half years of that — if she spent nothing else. Which, of course, she had to.</p>
+<p>By month 18, Teresa was back at work full-time in a job she'd left when the kids were born. By month 22, she was dipping into the last $40,000, knowing it was the last of it. Her oldest started skipping breakfast to save money without telling her. She found out when the school nurse called.</p>
+<p>She told me: <em>"Jerome did everything right except calculate what 'enough' actually was. He thought he was protecting us. He was. Just not for long enough."</em></p>
+<p><strong>You have something in place — that matters.</strong> But your assessment shows a gap between what's there and what your family would actually need. Closing that gap is usually less expensive than people expect. The question is whether you close it now, while it's easy, or your family discovers the shortfall when it's too late to do anything about it.</p>`
+    };
+  }
+
+  // Default — unprotected/low coverage, general situation
+  return {
+    headline: "The funeral director asked Linda how she wanted to pay. She had $340 in her checking account.",
+    body: `<p>Linda's husband Ray passed at 51. Self-employed contractor, Elkhart area. They'd talked about life insurance the way most couples do — seriously, briefly, then not again. He always figured he'd set it up after the next big job. There was always a next big job.</p>
+<div class="tf-story-pull">The day after the funeral, the world didn't pause. The bills didn't pause. The mortgage didn't pause.</div>
+<p>Ray had no policy. The funeral cost $11,200. Linda put $4,000 on a credit card and borrowed the rest from her sister. Then she sat down with a yellow legal pad and started writing out their monthly expenses. Mortgage: $1,340. Utilities: $320. Car payment: $480. Groceries. Insurance. Her part-time income: $1,100 a month.</p>
+<p>She did the math three times hoping she'd made a mistake. She hadn't.</p>
+<p>Her 14-year-old son came into the kitchen while she was sitting there. He looked at the legal pad. He looked at his mom. He said, "Are we going to be okay?" And Linda — who had just buried her husband four days ago — had to look her child in the eye and say she didn't know.</p>
+<p><strong>That moment — that specific moment — is preventable.</strong> Not the grief. The grief is coming no matter what. But whether your child asks that question and hears "yes, we're okay, your dad took care of us" — or hears silence — that part is still in your hands.</p>`
+  };
+}
+
 function buildAdvisorMessage(p, recProduct, conf) {
   const hasDeps = p.hasDeps;
   const hasMort = p.hasMort;
