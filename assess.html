@@ -884,8 +884,8 @@ function showResults() {
 
   // ── Sub-scores ──
   const fvi  = Math.round(100 - Math.min(100, (p.covGap / Math.max(p.idealCov, 1)) * 100)); // Financial Vulnerability (higher=better)
-  const cas  = Math.round(p.scores.coverage / 35 * 100);  // Coverage Adequacy
-  const frr  = Math.round((p.scores.family + p.scores.timing) / 35 * 100); // Family Resilience
+  const cas  = Math.round(Math.min(35, (p.cov / Math.max(p.idealCov, 1)) * 35) / 35 * 100);  // Coverage Adequacy
+  const frr  = Math.round(p.score * 0.35); // Family Resilience
 
   // ── Exposure numbers ──
   const incomeExp  = Math.max(0, p.idealCov - p.cov);
