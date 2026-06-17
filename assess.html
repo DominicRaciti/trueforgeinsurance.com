@@ -906,9 +906,12 @@ function goBack() {
 ══════════════════════════════════════════════════════════════ */
 function calcProfile() {
   const a = answers;
-  const inc = QUESTIONS[2].opts.find(o => o.val === a.income)?.inc || 75000;
-  const cov = QUESTIONS[5].opts.find(o => o.val === a.existing)?.cov || 0;
-  const age = QUESTIONS[6].opts.find(o => o.val === a.age)?.age || 45;
+  const qIncome   = QUESTIONS.find(q => q.id === 'income');
+  const qExisting = QUESTIONS.find(q => q.id === 'existing');
+  const qAge      = QUESTIONS.find(q => q.id === 'age');
+  const inc = qIncome?.opts.find(o => o.val === a.income)?.inc || 75000;
+  const cov = qExisting?.opts.find(o => o.val === a.existing)?.cov || 0;
+  const age = qAge?.opts.find(o => o.val === a.age)?.age || 45;
   const health = a.health || 'good';
   const hasMort = a.mortgage === 'yes';
   const mortBal = hasMort ? mortgageBalance : (a.mortgage === 'low' ? 25000 : 0);
