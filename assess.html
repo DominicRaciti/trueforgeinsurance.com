@@ -394,6 +394,62 @@
     font-size: .85rem; font-weight: 700; color: rgba(255,255,255,.7);
   }
   .tf-bd-total-val { font-size: 1.5rem; font-weight: 800; color: var(--gold); }
+
+  /* ════ Coverage Recommendation Tray ════ */
+  .tf-rec-tray {
+    background: #fff; border-radius: 22px; padding: 1.75rem 1.85rem; margin-bottom: 1.25rem;
+    box-shadow: 0 8px 40px rgba(10,31,68,.12); border-top: 4px solid var(--gold);
+  }
+  .tf-rec-eyebrow { font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; color: var(--gold); margin-bottom: .3rem; }
+  .tf-rec-title   { font-size: 1.1rem; font-weight: 800; color: var(--navy); margin-bottom: .5rem; }
+  .tf-rec-sub     { font-size: .78rem; color: var(--gray); line-height: 1.6; margin-bottom: 1.35rem; }
+  .tf-rec-cards   { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin-bottom: 1.25rem; }
+  @media(max-width: 580px) { .tf-rec-cards { grid-template-columns: 1fr; } }
+  .tf-rec-card {
+    border: 2px solid var(--gray-light); border-radius: 16px; padding: 1.15rem 1.2rem;
+    display: flex; flex-direction: column; gap: .6rem; position: relative; overflow: hidden;
+  }
+  .tf-rec-card.primary { border-color: var(--gold); background: linear-gradient(145deg, #fffdf5, #fff); }
+  .tf-rec-card.alt     { border-color: #c7d2fe; background: linear-gradient(145deg, #f5f7ff, #fff); }
+  .tf-rec-card-badge {
+    font-size: .58rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em;
+    padding: .22rem .65rem; border-radius: 99px; display: inline-block; width: fit-content; margin-bottom: .2rem;
+  }
+  .tf-rec-card.primary .tf-rec-card-badge { background: rgba(201,151,58,.15); color: #92400e; }
+  .tf-rec-card.alt     .tf-rec-card-badge { background: #e0e7ff; color: #3730a3; }
+  .tf-rec-card-product { font-size: .78rem; font-weight: 700; color: var(--navy); margin-bottom: -.2rem; }
+  .tf-rec-card-amount  { font-size: 1.6rem; font-weight: 800; color: var(--navy); line-height: 1; }
+  .tf-rec-card-amount span { font-size: .9rem; font-weight: 600; opacity: .55; }
+  .tf-rec-card-premium {
+    background: var(--navy); color: #fff; border-radius: 9px; padding: .6rem .8rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .tf-rec-card-premium .label { font-size: .65rem; opacity: .65; }
+  .tf-rec-card-premium .val   { font-size: 1rem; font-weight: 800; color: var(--gold); }
+  .tf-rec-card.alt .tf-rec-card-premium { background: #3730a3; }
+  .tf-rec-card.alt .tf-rec-card-premium .val { color: #a5b4fc; }
+  .tf-rec-card-why    { font-size: .72rem; color: var(--gray); line-height: 1.55; }
+  .tf-rec-card-why strong { color: var(--navy); }
+  .tf-rec-btn {
+    display: flex; align-items: center; justify-content: center; gap: .4rem;
+    font-weight: 800; font-size: .88rem; padding: .85rem 1.1rem; border-radius: 11px;
+    text-decoration: none; text-align: center; transition: all .18s; width: 100%; box-sizing: border-box;
+  }
+  .tf-rec-card.primary .tf-rec-btn { background: var(--gold); color: var(--navy); box-shadow: 0 3px 14px rgba(201,151,58,.4); }
+  .tf-rec-card.primary .tf-rec-btn:hover { background: var(--gold-light); }
+  .tf-rec-card.alt     .tf-rec-btn { background: var(--navy); color: #fff; }
+  .tf-rec-card.alt     .tf-rec-btn:hover { background: #0d2a5e; }
+  .tf-rec-or  { text-align: center; font-size: .78rem; color: var(--gray); font-weight: 700; margin: -.2rem 0; }
+  .tf-rec-call {
+    display: flex; align-items: center; gap: .75rem; background: #f8f9fc; border-radius: 13px;
+    padding: .9rem 1.1rem; text-decoration: none; transition: background .15s;
+  }
+  .tf-rec-call:hover { background: #f0f4ff; }
+  .tf-rec-call-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .tf-rec-call-text .top { font-size: .88rem; font-weight: 700; color: var(--navy); }
+  .tf-rec-call-text .sub { font-size: .7rem; color: var(--gray); }
+  .tf-rec-call-arr  { margin-left: auto; color: var(--gold); font-size: 1.1rem; font-weight: 800; }
+  .tf-rec-compliance { font-size: .62rem; color: var(--gray); line-height: 1.55; margin-top: .85rem; font-style: italic; }
   </style>
 </head>
 <body>
@@ -1247,13 +1303,8 @@ function showResults() {
 
     ${storyHtml}
 
-    <div class="as-ctas" style="margin-top:1.25rem;">
-      <a href="${INTEGRITY}" target="_blank" rel="noopener" class="as-cta-primary">🚀 ${ctaLabel.primary}</a>
-      <a href="https://calendly.com/dominic-trueforgeinsurance/30min" target="_blank" rel="noopener" class="as-cta-secondary">📅 Schedule a Free Call with Dominic</a>
-      <a href="family-impact.html" class="as-cta-tertiary">📅 See My Family's Impact Timeline →</a>
-      <a href="mortgage-calculator.html" class="as-cta-tertiary">🏠 Mortgage Exposure Calculator →</a>
-      <a href="protection-score.html" class="as-cta-tertiary">📊 Quick Protection Score →</a>
-    </div>
+    ${buildRecommendationTray(p, INTEGRITY)}
+
     <div style="text-align:center;margin-top:.75rem;">
       <button class="as-retake" onclick="resetAssessment()">↩ Retake the assessment</button>
     </div>
@@ -1312,6 +1363,127 @@ function showResults() {
 
 /* ── Advisor message ── */
 /* ── Emotional Story Engine ── */
+/* ── Inline premium estimator for recommendation tray ── */
+function estimateMonthlyPremium(coverageAmt, age, health, product) {
+  let base;
+  if (product === 'final-expense') {
+    if      (age <= 55) base = 2.0;
+    else if (age <= 60) base = 2.7;
+    else if (age <= 65) base = 3.6;
+    else if (age <= 70) base = 4.8;
+    else if (age <= 75) base = 6.5;
+    else if (age <= 80) base = 9.0;
+    else                base = 12.5;
+    const hAdj = health === 'excellent' ? 0.85 : health === 'good' ? 1.0 : health === 'moderate' ? 1.25 : 1.55;
+    const monthly = base * (coverageAmt / 1000) * hAdj;
+    return [Math.max(14, Math.round(monthly * 0.88)), Math.round(monthly * 1.18)];
+  } else {
+    // term / mortgage-protection / IUL
+    if      (age < 35) base = 0.55;
+    else if (age < 45) base = 0.95;
+    else if (age < 55) base = 1.60;
+    else if (age < 65) base = 2.80;
+    else if (age < 75) base = 5.00;
+    else               base = 8.50;
+    const hAdj = health === 'excellent' ? 0.82 : health === 'good' ? 1.0 : health === 'moderate' ? 1.30 : 1.65;
+    const monthly = base * (coverageAmt / 1000) * hAdj / 12;
+    return [Math.max(16, Math.round(monthly * 0.82)), Math.round(monthly * 1.28)];
+  }
+}
+
+function buildRecommendationTray(p, integrityUrl) {
+  const fmtD = n => '$' + Math.round(n).toLocaleString();
+  const prod = p.primaryProduct;
+
+  const prodNames = {
+    'final-expense':        'Final Expense',
+    'mortgage-protection':  'Mortgage Protection',
+    'term-life':            'Term Life Insurance',
+    'iul':                  'Indexed Universal Life'
+  };
+  const prodName = prodNames[prod] || 'Life Insurance';
+
+  // Primary coverage = gap amount (capped at sensible limits per product)
+  let primaryAmt;
+  if (prod === 'final-expense') {
+    primaryAmt = Math.min(25000, Math.max(10000, Math.round((p.covGap > 0 ? p.covGap : 15000) / 5000) * 5000));
+  } else if (prod === 'mortgage-protection') {
+    primaryAmt = Math.min(500000, Math.max(50000, Math.round((p.hasMort ? p.mortBal : p.covGap) / 25000) * 25000));
+  } else {
+    primaryAmt = Math.min(1000000, Math.max(50000, Math.round(p.covGap / 25000) * 25000));
+  }
+
+  // Alt coverage = ~60% of primary, rounded to nearest $5K or $25K
+  const roundUnit = prod === 'final-expense' ? 5000 : 25000;
+  const altAmt = Math.max(
+    prod === 'final-expense' ? 5000 : 50000,
+    Math.round((primaryAmt * 0.6) / roundUnit) * roundUnit
+  );
+
+  const [primLo, primHi] = estimateMonthlyPremium(primaryAmt, p.age, p.health, prod);
+  const [altLo,  altHi]  = estimateMonthlyPremium(altAmt,     p.age, p.health, prod);
+
+  // Why the alt still matters
+  const altWhy = {
+    'final-expense':
+      `${fmtD(altAmt)} covers a dignified funeral, burial, and outstanding final bills — <strong>sparing your family from scrambling at the worst possible moment.</strong> That alone is worth everything.`,
+    'mortgage-protection':
+      `${fmtD(altAmt)} buys your family <strong>critical time</strong> — months of mortgage payments, a chance to sell on their terms instead of under pressure, and the ability to grieve without a foreclosure clock running.`,
+    'term-life':
+      `${fmtD(altAmt)} replaces multiple years of income — enough for your spouse to stabilize, retrain, re-enter the workforce on their own timeline. <strong>That breathing room is the difference between recovery and collapse.</strong>`,
+    'iul':
+      `${fmtD(altAmt)} still builds meaningful cash value while providing real protection. <strong>Partial coverage is infinitely better than no coverage.</strong> Start here and increase later as income grows.`,
+  };
+  const why = altWhy[prod] || altWhy['term-life'];
+
+  return `<div class="tf-rec-tray">
+    <div class="tf-rec-eyebrow">Your Coverage Recommendation</div>
+    <div class="tf-rec-title">Based on your assessment, here's what we recommend — and a budget option if cost is a concern.</div>
+    <div class="tf-rec-sub">These are estimated ranges based on your age, health profile, and the gap identified in your exposure report. Your locked-in rate is determined at application — these numbers are typically accurate within 15–20%.</div>
+
+    <div class="tf-rec-cards">
+      <!-- PRIMARY -->
+      <div class="tf-rec-card primary">
+        <div class="tf-rec-card-badge">⭐ Recommended</div>
+        <div class="tf-rec-card-product">${prodName}</div>
+        <div class="tf-rec-card-amount">${fmtD(primaryAmt)}<span> coverage</span></div>
+        <div class="tf-rec-card-premium">
+          <div class="label">Est. monthly premium</div>
+          <div class="val">${fmtD(primLo)}–${fmtD(primHi)}/mo</div>
+        </div>
+        <div class="tf-rec-card-why">Addresses your full <strong>${fmtD(p.covGap > 0 ? p.covGap : primaryAmt)} coverage gap</strong> identified in your Family Exposure Report. This amount fully replaces lost income for your family's most critical years.</div>
+        <a href="${integrityUrl}" target="_blank" rel="noopener" class="tf-rec-btn">🚀 Start My Application →</a>
+      </div>
+
+      <!-- ALT -->
+      <div class="tf-rec-card alt">
+        <div class="tf-rec-card-badge">💡 Budget Option</div>
+        <div class="tf-rec-card-product">${prodName}</div>
+        <div class="tf-rec-card-amount">${fmtD(altAmt)}<span> coverage</span></div>
+        <div class="tf-rec-card-premium">
+          <div class="label">Est. monthly premium</div>
+          <div class="val">${fmtD(altLo)}–${fmtD(altHi)}/mo</div>
+        </div>
+        <div class="tf-rec-card-why">${why}</div>
+        <a href="${integrityUrl}" target="_blank" rel="noopener" class="tf-rec-btn">🚀 Start My Application →</a>
+      </div>
+    </div>
+
+    <div class="tf-rec-or">— or —</div>
+
+    <a href="https://calendly.com/dominic-trueforgeinsurance/30min" target="_blank" rel="noopener" class="tf-rec-call" style="margin-top:.85rem;">
+      <div class="tf-rec-call-icon">📞</div>
+      <div class="tf-rec-call-text">
+        <div class="top">Talk to Dominic First — Free, No Pressure</div>
+        <div class="sub">Get exact quotes for both options · (574) 392-0192 · Book online or call now</div>
+      </div>
+      <div class="tf-rec-call-arr">›</div>
+    </a>
+
+    <div class="tf-rec-compliance">Subject to carrier underwriting · Estimated premiums are illustrative only and not a quote or offer of insurance · Actual rates determined at application · TrueForge Life, LLC · NPN 19647356</div>
+  </div>`;
+}
+
 function buildScoreBreakdown(p) {
   const { s_cov, s_mort, s_deps, s_age, s_hlth } = p.scoreBreakdown;
   const fmt = n => '$' + Math.round(n).toLocaleString();
