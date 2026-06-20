@@ -368,6 +368,32 @@
   .tf-story-body strong { color: var(--navy); }
   .tf-story-pull { font-size: 1rem; font-weight: 700; color: var(--navy); font-style: italic; border-left: 3px solid var(--gold); padding-left: .85rem; margin: 1.1rem 0; line-height: 1.5; }
   .tf-story-footer { font-size: .7rem; color: #9ca3af; margin-top: 1rem; font-style: italic; }
+
+  /* ════ TrueForge Score Breakdown™ ════ */
+  .tf-breakdown-card {
+    background: #fff; border-radius: 22px; padding: 1.75rem 1.85rem; margin-bottom: 1.25rem;
+    box-shadow: 0 8px 40px rgba(10,31,68,.1);
+  }
+  .tf-bd-wordmark { font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; color: var(--navy); margin-bottom: .25rem; opacity: .5; }
+  .tf-bd-title    { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: .5rem; }
+  .tf-bd-intro    { font-size: .78rem; color: var(--gray); line-height: 1.6; margin-bottom: 1.25rem; }
+  .tf-bd-rows     { display: flex; flex-direction: column; gap: .9rem; margin-bottom: 1.25rem; }
+  .tf-bd-row      { border: 1.5px solid var(--gray-light); border-radius: 13px; padding: 1rem 1.1rem; background: #fafbff; }
+  .tf-bd-row-top  { display: flex; align-items: center; justify-content: space-between; margin-bottom: .55rem; }
+  .tf-bd-row-label { font-size: .85rem; font-weight: 800; color: var(--navy); display: flex; align-items: center; gap: .45rem; }
+  .tf-bd-icon     { font-size: 1rem; }
+  .tf-bd-row-score { font-size: 1.3rem; font-weight: 800; line-height: 1; }
+  .tf-bd-max      { font-size: .75rem; font-weight: 600; opacity: .5; }
+  .tf-bd-bar-track { height: 7px; background: #e5e7eb; border-radius: 99px; overflow: hidden; margin-bottom: .6rem; }
+  .tf-bd-bar-fill  { height: 100%; border-radius: 99px; transition: width 0s; }
+  .tf-bd-math     { font-size: .72rem; color: #4b5563; background: #f3f4f6; border-radius: 8px; padding: .45rem .7rem; margin-bottom: .45rem; font-family: monospace; line-height: 1.5; }
+  .tf-bd-why      { font-size: .75rem; color: var(--gray); line-height: 1.55; }
+  .tf-bd-total    {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--navy); border-radius: 12px; padding: .9rem 1.15rem;
+    font-size: .85rem; font-weight: 700; color: rgba(255,255,255,.7);
+  }
+  .tf-bd-total-val { font-size: 1.5rem; font-weight: 800; color: var(--gold); }
   </style>
 </head>
 <body>
@@ -1064,6 +1090,11 @@ function showResults() {
   </div>`;
 
   /* ════════════════════════════════════════
+     1b. TrueForge Score Breakdown™
+  ════════════════════════════════════════ */
+  html += buildScoreBreakdown(p);
+
+  /* ════════════════════════════════════════
      2. TrueForge Family Exposure Report™
   ════════════════════════════════════════ */
   const today = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
@@ -1281,6 +1312,93 @@ function showResults() {
 
 /* ── Advisor message ── */
 /* ── Emotional Story Engine ── */
+function buildScoreBreakdown(p) {
+  const { s_cov, s_mort, s_deps, s_age, s_hlth } = p.scoreBreakdown;
+  const fmt = n => '$' + Math.round(n).toLocaleString();
+  const rows = [
+    {
+      icon: '💼', label: 'Coverage Amount', scored: s_cov, max: 35,
+      math: `${fmt(p.inc)} income × 10 = ${fmt(p.idealCov)} recommended · You have ${fmt(p.cov)} · Gap: ${fmt(p.covGap)}`,
+      why: p.cov === 0
+        ? 'No life insurance currently in place — this is the single most urgent gap to close.'
+        : s_cov >= 28
+        ? 'Your coverage is close to the recommended 10× income target. Keep policies current after income changes.'
+        : s_cov >= 14
+        ? 'Coverage is in place but a meaningful gap remains between what you have and what your family would need.'
+        : 'Current coverage covers only a fraction of your income-replacement need. Closing this gap should be priority one.'
+    },
+    {
+      icon: '🏠', label: 'Mortgage Protection', scored: s_mort, max: 20,
+      math: p.hasMort
+        ? `Mortgage balance: ${fmt(p.mortBal)} · Your coverage: ${fmt(p.cov)} · ${s_mort >= 16 ? 'Coverage would cover the balance' : 'Coverage falls short of the mortgage balance'}`
+        : 'No mortgage detected — full points awarded for this factor',
+      why: !p.hasMort
+        ? 'No mortgage means no mortgage-related financial risk for your family. Lower exposure in this area.'
+        : s_mort >= 16
+        ? 'Your coverage could handle the mortgage balance if structured correctly — your family keeps the home.'
+        : 'Without dedicated mortgage protection, your family would need to continue monthly payments or risk foreclosure.'
+    },
+    {
+      icon: '👨‍👩‍👧', label: 'Family Protection', scored: s_deps, max: 20,
+      math: p.hasDeps
+        ? `${p.deps} dependent${p.deps > 1 ? 's' : ''} currently rel${p.deps > 1 ? 'y' : 'ies'} on your income — higher coverage critical`
+        : 'No dependents reported — lower ongoing family coverage need',
+      why: !p.hasDeps
+        ? 'With no dependents, your primary concerns are final expenses and any debts. A modest policy may be sufficient.'
+        : s_deps >= 16
+        ? 'Coverage adequately addresses your family\'s ongoing income-replacement need.'
+        : 'Each dependent represents years of financial obligation. A gap here is the highest-stakes gap to close.'
+    },
+    {
+      icon: '⏰', label: 'Age & Timing', scored: s_age, max: 15,
+      math: `Age ${p.age} · ${p.age < 35 ? 'Prime window — lowest rates available now' : p.age < 45 ? 'Rates still favorable — act before health changes' : p.age < 55 ? 'Rates increasing — every year of delay costs more' : p.age < 65 ? 'Narrowing options — act before health events reduce eligibility' : 'Guaranteed issue final expense options available'}`,
+      why: s_age >= 12
+        ? 'Your age puts you in the best window for affordable rates and the widest product selection. Lock in now.'
+        : s_age >= 8
+        ? 'You\'re in a workable window — but each year of delay increases premiums and can affect eligibility.'
+        : 'At this stage, options narrow and premiums are highest. Coverage is still accessible — acting now matters.'
+    },
+    {
+      icon: '❤️', label: 'Health Profile', scored: s_hlth, max: 10,
+      math: `Health reported: ${p.health} · ${p.health === 'excellent' ? 'Preferred rates likely apply — best tier available' : p.health === 'good' ? 'Standard rates apply — solid eligibility' : p.health === 'moderate' ? 'Some carriers may require simplified issue underwriting' : 'Guaranteed issue or graded benefit products are the primary path'}`,
+      why: s_hlth >= 8
+        ? 'Good health gives you access to the widest range of carriers and the lowest available premiums.'
+        : s_hlth >= 5
+        ? 'Your health profile may limit some carriers, but simplified issue coverage is likely still available.'
+        : 'Guaranteed issue or graded benefit products ensure coverage remains accessible regardless of health history.'
+    }
+  ];
+
+  let html = `<div class="tf-breakdown-card">
+    <div class="tf-bd-wordmark">TrueForge Score Breakdown™</div>
+    <div class="tf-bd-title">How Your ${p.score}/100 Score Was Calculated</div>
+    <p class="tf-bd-intro">5 factors. Real math. No black box — here is exactly how your score was built and what each factor means for your family.</p>
+    <div class="tf-bd-rows">`;
+
+  rows.forEach(row => {
+    const pct = Math.round((row.scored / row.max) * 100);
+    const color = pct >= 75 ? '#16a34a' : pct >= 50 ? '#ca8a04' : pct >= 25 ? '#ea580c' : '#dc2626';
+    html += `<div class="tf-bd-row">
+      <div class="tf-bd-row-top">
+        <div class="tf-bd-row-label"><span class="tf-bd-icon">${row.icon}</span>${row.label}</div>
+        <div class="tf-bd-row-score" style="color:${color}">${row.scored}<span class="tf-bd-max"> / ${row.max}</span></div>
+      </div>
+      <div class="tf-bd-bar-track"><div class="tf-bd-bar-fill" style="width:${pct}%;background:${color};"></div></div>
+      <div class="tf-bd-math">📐 ${row.math}</div>
+      <div class="tf-bd-why">${row.why}</div>
+    </div>`;
+  });
+
+  html += `</div>
+    <div class="tf-bd-total">
+      <span>Total Protection Score</span>
+      <span class="tf-bd-total-val">${p.score} / 100</span>
+    </div>
+  </div>`;
+
+  return html;
+}
+
 function buildStory(p) {
   const hasDeps = p.hasDeps;
   const hasMort = p.hasMort;

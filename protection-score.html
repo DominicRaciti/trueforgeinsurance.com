@@ -114,6 +114,14 @@
   }
   .ps-next.visible { display: flex; }
   .ps-next:hover { background: #0d2a5e; transform: translateY(-2px); }
+  .ps-ctx-callout {
+    background: linear-gradient(135deg, #f0f4ff, #e8eeff);
+    border-left: 3px solid var(--navy); border-radius: 10px;
+    padding: .75rem 1rem; font-size: .82rem; color: var(--navy);
+    line-height: 1.6; font-style: italic; margin-bottom: .75rem;
+    animation: fadeIn .3s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
   /* ─── RESULTS ─── */
   .ps-results { display: none; }
@@ -451,15 +459,58 @@ function renderQ() {
     </button>`;
   });
   html += `</div>`;
+  if (answers[cur] !== undefined) {
+    const ctx = (EMOTIONAL_CONTEXT[cur] || [])[answers[cur]];
+    if (ctx) html += `<div class="ps-ctx-callout">${ctx}</div>`;
+  }
   html += `<button class="ps-next${answers[cur] !== undefined ? ' visible' : ''}" id="nextBtn" onclick="next()">
     ${cur < QUESTIONS.length - 1 ? 'Next Question →' : '📊 Get My Protection Score →'}
   </button>`;
   document.getElementById('questionCard').innerHTML = html;
 }
 
+const EMOTIONAL_CONTEXT = [
+  // Q1: Dependents
+  [
+    'No dependents reduces your urgency — but final expenses still fall to someone. A small policy handles that completely.',
+    'One person counting on you. If you were gone tomorrow, what would their month look like without your income?',
+    'Young children and a mortgage are the two highest-stakes combination in life insurance. Your score reflects that.',
+    'A large family means each person is depending on you — multiply that by years of income. The math gets real fast.'
+  ],
+  // Q2: Mortgage/debt
+  [
+    'No mortgage, no debt — your family\'s financial risk is significantly lower than most. This is a real advantage.',
+    'A mortgage without a dedicated protection plan means one missed paycheck could trigger a foreclosure clock.',
+    'Mortgage and additional debt together is the most common scenario we see lead to financial crisis after a loss.',
+    'Debt outlives you. Without coverage, it becomes your family\'s debt to manage on a single income.'
+  ],
+  // Q3: Income
+  [
+    'Lower income doesn\'t mean lower risk — it often means less margin for error when income stops.',
+    'A mid-range income with no coverage leaves a gap your family would feel within 90 days.',
+    'Higher income means higher lifestyle costs. Your family would need years of replacement to maintain it.',
+    'High income, high responsibility — the gap between zero coverage and what\'s needed is widest at this level.'
+  ],
+  // Q4: Existing coverage
+  [
+    'Zero coverage is the most common situation — and the most fixable. This is where you start.',
+    'Under $50K covers funeral costs and maybe 6 months of expenses. It\'s a start — but not a finish.',
+    'Moderate coverage is better than most — but the 10× income standard likely means a gap still exists.',
+    'Strong coverage. The question now is whether it\'s properly structured and beneficiaries are current.'
+  ],
+  // Q5: Age
+  [
+    'Under 35 is the single best window in your lifetime to lock in low rates. This fact only gets less true with time.',
+    'The 35–49 window still offers excellent rates. Every year of delay adds cost and health-change risk.',
+    'The 50–64 window is workable — but the urgency is real. Don\'t let this window close without acting.',
+    'Options still exist at 65+. Final expense policies with no health exam are designed for exactly this situation.'
+  ]
+];
+
 function pick(idx) {
   answers[cur] = idx;
   renderQ();
+  setTimeout(next, 420);
 }
 
 function next() {
