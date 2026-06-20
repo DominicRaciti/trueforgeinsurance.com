@@ -1475,7 +1475,17 @@ function buildEligCard(est) {
 
 function buildRoutes(est) {
   const INTEGRITY = 'https://myintegrity.com/?purl=Dominic-Raciti';
+  const ETHOS     = 'https://agents.ethoslife.com/invite/013c22';
   const { tier, path } = est;
+
+  // Ethos: term life and mortgage protection with non-guaranteed health tiers
+  // Integrity: final expense, not-sure, and guaranteed-issue health paths
+  const useEthos = tier !== 'agent-review' && tier !== 'guaranteed' &&
+    (A.type === 'mortgage-protection' || A.type === 'term-life' ||
+     path  === 'mortgage-protection' || path  === 'term-life');
+  const appUrl = useEthos ? ETHOS : INTEGRITY;
+
+  const ethosNote = useEthos ? `<p style="font-size:.72rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:9px;padding:.6rem .85rem;color:#166534;margin-top:.75rem;line-height:1.5;">⚡ <strong>Powered by Ethos</strong> — instant online decision, no medical exam. Policy includes Living Benefits (pays out on critical or terminal illness, not just death).</p>` : '';
 
   let primary = '', secondary1 = '', secondary2 = '';
 
@@ -1499,17 +1509,19 @@ function buildRoutes(est) {
     primary = `
       <div class="pf-route-primary">
         <h3>Start Your Mortgage Protection Application</h3>
-        <p>You'll be guided through the application step by step. Dominic reviews every submission and will contact you if anything needs clarification.</p>
-        <a href="${INTEGRITY}" target="_blank" rel="noopener" class="btn-enroll-pf">🚀 Start My Mortgage Protection Application</a>
+        <p>No medical exam required. Instant online decision — your rate is locked the day you apply. Policy includes Living Benefits at no extra cost.</p>
+        <a href="${appUrl}" target="_blank" rel="noopener" class="btn-enroll-pf">🚀 Start My Mortgage Protection Application</a>
         <a href="tel:+15743920192" class="btn-call-pf">📞 Prefer to apply by phone? Call (574) 392-0192</a>
+        ${ethosNote}
       </div>`;
   } else {
     primary = `
       <div class="pf-route-primary">
         <h3>Start Your Application</h3>
-        <p>You'll be guided through the application step by step. Dominic reviews every submission and contacts you if anything needs clarification.</p>
-        <a href="${INTEGRITY}" target="_blank" rel="noopener" class="btn-enroll-pf">🚀 Start My Application</a>
+        <p>No medical exam required. Instant online decision — your rate is locked the day you apply. Policy includes Living Benefits at no extra cost.</p>
+        <a href="${appUrl}" target="_blank" rel="noopener" class="btn-enroll-pf">🚀 Start My Application</a>
         <a href="tel:+15743920192" class="btn-call-pf">📞 Prefer to apply by phone? Call (574) 392-0192</a>
+        ${ethosNote}
       </div>`;
   }
 

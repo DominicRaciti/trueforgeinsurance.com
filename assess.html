@@ -1392,8 +1392,14 @@ function estimateMonthlyPremium(coverageAmt, age, health, product) {
 }
 
 function buildRecommendationTray(p, integrityUrl) {
+  const ETHOS = 'https://agents.ethoslife.com/invite/013c22';
   const fmtD = n => '$' + Math.round(n).toLocaleString();
   const prod = p.primaryProduct;
+  // Route term life and mortgage protection to Ethos (instant digital decision, living benefits included)
+  // Final expense and guaranteed-issue health tier stay on Integrity (Ethos doesn't offer FE)
+  const useEthos = (prod === 'term-life' || prod === 'mortgage-protection' || prod === 'iul') && p.carrierTier !== 'guaranteed';
+  const applyUrl = useEthos ? ETHOS : integrityUrl;
+  const applyLabel = useEthos ? '🚀 Start My Application with Ethos →' : '🚀 Start My Application →';
 
   const prodNames = {
     'final-expense':        'Final Expense',
@@ -1452,7 +1458,7 @@ function buildRecommendationTray(p, integrityUrl) {
           <div class="val">${fmtD(primLo)}–${fmtD(primHi)}/mo</div>
         </div>
         <div class="tf-rec-card-why">Addresses your full <strong>${fmtD(p.covGap > 0 ? p.covGap : primaryAmt)} coverage gap</strong> identified in your Family Exposure Report. This amount fully replaces lost income for your family's most critical years.</div>
-        <a href="${integrityUrl}" target="_blank" rel="noopener" class="tf-rec-btn">🚀 Start My Application →</a>
+        <a href="${applyUrl}" target="_blank" rel="noopener" class="tf-rec-btn">${applyLabel}</a>
       </div>
 
       <!-- ALT -->
@@ -1465,9 +1471,13 @@ function buildRecommendationTray(p, integrityUrl) {
           <div class="val">${fmtD(altLo)}–${fmtD(altHi)}/mo</div>
         </div>
         <div class="tf-rec-card-why">${why}</div>
-        <a href="${integrityUrl}" target="_blank" rel="noopener" class="tf-rec-btn">🚀 Start My Application →</a>
+        <a href="${applyUrl}" target="_blank" rel="noopener" class="tf-rec-btn">${applyLabel}</a>
       </div>
     </div>
+
+    ${useEthos ? `<div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:.75rem 1rem;font-size:.75rem;color:#166534;line-height:1.6;margin-bottom:.85rem;">
+      <strong>⚡ Why Ethos?</strong> Instant online decision — no medical exam, no blood draw. Your application is reviewed in minutes, not weeks. Policy includes <strong>Living Benefits</strong> — meaning it can pay out if you're diagnosed with a critical or terminal illness, not just at death. No other step in this process is this fast or this valuable.
+    </div>` : ''}
 
     <div class="tf-rec-or">— or —</div>
 

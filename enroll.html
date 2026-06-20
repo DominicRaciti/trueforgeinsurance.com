@@ -1813,15 +1813,22 @@ function buildAgentReviewCard(age, goal) {
 
 function buildCTABox() {
   const INTEGRITY_LINK = 'https://myintegrity.com/?purl=Dominic-Raciti';
+  const ETHOS_LINK     = 'https://agents.ethoslife.com/invite/013c22';
+  const useEthos = answers.goal === 'mortgage-protection' || answers.goal === 'income-replacement';
+  const appUrl   = useEthos ? ETHOS_LINK : INTEGRITY_LINK;
+  const ethosNote = useEthos
+    ? `<p style="font-size:.72rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:9px;padding:.6rem .85rem;color:#166534;margin:.75rem 0 0;line-height:1.5;">⚡ <strong>Powered by Ethos</strong> — instant online decision, no medical exam required. Policy includes <strong>Living Benefits</strong> built in at no extra cost (pays out on critical or terminal illness, not just death).</p>`
+    : '';
 
   return `
     <div class="rec-cta-box">
-      <h3>Ready to Start Your Guided Application?</h3>
+      <h3>Ready to Start Your Application?</h3>
       <p>The application takes about 10–15 minutes. Dominic reviews every submission personally and will contact you if anything needs clarification.</p>
-      <a href="${INTEGRITY_LINK}" target="_blank" rel="noopener" class="btn-enroll">
-        🚀 Start My Guided Application
+      <a href="${appUrl}" target="_blank" rel="noopener" class="btn-enroll">
+        🚀 Start My Application
       </a>
-      <a href="tel:+15743920192" class="btn-enroll-secondary">Prefer to do this by phone? Call (574) 392-0192 →</a>
+      ${ethosNote}
+      <a href="tel:+15743920192" class="btn-enroll-secondary" style="margin-top:.75rem;">Prefer to do this by phone? Call (574) 392-0192 →</a>
     </div>
     <div class="rec-or">— or —</div>
     <a href="tel:+15743920192" class="btn-call-instead">📞 Call Dominic Instead — (574) 392-0192</a>
