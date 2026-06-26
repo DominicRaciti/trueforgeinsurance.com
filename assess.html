@@ -21,7 +21,7 @@
   <link rel="canonical" href="https://trueforgeinsurance.com/assess.html" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Protection Assessment — Know Your Real Risk | TrueForge Life" />
-  <meta property="og:description" content="3 minutes. 9 questions. See exactly what your family is exposed to — and what it costs to change it." />
+  <meta property="og:description" content="5 minutes. Up to 14 questions. See exactly what your family is exposed to — and what it costs to change it." />
   <meta property="og:url" content="https://trueforgeinsurance.com/assess.html" />
   <meta property="og:image" content="https://trueforgeinsurance.com/images/agent-photo.jpg" />
   <meta property="og:site_name" content="TrueForge Life" />
@@ -450,6 +450,80 @@
   .tf-rec-call-text .sub { font-size: .7rem; color: var(--gray); }
   .tf-rec-call-arr  { margin-left: auto; color: var(--gold); font-size: 1.1rem; font-weight: 800; }
   .tf-rec-compliance { font-size: .62rem; color: var(--gray); line-height: 1.55; margin-top: .85rem; font-style: italic; }
+
+  /* ════ Health Improvement Roadmap ════ */
+  .tf-roadmap-card {
+    background: #fff; border-radius: 22px; padding: 1.75rem 1.85rem; margin-bottom: 1.25rem;
+    box-shadow: 0 8px 40px rgba(10,31,68,.1); border-left: 4px solid var(--gold);
+  }
+  .tf-roadmap-eyebrow { font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; color: var(--gold); margin-bottom: .3rem; }
+  .tf-roadmap-title   { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: .5rem; }
+  .tf-roadmap-intro   { font-size: .8rem; color: var(--gray); line-height: 1.6; margin-bottom: 1.25rem; }
+  .tf-roadmap-phases  { display: flex; flex-direction: column; gap: .75rem; }
+  .tf-roadmap-phase {
+    border: 1.5px solid var(--gray-light); border-radius: 14px; padding: 1rem 1.15rem;
+    position: relative; overflow: hidden;
+  }
+  .tf-roadmap-phase.active { border-color: var(--gold); background: linear-gradient(145deg, #fffdf5, #fff); }
+  .tf-roadmap-phase.future { border-color: #c7d2fe; background: linear-gradient(145deg, #f5f7ff, #fff); }
+  .tf-roadmap-phase-header { display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; }
+  .tf-roadmap-phase-num {
+    width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: .8rem; font-weight: 800; flex-shrink: 0;
+  }
+  .tf-roadmap-phase.active .tf-roadmap-phase-num { background: var(--gold); color: var(--navy); }
+  .tf-roadmap-phase.future .tf-roadmap-phase-num { background: #e0e7ff; color: #3730a3; }
+  .tf-roadmap-phase-label { font-size: .88rem; font-weight: 800; color: var(--navy); }
+  .tf-roadmap-phase-timeline { font-size: .68rem; color: var(--gray); margin-top: .1rem; }
+  .tf-roadmap-phase-body { font-size: .78rem; color: #374151; line-height: 1.6; }
+  .tf-roadmap-phase-product {
+    display: inline-flex; align-items: center; gap: .35rem;
+    background: var(--navy); color: var(--gold); font-size: .7rem; font-weight: 800;
+    padding: .3rem .75rem; border-radius: 99px; margin-top: .5rem;
+  }
+  .tf-roadmap-mib {
+    background: #f0f4ff; border: 1px solid #c7d2fe; border-radius: 12px;
+    padding: .85rem 1rem; margin-top: 1.1rem; font-size: .78rem; color: var(--navy); line-height: 1.6;
+  }
+  .tf-roadmap-mib strong { display: block; margin-bottom: .3rem; font-size: .82rem; }
+  .tf-roadmap-mib a { color: var(--navy); font-weight: 700; }
+
+  /* ════ IUL Projection ════ */
+  .tf-iul-card {
+    background: linear-gradient(160deg, #04091a 0%, #0a1f44 60%, #0c1e42 100%);
+    border-radius: 22px; padding: 1.75rem 1.85rem; margin-bottom: 1.25rem;
+    border: 1px solid rgba(201,151,58,.2);
+  }
+  .tf-iul-eyebrow { font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; color: var(--gold); margin-bottom: .3rem; }
+  .tf-iul-title   { font-size: 1.05rem; font-weight: 800; color: #fff; margin-bottom: .5rem; }
+  .tf-iul-sub     { font-size: .78rem; color: rgba(255,255,255,.55); line-height: 1.6; margin-bottom: 1.25rem; }
+  .tf-iul-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1.25rem; }
+  @media(max-width:480px) { .tf-iul-grid { grid-template-columns: 1fr; } }
+  .tf-iul-metric {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px; padding: .9rem 1rem;
+  }
+  .tf-iul-metric-label { font-size: .62rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.4); margin-bottom: .3rem; }
+  .tf-iul-metric-val   { font-size: 1.5rem; font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: .2rem; }
+  .tf-iul-metric-sub   { font-size: .68rem; color: rgba(255,255,255,.45); line-height: 1.4; }
+  .tf-iul-disclaimer { font-size: .65rem; color: rgba(255,255,255,.35); line-height: 1.55; font-style: italic; }
+
+  /* ════ Privacy Consent ════ */
+  .tf-consent-card {
+    background: #fff; border-radius: 18px; padding: 1.5rem 1.65rem; margin-bottom: 1rem;
+    box-shadow: 0 6px 30px rgba(10,31,68,.1); border: 2px solid #e8eaf0;
+  }
+  .tf-consent-title { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: .5rem; display: flex; align-items: center; gap: .5rem; }
+  .tf-consent-body  { font-size: .78rem; color: #374151; line-height: 1.7; margin-bottom: 1rem; }
+  .tf-consent-check {
+    display: flex; align-items: flex-start; gap: .75rem;
+    padding: .75rem .9rem; border: 1.5px solid #e8eaf0; border-radius: 11px;
+    cursor: pointer; transition: border-color .15s;
+  }
+  .tf-consent-check:hover { border-color: var(--navy); }
+  .tf-consent-check.checked { border-color: var(--navy); background: #f0f4ff; }
+  .tf-consent-check input { margin-top: .15rem; flex-shrink: 0; accent-color: var(--navy); }
+  .tf-consent-check-text { font-size: .8rem; color: var(--navy); font-weight: 600; line-height: 1.5; }
   </style>
 </head>
 <body>
@@ -537,7 +611,7 @@
   <div class="container">
     <div class="as-eyebrow">🎯 Protection Assessment Engine</div>
     <h1>Before You Buy Insurance,<br><span>Understand What's Actually at Risk.</span></h1>
-    <p>9 questions. 3 minutes. See your family's real financial exposure, identify coverage gaps, and get a personalized action plan — completely free.</p>
+    <p>Up to 14 questions. About 5 minutes. See your family's real financial exposure, identify coverage gaps, and get a personalized action plan — completely free.</p>
     <div class="as-meta-row">
       <span>🔒 Private — nothing saved or shared</span>
       <span>⏱️ About 3 minutes</span>
@@ -558,7 +632,7 @@
       <span id="pl4">Goals</span>
     </div>
     <div class="as-prog-track"><div class="as-prog-fill" id="progFill" style="width:0%"></div></div>
-    <div class="as-prog-pct" id="progPct">Question 1 of 9</div>
+    <div class="as-prog-pct" id="progPct">Question 1</div>
   </div>
 </div>
 
@@ -591,18 +665,53 @@
    ASSESSMENT ENGINE — STATE
 ══════════════════════════════════════════════════════════════ */
 let step = 0;
-let answers = {};   // { q0: value, q1: value, … }
+let answers = {};
 let mortgageBalance = 250000;
 
-const TOTAL_STEPS = 9;
+/* ── Adaptive skip logic ── */
+function shouldSkip(qIdx, a) {
+  const q = QUESTIONS[qIdx];
+  if (!q) return true;
+  const goal    = a.goal    || '';
+  const health  = a.health  || '';
 
-/* Progress section labels by step ranges */
+  // Skip mortgage + debt for final expense path
+  if ((q.id === 'mortgage' || q.id === 'debt') && goal === 'final') return true;
+
+  // Skip condition deep-dive unless: FE path, or moderate/serious health
+  if (q.id === 'conditions') {
+    if (goal === 'final') return false;
+    if (health === 'moderate' || health === 'serious') return false;
+    return true;
+  }
+
+  // Skip prior-decline unless: FE path, or serious health
+  if (q.id === 'declined') {
+    if (goal === 'final') return false;
+    if (health === 'serious') return false;
+    return true;
+  }
+
+  // Skip IUL questions unless IUL path
+  if (q.id === 'iul_horizon' || q.id === 'iul_premium') return goal !== 'iul';
+
+  return false;
+}
+
+function visibleSteps() { return QUESTIONS.filter((_, i) => !shouldSkip(i, answers)); }
+function currentVisibleIdx() {
+  let count = 0;
+  for (let i = 0; i <= step; i++) { if (!shouldSkip(i, answers)) count++; }
+  return count;
+}
+
+/* Progress section labels */
 const SECTION_MAP = [
-  [0,1],   // Your Situation
-  [2,3],   // Income & Debt
-  [4,5],   // Coverage
-  [6,6],   // Health
-  [7,8],   // Goals
+  [0, 0],   // Coverage Goal
+  [1, 2],   // Your Situation
+  [3, 5],   // Income & Debt
+  [6, 8],   // Coverage & Tobacco
+  [9, 13],  // Health Deep-Dive
 ];
 
 /* ══════════════════════════════════════════════════════════════
@@ -691,17 +800,18 @@ const QUESTIONS = [
     sub: 'Pick the one that matters most right now. This shapes everything we show you.',
     type: 'single',
     opts: [
-      { icon: '🌹', label: 'Final Expense',              desc: 'Cover burial, funeral costs, and final bills so my family isn\'t left with debt. Ages 50–85.', val: 'final' },
-      { icon: '🏠', label: 'Mortgage Protection',        desc: 'Ensure my family can stay in our home if I pass away or become disabled.',                    val: 'mortgage' },
-      { icon: '👨‍👩‍👧', label: 'Term Life / Income Protection', desc: 'Replace my income and protect my family\'s financial future for 10–30 years.',        val: 'income' },
-      { icon: '🤔', label: 'Not Sure Yet',               desc: 'Help me understand my options and figure out the right path.',                                val: 'all' },
+      { icon: '🌹', label: 'Final Expense / Whole Life',      desc: 'Cover burial costs and leave something behind. Permanent coverage, ages 40–85. Even if you\'ve been declined before.', val: 'final' },
+      { icon: '🏠', label: 'Mortgage Protection',             desc: 'Guarantee my family keeps our home if I pass away or become disabled. Matches your loan balance.',                     val: 'mortgage' },
+      { icon: '👨‍👩‍👧', label: 'Term Life / Income Protection', desc: 'Replace my income for 10–30 years. Protect my family\'s financial future if I\'m gone.',                          val: 'income' },
+      { icon: '📈', label: 'IUL — Retirement Income',         desc: 'Build tax-free cash value linked to market growth, zero chance of loss. Supplement retirement income starting in 10–25 years.', val: 'iul' },
+      { icon: '🤔', label: 'Not Sure Yet',                    desc: 'Help me understand my options. Walk me through what fits my situation.',                                              val: 'all' },
     ]
   },
 
   /* Q1 — Role */
   {
     id: 'role',
-    eyebrow: 'Question 2 of 9 · Your Situation',
+    eyebrow: 'Your Situation',
     text: 'Which best describes your household role?',
     sub: 'This helps us understand how many people depend on your income and earning capacity.',
     type: 'single',
@@ -716,7 +826,7 @@ const QUESTIONS = [
   /* Q2 — Dependents */
   {
     id: 'dependents',
-    eyebrow: 'Question 3 of 9 · Your Situation',
+    eyebrow: 'Your Situation',
     text: 'Who depends on your income?',
     sub: 'Select all that apply. This shapes how much coverage your family actually needs.',
     type: 'multi',
@@ -732,7 +842,7 @@ const QUESTIONS = [
   /* Q3 — Income */
   {
     id: 'income',
-    eyebrow: 'Question 4 of 9 · Income & Debt',
+    eyebrow: 'Income & Debt',
     text: 'What is your approximate annual household income?',
     sub: 'Used to calculate how much coverage would replace your income. The standard guideline is 10–12× your annual earnings.',
     type: 'single',
@@ -747,7 +857,7 @@ const QUESTIONS = [
   /* Q4 — Mortgage */
   {
     id: 'mortgage',
-    eyebrow: 'Question 5 of 9 · Income & Debt',
+    eyebrow: 'Income & Debt',
     text: 'What is your current mortgage situation?',
     sub: 'Your home loan is typically your family\'s largest financial obligation — and the one most at risk.',
     type: 'single',
@@ -763,7 +873,7 @@ const QUESTIONS = [
   /* Q5 — Other Debt */
   {
     id: 'debt',
-    eyebrow: 'Question 6 of 9 · Income & Debt',
+    eyebrow: 'Income & Debt',
     text: 'Do you have significant debt beyond your mortgage?',
     sub: 'These obligations don\'t disappear if you do. Outstanding debts can become a burden for surviving family members.',
     type: 'multi',
@@ -779,7 +889,7 @@ const QUESTIONS = [
   /* Q6 — Existing Coverage */
   {
     id: 'existing',
-    eyebrow: 'Question 7 of 9 · Coverage',
+    eyebrow: 'Coverage',
     text: 'How much life insurance do you currently have in place?',
     sub: 'Include all policies: employer group life, personal policies, any mortgage protection. Estimate is fine.',
     type: 'single',
@@ -795,7 +905,7 @@ const QUESTIONS = [
   /* Q7 — Age */
   {
     id: 'age',
-    eyebrow: 'Question 8 of 9 · Coverage',
+    eyebrow: 'Coverage',
     text: 'What is your age range?',
     sub: 'Age is the single biggest factor in what coverage costs. The sooner you lock in, the lower the rate — permanently.',
     type: 'single',
@@ -813,15 +923,93 @@ const QUESTIONS = [
   /* Q8 — Health */
   {
     id: 'health',
-    eyebrow: 'Question 9 of 9 · Health',
+    eyebrow: 'Health Profile',
     text: 'How would you describe your overall health?',
-    sub: 'Be honest — this determines which products you\'d qualify for. Conditions don\'t automatically disqualify you.',
+    sub: 'Be honest — this determines which products and carriers apply. There is almost always a path forward regardless of health history.',
     type: 'single',
     opts: [
       { icon: '💪', label: 'Excellent',               desc: 'No significant conditions, non-tobacco, healthy weight',   val: 'excellent' },
       { icon: '👍', label: 'Good',                    desc: 'Minor or well-managed conditions (BP, cholesterol)',        val: 'good' },
-      { icon: '⚡', label: 'Some managed conditions', desc: 'Diabetes, past surgeries, weight concerns, tobacco',       val: 'moderate' },
+      { icon: '⚡', label: 'Some managed conditions', desc: 'Diabetes, past surgeries, weight concerns, or tobacco use', val: 'moderate' },
       { icon: '🏥', label: 'Serious health history',  desc: 'Cancer, heart disease, kidney issues, COPD, or similar',   val: 'serious' },
+    ]
+  },
+
+  /* Q9 — Tobacco */
+  {
+    id: 'tobacco',
+    eyebrow: 'Health Profile · Tobacco',
+    text: 'Do you currently use tobacco or nicotine products?',
+    sub: 'Includes cigarettes, cigars, chewing tobacco, vaping, or nicotine patches used in the last 12 months. One of the biggest rate factors.',
+    type: 'single',
+    opts: [
+      { icon: '✅', label: 'No — never used or quit 12+ months ago', desc: 'Non-tobacco rates apply — significant savings vs. tobacco rates',              val: 'no' },
+      { icon: '🚬', label: 'Yes — currently use tobacco/nicotine',   desc: 'Tobacco rates apply — you are still fully insurable, rates are just higher',   val: 'yes' },
+      { icon: '🕐', label: 'Quit within the last 12 months',          desc: 'Some carriers use tobacco rates until 2 years smoke-free — ask us',           val: 'recent' },
+    ]
+  },
+
+  /* Q10 — Conditions (shown adaptively for FE path or moderate/serious health) */
+  {
+    id: 'conditions',
+    eyebrow: 'Health Profile · Medical History',
+    text: 'Have you ever been diagnosed with any of the following?',
+    sub: 'Select all that apply. This determines simplified issue vs. guaranteed issue eligibility. Honesty here gets you the right product — misrepresentation can void a claim.',
+    type: 'multi',
+    opts: [
+      { icon: '❤️', label: 'Heart attack or heart disease',         val: 'heart' },
+      { icon: '🧠', label: 'Stroke or TIA',                         val: 'stroke' },
+      { icon: '🎗️', label: 'Cancer (diagnosed within 10 years)',    val: 'cancer' },
+      { icon: '🫁', label: 'COPD, emphysema, or oxygen use',        val: 'copd' },
+      { icon: '💉', label: 'Diabetes — insulin-dependent',          val: 'diabetes_insulin' },
+      { icon: '💊', label: 'Diabetes — oral medication only',       val: 'diabetes_oral' },
+      { icon: '🏥', label: 'Hospitalized or in skilled care (last 6 months)', val: 'hospital' },
+      { icon: '🩺', label: 'Kidney disease or organ transplant',    val: 'kidney' },
+      { icon: '❌', label: 'None of these apply to me',             val: 'none', exclusive: true },
+    ]
+  },
+
+  /* Q11 — Prior Decline (shown for FE path or serious health) */
+  {
+    id: 'declined',
+    eyebrow: 'Health Profile · Application History',
+    text: 'Have you ever been declined for life insurance?',
+    sub: 'A prior decline doesn\'t close the door — it tells us which door to use. Guaranteed issue products exist specifically for people who\'ve been declined.',
+    type: 'single',
+    opts: [
+      { icon: '✅', label: 'No — never been declined',         desc: 'Full range of options available based on your health profile',            val: 'no' },
+      { icon: '⚠️', label: 'Yes — declined in the past',      desc: 'Guaranteed issue options available — no medical questions, no exam',      val: 'yes' },
+      { icon: '🆕', label: 'Never applied before',             desc: 'This would be my first life insurance application',                       val: 'never' },
+    ]
+  },
+
+  /* Q12 — IUL: Retirement Timeline (IUL path only) */
+  {
+    id: 'iul_horizon',
+    eyebrow: 'Retirement Planning · Timeline',
+    text: 'When do you plan to start drawing supplemental retirement income from this policy?',
+    sub: 'IUL policies need time to accumulate meaningful cash value. Your timeline shapes the premium structure and death benefit sizing.',
+    type: 'single',
+    opts: [
+      { icon: '🌱', label: '20+ years from now',   desc: 'Maximum accumulation window — strongest long-term strategy available',   val: '20plus' },
+      { icon: '📈', label: '15–20 years from now', desc: 'Strong growth window — excellent IUL candidate',                         val: '15_20' },
+      { icon: '📋', label: '10–15 years from now', desc: 'Moderate window — careful structuring needed to optimize cash value',    val: '10_15' },
+      { icon: '⏰', label: 'Within 10 years',      desc: 'Short timeline — we may recommend a hybrid or alternative structure',   val: 'under10' },
+    ]
+  },
+
+  /* Q13 — IUL: Monthly Premium Range (IUL path only) */
+  {
+    id: 'iul_premium',
+    eyebrow: 'Retirement Planning · Premium Budget',
+    text: 'What monthly premium range are you comfortable contributing to a permanent policy?',
+    sub: 'IUL premiums are flexible — you can start lower and increase contributions as income grows. This helps us size the policy for maximum efficiency.',
+    type: 'single',
+    opts: [
+      { icon: '💵', label: 'Under $200 / month',    desc: 'Entry-level IUL — smaller death benefit, moderate long-term accumulation',      val: 'low' },
+      { icon: '💵', label: '$200 – $400 / month',   desc: 'Mid-range strategy — solid cash value growth with meaningful death benefit',   val: 'mid' },
+      { icon: '💵', label: '$400 – $750 / month',   desc: 'Strong accumulation plan — serious retirement income strategy',                val: 'hi' },
+      { icon: '💵', label: '$750+ / month',          desc: 'Maximum funding — optimized for tax-free cash value, not just death benefit', val: 'vhi' },
     ]
   },
 
@@ -832,11 +1020,13 @@ const QUESTIONS = [
 ══════════════════════════════════════════════════════════════ */
 function renderStep() {
   const q = QUESTIONS[step];
-  const pct = Math.round((step / TOTAL_STEPS) * 100);
+  const total = visibleSteps().length;
+  const cur   = currentVisibleIdx();
+  const pct   = Math.round((cur / total) * 100);
 
   // Progress
   document.getElementById('progFill').style.width = pct + '%';
-  document.getElementById('progPct').textContent = `Question ${step + 1} of ${TOTAL_STEPS}`;
+  document.getElementById('progPct').textContent = `Question ${cur} of ${total}`;
 
   // Section labels
   SECTION_MAP.forEach(([lo, hi], i) => {
@@ -896,7 +1086,9 @@ function renderStep() {
   }
 
   const hasAnswer = q.type === 'single' ? !!answers[q.id] : (answers[q.id] || []).length > 0;
-  const nextLabel = step < TOTAL_STEPS - 1 ? 'Continue →' : '📊 Get My Protection Profile →';
+  let nextQIdx = step + 1;
+  while (nextQIdx < QUESTIONS.length && shouldSkip(nextQIdx, answers)) nextQIdx++;
+  const nextLabel = nextQIdx >= QUESTIONS.length ? '📊 Get My Protection Profile →' : 'Continue →';
   html += `<div class="as-nav">
     ${step > 0 ? `<button class="as-btn-back" onclick="goBack()">← Back</button>` : ''}
     <button class="as-btn-next${hasAnswer ? ' ready' : ''}" id="nextBtn" onclick="goNext()">
@@ -979,11 +1171,16 @@ function goNext() {
   const q = QUESTIONS[step];
   const hasAnswer = q.type === 'single' ? !!answers[q.id] : (answers[q.id] || []).length > 0;
   if (!hasAnswer) return;
-  if (step < TOTAL_STEPS - 1) { step++; renderStep(); window.scrollTo({top:0,behavior:'smooth'}); }
+  let next = step + 1;
+  while (next < QUESTIONS.length && shouldSkip(next, answers)) next++;
+  if (next < QUESTIONS.length) { step = next; renderStep(); window.scrollTo({top:0,behavior:'smooth'}); }
   else showResults();
 }
 function goBack() {
-  if (step > 0) { step--; renderStep(); window.scrollTo({top:0,behavior:'smooth'}); }
+  if (step === 0) return;
+  let prev = step - 1;
+  while (prev > 0 && shouldSkip(prev, answers)) prev--;
+  step = prev; renderStep(); window.scrollTo({top:0,behavior:'smooth'});
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -997,18 +1194,26 @@ function calcProfile() {
   const inc = qIncome?.opts.find(o => o.val === a.income)?.inc || 75000;
   const cov = qExisting?.opts.find(o => o.val === a.existing)?.cov || 0;
   const age = qAge?.opts.find(o => o.val === a.age)?.age || 45;
-  const health = a.health || 'good';
-  const hasMort = a.mortgage === 'yes';
-  const mortBal = hasMort ? mortgageBalance : (a.mortgage === 'low' ? 25000 : 0);
-  const deps = a.dependents || [];
-  const hasDeps = !deps.includes('none') && deps.length > 0;
+  const health     = a.health     || 'good';
+  const tobacco    = a.tobacco    || 'no';
+  const declined   = a.declined   || 'no';
+  const conditions = a.conditions || [];
+  const hasMort    = a.mortgage === 'yes';
+  const mortBal    = hasMort ? mortgageBalance : (a.mortgage === 'low' ? 25000 : 0);
+  const deps       = a.dependents || [];
+  const hasDeps    = !deps.includes('none') && deps.length > 0;
+
+  // GI trigger — these conditions force guaranteed issue routing
+  const GI_CONDITIONS = ['heart','stroke','cancer','copd','kidney','hospital'];
+  const hasGICondition = conditions.some(c => GI_CONDITIONS.includes(c));
+  const wasDeclined    = declined === 'yes';
 
   // Coverage gap
   const idealCov = inc * 10;
-  const covGap = Math.max(0, idealCov - cov);
-  const covPct = Math.min(100, Math.round((cov / idealCov) * 100));
+  const covGap   = Math.max(0, idealCov - cov);
+  const covPct   = Math.min(100, Math.round((cov / idealCov) * 100));
 
-  // Score components (0–100) — tracked individually for breakdown card
+  // Score components
   const s_cov  = Math.min(35, Math.round((cov / Math.max(idealCov,1)) * 35));
   let   s_mort = 0;
   if (!hasMort || cov >= mortBal) s_mort = 20;
@@ -1025,21 +1230,36 @@ function calcProfile() {
 
   // Carrier tier
   let carrierTier;
-  if (health === 'excellent' && age < 55) carrierTier = 'preferred';
-  else if (health === 'good' || (health === 'excellent' && age < 65)) carrierTier = 'standard';
-  else if (health === 'moderate') carrierTier = 'simplified';
-  else carrierTier = 'guaranteed';
+  if (hasGICondition || wasDeclined || health === 'serious') carrierTier = 'guaranteed';
+  else if (health === 'moderate' || tobacco === 'yes' || tobacco === 'recent' || conditions.includes('diabetes_insulin')) carrierTier = 'simplified';
+  else if (health === 'good' || (health === 'excellent' && age >= 55)) carrierTier = 'standard';
+  else carrierTier = 'preferred';
 
   // Product recommendation
-  let primaryProduct;
   const goal = a.goal || 'all';
-  if (goal === 'final' || age >= 65) primaryProduct = 'final-expense';
+  let primaryProduct;
+  if (goal === 'iul') primaryProduct = 'iul';
+  else if (goal === 'final' || age >= 65) primaryProduct = 'final-expense';
   else if (goal === 'mortgage' || (hasMort && covGap > 100000)) primaryProduct = 'mortgage-protection';
-  else if (goal === 'iul') primaryProduct = 'iul';
   else if (goal === 'income' || goal === 'all') primaryProduct = age < 50 ? 'term-life' : 'final-expense';
   else primaryProduct = 'term-life';
 
-  return { score, scoreBreakdown, covGap, covPct, idealCov, cov, inc, age, health, hasMort, mortBal, hasDeps, deps, carrierTier, primaryProduct, goal };
+  // IUL projection
+  const iulPremiumMap = { low: 150, mid: 300, hi: 575, vhi: 1000 };
+  const iulMonthly    = iulPremiumMap[a.iul_premium] || 300;
+  const iulHorizonMap = { '20plus': 25, '15_20': 17, '10_15': 12, 'under10': 7 };
+  const iulYears      = iulHorizonMap[a.iul_horizon] || 20;
+  const iulAccum      = Math.round(iulMonthly * 12 * iulYears * 1.55 / 1000) * 1000;
+  const iulDeathBen   = Math.round(iulMonthly * 12 * 35 / 1000) * 1000;
+
+  const needsRoadmap = carrierTier === 'guaranteed' || carrierTier === 'simplified' || tobacco === 'yes';
+
+  return {
+    score, scoreBreakdown, covGap, covPct, idealCov, cov, inc, age, health,
+    tobacco, declined, conditions, hasGICondition, wasDeclined,
+    hasMort, mortBal, hasDeps, deps, carrierTier, primaryProduct, goal,
+    iulMonthly, iulYears, iulAccum, iulDeathBen, needsRoadmap
+  };
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -1305,6 +1525,9 @@ function showResults() {
 
     ${buildRecommendationTray(p, INTEGRITY)}
 
+    ${p.goal === 'iul' ? buildIULProjection(p) : ''}
+    ${p.needsRoadmap   ? buildHealthRoadmap(p) : ''}
+
     <div style="text-align:center;margin-top:.75rem;">
       <button class="as-retake" onclick="resetAssessment()">↩ Retake the assessment</button>
     </div>
@@ -1391,15 +1614,147 @@ function estimateMonthlyPremium(coverageAmt, age, health, product) {
   }
 }
 
+function buildIULProjection(p) {
+  const fmt = n => '$' + Math.round(n).toLocaleString();
+  const annualPremium  = p.iulMonthly * 12;
+  const totalPaid      = Math.round(annualPremium * p.iulYears);
+  const annualIncome   = Math.round(p.iulAccum * 0.045); // ~4.5% tax-free withdrawal rate
+  const horizonLabel   = { '20plus':'20+ years','15_20':'15–20 years','10_15':'10–15 years','under10':'7–10 years' }[answers.iul_horizon] || '20+ years';
+
+  return `<div class="tf-iul-card">
+    <div class="tf-iul-eyebrow">IUL Accumulation Projection™</div>
+    <div class="tf-iul-title">Your Tax-Free Retirement Income Estimate</div>
+    <div class="tf-iul-sub">Based on ${fmt(p.iulMonthly)}/month premium over ${horizonLabel}, indexed to S&amp;P 500 with 0% floor (no market loss) and capped participation. Illustrated at historical average index credit of ~6.5%. Not a guarantee.</div>
+    <div class="tf-iul-grid">
+      <div class="tf-iul-metric">
+        <div class="tf-iul-metric-label">Est. Cash Value at Retirement</div>
+        <div class="tf-iul-metric-val">${fmt(p.iulAccum)}</div>
+        <div class="tf-iul-metric-sub">Tax-deferred accumulation · Zero market loss floor</div>
+      </div>
+      <div class="tf-iul-metric">
+        <div class="tf-iul-metric-label">Est. Annual Tax-Free Income</div>
+        <div class="tf-iul-metric-val">${fmt(annualIncome)}</div>
+        <div class="tf-iul-metric-sub">Policy loans — not reported as taxable income if structured correctly</div>
+      </div>
+      <div class="tf-iul-metric">
+        <div class="tf-iul-metric-label">Total Premium Invested</div>
+        <div class="tf-iul-metric-val">${fmt(totalPaid)}</div>
+        <div class="tf-iul-metric-sub">Flexible — can increase contributions as income grows</div>
+      </div>
+      <div class="tf-iul-metric">
+        <div class="tf-iul-metric-label">Death Benefit (Day 1)</div>
+        <div class="tf-iul-metric-val">${fmt(p.iulDeathBen)}</div>
+        <div class="tf-iul-metric-sub">Family protected from day one — not just at retirement</div>
+      </div>
+    </div>
+    <div class="tf-iul-disclaimer">⚠ This projection is for illustrative purposes only. Actual IUL performance depends on index credits, policy charges, and carrier caps/participation rates. This is not a guaranteed illustration. A licensed advisor must provide a formal in-force illustration before any application. Subject to carrier underwriting. NPN: 19647356.</div>
+  </div>`;
+}
+
+function buildHealthRoadmap(p) {
+  const isGI       = p.carrierTier === 'guaranteed';
+  const isSimplified = p.carrierTier === 'simplified';
+  const isTobacco  = p.tobacco === 'yes';
+  const wasDeclined = p.wasDeclined;
+  const isFE       = p.primaryProduct === 'final-expense';
+
+  const phases = [];
+
+  // Phase 1 — Right Now
+  let nowProduct, nowCarrier, nowWhy;
+  if (isGI) {
+    nowProduct = 'Guaranteed Issue Whole Life';
+    nowCarrier = 'Corebridge Financial (AIG) — no health questions, cannot be declined';
+    nowWhy = 'Get permanent coverage in force <strong>today</strong>. Premiums are fixed. Death benefit is guaranteed. This is your safety net while you work toward better options.';
+  } else if (isSimplified) {
+    nowProduct = 'Simplified Issue Whole Life or Final Expense';
+    nowCarrier = 'Mutual of Omaha · Foresters · Americo — abbreviated health screen, no exam';
+    nowWhy = 'Simplified issue covers most managed conditions. You get a real policy today at a reasonable rate while working toward preferred tier.';
+  }
+  if (nowProduct) {
+    phases.push({
+      phase: 'active', num: '1', label: 'Start Here — Get Covered Now',
+      timeline: 'This week', product: nowProduct, body: nowWhy, carrier: nowCarrier
+    });
+  }
+
+  // Phase 2 — Health improvement milestones
+  const milestones = [];
+  if (isTobacco) milestones.push('Quit tobacco for 12+ months → non-tobacco rates unlock (typically 30–50% premium reduction)');
+  if (p.conditions.includes('diabetes_oral')) milestones.push('A1C under 7.0 for 6+ months → standard rate eligibility with many carriers');
+  if (p.conditions.includes('diabetes_insulin')) milestones.push('Switch from insulin to oral meds (with physician guidance) → opens simplified issue options');
+  if (p.health === 'moderate') milestones.push('Consistent healthy BMI + clear follow-up labs → upgrade from simplified to standard tier');
+  if (milestones.length > 0) {
+    phases.push({
+      phase: 'future', num: '2', label: 'Health Milestones That Unlock Better Rates',
+      timeline: '6–24 months from now',
+      body: '<ul style="margin:.4rem 0;padding-left:1.2rem;">' + milestones.map(m => `<li style="margin-bottom:.4rem;">${m}</li>`).join('') + '</ul>',
+      product: null, carrier: null
+    });
+  }
+
+  // Phase 3 — Upgrade path
+  if (isGI || isSimplified) {
+    let upgradeProduct = isFE ? 'Level Benefit Final Expense (no graded period)' : 'Term Life with Living Benefits via Ethos';
+    phases.push({
+      phase: 'future', num: phases.length + 1 + '', label: 'Upgrade to Better Coverage',
+      timeline: '12–24 months — after health milestones',
+      body: `Once your health profile improves, we apply for ${upgradeProduct}. Your current guaranteed issue policy stays in force as a permanent base layer — you now have two layers of protection at a lower blended premium per dollar of coverage.`,
+      product: upgradeProduct, carrier: null
+    });
+  }
+
+  let html = `<div class="tf-roadmap-card">
+    <div class="tf-roadmap-eyebrow">Your Coverage Roadmap</div>
+    <div class="tf-roadmap-title">A Step-by-Step Path to the Coverage You Actually Need</div>
+    <div class="tf-roadmap-intro">Based on your health profile, we've built a multi-phase plan. Phase 1 gets you covered immediately — even with your current health history. Later phases unlock lower premiums and more product options as your health picture improves.</div>
+    <div class="tf-roadmap-phases">`;
+
+  phases.forEach(ph => {
+    html += `<div class="tf-roadmap-phase ${ph.phase}">
+      <div class="tf-roadmap-phase-header">
+        <div class="tf-roadmap-phase-num">${ph.num}</div>
+        <div>
+          <div class="tf-roadmap-phase-label">${ph.label}</div>
+          <div class="tf-roadmap-phase-timeline">⏱ ${ph.timeline}</div>
+        </div>
+      </div>
+      <div class="tf-roadmap-phase-body">${ph.body}</div>
+      ${ph.carrier ? `<div class="tf-roadmap-phase-product">🏦 ${ph.carrier}</div>` : ''}
+    </div>`;
+  });
+
+  html += `</div>
+    <div class="tf-roadmap-mib">
+      <strong>🔍 Want to See Your Health Record Before Applying?</strong>
+      Carriers check two databases when you apply. You can request your own report for free before submitting anything:<br><br>
+      • <strong>MIB (Medical Information Bureau)</strong> — <a href="tel:18666926901">866-692-6901</a> · free once per year<br>
+      • <strong>IntelliScript (Milliman) — Rx history report</strong> — <a href="tel:18772114816">877-211-4816</a> · free consumer disclosure<br><br>
+      Knowing what's in your file before applying helps avoid surprises and lets Dominic match you to the right carrier from the start.
+    </div>
+  </div>`;
+
+  return html;
+}
+
 function buildRecommendationTray(p, integrityUrl) {
-  const ETHOS = 'https://agents.ethoslife.com/invite/013c22';
+  const ETHOS      = 'https://agents.ethoslife.com/invite/013c22';
+  const COREBRIDGE = 'https://myintegrity.com/?purl=Dominic-Raciti'; // route GI FE through Integrity/Dominic
   const fmtD = n => '$' + Math.round(n).toLocaleString();
   const prod = p.primaryProduct;
-  // Route term life and mortgage protection to Ethos (instant digital decision, living benefits included)
-  // Final expense and guaranteed-issue health tier stay on Integrity (Ethos doesn't offer FE)
-  const useEthos = (prod === 'term-life' || prod === 'mortgage-protection' || prod === 'iul') && p.carrierTier !== 'guaranteed';
-  const applyUrl = useEthos ? ETHOS : integrityUrl;
-  const applyLabel = useEthos ? '🚀 Start My Application with Ethos →' : '🚀 Start My Application →';
+
+  // Routing logic:
+  // GI Final Expense → Corebridge Financial (lead carrier) via Dominic
+  // Term / Mortgage / IUL (non-GI) → Ethos (instant online, living benefits)
+  // Everything else → Integrity multi-carrier
+  const isGIPath   = p.carrierTier === 'guaranteed';
+  const isFE       = prod === 'final-expense';
+  const useEthos   = (prod === 'term-life' || prod === 'mortgage-protection' || prod === 'iul') && !isGIPath;
+  const useCorebridge = isFE && isGIPath;
+  const applyUrl   = useEthos ? ETHOS : useCorebridge ? COREBRIDGE : integrityUrl;
+  const applyLabel = useEthos      ? '🚀 Apply with Ethos — Instant Decision →'
+                   : useCorebridge ? '📞 Get Your Corebridge Quote →'
+                   : '🚀 Start My Application →';
 
   const prodNames = {
     'final-expense':        'Final Expense',
@@ -1476,7 +1831,11 @@ function buildRecommendationTray(p, integrityUrl) {
     </div>
 
     ${useEthos ? `<div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:.75rem 1rem;font-size:.75rem;color:#166534;line-height:1.6;margin-bottom:.85rem;">
-      <strong>⚡ Why Ethos?</strong> Instant online decision — no medical exam, no blood draw. Your application is reviewed in minutes, not weeks. Policy includes <strong>Living Benefits</strong> — meaning it can pay out if you're diagnosed with a critical or terminal illness, not just at death. No other step in this process is this fast or this valuable.
+      <strong>⚡ Why Ethos?</strong> Instant online decision — no medical exam, no blood draw. Your application is reviewed in minutes, not weeks. Includes <strong>Living Benefits</strong> built in — pays out on critical or terminal illness diagnosis, not just at death.
+    </div>` : ''}
+    ${useCorebridge ? `<div style="background:#fff8ee;border:1px solid #fcd9a0;border-radius:12px;padding:.85rem 1rem;font-size:.75rem;color:#7c4a00;line-height:1.6;margin-bottom:.85rem;">
+      <strong>🏦 Why Corebridge Financial?</strong> Corebridge (formerly AIG Life) is the leading guaranteed issue whole life carrier for ages 50–80. <strong>No health questions. No medical exam. You cannot be declined.</strong> Coverage is permanent — premiums never increase, death benefit never decreases. Available in most states, face amounts from $5,000–$25,000.<br><br>
+      <strong>Ethos Guaranteed Issue</strong> is available as a backup if Corebridge is not available in your state. Dominic will confirm which applies to you on a quick call.
     </div>` : ''}
 
     <div class="tf-rec-or">— or —</div>
@@ -1867,9 +2226,9 @@ function carrierMatch(p) {
       { name: 'Liberty Bankers', note: 'Simplified issue for moderate health histories',               badge: 'option', badgeLabel: 'Option' },
     ],
     guaranteed: [
-      { name: 'Mutual of Omaha', note: 'Guaranteed issue final expense — no health questions',         badge: 'best', badgeLabel: 'Best Match' },
-      { name: 'Gerber Life',     note: 'Guaranteed acceptance, strong brand recognition',              badge: 'good', badgeLabel: 'Strong Fit' },
-      { name: 'AIG / Corebridge', note: 'GI option with strong financial backing',                    badge: 'option', badgeLabel: 'Option' },
+      { name: 'Corebridge Financial (AIG)', note: 'Lead GI carrier — no health questions, ages 50–80, $5K–$25K, cannot be declined', badge: 'best', badgeLabel: 'Best Match' },
+      { name: 'Ethos Guaranteed Issue',     note: 'Backup GI option — instant online application, no exam',                          badge: 'good', badgeLabel: 'Backup' },
+      { name: 'Mutual of Omaha GI',         note: 'Established GI whole life, strong financial ratings',                             badge: 'option', badgeLabel: 'Option' },
     ],
   };
 
