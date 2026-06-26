@@ -1280,17 +1280,20 @@ function showResults() {
   const cas  = Math.round(Math.min(35, (p.cov / Math.max(p.idealCov, 1)) * 35) / 35 * 100);  // Coverage Adequacy
   const frr  = Math.round(p.score * 0.35); // Family Resilience
 
-  // ── Exposure numbers ──
-  const incomeExp  = Math.max(0, p.idealCov - p.cov);
-  const mortExp    = p.hasMort ? Math.max(0, p.mortBal - p.cov * 0.5) : 0;
+  // ── Exposure numbers — guard against NaN from skipped questions ──
+  const idealCovSafe = isNaN(p.idealCov) ? 0 : p.idealCov;
+  const covSafe      = isNaN(p.cov)      ? 0 : p.cov;
+  const mortBalSafe  = isNaN(p.mortBal)  ? 0 : p.mortBal;
+  const incomeExp  = Math.max(0, idealCovSafe - covSafe);
+  const mortExp    = p.hasMort ? Math.max(0, mortBalSafe - covSafe * 0.5) : 0;
   const debtArr    = answers.debt || [];
   const debtExp    = debtArr.includes('none') || debtArr.length === 0 ? 0
                    : debtArr.includes('business') ? 80000
                    : debtArr.includes('student') ? 35000
-                   : 15000; // credit cards
+                   : 15000;
   const finalExp   = 15000;
   const totalExp   = incomeExp + mortExp + debtExp + finalExp;
-  const coveredPct = Math.round(Math.min(100, (p.cov / Math.max(totalExp + p.cov, 1)) * 100));
+  const coveredPct = Math.round(Math.min(100, (covSafe / Math.max(totalExp + covSafe, 1)) * 100));
 
   // ── Confidence score ──
   let conf = 60;
@@ -1377,7 +1380,8 @@ function showResults() {
   const incomeStr   = `$${Math.round(incomeExp/1000)*1000 > 0 ? (Math.round(incomeExp/1000)*1000).toLocaleString() : '0'}`;
   const mortStr     = mortExp > 0 ? `$${Math.round(mortExp/1000)*1000 .toLocaleString()}` : null;
   const debtStr     = debtExp > 0 ? `$${debtExp.toLocaleString()}` : null;
-  const totalStr    = `$${Math.round(totalExp/1000)*1000 .toLocaleString()}`;
+  const totalRounded = Math.round(totalExp / 1000) * 1000;
+  const totalStr    = `$${isNaN(totalRounded) ? '0' : totalRounded.toLocaleString()}`;
 
   html += `
   <div class="tf-exposure-card">
