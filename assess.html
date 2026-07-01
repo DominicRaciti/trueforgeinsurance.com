@@ -524,6 +524,86 @@
   .tf-consent-check.checked { border-color: var(--navy); background: #f0f4ff; }
   .tf-consent-check input { margin-top: .15rem; flex-shrink: 0; accent-color: var(--navy); }
   .tf-consent-check-text { font-size: .8rem; color: var(--navy); font-weight: 600; line-height: 1.5; }
+
+  /* ════ Lead Capture Gate ════ */
+  .tf-capture-card {
+    background: linear-gradient(160deg, #0a1f44 0%, #0d2550 100%);
+    border-radius: 22px; padding: 1.85rem; margin-bottom: 1.25rem;
+    border: 1px solid rgba(201,151,58,.25); position: relative; overflow: hidden;
+  }
+  .tf-capture-eyebrow { font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; color: var(--gold); margin-bottom: .4rem; }
+  .tf-capture-title   { font-size: 1.25rem; font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: .5rem; }
+  .tf-capture-title span { color: var(--gold-light); }
+  .tf-capture-sub     { font-size: .82rem; color: rgba(255,255,255,.6); line-height: 1.6; margin-bottom: 1.25rem; }
+  .tf-capture-teaser {
+    background: rgba(201,151,58,.1); border: 1px solid rgba(201,151,58,.3);
+    border-radius: 13px; padding: 1rem 1.15rem; margin-bottom: 1.35rem;
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  }
+  .tf-capture-teaser-lock { font-size: 1.6rem; }
+  .tf-capture-teaser-text { flex: 1; min-width: 180px; }
+  .tf-capture-teaser-text .top { font-size: .72rem; color: rgba(255,255,255,.5); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+  .tf-capture-teaser-text .mid { font-size: 1.05rem; font-weight: 800; color: #fff; line-height: 1.2; margin: .15rem 0; }
+  .tf-capture-teaser-text .bot { font-size: .74rem; color: var(--gold-light); font-weight: 700; }
+  .tf-capture-form { display: flex; flex-direction: column; gap: .7rem; }
+  .tf-cap-row { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+  @media(max-width:480px){ .tf-cap-row { grid-template-columns: 1fr; } }
+  .tf-cap-field label { font-size: .68rem; font-weight: 700; color: rgba(255,255,255,.6); display: block; margin-bottom: .3rem; letter-spacing: .02em; }
+  .tf-cap-field input, .tf-cap-field select {
+    width: 100%; box-sizing: border-box; padding: .8rem .9rem; border-radius: 11px;
+    border: 1.5px solid rgba(255,255,255,.15); background: rgba(255,255,255,.07);
+    color: #fff; font-size: .92rem; font-family: var(--font); transition: border-color .15s;
+  }
+  .tf-cap-field input::placeholder { color: rgba(255,255,255,.35); }
+  .tf-cap-field input:focus, .tf-cap-field select:focus { outline: none; border-color: var(--gold); }
+  .tf-cap-field select option { color: #0a1f44; }
+  .tf-cap-field.err input { border-color: #f87171; }
+  .tf-cap-consent {
+    display: flex; align-items: flex-start; gap: .6rem; margin-top: .35rem;
+    padding: .75rem .85rem; background: rgba(255,255,255,.05); border-radius: 11px;
+    border: 1.5px solid rgba(255,255,255,.12); cursor: pointer;
+  }
+  .tf-cap-consent.err { border-color: #f87171; }
+  .tf-cap-consent input { margin-top: .1rem; flex-shrink: 0; accent-color: var(--gold); width: 16px; height: 16px; }
+  .tf-cap-consent-text { font-size: .66rem; color: rgba(255,255,255,.6); line-height: 1.55; }
+  .tf-cap-submit {
+    background: var(--gold); color: var(--navy); border: none; border-radius: 12px;
+    padding: 1.05rem; font-size: 1rem; font-weight: 800; font-family: var(--font);
+    cursor: pointer; margin-top: .5rem; display: flex; align-items: center; justify-content: center; gap: .5rem;
+    transition: all .18s; box-shadow: 0 4px 20px rgba(201,151,58,.35);
+  }
+  .tf-cap-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .tf-cap-submit:disabled { opacity: .6; cursor: wait; transform: none; }
+  .tf-cap-trust { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; margin-top: .9rem; }
+  .tf-cap-trust span { font-size: .66rem; color: rgba(255,255,255,.45); display: flex; align-items: center; gap: .3rem; }
+  .tf-cap-err-msg { font-size: .72rem; color: #fca5a5; margin-top: .3rem; display: none; }
+  .tf-cap-err-msg.show { display: block; }
+
+  /* Gated content reveal */
+  #tfGated { display: none; }
+  #tfGated.revealed { display: block; animation: asIn .35s ease; }
+
+  /* ════ Booking Embed ════ */
+  .tf-booking-card {
+    background: #fff; border-radius: 22px; padding: 1.75rem 1.85rem; margin-bottom: 1.25rem;
+    box-shadow: 0 8px 40px rgba(10,31,68,.12); border-top: 4px solid #16a34a;
+  }
+  .tf-booking-eyebrow { font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; color: #16a34a; margin-bottom: .3rem; }
+  .tf-booking-title   { font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: .4rem; }
+  .tf-booking-sub     { font-size: .8rem; color: var(--gray); line-height: 1.6; margin-bottom: 1.1rem; }
+  .tf-booking-steps   { display: grid; grid-template-columns: repeat(3,1fr); gap: .6rem; margin-bottom: 1.25rem; }
+  @media(max-width:520px){ .tf-booking-steps { grid-template-columns: 1fr; } }
+  .tf-booking-step    { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 11px; padding: .8rem .9rem; }
+  .tf-booking-step .n { font-size: .62rem; font-weight: 800; color: #16a34a; text-transform: uppercase; letter-spacing: .08em; margin-bottom: .25rem; }
+  .tf-booking-step .t { font-size: .78rem; font-weight: 700; color: var(--navy); line-height: 1.35; }
+  .tf-booking-embed   { border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-light); min-height: 620px; }
+  .tf-booking-embed iframe { width: 100%; min-height: 620px; border: none; display: block; }
+  .tf-booking-fallback {
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+    background: #16a34a; color: #fff; font-weight: 800; font-size: 1rem;
+    padding: 1.1rem 1.5rem; border-radius: 12px; text-decoration: none; transition: all .18s;
+  }
+  .tf-booking-fallback:hover { background: #15803d; transform: translateY(-2px); }
   </style>
 </head>
 <body>
@@ -613,9 +693,9 @@
     <h1>Before You Buy Insurance,<br><span>Understand What's Actually at Risk.</span></h1>
     <p>Up to 14 questions. About 5 minutes. See your family's real financial exposure, identify coverage gaps, and get a personalized action plan — completely free.</p>
     <div class="as-meta-row">
-      <span>🔒 Private — nothing saved or shared</span>
-      <span>⏱️ About 3 minutes</span>
-      <span>✅ No email required</span>
+      <span>🔒 Your answers stay private</span>
+      <span>⏱️ About 5 minutes</span>
+      <span>✅ Free — see your score first</span>
       <span>📞 Expert available if you want to talk</span>
     </div>
   </div>
@@ -646,7 +726,7 @@
 
 <!-- STICKY CALL BAR -->
 <div style="background:#f7f8fc;border-top:1px solid #e5e7eb;padding:1.25rem 1.5rem;">
-<p style="font-size:.62rem;color:#6b7280;line-height:1.65;margin:0;max-width:900px;margin-inline:auto;text-align:center;">TrueForge Life, LLC is a licensed independent insurance agency, not an insurance carrier. Dominic Raciti, NPN: 19647356. Licensed in Indiana, Arkansas, Texas, and 40+ additional states. Products and availability vary by state and are subject to individual carrier underwriting guidelines. &nbsp;|&nbsp; <strong>Tool &amp; Methodology Disclosure:</strong> The TrueForge Protection Assessment&#8482;, TrueForge Protection Score&#8482;, Family Exposure Report&#8482;, Coverage Confidence Meter&#8482;, Family Impact Timeline&#8482;, PathFinder&#8482;, and all related scoring tools are proprietary educational instruments developed by TrueForge Life, LLC. Results, scores, and estimates generated by these tools are for informational and educational purposes only. They do not constitute insurance advice, a binding quote, an offer of coverage, or a guarantee of eligibility or premium. Actual coverage, eligibility, and pricing are determined solely by the issuing carrier based on a completed application and full underwriting review. The phrase "may qualify" and all estimated figures are illustrative only. &nbsp;|&nbsp; <strong>Privacy:</strong> No personal data entered into any TrueForge Life tool is stored, sold, or shared with third parties. &nbsp;|&nbsp; &copy; 2026 TrueForge Life, LLC. All tool names, scoring methodologies, and content on this site are proprietary and may not be reproduced without written permission.</p>
+<p style="font-size:.62rem;color:#6b7280;line-height:1.65;margin:0;max-width:900px;margin-inline:auto;text-align:center;">TrueForge Life, LLC is a licensed independent insurance agency, not an insurance carrier. Dominic Raciti, NPN: 19647356. Licensed in Indiana, Arkansas, Texas, and 40+ additional states. Products and availability vary by state and are subject to individual carrier underwriting guidelines. &nbsp;|&nbsp; <strong>Tool &amp; Methodology Disclosure:</strong> The TrueForge Protection Assessment&#8482;, TrueForge Protection Score&#8482;, Family Exposure Report&#8482;, Coverage Confidence Meter&#8482;, Family Impact Timeline&#8482;, PathFinder&#8482;, and all related scoring tools are proprietary educational instruments developed by TrueForge Life, LLC. Results, scores, and estimates generated by these tools are for informational and educational purposes only. They do not constitute insurance advice, a binding quote, an offer of coverage, or a guarantee of eligibility or premium. Actual coverage, eligibility, and pricing are determined solely by the issuing carrier based on a completed application and full underwriting review. The phrase "may qualify" and all estimated figures are illustrative only. &nbsp;|&nbsp; <strong>Privacy:</strong> Your assessment answers are anonymous and are not stored until you choose to unlock your personalized plan by providing your contact information. When you do, that information is used solely by TrueForge Life, LLC to prepare your recommendation and contact you about coverage — it is never sold or rented to third parties. By submitting your contact details and consent, you agree to be contacted by phone, text, and email, including via automated technology; consent is not a condition of purchase and you may opt out at any time by replying STOP. &nbsp;|&nbsp; &copy; 2026 TrueForge Life, LLC. All tool names, scoring methodologies, and content on this site are proprietary and may not be reproduced without written permission.</p>
 </div>
 <div class="sticky-call-bar" style="display:flex;gap:0;">
   <a href="tel:+15743920192" style="flex:1;border-right:1px solid rgba(255,255,255,.2);">
@@ -667,6 +747,106 @@
 let step = 0;
 let answers = {};
 let mortgageBalance = 250000;
+let capturedLead = null;   // set once the soft-capture form is submitted
+
+/* ══════════════════════════════════════════════════════════════
+   GOHIGHLEVEL INTEGRATION CONFIG
+   ─────────────────────────────────────────────────────────────
+   Paste your two GHL URLs below. Until GHL_WEBHOOK_URL is filled
+   in, leads are logged to the console and the flow still works.
+   Until GHL_CALENDAR_URL is filled in, booking falls back to
+   the Calendly link automatically — nothing breaks.
+══════════════════════════════════════════════════════════════ */
+const TF_CONFIG = {
+  // GHL → Automation → Workflows → add "Inbound Webhook" trigger → copy URL
+  GHL_WEBHOOK_URL:  '',
+  // GHL → Calendars → your eligibility-call calendar → Permanent Link / embed URL
+  GHL_CALENDAR_URL: '',
+  // Safe fallback so the site never has a dead booking button
+  CALENDLY_FALLBACK: 'https://calendly.com/dominic-trueforgeinsurance/30min',
+};
+
+function getBookingUrl()   { return TF_CONFIG.GHL_CALENDAR_URL || TF_CONFIG.CALENDLY_FALLBACK; }
+function usingGHLCalendar() { return !!TF_CONFIG.GHL_CALENDAR_URL; }
+
+/* Capture ad attribution + campaign intent from the URL */
+function captureAttribution() {
+  const q = new URLSearchParams(location.search);
+  return {
+    intent:       q.get('intent')       || '',          // ?intent=mortgage / heloc / final
+    utm_source:   q.get('utm_source')   || '',
+    utm_medium:   q.get('utm_medium')   || '',
+    utm_campaign: q.get('utm_campaign') || '',
+    utm_content:  q.get('utm_content')  || '',
+    utm_term:     q.get('utm_term')     || '',
+    gclid:        q.get('gclid')        || '',
+    referrer:     document.referrer      || '',
+    landing_page: location.href,
+  };
+}
+const TF_ATTRIBUTION = captureAttribution();
+
+/* Build the full lead payload GHL workflows will route on */
+function buildLeadPayload(p, contact) {
+  const prodNames = { 'final-expense':'Final Expense / Whole Life','mortgage-protection':'Mortgage Protection','term-life':'Term Life','iul':'IUL / Retirement' };
+  const tierNames = { preferred:'Preferred',standard:'Standard',simplified:'Simplified Issue',guaranteed:'Guaranteed Issue' };
+  const routeMap  = { 'final-expense':'Corebridge / Integrity','mortgage-protection':'Ethos','term-life':'Ethos','iul':'Ethos' };
+  const carrier   = (p.carrierTier === 'guaranteed' && p.primaryProduct === 'final-expense') ? 'Corebridge (AIG) GI' : routeMap[p.primaryProduct] || 'Integrity';
+  return {
+    // Contact core (GHL maps these to standard fields)
+    first_name: contact.firstName,
+    last_name:  contact.lastName,
+    full_name:  (contact.firstName + ' ' + contact.lastName).trim(),
+    email:      contact.email,
+    phone:      contact.phone,
+    // Consent (TCPA record — timestamp + language shown)
+    tcpa_consent:      true,
+    tcpa_consent_time: new Date().toISOString(),
+    // Assessment snapshot → drives GHL workflow routing + call prep
+    tags: ['assessment-complete', 'product-' + p.primaryProduct, 'tier-' + p.carrierTier, TF_ATTRIBUTION.intent ? 'intent-' + TF_ATTRIBUTION.intent : 'intent-organic'].filter(Boolean),
+    tf_product:        prodNames[p.primaryProduct] || p.primaryProduct,
+    tf_carrier_route:  carrier,
+    tf_underwriting_tier: tierNames[p.carrierTier] || p.carrierTier,
+    tf_protection_score:  p.score,
+    tf_recommended_coverage: p.recommendedAmount || '',
+    tf_est_monthly_premium:  p.estPremium || '',
+    tf_coverage_gap:   p.covGap,
+    tf_age_band:       answers.age || '',
+    tf_health:         p.health,
+    tf_tobacco:        p.tobacco,
+    tf_declined_before: p.wasDeclined ? 'Yes' : 'No',
+    tf_conditions:     (p.conditions || []).join(', '),
+    tf_has_mortgage:   p.hasMort ? 'Yes' : 'No',
+    tf_mortgage_balance: p.hasMort ? p.mortBal : 0,
+    tf_household_income: p.inc,
+    tf_dependents:     (p.deps || []).join(', '),
+    tf_goal:           p.goal,
+    tf_best_time:      contact.bestTime,
+    tf_booking_url:    getBookingUrl(),
+    // Attribution
+    ...TF_ATTRIBUTION,
+    source: 'TrueForge Protection Assessment',
+  };
+}
+
+/* POST the lead to GHL (no-ops safely if webhook not yet configured) */
+async function pushToGHL(payload) {
+  if (!TF_CONFIG.GHL_WEBHOOK_URL) {
+    console.log('[TF/GHL] webhook not configured — lead payload:', payload);
+    return { ok: false, skipped: true };
+  }
+  try {
+    const res = await fetch(TF_CONFIG.GHL_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    return { ok: res.ok, status: res.status };
+  } catch (e) {
+    console.warn('[TF/GHL] push failed:', e);
+    return { ok: false, error: String(e) };
+  }
+}
 
 /* ── Adaptive skip logic ── */
 function shouldSkip(qIdx, a) {
@@ -1378,7 +1558,7 @@ function showResults() {
   ════════════════════════════════════════ */
   const today = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
   const incomeStr   = `$${Math.round(incomeExp/1000)*1000 > 0 ? (Math.round(incomeExp/1000)*1000).toLocaleString() : '0'}`;
-  const mortStr     = mortExp > 0 ? `$${Math.round(mortExp/1000)*1000 .toLocaleString()}` : null;
+  const mortStr     = mortExp > 0 ? `$${(Math.round(mortExp/1000)*1000).toLocaleString()}` : null;
   const debtStr     = debtExp > 0 ? `$${debtExp.toLocaleString()}` : null;
   const totalRounded = Math.round(totalExp / 1000) * 1000;
   const totalStr    = `$${isNaN(totalRounded) ? '0' : totalRounded.toLocaleString()}`;
@@ -1500,46 +1680,56 @@ function showResults() {
   ════════════════════════════════════════ */
   const nextSteps = buildNextSteps(p, recProduct, conf);
 
-  html += `
-  <div class="tf-advisor-card">
-    <div class="tf-advisor-header">
-      <div class="tf-advisor-avatar">🔥</div>
-      <div>
-        <div class="tf-advisor-name">Dominic Raciti</div>
-        <div class="tf-advisor-role">Independent Life Insurance Advisor · TrueForge Life</div>
-        <div class="tf-advisor-note">📋 This is your personalized guidance — not a generic quote</div>
-      </div>
-    </div>
-    <div class="tf-advisor-message">${advisorMsg}</div>
+  // Build the recommendation tray first so it stashes recommendedAmount/estPremium onto p
+  const recTrayHtml = buildRecommendationTray(p, INTEGRITY);
 
-    <div style="font-size:.82rem;font-weight:800;color:var(--navy);margin-bottom:.75rem;">Your 3 Prioritized Next Steps</div>
-    <div class="tf-next-steps">
-      ${nextSteps.map((s,i) => `
-      <div class="tf-step">
-        <div class="tf-step-num">${i+1}</div>
-        <div class="tf-step-body">
-          <span class="tf-step-urgency ${s.urgency}">${s.urgencyLabel}</span>
-          <h4>${s.title}</h4>
-          <p>${s.body}</p>
+  // ── Soft-capture gate (value already shown above; plan + booking below) ──
+  html += buildCaptureCard(p, recProduct);
+
+  // ── Everything below is revealed after the lead submits ──
+  html += `<div id="tfGated">
+    ${buildBookingSection(p, recProduct)}
+    <div class="tf-advisor-card">
+      <div class="tf-advisor-header">
+        <div class="tf-advisor-avatar">🔥</div>
+        <div>
+          <div class="tf-advisor-name">Dominic Raciti</div>
+          <div class="tf-advisor-role">Independent Life Insurance Advisor · TrueForge Life</div>
+          <div class="tf-advisor-note">📋 This is your personalized guidance — not a generic quote</div>
         </div>
-      </div>`).join('')}
+      </div>
+      <div class="tf-advisor-message">${advisorMsg}</div>
+
+      <div style="font-size:.82rem;font-weight:800;color:var(--navy);margin-bottom:.75rem;">Your 3 Prioritized Next Steps</div>
+      <div class="tf-next-steps">
+        ${nextSteps.map((s,i) => `
+        <div class="tf-step">
+          <div class="tf-step-num">${i+1}</div>
+          <div class="tf-step-body">
+            <span class="tf-step-urgency ${s.urgency}">${s.urgencyLabel}</span>
+            <h4>${s.title}</h4>
+            <p>${s.body}</p>
+          </div>
+        </div>`).join('')}
+      </div>
+
+      ${storyHtml}
+
+      ${recTrayHtml}
+
+      ${p.goal === 'iul' ? buildIULProjection(p) : ''}
+      ${p.needsRoadmap   ? buildHealthRoadmap(p) : ''}
     </div>
+  </div>
 
-    ${storyHtml}
-
-    ${buildRecommendationTray(p, INTEGRITY)}
-
-    ${p.goal === 'iul' ? buildIULProjection(p) : ''}
-    ${p.needsRoadmap   ? buildHealthRoadmap(p) : ''}
-
-    <div style="text-align:center;margin-top:.75rem;">
-      <button class="as-retake" onclick="resetAssessment()">↩ Retake the assessment</button>
-    </div>
-    <div class="as-disc">
-      This assessment is for educational purposes only. Results are estimates based on general actuarial principles and do not constitute a quote, offer, or guarantee of coverage. Eligibility and premiums are subject to carrier underwriting based on your complete application and health history. TrueForge Life, LLC is a licensed independent insurance agency.
-    </div>
+  <div style="text-align:center;margin-top:.75rem;">
+    <button class="as-retake" onclick="resetAssessment()">↩ Retake the assessment</button>
+  </div>
+  <div class="as-disc">
+    This assessment is for educational purposes only. Results are estimates based on general actuarial principles and do not constitute a quote, offer, or guarantee of coverage. Eligibility and premiums are subject to carrier underwriting based on your complete application and health history. TrueForge Life, LLC is a licensed independent insurance agency.
   </div>`;
 
+  window.TF_PROFILE = p;
   const sec = document.getElementById('resultsSection');
   sec.innerHTML = html;
   sec.classList.add('show');
@@ -1741,6 +1931,128 @@ function buildHealthRoadmap(p) {
   return html;
 }
 
+/* ════════════════════════════════════════
+   SOFT-CAPTURE GATE
+════════════════════════════════════════ */
+function buildCaptureCard(p, recProduct) {
+  const intent = TF_ATTRIBUTION.intent;
+  const isMortgageIntent = intent === 'mortgage' || intent === 'heloc' || p.primaryProduct === 'mortgage-protection';
+  const title = isMortgageIntent
+    ? `Your home is exposed by <span>${p.recommendedAmount || 'your mortgage balance'}</span>. Here's your exact plan to protect it.`
+    : p.primaryProduct === 'final-expense'
+    ? `Your family's <span>${p.recommendedAmount || '$15,000'}</span> final-expense plan is ready.`
+    : `Your personalized <span>${recProduct}</span> plan is ready.`;
+
+  return `<div class="tf-capture-card">
+    <div class="tf-capture-eyebrow">🔓 One Step to Unlock Your Full Plan</div>
+    <div class="tf-capture-title">${title}</div>
+    <div class="tf-capture-sub">You've seen your exposure. Now get your specific recommended coverage amount, estimated premium, the exact carrier you likely qualify for, and a time to lock it in with Dominic — who handles the underwriting for you.</div>
+
+    <div class="tf-capture-teaser">
+      <div class="tf-capture-teaser-lock">🔒</div>
+      <div class="tf-capture-teaser-text">
+        <div class="top">Your Recommended Coverage</div>
+        <div class="mid">${p.recommendedAmount || 'Calculated'} · ${recProduct}</div>
+        <div class="bot">Est. ${p.estPremium || 'premium ready'} · unlock to see your carrier match</div>
+      </div>
+    </div>
+
+    <form class="tf-capture-form" id="tfCaptureForm" onsubmit="submitCapture(event)">
+      <div class="tf-cap-row">
+        <div class="tf-cap-field" id="fldFirst"><label>First name *</label><input name="firstName" placeholder="First" autocomplete="given-name" /></div>
+        <div class="tf-cap-field" id="fldLast"><label>Last name *</label><input name="lastName" placeholder="Last" autocomplete="family-name" /></div>
+      </div>
+      <div class="tf-cap-row">
+        <div class="tf-cap-field" id="fldPhone"><label>Mobile phone *</label><input name="phone" type="tel" placeholder="(574) 555-0100" autocomplete="tel" inputmode="tel" /></div>
+        <div class="tf-cap-field" id="fldEmail"><label>Email</label><input name="email" type="email" placeholder="you@email.com" autocomplete="email" inputmode="email" /></div>
+      </div>
+      <div class="tf-cap-field">
+        <label>Best time for a quick eligibility call</label>
+        <select name="bestTime">
+          <option value="Anytime">Anytime — whenever works</option>
+          <option value="Morning">Morning (8am–12pm)</option>
+          <option value="Afternoon">Afternoon (12pm–5pm)</option>
+          <option value="Evening">Evening (5pm–8pm)</option>
+        </select>
+      </div>
+      <label class="tf-cap-consent" id="fldConsent">
+        <input type="checkbox" name="consent" />
+        <span class="tf-cap-consent-text">I agree that TrueForge Life, LLC may contact me by phone, text, and email at the number/email provided — including via automated technology — about my assessment and insurance options. Consent is not a condition of purchase. Message/data rates may apply. Reply STOP to opt out. See our privacy practices below.</span>
+      </label>
+      <div class="tf-cap-err-msg" id="capErr">Please add your name, a valid phone number, and check the consent box.</div>
+      <button type="submit" class="tf-cap-submit" id="capSubmit">🔓 Unlock My Plan &amp; Book My Call →</button>
+      <div class="tf-cap-trust">
+        <span>🔒 Secure &amp; encrypted</span>
+        <span>🚫 Never sold or shared</span>
+        <span>📞 No obligation</span>
+      </div>
+    </form>
+  </div>`;
+}
+
+function buildBookingSection(p, recProduct) {
+  const bookUrl = getBookingUrl();
+  const embed = usingGHLCalendar()
+    ? `<div class="tf-booking-embed"><iframe src="${bookUrl}" scrolling="no" title="Book your eligibility call"></iframe></div>`
+    : `<a href="${bookUrl}" target="_blank" rel="noopener" class="tf-booking-fallback">📅 Pick a Time to Talk with Dominic →</a>`;
+  return `<div class="tf-booking-card">
+    <div class="tf-booking-eyebrow">✅ Final Step — Lock It In</div>
+    <div class="tf-booking-title">Book Your Eligibility Call</div>
+    <div class="tf-booking-sub">On a quick call, Dominic confirms you meet the underwriting requirements for your <strong>${recProduct}</strong> plan and submits your application with you — right there on the phone. Most calls take 15–20 minutes.</div>
+    <div class="tf-booking-steps">
+      <div class="tf-booking-step"><div class="n">Before the call</div><div class="t">You'll get a text + email confirmation with everything to have ready.</div></div>
+      <div class="tf-booking-step"><div class="n">On the call</div><div class="t">Dominic verifies eligibility &amp; answers questions — no pressure.</div></div>
+      <div class="tf-booking-step"><div class="n">Same call</div><div class="t">If you qualify and want it, you apply together and you're covered.</div></div>
+    </div>
+    ${embed}
+  </div>`;
+}
+
+async function submitCapture(ev) {
+  ev.preventDefault();
+  const form = ev.target;
+  const g = n => (form.elements[n]?.value || '').trim();
+  const contact = {
+    firstName: g('firstName'), lastName: g('lastName'),
+    phone: g('phone'), email: g('email'),
+    bestTime: g('bestTime') || 'Anytime',
+  };
+  const consent = form.elements['consent']?.checked;
+  const phoneDigits = contact.phone.replace(/\D/g, '');
+
+  // Validate
+  let ok = true;
+  const mark = (id, bad) => { const el = document.getElementById(id); if (el) el.classList.toggle('err', bad); };
+  mark('fldFirst', !contact.firstName);
+  mark('fldPhone', phoneDigits.length < 10);
+  mark('fldConsent', !consent);
+  if (!contact.firstName || phoneDigits.length < 10 || !consent) ok = false;
+  const err = document.getElementById('capErr');
+  if (!ok) { if (err) err.classList.add('show'); return; }
+  if (err) err.classList.remove('show');
+
+  // Submit
+  const btn = document.getElementById('capSubmit');
+  if (btn) { btn.disabled = true; btn.textContent = 'Unlocking…'; }
+
+  const p = window.TF_PROFILE || {};
+  const payload = buildLeadPayload(p, contact);
+  capturedLead = payload;
+  await pushToGHL(payload);   // fires (or safely no-ops) — we reveal regardless so UX never blocks
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'generate_lead', { event_category: 'assessment', event_label: p.primaryProduct || 'unknown' });
+  }
+
+  // Reveal gated plan + booking
+  const gated = document.getElementById('tfGated');
+  if (gated) gated.classList.add('revealed');
+  const card = document.querySelector('.tf-capture-card');
+  if (card) card.style.display = 'none';
+  const target = document.querySelector('.tf-booking-card');
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 function buildRecommendationTray(p, integrityUrl) {
   const ETHOS      = 'https://agents.ethoslife.com/invite/013c22';
   const COREBRIDGE = 'https://myintegrity.com/?purl=Dominic-Raciti'; // route GI FE through Integrity/Dominic
@@ -1787,6 +2099,10 @@ function buildRecommendationTray(p, integrityUrl) {
 
   const [primLo, primHi] = estimateMonthlyPremium(primaryAmt, p.age, p.health, prod);
   const [altLo,  altHi]  = estimateMonthlyPremium(altAmt,     p.age, p.health, prod);
+
+  // Stash for the GHL lead payload / call-prep
+  p.recommendedAmount = fmtD(primaryAmt);
+  p.estPremium        = fmtD(primLo) + '–' + fmtD(primHi) + '/mo';
 
   // Why the alt still matters
   const altWhy = {
@@ -2110,7 +2426,7 @@ function buildNextSteps(p, recProduct, conf) {
       urgency: 'med',
       urgencyLabel: '⚠️ This Quarter',
       title: 'Close Your Coverage Gap',
-      body: `You're approximately $${Math.round((p.idealCov - p.cov)/1000)*1000 .toLocaleString()} underinsured against the 10× income standard. A supplemental term policy is a cost-effective way to close this gap without replacing existing coverage.`
+      body: `You're approximately $${(Math.round((p.idealCov - p.cov)/1000)*1000).toLocaleString()} underinsured against the 10× income standard. A supplemental term policy is a cost-effective way to close this gap without replacing existing coverage.`
     });
   } else {
     steps.push({
@@ -2161,11 +2477,11 @@ function buildGaps(p) {
     gaps.push({ type: 'critical', icon: '❌', title: 'No Life Insurance in Place',
       body: `Your family has zero financial protection right now. If something happened tomorrow, there is no safety net — no income replacement, no mortgage payoff, no buffer. This is the most urgent gap to address.` });
   } else if (p.covPct < 40) {
-    gaps.push({ type: 'critical', icon: '⚠️', title: `Coverage Gap: ~$${Math.round(p.covGap/1000)*1000 .toLocaleString()} Underinsured`,
-      body: `Your current coverage ($${p.cov.toLocaleString()}) covers only ${p.covPct}% of the recommended amount ($${Math.round(p.idealCov/1000)*1000 .toLocaleString()}). Your family would face a significant income gap.` });
+    gaps.push({ type: 'critical', icon: '⚠️', title: `Coverage Gap: ~$${(Math.round(p.covGap/1000)*1000).toLocaleString()} Underinsured`,
+      body: `Your current coverage ($${p.cov.toLocaleString()}) covers only ${p.covPct}% of the recommended amount ($${(Math.round(p.idealCov/1000)*1000).toLocaleString()}). Your family would face a significant income gap.` });
   } else if (p.covPct < 75) {
     gaps.push({ type: 'warning', icon: '📋', title: `Coverage Partially Adequate`,
-      body: `You have a foundation in place, but a gap of approximately $${Math.round(p.covGap/1000)*1000 .toLocaleString()} remains against the 10× income guideline. Topping up coverage is straightforward.` });
+      body: `You have a foundation in place, but a gap of approximately $${(Math.round(p.covGap/1000)*1000).toLocaleString()} remains against the 10× income guideline. Topping up coverage is straightforward.` });
   } else {
     gaps.push({ type: 'good', icon: '✅', title: 'Coverage Amount — On Track',
       body: `Your current coverage aligns well with income-replacement guidelines. Continue reviewing after major life events.` });
@@ -2300,7 +2616,22 @@ function resetAssessment() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Init
+// Init — honor ?intent= for targeted ad funnels (mortgage / heloc / final / iul / term)
+(function applyIntent(){
+  const map = { mortgage:'mortgage', heloc:'mortgage', final:'final', 'final-expense':'final', iul:'iul', retirement:'iul', term:'income', income:'income' };
+  const g = map[(TF_ATTRIBUTION.intent || '').toLowerCase()];
+  if (g) {
+    answers.goal = g;
+    const banners = {
+      mortgage: '🏠 Because you\'re a homeowner: this shows exactly how much mortgage protection your family needs — and what it costs.',
+      final:    '🌹 This shows your family\'s final-expense need and the coverage you likely qualify for — even with health history.',
+      iul:      '📈 This shows how much tax-free retirement income your situation could support through a properly structured IUL.',
+      income:   '👨‍👩‍👧 This shows exactly how much income-replacement coverage your family needs — and what it costs to lock in.',
+    };
+    const heroP = document.querySelector('.as-hero p');
+    if (heroP && banners[g]) heroP.innerHTML = banners[g];
+  }
+})();
 renderStep();
 </script>
 
