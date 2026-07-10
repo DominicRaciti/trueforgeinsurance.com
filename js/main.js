@@ -103,3 +103,24 @@ document.querySelectorAll('.product-card, .step, .testimonial-card, .value-card'
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   observer.observe(el);
 });
+
+// Lift the Tidio chat launcher above the sticky mobile call bar so the two
+// fixed elements stop colliding at the bottom-right corner (mobile only).
+(function liftTidioLauncher() {
+  function apply() {
+    var host = document.querySelector('#tidio-chat');
+    var sr = host && host.shadowRoot;
+    if (!sr) return false;
+    if (sr.getElementById('tf-tidio-fix')) return true;
+    var st = document.createElement('style');
+    st.id = 'tf-tidio-fix';
+    st.textContent = '@media (max-width:768px){#tidio-chat-root{bottom:80px !important;}}';
+    sr.appendChild(st);
+    return true;
+  }
+  if (apply()) return;
+  var tries = 0;
+  var iv = setInterval(function () {
+    if (apply() || ++tries > 40) clearInterval(iv);
+  }, 500);
+})();

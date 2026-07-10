@@ -1250,3 +1250,39 @@ section {
   object-fit: cover;
   object-position: center top;
 }
+
+/* ============================================================
+   MOBILE REFINEMENTS — 80%+ of traffic is mobile
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Lift the Tidio chat launcher above the sticky call bar so the
+     two fixed elements stop colliding at the bottom-right corner */
+  #tidio-chat { bottom: 80px !important; }
+
+  /* Sticky call bar: stack the number above its sub-line so nothing
+     wraps into an awkward block, and tighten the type */
+  .sticky-call-bar { padding: 0.6rem 0.9rem; }
+  .sticky-call-bar a { flex-direction: column; font-size: 1rem; gap: 0.1rem; line-height: 1.2; }
+  .sticky-call-bar .sub { font-size: 0.64rem; margin-top: 0.05rem; line-height: 1.3; }
+}
+
+@media (max-width: 600px) {
+  /* Trim excess vertical whitespace between stacked sections */
+  section { padding: 2.75rem 0; }
+  .container { padding: 0 1.15rem; }
+
+  /* Contact page: tighten the stacked info/form gap and form padding */
+  .contact-grid { gap: 2rem; }
+  .contact-form { padding: 1.5rem 1.25rem; }
+  .contact-item { margin-bottom: 1.15rem; }
+
+  /* Keep large headings from crowding their edges */
+  h1 { line-height: 1.2; }
+  h2 { line-height: 1.22; }
+}
+
+@media (max-width: 400px) {
+  .container { padding: 0 1rem; }
+  /* Quick-action buttons stack cleanly with breathing room on tiny screens */
+  .sticky-call-bar a { font-size: 0.9rem; }
+}
