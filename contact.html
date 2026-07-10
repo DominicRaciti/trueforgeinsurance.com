@@ -245,63 +245,263 @@
         <p style="color:rgba(255,255,255,0.6);font-size:0.82rem;margin:0;">Mon–Fri 9am–8pm · Sat 9am–5pm ET · Speak directly with Dominic</p>
       </div>
       <div style="text-align:center;color:var(--gray);font-size:0.85rem;margin-bottom:1rem;">— or send a message below and I'll call you back —</div>
-      <h2>Send a Message</h2>
-      <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <h2>Get My Personalized Quote</h2>
+      <p style="font-size:0.85rem;color:var(--gray);margin-top:-0.75rem;margin-bottom:1.25rem;line-height:1.55;">The more you share, the more precise your options — and the shorter our call. Only your name, phone, and email are required. Everything else is optional but helps me find your best fit before we even talk.</p>
+      <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact-thanks.html">
         <input type="hidden" name="form-name" value="contact" />
         <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" placeholder="John" required />
+        <!-- Ad attribution (populated by JS) -->
+        <input type="hidden" name="utm_source" />
+        <input type="hidden" name="utm_medium" />
+        <input type="hidden" name="utm_campaign" />
+        <input type="hidden" name="utm_term" />
+        <input type="hidden" name="utm_content" />
+        <input type="hidden" name="gclid" />
+        <input type="hidden" name="landing_page" />
+        <input type="hidden" name="referrer" />
+
+        <!-- ABOUT YOU -->
+        <div class="form-section">
+          <div class="form-section-head">👤 About You</div>
+          <div class="form-section-sub">So I know who I'm helping and how to reach you.</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name <span class="form-req">*</span></label>
+              <input type="text" id="firstName" name="firstName" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name <span class="form-req">*</span></label>
+              <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+            </div>
           </div>
           <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+            <label for="phone">Mobile Phone <span class="form-req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="(574) 555-0100" inputmode="tel" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address <span class="form-req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" inputmode="email" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="state">State You Live In</label>
+              <select id="state" name="state">
+                <option value="">Select state…</option>
+                <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="sex">Sex (for underwriting)</label>
+              <select id="sex" name="sex">
+                <option value="">Select…</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" />
+            <div class="form-note">Age is the #1 pricing factor — this lets me quote you accurately.</div>
           </div>
         </div>
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
+
+        <!-- YOUR HEALTH -->
+        <div class="form-section">
+          <div class="form-section-head">❤️ Your Health</div>
+          <div class="form-section-sub">This determines which carriers and products you'll qualify for. Honest answers get you the right plan — there's almost always an option, even with health history.</div>
+          <div class="form-row-3">
+            <div class="form-group">
+              <label for="heightFt">Height</label>
+              <select id="heightFt" name="heightFt">
+                <option value="">Ft</option>
+                <option>4</option><option>5</option><option>6</option><option>7</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="heightIn" style="visibility:hidden;">In</label>
+              <select id="heightIn" name="heightIn">
+                <option value="">In</option>
+                <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="weight">Weight (lbs)</label>
+              <input type="number" id="weight" name="weight" placeholder="185" inputmode="numeric" min="60" max="600" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tobacco">Tobacco / Nicotine?</label>
+              <select id="tobacco" name="tobacco">
+                <option value="">Select…</option>
+                <option value="No">No — none in 12+ months</option>
+                <option value="Yes">Yes — currently use</option>
+                <option value="Quit">Quit within last 12 months</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="health">Overall Health</label>
+              <select id="health" name="health">
+                <option value="">Select…</option>
+                <option value="Excellent">Excellent</option>
+                <option value="Good">Good</option>
+                <option value="Fair">Fair / some conditions</option>
+                <option value="Serious">Serious history</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Any of these apply? (check all that apply)</label>
+            <div class="form-conditions">
+              <label class="form-check"><input type="checkbox" name="conditions" value="High blood pressure" /> High blood pressure</label>
+              <label class="form-check"><input type="checkbox" name="conditions" value="High cholesterol" /> High cholesterol</label>
+              <label class="form-check"><input type="checkbox" name="conditions" value="Diabetes (Type 2)" /> Diabetes (Type 2)</label>
+              <label class="form-check"><input type="checkbox" name="conditions" value="Diabetes (insulin)" /> Diabetes (insulin)</label>
+              <label class="form-check"><input type="checkbox" name="conditions" value="Heart disease" /> Heart disease</label>
+              <label class="form-check"><input type="checkbox" name="conditions" value="Cancer history" /> Cancer history</label>
+              <label class="form-check"><input type="checkbox" name="conditions" value="Stroke / TIA" /> Stroke / TIA</label>
+              <label class="form-check"><input type="checkbox" name="conditions" value="COPD / lung" /> COPD / lung</label>
+              <label class="form-check"><input type="checkbox" name="conditions" value="Declined before" /> Declined before</label>
+              <label class="form-check"><input type="checkbox" name="conditions" value="None of these" /> None of these</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="medications">Current Medications <span style="font-weight:400;color:var(--gray)">(optional)</span></label>
+            <textarea id="medications" name="medications" style="min-height:70px;" placeholder="e.g. Metformin 500mg, Lisinopril 10mg — or leave blank"></textarea>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="john@example.com" required />
+
+        <!-- YOUR SITUATION -->
+        <div class="form-section">
+          <div class="form-section-head">🏠 Your Situation &amp; Goal</div>
+          <div class="form-section-sub">So I can size the right coverage before we talk.</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="hasMortgage">Do you have a mortgage?</label>
+              <select id="hasMortgage" name="hasMortgage">
+                <option value="">Select…</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No / I rent</option>
+                <option value="Paid off">Own it outright</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mortgageBalance">Mortgage Balance</label>
+              <select id="mortgageBalance" name="mortgageBalance">
+                <option value="">Select…</option>
+                <option value="Under $100k">Under $100k</option>
+                <option value="$100k–$200k">$100k–$200k</option>
+                <option value="$200k–$350k">$200k–$350k</option>
+                <option value="$350k–$500k">$350k–$500k</option>
+                <option value="$500k+">$500k+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="hasCoverage">Current life insurance?</label>
+              <select id="hasCoverage" name="hasCoverage">
+                <option value="">Select…</option>
+                <option value="None">None at all</option>
+                <option value="Through work only">Through work only</option>
+                <option value="Own policy">I have my own policy</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="currentCoverage">How much, if any?</label>
+              <select id="currentCoverage" name="currentCoverage">
+                <option value="">Select…</option>
+                <option value="$0">$0</option>
+                <option value="Under $50k">Under $50k</option>
+                <option value="$50k–$250k">$50k–$250k</option>
+                <option value="$250k–$500k">$250k–$500k</option>
+                <option value="$500k+">$500k+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="interest">What are you looking for?</label>
+            <select id="interest" name="interest">
+              <option value="">Select a product…</option>
+              <option value="term">Term Life Insurance</option>
+              <option value="mortgage">Mortgage Protection</option>
+              <option value="iul">IUL / Tax-Free Retirement</option>
+              <option value="final-expense">Final Expense / Whole Life</option>
+              <option value="simplified">Simplified / Guaranteed Issue</option>
+              <option value="more">I have some — looking for more</option>
+              <option value="unsure">Not sure — need guidance</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="desiredCoverage">Coverage you want</label>
+              <select id="desiredCoverage" name="desiredCoverage">
+                <option value="">Select…</option>
+                <option value="Not sure">Not sure — help me decide</option>
+                <option value="Under $25k (final expense)">Under $25k (final expense)</option>
+                <option value="$25k–$100k">$25k–$100k</option>
+                <option value="$100k–$300k">$100k–$300k</option>
+                <option value="$300k–$500k">$300k–$500k</option>
+                <option value="$500k–$1M">$500k–$1M</option>
+                <option value="$1M+">$1M+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="budget">Monthly budget</label>
+              <select id="budget" name="budget">
+                <option value="">Select…</option>
+                <option value="Under $50">Under $50</option>
+                <option value="$50–$100">$50–$100</option>
+                <option value="$100–$200">$100–$200</option>
+                <option value="$200–$400">$200–$400</option>
+                <option value="$400+">$400+</option>
+                <option value="Whatever it takes">Whatever the right coverage costs</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="bestTime">Best time to reach you</label>
+            <select id="bestTime" name="bestTime">
+              <option value="Anytime">Anytime — whenever works</option>
+              <option value="Morning">Morning (8am–12pm)</option>
+              <option value="Afternoon">Afternoon (12pm–5pm)</option>
+              <option value="Evening">Evening (5pm–8pm)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Anything else I should know? <span style="font-weight:400;color:var(--gray)">(optional)</span></label>
+            <textarea id="message" name="message" placeholder="e.g. I want to make sure my family keeps the house. I was declined once before. I'd like to build cash value too…"></textarea>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="interest">I'm Interested In</label>
-          <select id="interest" name="interest">
-            <option value="">Select a product...</option>
-            <option value="term">Term Life Insurance</option>
-            <option value="mortgage">Mortgage Protection</option>
-            <option value="iul">Indexed Universal Life (IUL)</option>
-            <option value="final-expense">Final Expense / Whole Life</option>
-            <option value="simplified">Simplified Issue Coverage</option>
-            <option value="unsure">Not Sure — Need Guidance</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="age">Your Age Range</label>
-          <select id="age" name="age">
-            <option value="">Select age range...</option>
-            <option value="18-29">18–29</option>
-            <option value="30-39">30–39</option>
-            <option value="40-49">40–49</option>
-            <option value="50-59">50–59</option>
-            <option value="60-69">60–69</option>
-            <option value="70+">70+</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="message">Anything Else I Should Know? <span style="font-weight:400;color:var(--gray)">(Optional)</span></label>
-          <textarea id="message" name="message" placeholder="e.g. I have a $300K mortgage and want to make sure my family keeps the house. I have mild diabetes. Budget is around $80/month..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:1rem;">📬 Request My Free Quote →</button>
-        <p style="font-size:0.78rem;color:var(--gray);text-align:center;margin-top:0.75rem;margin-bottom:0;">I typically respond within a few hours · Prefer to text? <a href="sms:+15743920192?body=Hi%20Dominic%2C%20I%27d%20like%20a%20free%20quote." style="color:var(--navy);font-weight:600;">Text (574) 392-0192</a></p>
+
+        <!-- CONSENT -->
+        <label class="form-consent" id="consentWrap">
+          <input type="checkbox" name="consent" id="consent" value="Yes" />
+          <span class="form-consent-text">I agree that TrueForge Life, LLC (Dominic Raciti) may contact me by phone, text, and email — including via automated technology — about my quote and insurance options. Consent is not a condition of purchase. Msg/data rates may apply; reply STOP to opt out.</span>
+        </label>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:1rem;">📬 Send My Info &amp; Get My Quote →</button>
+        <p style="font-size:0.78rem;color:var(--gray);text-align:center;margin-top:0.75rem;margin-bottom:0;">🔒 Private &amp; secure · Never sold or shared · I typically respond within a few hours · Prefer to text? <a href="sms:+15743920192?body=Hi%20Dominic%2C%20I%27d%20like%20a%20free%20quote." style="color:var(--navy);font-weight:600;">Text (574) 392-0192</a></p>
       </form>
     </div>
 
   </div>
 </section>
+
+<!-- BOOK INSTANTLY -->
+<section style="background:var(--navy);padding:3.5rem 0;" id="book">
+  <div class="container" style="max-width:820px;text-align:center;">
+    <div class="section-label" style="color:var(--gold-light);">Prefer to Pick a Time?</div>
+    <h2 style="color:var(--white);margin-bottom:0.75rem;">Book Your Free Call Instantly</h2>
+    <p style="color:rgba(255,255,255,0.72);font-size:1rem;max-width:520px;margin:0 auto 2rem;line-height:1.6;">Choose a time that works for you and it lands straight on my calendar. 15–20 minutes, no pressure — just honest answers and your best options.</p>
+    <div style="background:var(--white);border-radius:16px;padding:0.5rem;box-shadow:var(--shadow-lg);">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/dominic-trueforgeinsurance/30min?hide_gdpr_banner=1&primary_color=c9973a" style="min-width:280px;height:680px;"></div>
+    </div>
+    <p style="color:rgba(255,255,255,0.55);font-size:0.82rem;margin-top:1.25rem;">Rather just talk now? Call or text <a href="tel:+15743920192" style="color:var(--gold-light);font-weight:700;">(574) 392-0192</a></p>
+  </div>
+</section>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <!-- TESTIMONIAL STRIP -->
 <section style="background:var(--off-white);padding:3.5rem 0;">
