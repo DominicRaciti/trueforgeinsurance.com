@@ -70,7 +70,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 // ===== Contact / intake form — REAL delivery via Netlify Forms + optional GHL =====
 // Paste your GoHighLevel inbound webhook URL here to also push leads into GHL.
 // Leave blank to rely on Netlify Forms alone (leads still captured + emailed).
-const TF_GHL_WEBHOOK = '';
+const TF_GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/qNQ4TmBQG1ABiNTwxBgR/webhook-trigger/b8a41d0f-62e1-4e16-9d52-0d292bf197e7';
 
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
