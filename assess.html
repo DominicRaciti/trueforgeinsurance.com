@@ -836,10 +836,11 @@ async function pushToGHL(payload) {
     return { ok: false, skipped: true };
   }
   try {
-    // text/plain avoids a CORS preflight so the browser can't block the post
+    // GHL requires application/json to parse the body (it rejects text/plain);
+    // its endpoint returns proper CORS headers so no preflight issue.
     const res = await fetch(TF_CONFIG.GHL_WEBHOOK_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
     return { ok: res.ok, status: res.status };

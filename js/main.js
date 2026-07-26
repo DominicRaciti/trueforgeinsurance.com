@@ -120,9 +120,10 @@ if (contactForm) {
       });
       obj.source = 'TrueForge Contact Form';
       obj.tcpa_consent_time = new Date().toISOString();
-      // text/plain avoids a CORS preflight so the browser can't block the post
+      // GHL requires application/json to parse the body (it rejects text/plain);
+      // its endpoint returns proper CORS headers so no preflight issue.
       fetch(TF_GHL_WEBHOOK, {
-        method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(obj)
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(obj)
       }).catch(() => {});
     }
 
